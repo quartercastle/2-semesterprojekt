@@ -13,9 +13,6 @@ insert_final_newline = true
 [*.md]
 trim_trailing_whitespace = false
 
-[*.php]
-indent_size = 4
-
 [*.java]
 indent_style = space
-indent_size = 4
+indent_size = 2
