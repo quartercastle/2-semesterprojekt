@@ -1,17 +1,29 @@
-\documentclass{article}
+\documentclass{paper}
 \usepackage[utf8]{inputenc}
-
 \usepackage{subfiles}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{tocloft}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.4}
 
-\usepackage{blindtext}
+% Header and footer styles
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\lhead{2. Semesterprojekt - Gruppe 11}
+
 
 \begin{document}
-
-\subfile{sections/frontpage}
-
-\tableofcontents
-\newpage
-
-\subfile{sections/projektforslag}
-
+  \subfile{sections/forside}
+  \subfile{sections/abstract}
+  \subfile{sections/forord}
+  \subfile{sections/indholdsfortegnelse}
+  \subfile{sections/laesevejledning}
+  \subfile{sections/ordliste}
+  \subfile{sections/indledning}
+  \subfile{sections/projektforslag}
+  \subfile{sections/konklusion}
+  \subfile{sections/perspektivering}
 \end{document}
