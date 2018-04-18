@@ -16,7 +16,7 @@ import GUI.GUI;
  *
  * @author Victor Gram
  */
-public class Starter {
+public class Bootstrap {
 
   public static void main(String[] args) {
     IDatabase idb = new DataFacade();

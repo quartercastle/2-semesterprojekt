@@ -5,10 +5,12 @@
  */
 package Data;
 
+import Acq.IDatabase;
+
 /**
  *
  * @author Victor Gram
  */
-public class DataFacade {
-  
+public class DataFacade implements IDatabase {
+
 }

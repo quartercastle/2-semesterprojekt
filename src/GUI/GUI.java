@@ -14,6 +14,10 @@ import Acq.IGUI;
  */
 public class GUI implements IGUI {
 
+  /**
+   * Instance of the class itself, used for singleton setup. Is set to null
+   * initially, instantiated if needed though getInstance()
+   */
   private static GUI gui = null;
 
   public GUI() {
@@ -25,6 +29,12 @@ public class GUI implements IGUI {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
+  /**
+   * Singleton setup for GUI, returns instance of the class if none has been
+   * made. If one has been made, returns that created instance
+   *
+   * @return GUI
+   */
   public static GUI getInstance() {
     if (gui == null) {
       gui = new GUI();
