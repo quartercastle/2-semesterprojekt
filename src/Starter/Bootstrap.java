@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Starter;
+package starter;
 
-import Acq.IDatabase;
-import Acq.IDomain;
-import Acq.IGUI;
-import Data.DataFacade;
-import Domain.DomainFacade;
-import GUI.GUI;
+import acq.IDatabase;
+import acq.IDomain;
+import acq.IGUI;
+import data.DataFacade;
+import domain.DomainFacade;
+import gui.GUI;
 
 /**
  *
