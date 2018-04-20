@@ -3,14 +3,14 @@
  */
 package domain;
 
-import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Log {
 
   /**
    * Date of creation for the log
    */
-  private Date date;
+  private GregorianCalendar date;
   /**
    * User that created the log
    */
@@ -38,7 +38,7 @@ public class Log {
    *
    * @return date
    */
-  public Date getDate() {
+  public GregorianCalendar getDate() {
     return date;
   }
 
@@ -47,7 +47,7 @@ public class Log {
    *
    * @param date
    */
-  public void setDate(Date date) {
+  public void setDate(GregorianCalendar date) {
     this.date = date;
   }
 
