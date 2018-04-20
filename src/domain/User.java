@@ -20,7 +20,7 @@ public class User {
   /**
    * The user's role in the system
    */
-  private role Role;
+  private Role role;
 
   /**
    * Get name
@@ -54,8 +54,8 @@ public class User {
    *
    * @return role
    */
-  public role getRole() {
-    return Role;
+  public Role getRole() {
+    return role;
   }
 
   /**
@@ -88,10 +88,10 @@ public class User {
   /**
    * Set role
    *
-   * @param Role
+   * @param role
    */
-  public void setRole(role Role) {
-    this.Role = Role;
+  public void setRole(Role role) {
+    this.role = role;
   }
 
 }
