@@ -36,11 +36,11 @@ public class Log {
     this.user = user;
   }
 
-  public Case getC() {
+  public Case getCase() {
     return c;
   }
 
-  public void setC(Case c) {
+  public void setCase(Case c) {
     this.c = c;
   }
 
