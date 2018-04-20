@@ -20,4 +20,52 @@ public class Log {
   private String oldValue;
   private String newValue;
 
+  public Date getDate() {
+    return date;
+  }
+
+  public void setDate(Date date) {
+    this.date = date;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  public Case getC() {
+    return c;
+  }
+
+  public void setC(Case c) {
+    this.c = c;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public String getOldValue() {
+    return oldValue;
+  }
+
+  public void setOldValue(String oldValue) {
+    this.oldValue = oldValue;
+  }
+
+  public String getNewValue() {
+    return newValue;
+  }
+
+  public void setNewValue(String newValue) {
+    this.newValue = newValue;
+  }
+
 }
