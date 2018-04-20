@@ -28,12 +28,12 @@ public class Effort {
   /**
    * Constructor for efforts
    *
-   * @param TotalPrice
+   * @param totalPrice
    * @param startDate
    * @param endDate
    * @param responsible
    */
-  public Effort(int TotalPrice, Date startDate, Date endDate, Company responsible) {
+  public Effort(int totalPrice, Date startDate, Date endDate, Company responsible) {
     this.totalPrice = totalPrice;
     this.startDate = startDate;
     this.endDate = endDate;
