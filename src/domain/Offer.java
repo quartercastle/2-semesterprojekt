@@ -33,7 +33,7 @@ public class Offer {
   /**
    * Get name
    *
-   * @return
+   * @return name
    */
   public String getName() {
     return name;
@@ -51,7 +51,7 @@ public class Offer {
   /**
    * Get price
    *
-   * @return
+   * @return price
    */
   public int getPrice() {
     return price;
@@ -69,7 +69,7 @@ public class Offer {
   /**
    * Get description
    *
-   * @return
+   * @return description
    */
   public String getDescription() {
     return description;

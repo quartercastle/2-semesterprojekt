@@ -43,7 +43,7 @@ public class Effort {
   /**
    * Get total price
    *
-   * @return
+   * @return totalPrice
    */
   public int getTotalPrice() {
     return totalPrice;
@@ -61,7 +61,7 @@ public class Effort {
   /**
    * Get start date
    *
-   * @return
+   * @return startDate
    */
   public Date getStartDate() {
     return startDate;
@@ -79,7 +79,7 @@ public class Effort {
   /**
    * Get end date
    *
-   * @return
+   * @return endDate
    */
   public Date getEndDate() {
     return endDate;
@@ -97,7 +97,7 @@ public class Effort {
   /**
    * Get responsible company
    *
-   * @return
+   * @return responsible
    */
   public Company getResponsible() {
     return responsible;
