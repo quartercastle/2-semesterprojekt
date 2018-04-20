@@ -1,6 +1,6 @@
 package domain;
 
-import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * Effort
@@ -15,12 +15,12 @@ public class Effort {
   /**
    * Start date of effort
    */
-  private Date startDate;
+  private GregorianCalendar startDate;
 
   /**
    * Start date of effort
    */
-  private Date endDate;
+  private GregorianCalendar endDate;
 
   /**
    * Company responsible of effort
@@ -35,7 +35,7 @@ public class Effort {
    * @param endDate
    * @param responsible
    */
-  public Effort(int totalPrice, Date startDate, Date endDate, Company responsible) {
+  public Effort(int totalPrice, GregorianCalendar startDate, GregorianCalendar endDate, Company responsible) {
     this.totalPrice = totalPrice;
     this.startDate = startDate;
     this.endDate = endDate;
@@ -65,7 +65,7 @@ public class Effort {
    *
    * @return startDate
    */
-  public Date getStartDate() {
+  public GregorianCalendar getStartDate() {
     return startDate;
   }
 
@@ -74,7 +74,7 @@ public class Effort {
    *
    * @param startDate
    */
-  public void setStartDate(Date startDate) {
+  public void setStartDate(GregorianCalendar startDate) {
     this.startDate = startDate;
   }
 
@@ -83,7 +83,7 @@ public class Effort {
    *
    * @return endDate
    */
-  public Date getEndDate() {
+  public GregorianCalendar getEndDate() {
     return endDate;
   }
 
@@ -92,7 +92,7 @@ public class Effort {
    *
    * @param endDate
    */
-  public void setEndDate(Date endDate) {
+  public void setEndDate(GregorianCalendar endDate) {
     this.endDate = endDate;
   }
 
