@@ -5,10 +5,6 @@ package domain;
 
 import java.util.UUID;
 
-/**
- *
- * @author Victor Gram
- */
 public class Case {
 
   /**

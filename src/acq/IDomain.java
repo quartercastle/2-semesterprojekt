@@ -5,10 +5,6 @@
  */
 package acq;
 
-/**
- *
- * @author Victor Gram
- */
 public interface IDomain {
 
   /**

@@ -1,17 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *Facade class for cmmunicating wth the domain layer
  */
 package domain;
 
 import acq.IDatabase;
 import acq.IDomain;
 
-/**
- *
- * @author Victor Gram
- */
 public class DomainFacade implements IDomain {
 
   /**
@@ -33,7 +27,7 @@ public class DomainFacade implements IDomain {
    * Singleton setup for DomainFacade, returns instance of the class if none has
    * been made. If one has been made, returns that created instance
    *
-   * @return GUI
+   * @return Singleton instanse of DomainFacade
    */
   public static DomainFacade getInstance() {
     if (df == null) {

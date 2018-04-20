@@ -5,10 +5,6 @@ package domain;
 
 import java.util.Date;
 
-/**
- *
- * @author Victor Gram
- */
 public class Log {
 
   /**
