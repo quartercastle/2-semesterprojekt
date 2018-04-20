@@ -46,7 +46,7 @@ public class Role {
   }
 
   /**
-   * Get canViewCase
+   * Can role view Case
    *
    * @return canViewCace
    */
@@ -55,7 +55,7 @@ public class Role {
   }
 
   /**
-   * Get canEvaluateCase
+   * Can role evaluate Case
    *
    * @return canEvaluateCase
    */
@@ -64,7 +64,7 @@ public class Role {
   }
 
   /**
-   * Get canCloseCase
+   * Can role close Case
    *
    * @return canCloseCase
    */
