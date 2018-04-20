@@ -1,29 +1,37 @@
 package domain;
 
+/**
+ * Effort
+ */
 public class Effort {
 
-  /*
-  * Total price of effort
+  /**
+   * Total price of effort
    */
   private int totalPrice;
 
-  /*
-  * Start date of effort
+  /**
+   * Start date of effort
    */
   private Date startDate;
 
-  /*
-  * End date of effort
+  /**
+   * Start date of effort
    */
   private Date endDate;
 
-  /*
-  * The company responsible of effort
+  /**
+   * Company responsible of effort
    */
   private Company responsible;
 
-  /*
-  * Constructor for effort
+  /**
+   * Constructor for efforts
+   *
+   * @param TotalPrice
+   * @param startDate
+   * @param endDate
+   * @param responsible
    */
   public Effort(int TotalPrice, Date startDate, Date endDate, Company responsible) {
     this.totalPrice = totalPrice;
@@ -32,57 +40,73 @@ public class Effort {
     this.responsible = responsible;
   }
 
-  /*
-  * Get total price
+  /**
+   * Get total price
+   *
+   * @return
    */
   public int getTotalPrice() {
     return totalPrice;
   }
 
-  /*
-  * Set total price
+  /**
+   * Set total price
+   *
+   * @param totalPrice
    */
   public void setTotalPrice(int totalPrice) {
     this.totalPrice = totalPrice;
   }
 
-  /*
-  * Get start date
+  /**
+   * Get start date
+   *
+   * @return
    */
   public Date getStartDate() {
     return startDate;
   }
 
-  /*
-  * Set start date
+  /**
+   * Set start date
+   *
+   * @param startDate
    */
   public void setStartDate(Date startDate) {
     this.startDate = startDate;
   }
 
-  /*
-  * Get end date
+  /**
+   * Get end date
+   *
+   * @return
    */
   public Date getEndDate() {
     return endDate;
   }
 
-  /*
-  * Set end date
+  /**
+   * Set end date
+   *
+   * @param endDate
    */
   public void setEndDate(Date endDate) {
     this.endDate = endDate;
   }
 
-  /*
-  * Get responsible company
+  /**
+   * Get responsible company
+   *
+   * @return
    */
   public Company getResponsible() {
     return responsible;
   }
 
-  /*
-  * Set responsible company
+  /**
+   * Set responsible company
+   *
+   * @param responsible
    */
   public void setResponsible(Company responsible) {
     this.responsible = responsible;

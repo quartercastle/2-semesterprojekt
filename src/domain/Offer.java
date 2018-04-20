@@ -2,23 +2,27 @@ package domain;
 
 public class Offer {
 
-  /*
-  * Name of offer
+  /**
+   * Name of offer
    */
   private String name;
 
-  /*
-  * Price of offer
+  /**
+   * Price of offer
    */
   private int price;
 
-  /*
-  * Description of offer
+  /**
+   * Description of offer
    */
   private String description;
 
-  /*
-  * Constructor for offer
+  /**
+   * Constructor for offers
+   *
+   * @param name
+   * @param price
+   * @param description
    */
   public Offer(String name, int price, String description) {
     this.name = name;
@@ -26,43 +30,55 @@ public class Offer {
     this.description = description;
   }
 
-  /*
-  * Get name
+  /**
+   * Get name
+   *
+   * @return
    */
   public String getName() {
     return name;
   }
 
-  /*
-  * Set name
+  /**
+   * Set name
+   *
+   * @param name
    */
   public void setName(String name) {
     this.name = name;
   }
 
-  /*
-  * Get price
+  /**
+   * Get price
+   *
+   * @return
    */
   public int getPrice() {
     return price;
   }
 
-  /*
-  * Set price
+  /**
+   * Set price
+   *
+   * @param price
    */
   public void setPrice(int price) {
     this.price = price;
   }
 
-  /*
-  * Get description
+  /**
+   * Get description
+   *
+   * @return
    */
   public String getDescription() {
     return description;
   }
 
-  /*
-  * Set description
+  /**
+   * Set description
+   *
+   * @param description
    */
   public void setDescription(String description) {
     this.description = description;
