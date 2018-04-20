@@ -1,59 +1,90 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package domain;
 
-/**
- *
- * @author Lasse
- */
 public class Effort {
 
-  private int TotalPrice;
+  /*
+  * Total price of effort
+   */
+  private int totalPrice;
 
-  private Date StartDate;
+  /*
+  * Start date of effort
+   */
+  private Date startDate;
 
-  private Date EndDate;
+  /*
+  * End date of effort
+   */
+  private Date endDate;
 
-  private Company Responsible;
+  /*
+  * The company responsible of effort
+   */
+  private Company responsible;
 
-  public Effort(int TotalPrice, Date StartDate, Date EndDate, Company Responsible) {
-    this.TotalPrice = TotalPrice;
-    this.StartDate = StartDate;
-    this.EndDate = EndDate;
-    this.Responsible = Responsible;
+  /*
+  * Constructor for effort
+   */
+  public Effort(int TotalPrice, Date startDate, Date endDate, Company responsible) {
+    this.totalPrice = totalPrice;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.responsible = responsible;
   }
 
+  /*
+  * Get total price
+   */
   public int getTotalPrice() {
-    return TotalPrice;
+    return totalPrice;
   }
 
-  public void setTotalPrice(int TotalPrice) {
-    this.TotalPrice = TotalPrice;
+  /*
+  * Set total price
+   */
+  public void setTotalPrice(int totalPrice) {
+    this.totalPrice = totalPrice;
   }
 
+  /*
+  * Get start date
+   */
   public Date getStartDate() {
-    return StartDate;
+    return startDate;
   }
 
-  public void setStartDate(Date StartDate) {
-    this.StartDate = StartDate;
+  /*
+  * Set start date
+   */
+  public void setStartDate(Date startDate) {
+    this.startDate = startDate;
   }
 
+  /*
+  * Get end date
+   */
   public Date getEndDate() {
-    return EndDate;
+    return endDate;
   }
 
-  public void setEndDate(Date EndDate) {
-    this.EndDate = EndDate;
+  /*
+  * Set end date
+   */
+  public void setEndDate(Date endDate) {
+    this.endDate = endDate;
   }
 
+  /*
+  * Get responsible company
+   */
   public Company getResponsible() {
-    return Responsible;
+    return responsible;
   }
 
-  public void setResponsible(Company Responsible) {
-    this.Responsible = Responsible;
+  /*
+  * Set responsible company
+   */
+  public void setResponsible(Company responsible) {
+    this.responsible = responsible;
   }
+}
