@@ -18,9 +18,8 @@ public class Service {
 
   /**
    * The service unit, can be daily, monthly and yearly
-   * TODO could be a Enum
    */
-  private int unit;
+  private ServiceUnit unit;
 
   /**
    * Price unit price of service
@@ -60,7 +59,7 @@ public class Service {
    * Get unit
    * @return unit
    */
-  public int getUnit () {
+  public ServiceUnit getUnit () {
     return this.unit;
   }
 
@@ -104,7 +103,7 @@ public class Service {
   /**
    * Set unit
    */
-  public void setUnit (int unit) {
+  public void setUnit (ServiceUnit unit) {
     this.unit = unit;
   }
 
