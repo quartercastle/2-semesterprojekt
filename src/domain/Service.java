@@ -49,7 +49,7 @@ public class Service {
 
   /**
    * Get frequency
-   * @return [description]
+   * @return frequency
    */
   public int getFrequency () {
     return this.frequency;
