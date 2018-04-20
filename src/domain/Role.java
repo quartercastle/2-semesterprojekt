@@ -41,7 +41,7 @@ public class Role {
    *
    * @return canOpenCase
    */
-  public Boolean isCaseOpen() {
+  public Boolean canOpenCase() {
     return canOpenCase;
   }
 
@@ -50,7 +50,7 @@ public class Role {
    *
    * @return canViewCace
    */
-  public Boolean isCaseViewable() {
+  public Boolean canViewCase() {
     return canViewCase;
   }
 
@@ -59,7 +59,7 @@ public class Role {
    *
    * @return canEvaluateCase
    */
-  public Boolean getCanEvaluateCase() {
+  public Boolean canEvaluateCase() {
     return canEvaluateCase;
   }
 
@@ -68,7 +68,7 @@ public class Role {
    *
    * @return canCloseCase
    */
-  public Boolean getCanCloseCase() {
+  public Boolean canCloseCase() {
     return canCloseCase;
   }
 
