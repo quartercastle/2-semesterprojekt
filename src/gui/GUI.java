@@ -6,6 +6,7 @@
 package gui;
 
 import acq.IGUI;
+import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
@@ -16,7 +17,7 @@ import java.lang.Exception;
  *
  * @author Victor Gram
  */
-public class GUI implements IGUI {
+public class GUI extends Application implements IGUI {
 
   /**
    * Instance of the class itself, used for singleton setup. Is set to null
@@ -43,12 +44,16 @@ public class GUI implements IGUI {
     return gui;
   }
 
+  public void initialize (String[] args) {
+    launch(args);
+  }
+
   /**
-   * star
+   * start
    *
    * @param stage
    */
-  public void star(Stage stage) {
+  public void start(Stage stage) {
     this.stage = stage;
     this.loadController();
   }

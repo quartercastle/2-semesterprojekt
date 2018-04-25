@@ -5,6 +5,8 @@
  */
 package acq;
 
-public interface IGUI {
+import javafx.stage.Stage;
 
+public interface IGUI {
+  public void initialize (String[] args);
 }
