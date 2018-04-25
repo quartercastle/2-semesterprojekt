@@ -1,12 +1,17 @@
 package acq;
 
+import javafx.stage.Stage;
+
 public interface IGUI {
+  /**
+   * Ibject domain
+   * @param domain
+   */
+  public void inject (IDomain domain);
 
   /**
-   * Injects Domain layer into GUI layer
-   *
-   * @param id instance of IDomain
-   *
+   * Start the javafx thread
+   * @param args
    */
-  void injectDomain(IDomain id);
+  public void initialize (String[] args);
 }

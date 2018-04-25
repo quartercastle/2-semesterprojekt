@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import acq.IDatabase;
+import acq.IData;
 import acq.IDomain;
 import acq.IGUI;
 import data.DataFacade;
@@ -16,11 +16,17 @@ import gui.GUI;
  */
 public class Bootstrap {
 
+  /**
+   * Boot application
+   *
+   * @param args
+   */
   public static void main(String[] args) {
-    IDatabase idb = new DataFacade();
-    IDomain id = DomainFacade.getInstance();
-    IGUI ig = GUI.getInstance();
-    id.injectData(idb);
-    ig.injectDomain(id);
+    IData data = DataFacade.getInstance();
+    IDomain domain = DomainFacade.getInstance();
+    IGUI gui = GUI.getInstance();
+    domain.inject(data);
+    gui.inject(domain);
+    gui.initialize(args);
   }
 }
