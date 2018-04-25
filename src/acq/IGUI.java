@@ -5,8 +5,6 @@
  */
 package acq;
 
-import javafx.stage.Stage;
-
 public interface IGUI {
   /**
    * Ibject domain

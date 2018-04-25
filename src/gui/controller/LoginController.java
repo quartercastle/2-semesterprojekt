@@ -39,9 +39,10 @@ public class LoginController extends Controller {
       alert.setContentText("Username eller password var forkert! \n Prøv igen!");
 
       alert.showAndWait();
+      return;
     }
-
-    GUI.getInstance().getControllers().get("Overview").getStage().show();
+    
+    GUI.getInstance().showStage("Overview");
     getStage().close();
 
   }
