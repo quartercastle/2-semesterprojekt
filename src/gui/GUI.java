@@ -7,12 +7,15 @@ package gui;
 
 import acq.IGUI;
 import acq.IDomain;
+import gui.controller.Controller;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.fxml.FXMLLoader;
 import java.lang.Exception;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -31,10 +34,7 @@ public class GUI extends Application implements IGUI {
    */
   private IDomain domain;
 
-  /**
-   * Stage instance
-   */
-  private Stage stage;
+  private Map<String, Controller> controllers = new HashMap<>();
 
   /**
    * Singleton setup for GUI, returns instance of the class if none has been
@@ -74,24 +74,35 @@ public class GUI extends Application implements IGUI {
    * @param stage
    */
   public void start(Stage stage) {
-    this.stage = stage;
-    this.loadController();
+    //this.stage = stage;
+    controllers.put("Login", load("Login"));
+    controllers.get("Login").getStage().show();
+    controllers.put("Overview", load("Overview"));
   }
 
   /**
    * Load view and controller
    */
-  private void loadController() {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("view/Login.fxml"));
+  public Controller load(String name) {
+    Controller controller = null;
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("view/" + name + ".fxml"));
     try {
       Parent view = (Parent) loader.load();
 
-      // Get controller instance
-      // Controller controller = loader.getController();
-      this.createScene(this.stage, view);
+      controller = loader.getController();
+
+      Stage stage = new Stage();
+
+      controller.setStage(stage);
+
+      this.createScene(stage, view);
+
     } catch (Exception err) {
-      System.out.print(err);
+      err.printStackTrace();
+      //System.out.print(err);
     }
+
+    return controller;
   }
 
   /**
@@ -103,7 +114,6 @@ public class GUI extends Application implements IGUI {
   private void createScene(Stage stage, Parent view) {
     Scene scene = new Scene(view);
     stage.setScene(scene);
-    stage.show();
   }
 
   /**
@@ -114,4 +124,9 @@ public class GUI extends Application implements IGUI {
   public IDomain getDomain() {
     return domain;
   }
+
+  public Map<String, Controller> getControllers() {
+    return controllers;
+  }
+
 }

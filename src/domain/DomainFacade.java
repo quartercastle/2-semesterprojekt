@@ -49,7 +49,7 @@ public class DomainFacade implements IDomain {
 
   @Override
   public boolean verify(String username, String password) {
-    return AuthManager.vertify(username, password);
+    return AuthManager.verify(username, password);
   }
 
 }

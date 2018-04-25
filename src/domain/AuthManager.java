@@ -9,7 +9,7 @@ public class AuthManager {
    * @param password
    * @return true if ok
    */
-  public static boolean vertify(String username, String password) {
+  public static boolean verify(String username, String password) {
     return username.equals("admin") && password.equals("admin");
   }
 }
