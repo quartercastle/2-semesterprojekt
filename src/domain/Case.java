@@ -3,9 +3,10 @@
  */
 package domain;
 
+import acq.ICase;
 import java.util.UUID;
 
-public class Case {
+public class Case implements ICase {
 
   /**
    * Unique ID for the case

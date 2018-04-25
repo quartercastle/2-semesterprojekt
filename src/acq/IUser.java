@@ -5,8 +5,10 @@
  */
 package acq;
 
-public interface IDatabase {
-
-  ICase getCase();
+/**
+ *
+ * @author Victor Gram
+ */
+public interface IUser {
 
 }
