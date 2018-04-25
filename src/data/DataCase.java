@@ -4,6 +4,8 @@ import acq.ICase;
 import acq.ICitizen;
 import acq.IEffort;
 import acq.IUser;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.UUID;
 
 /**
@@ -12,20 +14,17 @@ import java.util.UUID;
  */
 public class DataCase implements ICase {
 
-  private String NAME;
-  private String LOCATION;
   private UUID id;
   private IUser user;
   private ICitizen citizen;
   private IEffort effort;
-  private ICitizen participants;
+  private Collection<ICitizen> participants;
 
-  public DataCase(UUID id, IUser user, ICitizen citizen, IEffort effort, ICitizen participants) {
+  public DataCase(UUID id, IUser user, ICitizen citizen, IEffort effort) {
     this.id = id;
     this.user = user;
     this.citizen = citizen;
     this.effort = effort;
-    this.participants = participants;
   }
 
   @Override
@@ -50,11 +49,7 @@ public class DataCase implements ICase {
 
   @Override
   public ICitizen getParticipants() {
-    return this.participants;
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
-  @Override
-  public String toString() {
-    return NAME + " " + LOCATION;
-  }
 }
