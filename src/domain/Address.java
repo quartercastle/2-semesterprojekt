@@ -1,10 +1,12 @@
 package domain;
 
+import acq.IAddress;
+
 /*
- * Address class 
+ * Address class
  *
  */
-public class Address {
+public class Address implements IAddress {
 
   /**
    * Name of primaryLine
@@ -53,6 +55,7 @@ public class Address {
    *
    * @return primaryLine
    */
+  @Override
   public String getPrimaryLine() {
     return primaryLine;
   }
@@ -62,6 +65,7 @@ public class Address {
    *
    * @return secondaryLine
    */
+  @Override
   public String getSecondaryLine() {
     return secondaryLine;
   }
@@ -71,6 +75,7 @@ public class Address {
    *
    * @return zip
    */
+  @Override
   public String getZip() {
     return zip;
   }
@@ -80,6 +85,7 @@ public class Address {
    *
    * @return city
    */
+  @Override
   public String getCity() {
     return city;
   }
@@ -89,6 +95,7 @@ public class Address {
    *
    * @return country
    */
+  @Override
   public String getCountry() {
     return country;
   }
