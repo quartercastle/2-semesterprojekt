@@ -14,6 +14,12 @@ public class DomainFacade implements IDomain {
   public static DomainFacade df;
 
   /**
+   * Disable normal instantiation
+   */
+  private DomainFacade() {
+  }
+
+  /**
    * Singleton setup for DomainFacade, returns instance of the class if none has
    * been made. If one has been made, returns that created instance
    *

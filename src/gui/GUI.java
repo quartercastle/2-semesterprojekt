@@ -31,6 +31,13 @@ public class GUI extends Application implements IGUI {
   private Stage stage;
 
   /**
+   * Disable normal instantiation
+   */
+  private GUI() {
+  }
+
+
+  /**
    * Singleton setup for GUI, returns instance of the class if none has been
    * made. If one has been made, returns that created instance
    *
