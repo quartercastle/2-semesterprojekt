@@ -52,17 +52,19 @@ public class GUI extends Application implements IGUI {
 
   /**
    * Inject domain instance
+   *
    * @param domain
    */
-  public void inject (IDomain domain) {
+  public void inject(IDomain domain) {
     this.domain = domain;
   }
 
   /**
    * Initialize the javafx thread
+   *
    * @param args
    */
-  public void initialize (String[] args) {
+  public void initialize(String[] args) {
     launch(args);
   }
 
@@ -104,4 +106,12 @@ public class GUI extends Application implements IGUI {
     stage.show();
   }
 
+  /**
+   * Get domain
+   *
+   * @return
+   */
+  public IDomain getDomain() {
+    return domain;
+  }
 }
