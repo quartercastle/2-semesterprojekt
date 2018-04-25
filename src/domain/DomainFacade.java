@@ -3,7 +3,7 @@
  */
 package domain;
 
-import acq.IDatabase;
+import acq.IData;
 import acq.IDomain;
 
 public class DomainFacade implements IDomain {
@@ -12,15 +12,17 @@ public class DomainFacade implements IDomain {
    * Instance of the class itself, used for singleton setup. Is set to null
    * initially, instantiated if needed though getInstance()
    */
-  public static DomainFacade df = null;
+  public static DomainFacade df;
 
-  public DomainFacade() {
+  /**
+   * Reference to the data layer
+   */
+  private IData data;
 
-  }
-
-  @Override
-  public void injectData(IDatabase idb) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  /**
+   * Disable normal instantiation
+   */
+  private DomainFacade() {
   }
 
   /**
@@ -34,6 +36,15 @@ public class DomainFacade implements IDomain {
       df = new DomainFacade();
     }
     return df;
+  }
+
+  /**
+   * Inject data layer
+   *
+   * @param data
+   */
+  public void inject(IData data) {
+    this.data = data;
   }
 
 }

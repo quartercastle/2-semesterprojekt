@@ -5,6 +5,6 @@
  */
 package acq;
 
-public interface IDatabase {
+public interface IData {
 
 }

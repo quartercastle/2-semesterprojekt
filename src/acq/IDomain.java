@@ -6,11 +6,9 @@
 package acq;
 
 public interface IDomain {
-
   /**
-   * Injects datalayer into domain layer
-   *
-   * @param idb instance of IDatabase
+   * Inject data
+   * @param data
    */
-  void injectData(IDatabase idb);
+  public void inject (IData data);
 }
