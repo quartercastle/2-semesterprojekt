@@ -3,6 +3,7 @@
  */
 package domain;
 
+import acq.IData;
 import acq.IDomain;
 
 public class DomainFacade implements IDomain {
@@ -12,6 +13,11 @@ public class DomainFacade implements IDomain {
    * initially, instantiated if needed though getInstance()
    */
   public static DomainFacade df;
+
+  /**
+   * Reference to the data layer
+   */
+  private IData data;
 
   /**
    * Disable normal instantiation
@@ -30,6 +36,15 @@ public class DomainFacade implements IDomain {
       df = new DomainFacade();
     }
     return df;
+  }
+
+  /**
+   * Inject data layer
+   *
+   * @param data
+   */
+  public void inject(IData data) {
+    this.data = data;
   }
 
 }

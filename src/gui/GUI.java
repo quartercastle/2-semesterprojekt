@@ -6,6 +6,7 @@
 package gui;
 
 import acq.IGUI;
+import acq.IDomain;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -26,16 +27,14 @@ public class GUI extends Application implements IGUI {
   private static GUI gui;
 
   /**
+   * Reference to domain instance
+   */
+  private IDomain domain;
+
+  /**
    * Stage instance
    */
   private Stage stage;
-
-  /**
-   * Disable normal instantiation
-   */
-  private GUI() {
-  }
-
 
   /**
    * Singleton setup for GUI, returns instance of the class if none has been
@@ -51,6 +50,18 @@ public class GUI extends Application implements IGUI {
     return gui;
   }
 
+  /**
+   * Inject domain instance
+   * @param domain
+   */
+  public void inject (IDomain domain) {
+    this.domain = domain;
+  }
+
+  /**
+   * Initialize the javafx thread
+   * @param args
+   */
   public void initialize (String[] args) {
     launch(args);
   }
