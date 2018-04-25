@@ -5,22 +5,27 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class LoginController extends Controller {
 
   /**
    * Reference to the label instance
    */
+  /**
+   * Username textfield
+   */
   @FXML
   private TextField usernameField;
+
+  /**
+   * Password field
+   */
   @FXML
-  private TextField passwordField;
+  private PasswordField passwordField;
 
   /**
    * Used when login button is clicked
@@ -41,7 +46,7 @@ public class LoginController extends Controller {
       alert.showAndWait();
       return;
     }
-    
+
     GUI.getInstance().showStage("Overview");
     getStage().close();
 
