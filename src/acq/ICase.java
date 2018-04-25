@@ -1,26 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interface class for all implementations of Case
  */
 package acq;
 
 import java.util.UUID;
 
-/**
- *
- * @author Victor Gram
- */
 public interface ICase {
 
+  /**
+   *
+   * @return unique case ID
+   */
   UUID getId();
 
+  /**
+   *
+   * @return User resposible for the case
+   */
   IUser getResponsible();
 
+  /**
+   *
+   * @return Citizen
+   */
   ICitizen getCitizen();
 
+  /**
+   *
+   * @return Effort linked to the case
+   */
   IEffort getEffort();
 
+  /**
+   *
+   * @return participants
+   */
   ICitizen getParticipants();
 
 }

@@ -1,10 +1,12 @@
 package domain;
 
+import acq.ICitizen;
+
 /*
  * Citizen class
  *
  */
-public class Citizen {
+public class Citizen implements ICitizen {
 
   /**
    * Firstname of citizen

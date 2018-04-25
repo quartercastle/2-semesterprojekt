@@ -1,14 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interface class for all implementations of Efffort
  */
 package acq;
+
+import java.util.GregorianCalendar;
 
 /**
  *
  * @author Victor Gram
  */
 public interface IEffort {
-  
+
+  /**
+   *
+   * @return total price of Effort
+   */
+  int getTotalPrice();
+
+  /**
+   *
+   * @return starting date of effort
+   */
+  GregorianCalendar getStartDate();
+
+  /**
+   *
+   * @return end date of Effort
+   */
+  GregorianCalendar getEndDate();
+
+  /**
+   *
+   * @return company responsible for the effort
+   */
+  ICompany getResponsible();
+
 }

@@ -1,14 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interface class for all implementations of User
  */
 package acq;
 
-/**
- *
- * @author Victor Gram
- */
 public interface IUser {
+
+  /**
+   *
+   * @return name of User
+   */
+  String getName();
+
+  /**
+   *
+   * @return email of User
+   */
+  String getEmail();
+
+  /**
+   *
+   * @return password of user
+   */
+  String getPassword();
+
+  /**
+   *
+   * @return role of user
+   */
+  IRole getRole();
 
 }

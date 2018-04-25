@@ -1,11 +1,12 @@
 package domain;
 
+import acq.IEffort;
 import java.util.GregorianCalendar;
 
 /**
  * Effort
  */
-public class Effort {
+public class Effort implements IEffort {
 
   /**
    * Total price of effort
