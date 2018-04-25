@@ -1,1 +1,25 @@
-"Hello"132
+{
+  "Case": {
+    "UUID": "12312",
+    "USER": "Niels",
+    "Citizen": "Peter",
+    "Effort": "Test",
+    "Participants": "Test"
+  }
+}{
+  "Case 2": {
+    "UUID": "12312",
+    "USER": "Niels",
+    "Citizen": "Peter",
+    "Effort": "Test",
+    "Participants": "Test"
+  }
+}{
+  "Case 2": {
+    "UUID": "12312",
+    "USER": "Niels",
+    "Citizen": "Peter",
+    "Effort": "Test",
+    "Participants": "Test"
+  }
+}
