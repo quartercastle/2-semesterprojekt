@@ -2,19 +2,9 @@ package data;
 
 import acq.ICase;
 import acq.IData;
-import acq.IUser;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class DataFacade implements IData {
 
@@ -70,6 +60,7 @@ public class DataFacade implements IData {
 
   /**
    * Get collection of cases
+   *
    * @return collection of cases
    */
   @Override

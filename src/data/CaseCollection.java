@@ -8,8 +8,6 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class CaseCollection {
 
@@ -73,8 +71,9 @@ public class CaseCollection {
       Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
       gson.toJson(cases, writer);
-    } catch (IOException ex) {
-      Logger.getLogger(DataFacade.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (IOException e) {
+      e.printStackTrace();
     }
   }
+
 }
