@@ -33,11 +33,6 @@ public class DataFacade implements IData {
   public CaseCollection cases = new CaseCollection();
 
   /**
-   * Create a new collection of users
-   */
-  public UserCollection users = new UserCollection();
-
-  /**
    * Disable normal instantiation
    */
   private DataFacade() {
@@ -74,24 +69,6 @@ public class DataFacade implements IData {
    */
   public void deleteCase(ICase c) {
     cases.delete(c);
-  }
-
-  /**
-   * Add user
-   *
-   * @param user [description]
-   */
-  public void addUser(IUser user) {
-    users.add(user);
-  }
-
-  /**
-   * Delete user
-   *
-   * @param user
-   */
-  public void deleteUser(IUser user) {
-    users.delete(user);
   }
 
   @Override
