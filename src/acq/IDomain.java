@@ -6,9 +6,20 @@
 package acq;
 
 public interface IDomain {
+
   /**
    * Inject data
+   *
    * @param data
    */
-  public void inject (IData data);
+  public void inject(IData data);
+
+  /**
+   * Verify login
+   *
+   * @param username
+   * @param password
+   * @return true if ok
+   */
+  public boolean verify(String username, String password);
 }

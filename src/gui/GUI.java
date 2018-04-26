@@ -1,23 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import acq.IGUI;
 import acq.IDomain;
+import gui.controller.Controller;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.fxml.FXMLLoader;
-import java.lang.Exception;
+import java.util.HashMap;
+import java.util.Map;
 
-/**
- *
- * @author Victor Gram
- */
 public class GUI extends Application implements IGUI {
 
   /**
@@ -27,14 +20,15 @@ public class GUI extends Application implements IGUI {
   private static GUI gui;
 
   /**
-   * Reference to domain instance
+   * Reference to domain instance. This variable need to be static in order to
+   * be set in initialize
    */
-  private IDomain domain;
+  private static IDomain domain;
 
   /**
-   * Stage instance
+   * A map with all active controllers
    */
-  private Stage stage;
+  private Map<String, Controller> controllers = new HashMap<>();
 
   /**
    * Singleton setup for GUI, returns instance of the class if none has been
@@ -52,17 +46,21 @@ public class GUI extends Application implements IGUI {
 
   /**
    * Inject domain instance
+   *
    * @param domain
    */
-  public void inject (IDomain domain) {
+  public void inject(IDomain domain) {
     this.domain = domain;
   }
 
   /**
    * Initialize the javafx thread
+   *
    * @param args
+   * @param d
    */
-  public void initialize (String[] args) {
+  public static void initialize(String[] args, IDomain d) {
+    domain = d;
     launch(args);
   }
 
@@ -71,25 +69,42 @@ public class GUI extends Application implements IGUI {
    *
    * @param stage
    */
+  @Override
   public void start(Stage stage) {
-    this.stage = stage;
-    this.loadController();
+    //This to setup the GUI correctly
+    gui = this;
+    //this.stage = stage;
+    controllers.put("Login", load("Login"));
+    controllers.get("Login").getStage().show();
+    controllers.put("Overview", load("Overview"));
   }
 
   /**
    * Load view and controller
+   *
+   * @param name the name of the controller to load
+   *
+   * @return Controller the loaded controller
    */
-  private void loadController() {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("view/Login.fxml"));
+  public Controller load(String name) {
+    Controller controller = null;
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("view/" + name + ".fxml"));
     try {
       Parent view = (Parent) loader.load();
 
-      // Get controller instance
-      // Controller controller = loader.getController();
-      this.createScene(this.stage, view);
+      controller = loader.getController();
+
+      Stage stage = new Stage();
+
+      controller.setStage(stage);
+
+      this.createScene(stage, view);
+
     } catch (Exception err) {
-      System.out.print(err);
+      err.printStackTrace();
     }
+
+    return controller;
   }
 
   /**
@@ -101,7 +116,33 @@ public class GUI extends Application implements IGUI {
   private void createScene(Stage stage, Parent view) {
     Scene scene = new Scene(view);
     stage.setScene(scene);
-    stage.show();
+  }
+
+  /**
+   * Shortcut to show stage
+   *
+   * @param name
+   */
+  public void showStage(String name) {
+    controllers.get(name).getStage().show();
+  }
+
+  /**
+   * Get domain
+   *
+   * @return IDomain
+   */
+  public IDomain getDomain() {
+    return domain;
+  }
+
+  /**
+   * Get a map with all active controller
+   *
+   * @return Map<String, Controller>
+   */
+  public Map<String, Controller> getControllers() {
+    return controllers;
   }
 
 }

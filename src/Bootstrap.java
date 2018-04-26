@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 import acq.IData;
 import acq.IDomain;
 import acq.IGUI;
@@ -10,10 +6,6 @@ import data.DataFacade;
 import domain.DomainFacade;
 import gui.GUI;
 
-/**
- *
- * @author Victor Gram
- */
 public class Bootstrap {
 
   /**
@@ -24,9 +16,10 @@ public class Bootstrap {
   public static void main(String[] args) {
     IData data = DataFacade.getInstance();
     IDomain domain = DomainFacade.getInstance();
-    IGUI gui = GUI.getInstance();
+    //IGUI gui = GUI.getInstance();
     domain.inject(data);
-    gui.inject(domain);
-    gui.initialize(args);
+    //gui.inject(domain);
+    //gui.initialize(args);
+    GUI.initialize(args, domain);
   }
 }

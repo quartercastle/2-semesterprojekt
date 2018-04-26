@@ -1,22 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package acq;
 
-import javafx.stage.Stage;
-
 public interface IGUI {
+
   /**
-   * Ibject domain
+   * Inject domain
+   *
    * @param domain
    */
-  public void inject (IDomain domain);
+  public void inject(IDomain domain);
 
   /**
-   * Start the javafx thread
+   * This method starts the javafx thread
+   *
    * @param args
+   * @param d the domain
    */
-  public void initialize (String[] args);
+  public static void initialize(String[] args, IDomain d) {
+  }
+;
 }
