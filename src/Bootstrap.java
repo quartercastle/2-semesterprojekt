@@ -16,9 +16,10 @@ public class Bootstrap {
   public static void main(String[] args) {
     IData data = DataFacade.getInstance();
     IDomain domain = DomainFacade.getInstance();
-    IGUI gui = GUI.getInstance();
+    //IGUI gui = GUI.getInstance();
     domain.inject(data);
-    gui.inject(domain);
-    gui.initialize(args);
+    //gui.inject(domain);
+    //gui.initialize(args);
+    GUI.initialize(args, domain);
   }
 }

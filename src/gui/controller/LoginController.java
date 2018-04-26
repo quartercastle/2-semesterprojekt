@@ -51,10 +51,4 @@ public class LoginController extends Controller {
     getStage().close();
 
   }
-
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-
-  }
-
 }

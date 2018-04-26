@@ -47,6 +47,13 @@ public class DomainFacade implements IDomain {
     this.data = data;
   }
 
+  /**
+   * Verify the login
+   *
+   * @param username
+   * @param password
+   * @return true if ok
+   */
   @Override
   public boolean verify(String username, String password) {
     return AuthManager.verify(username, password);

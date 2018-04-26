@@ -3,16 +3,19 @@ package acq;
 public interface IGUI {
 
   /**
-   * Ibject domain
+   * Inject domain
    *
    * @param domain
    */
   public void inject(IDomain domain);
 
   /**
-   * Start the javafx thread
+   * This method starts the javafx thread
    *
    * @param args
+   * @param d the domain
    */
-  public void initialize(String[] args);
+  public static void initialize(String[] args, IDomain d) {
+  }
+;
 }

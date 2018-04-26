@@ -20,10 +20,14 @@ public class GUI extends Application implements IGUI {
   private static GUI gui;
 
   /**
-   * Reference to domain instance
+   * Reference to domain instance. This variable need to be static in order to
+   * be set in initialize
    */
-  private IDomain domain;
+  private static IDomain domain;
 
+  /**
+   * A map with all active controllers
+   */
   private Map<String, Controller> controllers = new HashMap<>();
 
   /**
@@ -53,8 +57,10 @@ public class GUI extends Application implements IGUI {
    * Initialize the javafx thread
    *
    * @param args
+   * @param d
    */
-  public void initialize(String[] args) {
+  public static void initialize(String[] args, IDomain d) {
+    domain = d;
     launch(args);
   }
 
@@ -63,11 +69,10 @@ public class GUI extends Application implements IGUI {
    *
    * @param stage
    */
+  @Override
   public void start(Stage stage) {
     //This to setup the GUI correctly
-    this.domain = gui.domain;
     gui = this;
-
     //this.stage = stage;
     controllers.put("Login", load("Login"));
     controllers.get("Login").getStage().show();
@@ -76,6 +81,10 @@ public class GUI extends Application implements IGUI {
 
   /**
    * Load view and controller
+   *
+   * @param name the name of the controller to load
+   *
+   * @return Controller the loaded controller
    */
   public Controller load(String name) {
     Controller controller = null;
