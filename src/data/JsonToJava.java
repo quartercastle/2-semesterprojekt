@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.UUID;
 
 /**
@@ -59,7 +60,7 @@ public class JsonToJava {
       Gson g = new GsonBuilder()
               .registerTypeHierarchyAdapter(ICase.class, new CaseDeserializer()) //Tells that parser what deserializer to use for ICase instanses
               .create();
-      Type targetClassType = new TypeToken<ArrayList<ICase>>() { //Generates a typetoken to help Json translate from JSON-array to Java ArrayList of ICase instanses
+      Type targetClassType = new TypeToken<HashSet<ICase>>() { //Generates a typetoken to help Json translate from JSON-array to Java HashSet of ICase instanses
       }.getType();
       Collection<ICase> c = g.fromJson(json, targetClassType);
       return c;

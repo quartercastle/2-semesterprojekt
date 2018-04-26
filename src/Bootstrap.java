@@ -15,6 +15,7 @@ public class Bootstrap {
    */
   public static void main(String[] args) {
     IData data = DataFacade.getInstance();
+    data.initialize();
     data.save();
     IDomain domain = DomainFacade.getInstance();
     domain.inject(data);

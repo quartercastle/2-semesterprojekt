@@ -95,15 +95,7 @@ public class DataFacade implements IData {
 
   @Override
   public Collection<ICase> getCases() {
-    Collection<ICase> c = null;
-    try {
-      JsonToJava jtj = new JsonToJava("Output.json");
-      c = new ArrayList<>(jtj.loadCases());
-
-    } catch (IOException ex) {
-      ex.printStackTrace();
-    }
-    return c;
+    return cases.getCollection();
   }
 
   @Override
@@ -163,6 +155,24 @@ public class DataFacade implements IData {
       gson.toJson(dataCollection, writer);
     } catch (IOException ex) {
       Logger.getLogger(DataFacade.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+
+  /**
+   * Initializes database
+   */
+  @Override
+  public void initialize() {
+    Collection<ICase> caseCollection = null;
+    try {
+      JsonToJava jtj = new JsonToJava("Output.json");
+      caseCollection = new ArrayList<>(jtj.loadCases());
+
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
+    for (ICase c : caseCollection) {
+      cases.add(c);
     }
   }
 }

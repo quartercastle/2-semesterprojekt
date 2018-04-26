@@ -14,5 +14,10 @@ public interface IData {
   /**
    * Saves instanse of Case to the database
    */
-  public void save();
+  void save();
+
+  /**
+   * Method that's run upon runnign the program Initalises database
+   */
+  void initialize();
 }
