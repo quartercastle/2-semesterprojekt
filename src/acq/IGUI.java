@@ -15,5 +15,7 @@ public interface IGUI {
    * @param args
    * @param d the domain
    */
-  static void initialize(String[] args, IDomain d){};
+
+  public static void initialize(String[] args, IDomain d) {
+  };
 }
