@@ -4,8 +4,9 @@
 package domain;
 
 import java.util.UUID;
+import acq.ICase;
 
-public class Case {
+public class Case implements ICase {
 
   /**
    * Unique ID for the case

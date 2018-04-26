@@ -4,6 +4,8 @@
 package data;
 
 import acq.IData;
+import acq.IUser;
+import acq.ICase;
 
 public class DataFacade implements IData {
 
@@ -12,6 +14,17 @@ public class DataFacade implements IData {
    * initially, instantiated if needed though getInstance()
    */
   public static DataFacade data;
+
+  /**
+   * Create a new collection of cases
+   */
+  public CaseCollection cases = new CaseCollection();
+
+  /**
+   * Create a new collection of users
+   */
+  public UserCollection users = new UserCollection();
+
 
   /**
    * Disable normal instantiation
@@ -31,5 +44,37 @@ public class DataFacade implements IData {
     }
 
     return data;
+  }
+
+  /**
+   * Add case
+   * @param c
+   */
+  public void addCase(ICase c) {
+    cases.add(c);
+  }
+
+  /**
+   * Delete case
+   * @param c
+   */
+  public void deleteCase(ICase c) {
+    cases.delete(c);
+  }
+
+  /**
+   * Add user
+   * @param user [description]
+   */
+  public void addUser(IUser user) {
+    users.add(user);
+  }
+
+  /**
+   * Delete user
+   * @param user
+   */
+  public void deleteUser(IUser user) {
+    users.delete(user);
   }
 }
