@@ -47,11 +47,19 @@ public class DataFacade implements IData {
   }
 
   @Override
+  public Collection<ICase> getCases() {
+    Collection<ICase> c = null;
+    try {
+      JsonToJava jtj = new JsonToJava("Output.json");
+      c = new ArrayList<>(jtj.loadCases());
 
-  public ICase getCase() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
+    return c;
   }
 
+  @Override
   public void save() {
     DataCase dataCase = new DataCase(
             new UUID(5, 3),
@@ -64,13 +72,19 @@ public class DataFacade implements IData {
                             true,
                             true,
                             true,
+                            true,
                             true)),
             new DataCitizen(
                     "firstName",
                     "middleName",
                     "lastName",
                     "CPR",
-                    "Address",
+                    new DataAddress(
+                            "firstline",
+                            "secondaryline",
+                            "zip",
+                            "city",
+                            "country"),
                     "phone",
                     "email"
             ),
@@ -86,7 +100,12 @@ public class DataFacade implements IData {
                             8),
                     new DataCompany(
                             "name",
-                            "address")
+                            new DataAddress(
+                                    "firstline",
+                                    "secondaryline",
+                                    "zip",
+                                    "city",
+                                    "country"))
             ));
     Collection<DataCase> dataCollection = new ArrayList();
     dataCollection.add(dataCase);

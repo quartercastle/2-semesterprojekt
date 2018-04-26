@@ -25,22 +25,22 @@ public class DataEffort implements IEffort {
 
   @Override
   public int getTotalPrice() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.totalPrice;
   }
 
   @Override
   public GregorianCalendar getStartDate() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.startDate;
   }
 
   @Override
   public GregorianCalendar getEndDate() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.endDate;
   }
 
   @Override
   public ICompany getResponsible() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.responsible;
   }
 
 }

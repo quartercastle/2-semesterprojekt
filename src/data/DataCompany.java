@@ -15,21 +15,21 @@ import acq.ICompany;
 public class DataCompany implements ICompany {
 
   private String name;
-  private String address;
+  private IAddress address;
 
-  public DataCompany(String name, String address) {
+  public DataCompany(String name, IAddress address) {
     this.name = name;
     this.address = address;
   }
 
   @Override
   public String getName() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.name;
   }
 
   @Override
   public IAddress getAddress() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.address;
   }
 
 }

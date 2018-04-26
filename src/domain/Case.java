@@ -4,6 +4,8 @@
 package domain;
 
 import acq.ICase;
+import acq.ICitizen;
+import java.util.Collection;
 import java.util.UUID;
 
 public class Case implements ICase {
@@ -27,7 +29,7 @@ public class Case implements ICase {
   /**
    * Participating citizens
    */
-  private Citizen participants;
+  private Collection<ICitizen> participants;
 
   /**
    * Returns case ID
@@ -111,7 +113,7 @@ public class Case implements ICase {
    * @return participants
    */
   @Override
-  public Citizen getParticipants() {
+  public Collection<ICitizen> getParticipants() {
     return participants;
   }
 
@@ -120,7 +122,7 @@ public class Case implements ICase {
    *
    * @param participants
    */
-  public void setParticipants(Citizen participants) {
+  public void setParticipants(Collection<ICitizen> participants) {
     this.participants = participants;
   }
 

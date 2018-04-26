@@ -28,22 +28,22 @@ public class DataUser implements IUser {
 
   @Override
   public String getName() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.name;
   }
 
   @Override
   public String getEmail() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.email;
   }
 
   @Override
   public String getPassword() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.password;
   }
 
   @Override
   public IRole getRole() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.role;
   }
 
 }
