@@ -42,6 +42,7 @@ public class CaseCollection {
     }
 
     this.cases = cases;
+    save();
   }
 
   public Collection<ICase> getCollection() {
