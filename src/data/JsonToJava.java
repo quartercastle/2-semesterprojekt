@@ -69,13 +69,6 @@ public class JsonToJava {
 
   }
 
-//  public static void main(String[] args) throws IOException {
-//    JsonToJava jtj = new JsonToJava("Output.json");
-//    ArrayList<ICase> dc = new ArrayList<>(jtj.loadCases());
-//    for (ICase c : dc) {
-//      System.out.println(c);
-//    }
-//  }
   /**
    * Deserializes Cases from JSON to Java-code Necessary because the Gson parser
    * can't read interfaces
