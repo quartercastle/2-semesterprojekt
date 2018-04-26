@@ -1,6 +1,5 @@
 package acq;
 
-import java.io.IOException;
 import java.util.Collection;
 
 public interface IData {
