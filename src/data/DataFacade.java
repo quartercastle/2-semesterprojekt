@@ -62,6 +62,7 @@ public class DataFacade implements IData {
    *
    * @param c
    */
+  @Override
   public void addCase(ICase c) {
     cases.add(c);
   }
@@ -96,66 +97,6 @@ public class DataFacade implements IData {
   @Override
   public Collection<ICase> getCases() {
     return cases.getCollection();
-  }
-
-  @Override
-  public void save() {
-    DataCase dataCase = new DataCase(
-            new UUID(5, 3),
-            new DataUser(
-                    "name",
-                    "email",
-                    "password",
-                    new DataRole(
-                            "name",
-                            true,
-                            true,
-                            true,
-                            true,
-                            true)),
-            new DataCitizen(
-                    "firstName",
-                    "middleName",
-                    "lastName",
-                    "CPR",
-                    new DataAddress(
-                            "firstline",
-                            "secondaryline",
-                            "zip",
-                            "city",
-                            "country"),
-                    "phone",
-                    "email"
-            ),
-            new DataEffort(
-                    5,
-                    new GregorianCalendar(
-                            1994,
-                            06,
-                            8),
-                    new GregorianCalendar(
-                            1995,
-                            06,
-                            8),
-                    new DataCompany(
-                            "name",
-                            new DataAddress(
-                                    "firstline",
-                                    "secondaryline",
-                                    "zip",
-                                    "city",
-                                    "country"))
-            ));
-    Collection<DataCase> dataCollection = new ArrayList();
-    dataCollection.add(dataCase);
-
-    try (Writer writer = new FileWriter("Output.json", false)) {
-      Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-      gson.toJson(dataCollection, writer);
-    } catch (IOException ex) {
-      Logger.getLogger(DataFacade.class.getName()).log(Level.SEVERE, null, ex);
-    }
   }
 
   /**

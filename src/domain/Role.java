@@ -45,6 +45,25 @@ public class Role implements IRole {
   }
 
   /**
+   * Role constructor
+   *
+   * @param name
+   * @param canOpenCase
+   * @param canViewCase
+   * @param canEvaluateCase
+   * @param canCloseCase
+   * @param canCreateCase
+   */
+  public Role(String name, boolean canOpenCase, boolean canViewCase, boolean canEvaluateCase, boolean canCloseCase, boolean canCreateCase) {
+    this.name = name;
+    this.canOpenCase = canOpenCase;
+    this.canViewCase = canViewCase;
+    this.canEvaluateCase = canEvaluateCase;
+    this.canCloseCase = canCloseCase;
+    this.canCreateCase = canCreateCase;
+  }
+
+  /**
    * Is Case open
    *
    * @return canOpenCase

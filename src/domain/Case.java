@@ -8,6 +8,7 @@ import acq.ICitizen;
 import java.util.Collection;
 import java.util.UUID;
 import acq.ICase;
+import java.util.HashSet;
 
 public class Case implements ICase {
 
@@ -31,6 +32,21 @@ public class Case implements ICase {
    * Participating citizens
    */
   private Collection<ICitizen> participants;
+
+  /**
+   * Case constructor
+   *
+   * @param responsible
+   * @param citizen
+   * @param effort
+   */
+  public Case(User responsible, Citizen citizen, Effort effort) {
+    this.id = new UUID(5, 7);
+    this.responsible = responsible;
+    this.citizen = citizen;
+    this.effort = effort;
+    this.participants = new HashSet<>();
+  }
 
   /**
    * Returns case ID
