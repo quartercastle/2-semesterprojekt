@@ -19,13 +19,25 @@ public class CaseCollection {
   private Collection<ICase> cases = new HashSet<>();
 
   /**
-   * Add case to collection
+   * Add case to collection and save it to disk
    *
    * @param c
    */
   public void add(ICase c) {
+    this.add(c, true);
+  }
+
+  /**
+   * Add case to collection
+   *
+   * @param c
+   */
+  public void add(ICase c, boolean shouldSave) {
     this.cases.add(c);
-    this.save();
+
+    if (shouldSave) {
+      this.save();
+    }
   }
 
   /**
@@ -57,7 +69,7 @@ public class CaseCollection {
    * Save the current collection of cases to disk
    */
   public void save() {
-    try (Writer writer = new FileWriter("Output.json", true)) {
+    try (Writer writer = new FileWriter("cases.json", true)) {
       Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
       gson.toJson(cases, writer);

@@ -84,14 +84,15 @@ public class DataFacade implements IData {
   public void initialize() {
     Collection<ICase> caseCollection = null;
     try {
-      JsonToJava jtj = new JsonToJava("Output.json");
+      JsonToJava jtj = new JsonToJava("cases.json");
       caseCollection = new ArrayList<>(jtj.loadCases());
 
     } catch (IOException ex) {
       ex.printStackTrace();
     }
+
     for (ICase c : caseCollection) {
-      cases.add(c);
+      cases.add(c, false);
     }
   }
 }
