@@ -16,6 +16,7 @@ public interface IDomain {
    * @param password
    * @return true if ok
    */
+
   boolean verify(String username, String password);
 
 }
