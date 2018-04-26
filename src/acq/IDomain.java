@@ -7,5 +7,15 @@ public interface IDomain {
    *
    * @param data
    */
-  public void inject(IData data);
+  void inject(IData data);
+
+  /**
+   * Verify login
+   *
+   * @param username
+   * @param password
+   * @return true if ok
+   */
+  boolean verify(String username, String password);
+
 }

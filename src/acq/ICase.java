@@ -10,35 +10,30 @@ public interface ICase {
 
   /**
    * Get id
-   *
    * @return unique case ID
    */
   UUID getId();
 
   /**
-   * Get responsible
-   *
+   * Get responsible user
    * @return User resposible for the case
    */
   IUser getResponsible();
 
   /**
-   * get Citizen
-   *
+   * Get citizen
    * @return Citizen
    */
   ICitizen getCitizen();
 
   /**
    * Get effort
-   *
    * @return Effort linked to the case
    */
   IEffort getEffort();
 
   /**
-   * Get list of participating citizens
-   *
+   * Get collection of participating citizens
    * @return participants
    */
   Collection<ICitizen> getParticipants();

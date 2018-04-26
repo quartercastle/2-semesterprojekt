@@ -7,6 +7,7 @@ import acq.ICase;
 import acq.ICitizen;
 import java.util.Collection;
 import java.util.UUID;
+import acq.ICase;
 
 public class Case implements ICase {
 

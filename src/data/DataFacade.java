@@ -5,6 +5,7 @@ package data;
 
 import acq.ICase;
 import acq.IData;
+import acq.IUser;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.FileWriter;
@@ -27,6 +28,17 @@ public class DataFacade implements IData {
   public static DataFacade data;
 
   /**
+   * Create a new collection of cases
+   */
+  public CaseCollection cases = new CaseCollection();
+
+  /**
+   * Create a new collection of users
+   */
+  public UserCollection users = new UserCollection();
+
+
+  /**
    * Disable normal instantiation
    */
   private DataFacade() {
@@ -46,6 +58,38 @@ public class DataFacade implements IData {
     return data;
   }
 
+  /**
+   * Add case
+   * @param c
+   */
+  public void addCase(ICase c) {
+    cases.add(c);
+  }
+
+  /**
+   * Delete case
+   * @param c
+   */
+  public void deleteCase(ICase c) {
+    cases.delete(c);
+  }
+
+  /**
+   * Add user
+   * @param user [description]
+   */
+  public void addUser(IUser user) {
+    users.add(user);
+  }
+
+  /**
+   * Delete user
+   * @param user
+   */
+  public void deleteUser(IUser user) {
+    users.delete(user);
+  }
+  
   @Override
   public Collection<ICase> getCases() {
     Collection<ICase> c = null;
