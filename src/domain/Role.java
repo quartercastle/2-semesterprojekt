@@ -12,7 +12,7 @@ public class Role implements IRole {
   /**
    * can the role open case
    */
-  private boolean canOpenCase;
+  private boolean canCreateCase;
 
   /**
    * Can the role view case
@@ -48,15 +48,15 @@ public class Role implements IRole {
    * Role constructor
    *
    * @param name
-   * @param canOpenCase
+   * @param canCreateCase
    * @param canViewCase
    * @param canEvaluateCase
    * @param canCloseCase
    * @param canCreateCase
    */
-  public Role(String name, boolean canOpenCase, boolean canViewCase, boolean canEvaluateCase, boolean canCloseCase, boolean canCreateCase) {
+  public Role(String name, boolean canCreateCase, boolean canViewCase, boolean canEvaluateCase, boolean canCloseCase, boolean canCreateCase) {
     this.name = name;
-    this.canOpenCase = canOpenCase;
+    this.canCreateCase = canCreateCase;
     this.canViewCase = canViewCase;
     this.canEvaluateCase = canEvaluateCase;
     this.canCloseCase = canCloseCase;
@@ -66,11 +66,11 @@ public class Role implements IRole {
   /**
    * Is Case open
    *
-   * @return canOpenCase
+   * @return canCreateCase
    */
   @Override
-  public boolean canOpenCase() {
-    return canOpenCase;
+  public boolean canCreateCase() {
+    return canCreateCase;
   }
 
   /**
@@ -113,13 +113,13 @@ public class Role implements IRole {
   }
 
   /**
-   * Set whether a role can open a case
+   * Set whether a role can create a case
    *
    * @param permission
    */
   @Override
-  public void setCanOpenCase(boolean permission) {
-    this.canOpenCase = permission;
+  public void setCanCreateCase(boolean permission) {
+    this.canCreateCase = permission;
   }
 
   /**
@@ -150,25 +150,5 @@ public class Role implements IRole {
   @Override
   public void setCanCloseCase(boolean permission) {
     this.canCloseCase = permission;
-  }
-
-  /**
-   * Whether a role can create a case
-   *
-   * @return canCreateCase
-   */
-  @Override
-  public boolean canCreateCase() {
-    return this.canCreateCase;
-  }
-
-  /**
-   * Set whether a role can create a case
-   *
-   * @param permission
-   */
-  @Override
-  public void setCanCreateCase(boolean permission) {
-    this.canCreateCase = permission;
   }
 }

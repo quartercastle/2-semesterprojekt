@@ -17,7 +17,7 @@ public interface IRole {
    *
    * @return whether it is possible to open a case
    */
-  boolean canOpenCase();
+  boolean canCreateCase();
 
   /**
    * Can role view a case
@@ -48,11 +48,11 @@ public interface IRole {
   boolean canCloseCase();
 
   /**
-   * Set whether a role can open a case
+   * Set whether a role can create a case
    *
    * @param permission
    */
-  void setCanOpenCase(boolean permission);
+  void setCanCreateCase(boolean permission);
 
   /**
    * Set whether a role can view a case
@@ -74,6 +74,4 @@ public interface IRole {
    * @param permission
    */
   void setCanCloseCase(boolean permission);
-
-  void setCanCreateCase(boolean permission);
 }

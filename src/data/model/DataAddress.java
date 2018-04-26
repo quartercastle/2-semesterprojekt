@@ -46,26 +46,46 @@ public class DataAddress implements IAddress {
     this.country = country;
   }
 
+  /**
+   * Get primary line
+   * @return primary line
+   */
   @Override
   public String getPrimaryLine() {
     return this.primaryLine;
   }
 
+  /**
+   * Get secondary line
+   * @return secondary line
+   */
   @Override
   public String getSecondaryLine() {
     return this.secondaryLine;
   }
 
+  /**
+   * Get zip
+   * @return zip line
+   */
   @Override
   public String getZip() {
     return this.zip;
   }
 
+  /**
+   * Get City
+   * @return Get city
+   */
   @Override
   public String getCity() {
     return this.city;
   }
 
+  /**
+   * Get country
+   * @return get country
+   */
   @Override
   public String getCountry() {
     return this.country;

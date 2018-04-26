@@ -68,6 +68,10 @@ public class DataFacade implements IData {
     cases.delete(c);
   }
 
+  /**
+   * Get collection of cases
+   * @return collection of cases
+   */
   @Override
   public Collection<ICase> getCases() {
     return cases.getCollection();

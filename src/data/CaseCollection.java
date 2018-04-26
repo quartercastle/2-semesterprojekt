@@ -45,10 +45,17 @@ public class CaseCollection {
     save();
   }
 
+  /**
+   * Get collection of cases
+   * @return collection of cases
+   */
   public Collection<ICase> getCollection() {
     return this.cases;
   }
 
+  /**
+   * Save the current collection of cases to disk
+   */
   public void save() {
     try (Writer writer = new FileWriter("Output.json", true)) {
       Gson gson = new GsonBuilder().setPrettyPrinting().create();
