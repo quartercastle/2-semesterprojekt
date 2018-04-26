@@ -1,6 +1,8 @@
 package domain;
 
-public class Role {
+import acq.IRole;
+
+public class Role implements IRole {
 
   /**
    * Name of role
@@ -32,6 +34,7 @@ public class Role {
    *
    * @return name
    */
+  @Override
   public String getName() {
     return name;
   }
@@ -41,6 +44,7 @@ public class Role {
    *
    * @return canOpenCase
    */
+  @Override
   public Boolean canOpenCase() {
     return canOpenCase;
   }
@@ -50,6 +54,7 @@ public class Role {
    *
    * @return canViewCace
    */
+  @Override
   public Boolean canViewCase() {
     return canViewCase;
   }
@@ -59,6 +64,7 @@ public class Role {
    *
    * @return canEvaluateCase
    */
+  @Override
   public Boolean canEvaluateCase() {
     return canEvaluateCase;
   }
@@ -68,6 +74,7 @@ public class Role {
    *
    * @return canCloseCase
    */
+  @Override
   public Boolean canCloseCase() {
     return canCloseCase;
   }

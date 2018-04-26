@@ -3,6 +3,7 @@
  */
 package domain;
 
+import acq.ICase;
 import java.util.UUID;
 import acq.ICase;
 
@@ -34,6 +35,7 @@ public class Case implements ICase {
    *
    * @return id
    */
+  @Override
   public UUID getId() {
     return id;
   }
@@ -52,6 +54,7 @@ public class Case implements ICase {
    *
    * @return responsible
    */
+  @Override
   public User getResponsible() {
     return responsible;
   }
@@ -70,6 +73,7 @@ public class Case implements ICase {
    *
    * @return citizen
    */
+  @Override
   public Citizen getCitizen() {
     return citizen;
   }
@@ -88,6 +92,7 @@ public class Case implements ICase {
    *
    * @return effort
    */
+  @Override
   public Effort getEffort() {
     return effort;
   }
@@ -106,6 +111,7 @@ public class Case implements ICase {
    *
    * @return participants
    */
+  @Override
   public Citizen getParticipants() {
     return participants;
   }

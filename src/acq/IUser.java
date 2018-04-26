@@ -9,24 +9,24 @@ public interface IUser {
    *
    * @return name of User
    */
-  public String getName();
+  String getName();
 
   /**
    *
    * @return email of User
    */
-  public String getEmail();
+  String getEmail();
 
   /**
    *
    * @return password of user
    */
-  public String getPassword();
+  String getPassword();
 
   /**
    *
    * @return role of user
    */
-  public IRole getRole();
+  IRole getRole();
 
 }

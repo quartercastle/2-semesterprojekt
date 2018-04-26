@@ -1,0 +1,49 @@
+[
+  {
+    "id": "00000000-0000-0005-0000-000000000003",
+    "user": {
+      "name": "name",
+      "email": "email",
+      "password": "password",
+      "role": {
+        "name": "name",
+        "canOpenCase": true,
+        "canViewCase": true,
+        "canEvaluateCase": true,
+        "canCloseCase": true
+      }
+    },
+    "citizen": {
+      "firstName": "firstName",
+      "middleName": "middleName",
+      "lastName": "lastName",
+      "CPR": "CPR",
+      "Address": "Address",
+      "phone": "phone",
+      "email": "email"
+    },
+    "effort": {
+      "totalPrice": 5,
+      "startDate": {
+        "year": 1994,
+        "month": 6,
+        "dayOfMonth": 8,
+        "hourOfDay": 0,
+        "minute": 0,
+        "second": 0
+      },
+      "endDate": {
+        "year": 1995,
+        "month": 6,
+        "dayOfMonth": 8,
+        "hourOfDay": 0,
+        "minute": 0,
+        "second": 0
+      },
+      "responsible": {
+        "name": "name",
+        "address": "address"
+      }
+    }
+  }
+]
