@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package data;
+package data.model;
 
 import acq.IRole;
 import com.google.gson.JsonObject;
 
-/**
- *
- * @author niclasjohansen
- */
 public class DataRole implements IRole {
 
   private String name;

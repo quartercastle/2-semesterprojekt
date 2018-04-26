@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package data;
+package data.model;
 
 import acq.IAddress;
 import acq.ICompany;
 
-/**
- *
- * @author niclasjohansen
- */
 public class DataCompany implements ICompany {
 
   private String name;

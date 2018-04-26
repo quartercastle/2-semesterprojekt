@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.UUID;
+import data.model.*;
 
 /**
  * Class responsbile for translating JSON objects into Java, from a JSON file

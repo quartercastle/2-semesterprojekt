@@ -1,14 +1,10 @@
-package data;
+package data.model;
 
 import acq.ICompany;
 import acq.IEffort;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-/**
- *
- * @author niclasjohansen
- */
 public class DataEffort implements IEffort {
 
   private Integer totalPrice;

@@ -1,6 +1,3 @@
-/*
- * Facade class for coommunicating with data layer
- */
 package data;
 
 import acq.ICase;
