@@ -5,6 +5,7 @@ import java.util.Collection;
 public interface IData {
 
   /**
+   * Get cases
    *
    * @return collection of Cases from the database
    */

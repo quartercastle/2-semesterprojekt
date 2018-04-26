@@ -1,6 +1,3 @@
-/**
- * Interface class for all implementations of Role
- */
 package acq;
 
 public interface IRole {
@@ -13,7 +10,7 @@ public interface IRole {
   String getName();
 
   /**
-   * Can role open a case
+   * Can role create a case
    *
    * @return whether it is possible to open a case
    */
@@ -25,13 +22,6 @@ public interface IRole {
    * @return whether it is possible to view a case
    */
   boolean canViewCase();
-
-  /**
-   * Can role create a case
-   *
-   * @return whether it is possible to create a case
-   */
-  boolean canCreateCase();
 
   /**
    * Can role evaluate a case

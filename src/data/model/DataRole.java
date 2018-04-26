@@ -31,12 +31,8 @@ public class DataRole implements IRole {
   private boolean canCloseCase;
 
   /**
-   * Can create case
-   */
-  private boolean canCreateCase;
-
-  /**
    * Create a new instance of role
+   *
    * @param name
    * @param canCreateCase
    * @param canViewCase
@@ -44,7 +40,7 @@ public class DataRole implements IRole {
    * @param canCloseCase
    * @param canCreateCase
    */
-  public DataRole(String name, boolean canCreateCase, boolean canViewCase, boolean canEvaluateCase, boolean canCloseCase, boolean canCreateCase) {
+  public DataRole(String name, boolean canCreateCase, boolean canViewCase, boolean canEvaluateCase, boolean canCloseCase) {
     this.name = name;
     this.canCreateCase = canCreateCase;
     this.canViewCase = canViewCase;
@@ -55,6 +51,7 @@ public class DataRole implements IRole {
 
   /**
    * Get name
+   *
    * @return name
    */
   @Override
@@ -64,6 +61,7 @@ public class DataRole implements IRole {
 
   /**
    * can create case
+   *
    * @return can create case
    */
   @Override
@@ -73,6 +71,7 @@ public class DataRole implements IRole {
 
   /**
    * can view case
+   *
    * @return can view case
    */
   @Override
@@ -82,6 +81,7 @@ public class DataRole implements IRole {
 
   /**
    * can evaluate case
+   *
    * @return can evaluate case
    */
   @Override
@@ -91,6 +91,7 @@ public class DataRole implements IRole {
 
   /**
    * can close case
+   *
    * @return can close case
    */
   @Override

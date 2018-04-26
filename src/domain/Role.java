@@ -30,11 +30,6 @@ public class Role implements IRole {
   private boolean canCloseCase;
 
   /**
-   * Can create case
-   */
-  private boolean canCreateCase;
-
-  /**
    * Get name
    *
    * @return name
@@ -54,7 +49,7 @@ public class Role implements IRole {
    * @param canCloseCase
    * @param canCreateCase
    */
-  public Role(String name, boolean canCreateCase, boolean canViewCase, boolean canEvaluateCase, boolean canCloseCase, boolean canCreateCase) {
+  public Role(String name, boolean canCreateCase, boolean canViewCase, boolean canEvaluateCase, boolean canCloseCase) {
     this.name = name;
     this.canCreateCase = canCreateCase;
     this.canViewCase = canViewCase;
