@@ -10,7 +10,8 @@
         "canOpenCase": true,
         "canViewCase": true,
         "canEvaluateCase": true,
-        "canCloseCase": true
+        "canCloseCase": true,
+        "canCreateCase": true
       }
     },
     "citizen": {
@@ -18,7 +19,13 @@
       "middleName": "middleName",
       "lastName": "lastName",
       "CPR": "CPR",
-      "Address": "Address",
+      "address": {
+        "primaryLine": "firstline",
+        "secondaryLine": "secondaryline",
+        "zip": "zip",
+        "city": "city",
+        "country": "country"
+      },
       "phone": "phone",
       "email": "email"
     },
@@ -42,8 +49,15 @@
       },
       "responsible": {
         "name": "name",
-        "address": "address"
+        "address": {
+          "primaryLine": "firstline",
+          "secondaryLine": "secondaryline",
+          "zip": "zip",
+          "city": "city",
+          "country": "country"
+        }
       }
-    }
+    },
+    "participants": []
   }
 ]

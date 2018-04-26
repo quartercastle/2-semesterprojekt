@@ -19,38 +19,70 @@ public class DataRole implements IRole {
   private boolean canViewCase;
   private boolean canEvaluateCase;
   private boolean canCloseCase;
+  private boolean canCreateCase;
 
-  public DataRole(String name, boolean canOpenCase, boolean canViewCase, boolean canEvaluateCase, boolean canCloseCase) {
+  public DataRole(String name, boolean canOpenCase, boolean canViewCase, boolean canEvaluateCase, boolean canCloseCase, boolean canCreateCase) {
     this.name = name;
     this.canOpenCase = canOpenCase;
     this.canViewCase = canViewCase;
     this.canEvaluateCase = canEvaluateCase;
     this.canCloseCase = canCloseCase;
+    this.canCreateCase = canCreateCase;
   }
 
   @Override
   public String getName() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.name;
   }
 
   @Override
-  public Boolean canOpenCase() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public boolean canOpenCase() {
+    return this.canOpenCase;
   }
 
   @Override
-  public Boolean canViewCase() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public boolean canViewCase() {
+    return this.canViewCase;
   }
 
   @Override
-  public Boolean canEvaluateCase() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public boolean canEvaluateCase() {
+    return this.canEvaluateCase;
   }
 
   @Override
-  public Boolean canCloseCase() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public boolean canCloseCase() {
+    return this.canCloseCase;
+  }
+
+  @Override
+  public void setCanOpenCase(boolean permission) {
+    this.canOpenCase = permission;
+  }
+
+  @Override
+  public void setCanViewCase(boolean permission) {
+    this.canViewCase = permission;
+  }
+
+  @Override
+  public void setCanEvaluateCase(boolean permission) {
+    this.canEvaluateCase = permission;
+  }
+
+  @Override
+  public void setCanCloseCase(boolean permission) {
+    this.canCloseCase = permission;
+  }
+
+  @Override
+  public boolean canCreateCase() {
+    return this.canCreateCase;
+  }
+
+  @Override
+  public void setCanCreateCase(boolean permission) {
+    this.canCreateCase = permission;
   }
 
 }

@@ -25,6 +25,7 @@ public class DataCase implements ICase {
     this.user = user;
     this.citizen = citizen;
     this.effort = effort;
+    this.participants = new ArrayList();
   }
 
   @Override
@@ -48,8 +49,13 @@ public class DataCase implements ICase {
   }
 
   @Override
-  public ICitizen getParticipants() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public String toString() {
+    return "Hej jeg er en datacase \n DataCase{" + "id=" + id + ", user=" + user + ", citizen=" + citizen + ", effort=" + effort + ", participants=" + participants + '}';
+  }
+
+  @Override
+  public Collection<ICitizen> getParticipants() {
+    return this.participants;
   }
 
 }

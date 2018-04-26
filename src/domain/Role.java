@@ -12,22 +12,27 @@ public class Role implements IRole {
   /**
    * can the role open case
    */
-  private Boolean canOpenCase;
+  private boolean canOpenCase;
 
   /**
    * Can the role view case
    */
-  private Boolean canViewCase;
+  private boolean canViewCase;
 
   /**
    * can the role evaluate case
    */
-  private Boolean canEvaluateCase;
+  private boolean canEvaluateCase;
 
   /**
    * can close case
    */
-  private Boolean canCloseCase;
+  private boolean canCloseCase;
+
+  /**
+   * Can create case
+   */
+  private boolean canCreateCase;
 
   /**
    * Get name
@@ -45,7 +50,7 @@ public class Role implements IRole {
    * @return canOpenCase
    */
   @Override
-  public Boolean canOpenCase() {
+  public boolean canOpenCase() {
     return canOpenCase;
   }
 
@@ -55,7 +60,7 @@ public class Role implements IRole {
    * @return canViewCace
    */
   @Override
-  public Boolean canViewCase() {
+  public boolean canViewCase() {
     return canViewCase;
   }
 
@@ -65,7 +70,7 @@ public class Role implements IRole {
    * @return canEvaluateCase
    */
   @Override
-  public Boolean canEvaluateCase() {
+  public boolean canEvaluateCase() {
     return canEvaluateCase;
   }
 
@@ -75,7 +80,7 @@ public class Role implements IRole {
    * @return canCloseCase
    */
   @Override
-  public Boolean canCloseCase() {
+  public boolean canCloseCase() {
     return canCloseCase;
   }
 
@@ -89,40 +94,62 @@ public class Role implements IRole {
   }
 
   /**
-   * Set canOpenCase
+   * Set whether a role can open a case
    *
-   * @param canOpenCase
+   * @param permission
    */
-  public void setOpenCase(Boolean canOpenCase) {
-    this.canOpenCase = canOpenCase;
+  @Override
+  public void setCanOpenCase(boolean permission) {
+    this.canOpenCase = permission;
   }
 
   /**
-   * Set canViewCase
+   * Set whether a role can view a case
    *
-   * @param canViewCase
+   * @param permission
    */
-  public void setCanViewCase(Boolean canViewCase) {
-    this.canViewCase = canViewCase;
+  @Override
+  public void setCanViewCase(boolean permission) {
+    this.canViewCase = permission;
   }
 
   /**
-   * Set canEvaluateCase
+   * Set whether a role can evaluate a case
    *
-   * @param canEvaluateCase
+   * @param permission
    */
-  public void setCanEvaluateCase(Boolean canEvaluateCase) {
-    this.canEvaluateCase = canEvaluateCase;
-
+  @Override
+  public void setCanEvaluateCase(boolean permission) {
+    this.canEvaluateCase = permission;
   }
 
   /**
-   * Set canCloseCase
+   * Set whether a role can close a case
    *
-   * @param canCloseCase
+   * @param permission
    */
-  public void setCanCloseCase(Boolean canCloseCase) {
-    this.canCloseCase = canCloseCase;
+  @Override
+  public void setCanCloseCase(boolean permission) {
+    this.canCloseCase = permission;
   }
 
+  /**
+   * Whether a role can create a case
+   *
+   * @return canCreateCase
+   */
+  @Override
+  public boolean canCreateCase() {
+    return this.canCreateCase;
+  }
+
+  /**
+   * Set whether a role can create a case
+   *
+   * @param permission
+   */
+  @Override
+  public void setCanCreateCase(boolean permission) {
+    this.canCreateCase = permission;
+  }
 }

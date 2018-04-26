@@ -17,4 +17,5 @@ public interface IDomain {
    * @return true if ok
    */
   boolean verify(String username, String password);
+
 }

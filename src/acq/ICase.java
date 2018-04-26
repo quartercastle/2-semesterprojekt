@@ -3,6 +3,7 @@
  */
 package acq;
 
+import java.util.Collection;
 import java.util.UUID;
 
 public interface ICase {
@@ -35,6 +36,6 @@ public interface ICase {
    * Get collection of participating citizens
    * @return participants
    */
-  ICitizen getParticipants();
+  Collection<ICitizen> getParticipants();
 
 }

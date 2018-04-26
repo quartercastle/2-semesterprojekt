@@ -7,6 +7,7 @@ package data;
 
 import acq.IAddress;
 import acq.ICitizen;
+import domain.Address;
 
 /**
  *
@@ -18,53 +19,53 @@ public class DataCitizen implements ICitizen {
   private String middleName;
   private String lastName;
   private String CPR;
-  private String Address;
+  private IAddress address;
   private String phone;
   private String email;
 
-  public DataCitizen(String firstName, String middleName, String lastName, String CPR, String Address, String phone, String email) {
+  public DataCitizen(String firstName, String middleName, String lastName, String CPR, IAddress address, String phone, String email) {
     this.firstName = firstName;
     this.middleName = middleName;
     this.lastName = lastName;
     this.CPR = CPR;
-    this.Address = Address;
+    this.address = address;
     this.phone = phone;
     this.email = email;
   }
 
   @Override
   public String getFirstName() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.firstName;
   }
 
   @Override
   public String getMiddleName() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.middleName;
   }
 
   @Override
   public String getLastName() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.lastName;
   }
 
   @Override
   public String getCPR() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.CPR;
   }
 
   @Override
   public IAddress getAddress() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.address;
   }
 
   @Override
   public String getPhone() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.phone;
   }
 
   @Override
   public String getEmail() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.email;
   }
 
 }
