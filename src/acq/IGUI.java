@@ -7,7 +7,7 @@ public interface IGUI {
    *
    * @param domain
    */
-  public void inject(IDomain domain);
+  void inject(IDomain domain);
 
   /**
    * This method starts the javafx thread
@@ -17,5 +17,5 @@ public interface IGUI {
    */
   public static void initialize(String[] args, IDomain d) {
   }
-;
+
 }

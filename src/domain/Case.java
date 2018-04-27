@@ -3,9 +3,14 @@
  */
 package domain;
 
+import acq.ICase;
+import acq.ICitizen;
+import java.util.Collection;
 import java.util.UUID;
+import acq.ICase;
+import java.util.HashSet;
 
-public class Case {
+public class Case implements ICase {
 
   /**
    * Unique ID for the case
@@ -26,13 +31,29 @@ public class Case {
   /**
    * Participating citizens
    */
-  private Citizen participants;
+  private Collection<ICitizen> participants;
+
+  /**
+   * Case constructor
+   *
+   * @param responsible
+   * @param citizen
+   * @param effort
+   */
+  public Case(User responsible, Citizen citizen, Effort effort) {
+    this.id = new UUID(5, 7);
+    this.responsible = responsible;
+    this.citizen = citizen;
+    this.effort = effort;
+    this.participants = new HashSet<>();
+  }
 
   /**
    * Returns case ID
    *
    * @return id
    */
+  @Override
   public UUID getId() {
     return id;
   }
@@ -51,6 +72,7 @@ public class Case {
    *
    * @return responsible
    */
+  @Override
   public User getResponsible() {
     return responsible;
   }
@@ -69,6 +91,7 @@ public class Case {
    *
    * @return citizen
    */
+  @Override
   public Citizen getCitizen() {
     return citizen;
   }
@@ -87,6 +110,7 @@ public class Case {
    *
    * @return effort
    */
+  @Override
   public Effort getEffort() {
     return effort;
   }
@@ -105,7 +129,8 @@ public class Case {
    *
    * @return participants
    */
-  public Citizen getParticipants() {
+  @Override
+  public Collection<ICitizen> getParticipants() {
     return participants;
   }
 
@@ -114,7 +139,7 @@ public class Case {
    *
    * @param participants
    */
-  public void setParticipants(Citizen participants) {
+  public void setParticipants(Collection<ICitizen> participants) {
     this.participants = participants;
   }
 

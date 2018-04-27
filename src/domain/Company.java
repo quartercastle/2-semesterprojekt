@@ -1,55 +1,63 @@
 package domain;
 
+import acq.ICompany;
+
 /**
  * Company
  */
-public class Company {
-    
-    /**
-     * Name of the company
-     */
-    private String name;
-    
-    /**
-     * The company's address
-     */
-    private Address address;
+public class Company implements ICompany {
 
-    public Company(String name, Address address) {
-        this.name = name;
-        this.address = address;
-    }
+  /**
+   * Name of the company
+   */
+  private String name;
 
-    /**
-     * Get name
-     * @return name
-     */
-    public String getName() {
-        return name;
-    }
+  /**
+   * The company's address
+   */
+  private Address address;
 
-    /**
-     * Set name
-     * @param name 
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
+  public Company(String name, Address address) {
+    this.name = name;
+    this.address = address;
+  }
 
-    /**
-     * Get address
-     * @return address
-     */
-    public Address getAddress() {
-        return address;
-    }
+  /**
+   * Get name
+   *
+   * @return name
+   */
+  @Override
+  public String getName() {
+    return name;
+  }
 
-    /**
-     * Set address
-     * @param address 
-     */
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-    
+  /**
+   * Set name
+   *
+   * @param name
+   */
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
+   * Get address
+   *
+   * @return address
+   */
+  @Override
+  public Address getAddress() {
+    return address;
+  }
+
+  /**
+   * Set address
+   *
+   * @param address
+   */
+  public void setAddress(Address address) {
+    this.address = address;
+  }
+
 }

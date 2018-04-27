@@ -1,10 +1,12 @@
 package domain;
 
+import acq.ICitizen;
+
 /*
  * Citizen class
  *
  */
-public class Citizen {
+public class Citizen implements ICitizen {
 
   /**
    * Firstname of citizen
@@ -67,6 +69,7 @@ public class Citizen {
    *
    * @return firstname
    */
+  @Override
   public String getFirstName() {
     return firstName;
   }
@@ -76,6 +79,7 @@ public class Citizen {
    *
    * @return middleName
    */
+  @Override
   public String getMiddleName() {
     return middleName;
   }
@@ -85,6 +89,7 @@ public class Citizen {
    *
    * @return lastName
    */
+  @Override
   public String getLastName() {
     return lastName;
   }
@@ -94,6 +99,7 @@ public class Citizen {
    *
    * @return CPR
    */
+  @Override
   public String getCPR() {
     return CPR;
   }
@@ -103,6 +109,7 @@ public class Citizen {
    *
    * @return address
    */
+  @Override
   public Address getAddress() {
     return address;
   }
@@ -112,6 +119,7 @@ public class Citizen {
    *
    * @return phone
    */
+  @Override
   public String getPhone() {
     return phone;
   }
@@ -121,6 +129,7 @@ public class Citizen {
    *
    * @return email
    */
+  @Override
   public String getEmail() {
     return email;
   }

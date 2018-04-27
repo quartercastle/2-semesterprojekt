@@ -1,6 +1,8 @@
 package domain;
 
-public class User {
+import acq.IUser;
+
+public class User implements IUser {
 
   /**
    * Name of the user
@@ -23,10 +25,26 @@ public class User {
   private Role role;
 
   /**
+   * User contructor
+   *
+   * @param name
+   * @param email
+   * @param password
+   * @param role
+   */
+  public User(String name, String email, String password, Role role) {
+    this.name = name;
+    this.email = email;
+    this.password = password;
+    this.role = role;
+  }
+
+  /**
    * Get name
    *
    * @return name
    */
+  @Override
   public String getName() {
     return name;
   }
@@ -36,6 +54,7 @@ public class User {
    *
    * @return email
    */
+  @Override
   public String getEmail() {
     return email;
   }
@@ -45,6 +64,7 @@ public class User {
    *
    * @return password
    */
+  @Override
   public String getPassword() {
     return password;
   }
@@ -54,6 +74,7 @@ public class User {
    *
    * @return role
    */
+  @Override
   public Role getRole() {
     return role;
   }

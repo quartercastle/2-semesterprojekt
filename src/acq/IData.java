@@ -1,10 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package acq;
+
+import java.util.Collection;
 
 public interface IData {
 
+  /**
+   * Get cases
+   *
+   * @return collection of Cases from the database
+   */
+  Collection<ICase> getCases();
+
+  /**
+   * Method that's run upon runnign the program Initalises database
+   */
+  void initialize();
+
+  /**
+   * Adds instanse of case to the database
+   *
+   * @param c
+   */
+  public void addCase(ICase c);
 }

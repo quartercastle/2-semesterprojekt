@@ -43,6 +43,7 @@ public class DomainFacade implements IDomain {
    *
    * @param data
    */
+  @Override
   public void inject(IData data) {
     this.data = data;
   }

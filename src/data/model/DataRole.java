@@ -1,8 +1,8 @@
-package domain;
+package data.model;
 
 import acq.IRole;
 
-public class Role implements IRole {
+public class DataRole implements IRole {
 
   /**
    * Name of role
@@ -10,46 +10,36 @@ public class Role implements IRole {
   private String name;
 
   /**
-   * can the role open case
+   * Can create a case
    */
   private boolean canCreateCase;
 
   /**
-   * Can the role view case
+   * Can view case
    */
   private boolean canViewCase;
 
   /**
-   * can the role evaluate case
+   * Can Evaluate Case
    */
   private boolean canEvaluateCase;
 
   /**
-   * can close case
+   * Can close case
    */
   private boolean canCloseCase;
 
   /**
-   * Get name
-   *
-   * @return name
-   */
-  @Override
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Role constructor
+   * Create a new instance of role
    *
    * @param name
    * @param canCreateCase
    * @param canViewCase
    * @param canEvaluateCase
    * @param canCloseCase
-   * @param canCreateCase
+   *
    */
-  public Role(String name, boolean canCreateCase, boolean canViewCase, boolean canEvaluateCase, boolean canCloseCase) {
+  public DataRole(String name, boolean canCreateCase, boolean canViewCase, boolean canEvaluateCase, boolean canCloseCase) {
     this.name = name;
     this.canCreateCase = canCreateCase;
     this.canViewCase = canViewCase;
@@ -59,58 +49,57 @@ public class Role implements IRole {
   }
 
   /**
-   * Is Case open
+   * Get name
    *
-   * @return canCreateCase
+   * @return name
+   */
+  @Override
+  public String getName() {
+    return this.name;
+  }
+
+  /**
+   * can create case
+   *
+   * @return can create case
    */
   @Override
   public boolean canCreateCase() {
-    return canCreateCase;
+    return this.canCreateCase;
   }
 
   /**
-   * Can role view Case
+   * can view case
    *
-   * @return canViewCace
+   * @return can view case
    */
   @Override
   public boolean canViewCase() {
-    return canViewCase;
+    return this.canViewCase;
   }
 
   /**
-   * Can role evaluate Case
+   * can evaluate case
    *
-   * @return canEvaluateCase
+   * @return can evaluate case
    */
   @Override
   public boolean canEvaluateCase() {
-    return canEvaluateCase;
+    return this.canEvaluateCase;
   }
 
   /**
-   * Can role close Case
+   * can close case
    *
-   * @return canCloseCase
+   * @return can close case
    */
   @Override
   public boolean canCloseCase() {
-    return canCloseCase;
+    return this.canCloseCase;
   }
 
   /**
-   * Set name
-   *
-   * @param name
-   */
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   * Set whether a role can create a case
-   *
-   * @param permission
+   * set can create case
    */
   @Override
   public void setCanCreateCase(boolean permission) {
@@ -118,9 +107,7 @@ public class Role implements IRole {
   }
 
   /**
-   * Set whether a role can view a case
-   *
-   * @param permission
+   * set can view case
    */
   @Override
   public void setCanViewCase(boolean permission) {
@@ -128,9 +115,7 @@ public class Role implements IRole {
   }
 
   /**
-   * Set whether a role can evaluate a case
-   *
-   * @param permission
+   * set can evaluate case
    */
   @Override
   public void setCanEvaluateCase(boolean permission) {
@@ -138,9 +123,7 @@ public class Role implements IRole {
   }
 
   /**
-   * Set whether a role can close a case
-   *
-   * @param permission
+   * set can close case
    */
   @Override
   public void setCanCloseCase(boolean permission) {

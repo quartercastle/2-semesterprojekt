@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package acq;
 
 public interface IDomain {
@@ -12,7 +7,7 @@ public interface IDomain {
    *
    * @param data
    */
-  public void inject(IData data);
+  void inject(IData data);
 
   /**
    * Verify login
@@ -21,5 +16,6 @@ public interface IDomain {
    * @param password
    * @return true if ok
    */
-  public boolean verify(String username, String password);
+  boolean verify(String username, String password);
+
 }
