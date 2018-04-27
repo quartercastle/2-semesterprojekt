@@ -1,7 +1,6 @@
 package data.model;
 
 import acq.IRole;
-import com.google.gson.JsonObject;
 
 public class DataRole implements IRole {
 
@@ -38,7 +37,7 @@ public class DataRole implements IRole {
    * @param canViewCase
    * @param canEvaluateCase
    * @param canCloseCase
-   * @param canCreateCase
+   *
    */
   public DataRole(String name, boolean canCreateCase, boolean canViewCase, boolean canEvaluateCase, boolean canCloseCase) {
     this.name = name;

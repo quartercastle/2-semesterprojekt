@@ -69,6 +69,7 @@ public class Citizen implements ICitizen {
    *
    * @return firstname
    */
+  @Override
   public String getFirstName() {
     return firstName;
   }
@@ -78,6 +79,7 @@ public class Citizen implements ICitizen {
    *
    * @return middleName
    */
+  @Override
   public String getMiddleName() {
     return middleName;
   }
@@ -87,6 +89,7 @@ public class Citizen implements ICitizen {
    *
    * @return lastName
    */
+  @Override
   public String getLastName() {
     return lastName;
   }
@@ -96,6 +99,7 @@ public class Citizen implements ICitizen {
    *
    * @return CPR
    */
+  @Override
   public String getCPR() {
     return CPR;
   }
@@ -105,6 +109,7 @@ public class Citizen implements ICitizen {
    *
    * @return address
    */
+  @Override
   public Address getAddress() {
     return address;
   }
@@ -114,6 +119,7 @@ public class Citizen implements ICitizen {
    *
    * @return phone
    */
+  @Override
   public String getPhone() {
     return phone;
   }
@@ -123,6 +129,7 @@ public class Citizen implements ICitizen {
    *
    * @return email
    */
+  @Override
   public String getEmail() {
     return email;
   }

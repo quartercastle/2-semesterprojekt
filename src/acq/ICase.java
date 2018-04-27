@@ -1,3 +1,6 @@
+/**
+ * Interface class used for all implementations of Case
+ */
 package acq;
 
 import java.util.Collection;

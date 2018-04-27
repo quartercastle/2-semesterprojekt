@@ -57,6 +57,7 @@ public class CaseCollection {
 
   /**
    * Get collection of cases
+   *
    * @return collection of cases
    */
   public Collection<ICase> getCollection() {

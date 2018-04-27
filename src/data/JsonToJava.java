@@ -114,7 +114,7 @@ public class JsonToJava {
     @Override
     public ICitizen deserialize(JsonElement je, Type type, JsonDeserializationContext jdc) throws JsonParseException {
       Gson g = new GsonBuilder()
-              .registerTypeHierarchyAdapter(IAddress.class, new AddressDeserializer())
+              .registerTypeHierarchyAdapter(IAddress.class, new AddressDeserializer()) //Tells that parser what deserializer to use for IAddress instanses
               .create();
 
       return (DataCitizen) g.fromJson(je, DataCitizen.class);
@@ -147,7 +147,7 @@ public class JsonToJava {
 
     @Override
     public IRole deserialize(JsonElement je, Type type, JsonDeserializationContext jdc) throws JsonParseException {
-      Gson g = new GsonBuilder().create();
+      Gson g = new GsonBuilder().create(); //no TypeHierachyAdapter registered due to role only containing primitive datatypes
 
       return (DataRole) g.fromJson(je, DataRole.class);
     }
@@ -163,7 +163,7 @@ public class JsonToJava {
     @Override
     public ICompany deserialize(JsonElement je, Type type, JsonDeserializationContext jdc) throws JsonParseException {
       Gson g = new GsonBuilder()
-              .registerTypeHierarchyAdapter(IAddress.class, new AddressDeserializer())
+              .registerTypeHierarchyAdapter(IAddress.class, new AddressDeserializer()) ////Tells that parser what deserializer to use for IAddresss instanses
               .create();
 
       return (DataCompany) g.fromJson(je, DataCompany.class);
@@ -171,11 +171,15 @@ public class JsonToJava {
 
   }
 
+  /**
+   * Deserializes Adress from JSON to Java-code Necessary because the Gson
+   * parser can't read interfaces
+   */
   private class AddressDeserializer implements JsonDeserializer<IAddress> {
 
     @Override
     public IAddress deserialize(JsonElement je, Type type, JsonDeserializationContext jdc) throws JsonParseException {
-      Gson g = new GsonBuilder().create();
+      Gson g = new GsonBuilder().create(); //no TypeHierachyAdapter registered due to Adress only containing primitive datatypes
 
       return (DataAddress) g.fromJson(je, DataAddress.class);
     }
