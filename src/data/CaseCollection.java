@@ -68,7 +68,7 @@ public class CaseCollection {
    * Save the current collection of cases to disk
    */
   public void save() {
-    try (Writer writer = new FileWriter("cases.json", true)) {
+    try (Writer writer = new FileWriter("cases.json")) {
       Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
       gson.toJson(cases, writer);
