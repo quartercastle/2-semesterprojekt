@@ -1,3 +1,6 @@
+/**
+ * Interface class used for all implementations of Adress
+ */
 package acq;
 
 public interface IAddress {

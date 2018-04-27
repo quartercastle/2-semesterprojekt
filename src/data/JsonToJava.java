@@ -15,14 +15,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.UUID;
 import data.model.*;
 
 /**
@@ -36,7 +33,7 @@ public class JsonToJava {
    */
   String fileName;
   /**
-   * Instanse of Gson, instantiszed in the constructor
+   * Instanse of Gson, instantiated in the constructor
    */
   Gson g = null;
 

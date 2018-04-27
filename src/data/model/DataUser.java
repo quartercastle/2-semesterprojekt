@@ -4,6 +4,7 @@ import acq.IRole;
 import acq.IUser;
 
 public class DataUser implements IUser {
+
   /**
    * Name of user
    */
@@ -25,7 +26,8 @@ public class DataUser implements IUser {
   private DataRole role;
 
   /**
-   * Create a new user
+   * Create a new DataUser
+   *
    * @param name
    * @param email
    * @param password
@@ -40,6 +42,7 @@ public class DataUser implements IUser {
 
   /**
    * Get name
+   *
    * @return name
    */
   @Override
@@ -49,6 +52,7 @@ public class DataUser implements IUser {
 
   /**
    * Get email
+   *
    * @return email
    */
   @Override
@@ -58,6 +62,7 @@ public class DataUser implements IUser {
 
   /**
    * Get password
+   *
    * @return password
    */
   @Override
@@ -67,6 +72,7 @@ public class DataUser implements IUser {
 
   /**
    * Get role
+   *
    * @return role
    */
   @Override

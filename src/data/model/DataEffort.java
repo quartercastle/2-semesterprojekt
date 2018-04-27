@@ -2,7 +2,6 @@ package data.model;
 
 import acq.ICompany;
 import acq.IEffort;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class DataEffort implements IEffort {
@@ -28,7 +27,8 @@ public class DataEffort implements IEffort {
   private DataCompany responsible;
 
   /**
-   * Create a new instance of a Effort
+   * Create a new instance of a DataEffort
+   *
    * @param totalPrice
    * @param startDate
    * @param endDate
@@ -43,6 +43,7 @@ public class DataEffort implements IEffort {
 
   /**
    * Get total price
+   *
    * @return total price
    */
   @Override
@@ -52,6 +53,7 @@ public class DataEffort implements IEffort {
 
   /**
    * Get start date
+   *
    * @return start date
    */
   @Override
@@ -61,6 +63,7 @@ public class DataEffort implements IEffort {
 
   /**
    * Get end date
+   *
    * @return end date
    */
   @Override
@@ -70,6 +73,7 @@ public class DataEffort implements IEffort {
 
   /**
    * Get responsible
+   *
    * @return responsible
    */
   @Override
