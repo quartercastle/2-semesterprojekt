@@ -46,7 +46,8 @@ public class DataCitizen implements ICitizen {
   private String email;
 
   /**
-   * Create a new instance of a citizen
+   * Create a new instance of a DataCitizen
+   *
    * @param firstName
    * @param middleName
    * @param lastName
@@ -67,6 +68,7 @@ public class DataCitizen implements ICitizen {
 
   /**
    * Get first name
+   *
    * @return first name
    */
   @Override
@@ -76,6 +78,7 @@ public class DataCitizen implements ICitizen {
 
   /**
    * Get middle name
+   *
    * @return middle name
    */
   @Override
@@ -85,6 +88,7 @@ public class DataCitizen implements ICitizen {
 
   /**
    * Get last name
+   *
    * @return last name
    */
   @Override
@@ -94,6 +98,7 @@ public class DataCitizen implements ICitizen {
 
   /**
    * Get CPR
+   *
    * @return CPR
    */
   @Override
@@ -103,6 +108,7 @@ public class DataCitizen implements ICitizen {
 
   /**
    * Get Address
+   *
    * @return Address
    */
   @Override
@@ -112,6 +118,7 @@ public class DataCitizen implements ICitizen {
 
   /**
    * Get phone
+   *
    * @return phone
    */
   @Override
@@ -121,6 +128,7 @@ public class DataCitizen implements ICitizen {
 
   /**
    * Get email
+   *
    * @return email
    */
   @Override

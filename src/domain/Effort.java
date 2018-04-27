@@ -48,6 +48,7 @@ public class Effort implements IEffort {
    *
    * @return totalPrice
    */
+  @Override
   public int getTotalPrice() {
     return totalPrice;
   }
@@ -84,6 +85,7 @@ public class Effort implements IEffort {
    *
    * @return endDate
    */
+  @Override
   public GregorianCalendar getEndDate() {
     return endDate;
   }
@@ -102,6 +104,7 @@ public class Effort implements IEffort {
    *
    * @return responsible
    */
+  @Override
   public Company getResponsible() {
     return responsible;
   }

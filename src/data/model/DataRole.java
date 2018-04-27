@@ -30,7 +30,7 @@ public class DataRole implements IRole {
   private boolean canCloseCase;
 
   /**
-   * Create a new instance of role
+   * Create a new instance of DataRole
    *
    * @param name
    * @param canCreateCase

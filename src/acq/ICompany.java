@@ -1,3 +1,6 @@
+/**
+ * Interface class used for all implementations of Company
+ */
 package acq;
 
 public interface ICompany {

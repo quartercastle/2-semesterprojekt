@@ -1,9 +1,9 @@
 package domain;
 
 /**
- * ParticipantRole
+ * ParticipantRole enum, holding the types of participant there is
  */
 public enum ParticipantRole {
-    RELATIVE,
-    SPECIALIST
+  RELATIVE,
+  SPECIALIST
 }

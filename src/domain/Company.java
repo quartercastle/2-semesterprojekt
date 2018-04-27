@@ -17,6 +17,12 @@ public class Company implements ICompany {
    */
   private Address address;
 
+  /**
+   * Construct Address
+   *
+   * @param name
+   * @param address
+   */
   public Company(String name, Address address) {
     this.name = name;
     this.address = address;

@@ -1,3 +1,6 @@
+/**
+ * Interface class used for all implementations of Role
+ */
 package acq;
 
 public interface IRole {

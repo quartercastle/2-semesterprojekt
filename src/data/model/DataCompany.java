@@ -16,7 +16,8 @@ public class DataCompany implements ICompany {
   private IAddress address;
 
   /**
-   * Create new instance of company
+   * Create new instance of DataCompany
+   *
    * @param name
    * @param address
    */
@@ -27,6 +28,7 @@ public class DataCompany implements ICompany {
 
   /**
    * Get name
+   *
    * @return name
    */
   @Override
@@ -36,6 +38,7 @@ public class DataCompany implements ICompany {
 
   /**
    * Get address
+   *
    * @return address
    */
   @Override
