@@ -3,6 +3,7 @@
  */
 package domain;
 
+import acq.ICase;
 import acq.IData;
 import acq.IDomain;
 
@@ -18,6 +19,7 @@ public class DomainFacade implements IDomain {
    * Reference to the data layer
    */
   private IData data;
+  private ICase ICase;
 
   /**
    * Disable normal instantiation
@@ -60,4 +62,9 @@ public class DomainFacade implements IDomain {
     return AuthManager.verify(username, password);
   }
 
+  @Override
+  public ICase createCase() {
+
+    return ICase;
+  }
 }
