@@ -9,6 +9,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class LoginController extends Controller {
 
@@ -51,4 +53,18 @@ public class LoginController extends Controller {
     getStage().close();
 
   }
+
+  /**
+   * Makes login by pressing the enter key possible, more natural
+   * user-experience
+   *
+   * @param event
+   */
+  @FXML
+  private void enterPressed(KeyEvent event) {
+    if (event.getCode().equals(KeyCode.ENTER)) {
+      loginAction(null);
+    }
+  }
+
 }
