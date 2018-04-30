@@ -47,6 +47,9 @@ public class Case implements ICase {
     this.participants = new HashSet<>();
   }
 
+  /**
+   * No arg constructor
+   */
   public Case() {
   }
 

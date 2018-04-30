@@ -21,7 +21,7 @@ public interface IDomain {
   /**
    * Creats ICase
    *
-   * @return
+   * @return ICase
    */
   ICase createCase();
 
