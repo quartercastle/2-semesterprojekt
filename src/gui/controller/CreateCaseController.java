@@ -20,6 +20,11 @@ public class CreateCaseController extends Controller {
     // TODO
   }
 
+  /**
+   * Go to next tab in process
+   *
+   * @param event
+   */
   @FXML
   private void nextButtonClicked(ActionEvent event) {
     caseTabPane.getSelectionModel().selectNext();
