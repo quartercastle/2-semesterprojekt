@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<TabPane fx:id="caseTabPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateCaseController">
+<TabPane fx:id="caseTabPane" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateCaseController">
    <tabs>
       <Tab text="Registrere henvendelse">
          <content>
@@ -55,7 +55,11 @@
       </Tab>
       <Tab text="Eksempel tab">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="133.0" layoutY="278.0" mnemonicParsing="false" onAction="#nextButtonClicked" text="Next" />
+                  <Button layoutX="44.0" layoutY="278.0" mnemonicParsing="false" onAction="#previousButtonClicked" text="Previous" />
+               </children></AnchorPane>
         </content>
       </Tab>
    </tabs>

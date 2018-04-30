@@ -9,6 +9,9 @@ import javafx.scene.control.TabPane;
 
 public class CreateCaseController extends Controller {
 
+  /**
+   * Tabpane holding the different stages in case-creation
+   */
   @FXML
   private TabPane caseTabPane;
 
@@ -21,13 +24,23 @@ public class CreateCaseController extends Controller {
   }
 
   /**
-   * Go to next tab in process
+   * Go to next tab in the process
    *
    * @param event
    */
   @FXML
   private void nextButtonClicked(ActionEvent event) {
     caseTabPane.getSelectionModel().selectNext();
+  }
+
+  /**
+   * Go to previous tab in the process
+   *
+   * @param event
+   */
+  @FXML
+  private void previousButtonClicked(ActionEvent event) {
+    caseTabPane.getSelectionModel().selectPrevious();
   }
 
 }
