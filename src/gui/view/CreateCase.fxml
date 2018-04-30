@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<TabPane fx:id="caseTabPane" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateCaseController">
+<TabPane fx:id="caseTabPane" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateCaseController">
    <tabs>
       <Tab text="Registrere henvendelse">
          <content>
@@ -36,7 +36,7 @@
                   </rowConstraints>
                   <children>
                     <Label prefHeight="60.0" prefWidth="298.0" text="Hvor kom henvendelsen fra?" />
-                    <Label prefHeight="62.0" prefWidth="305.0" text="Ansvarlig Sagsbehanler" GridPane.rowIndex="1" />
+                    <Label prefHeight="62.0" prefWidth="305.0" text="Hvad drejer henvendelsen om?" GridPane.rowIndex="1" />
                     <TextField prefHeight="56.0" prefWidth="299.0" GridPane.columnIndex="1" />
                     <TextField prefHeight="55.0" prefWidth="299.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   </children>

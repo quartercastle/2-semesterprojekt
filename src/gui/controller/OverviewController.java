@@ -20,6 +20,11 @@ public class OverviewController extends Controller {
     // TODO
   }
 
+  /**
+   * Opens up CreateCase stage
+   *
+   * @param event
+   */
   @FXML
   private void openCaseAction(ActionEvent event) {
 

@@ -61,6 +61,11 @@ public class DomainFacade implements IDomain {
     return AuthManager.verify(username, password);
   }
 
+  /**
+   * Creates new case
+   *
+   * @return Case
+   */
   @Override
   public Case createCase() {
     return new Case();
