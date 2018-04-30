@@ -47,6 +47,9 @@ public class Case implements ICase {
     this.participants = new HashSet<>();
   }
 
+  public Case() {
+  }
+
   /**
    * Returns case ID
    *

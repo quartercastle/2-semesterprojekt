@@ -19,7 +19,6 @@ public class DomainFacade implements IDomain {
    * Reference to the data layer
    */
   private IData data;
-  private Case Case;
 
   /**
    * Disable normal instantiation
@@ -64,7 +63,7 @@ public class DomainFacade implements IDomain {
 
   @Override
   public Case createCase() {
-    return Case;
+    return new Case();
 
   }
 }
