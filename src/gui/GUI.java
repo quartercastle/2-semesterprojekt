@@ -77,6 +77,7 @@ public class GUI extends Application implements IGUI {
     controllers.put("Login", load("Login"));
     controllers.get("Login").getStage().show();
     controllers.put("Overview", load("Overview"));
+    controllers.put("CreateCase", load("CreateCase"));
   }
 
   /**

@@ -1,7 +1,10 @@
 package gui.controller;
 
+import gui.GUI;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -18,4 +21,11 @@ public class OverviewController extends Controller {
     // TODO
   }
 
+  @FXML
+  private void openCaseAction(ActionEvent event) {
+
+    GUI.getInstance().showStage("CreateCase");
+    GUI.getInstance().getDomain().createCase();
+    getStage().close();
+  }
 }
