@@ -6,14 +6,14 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
-<TabPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateCaseController">
+<TabPane fx:id="caseTabPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateCaseController">
    <tabs>
       <Tab text="Registrere henvendelse">
          <content>
@@ -48,10 +48,15 @@
                     <CheckBox mnemonicParsing="false" prefHeight="23.0" prefWidth="82.0" text="Nej" />
                   </children>
                 </HBox>
-                <Button mnemonicParsing="false" text="Next" />
+                <Button mnemonicParsing="false" onAction="#nextButtonClicked" text="Next" />
               </children>
             </VBox>
          </content>
+      </Tab>
+      <Tab text="Eksempel tab">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
       </Tab>
    </tabs>
 </TabPane>
