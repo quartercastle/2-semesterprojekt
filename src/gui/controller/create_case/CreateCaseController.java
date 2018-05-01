@@ -24,10 +24,10 @@ public class CreateCaseController extends TabController {
   private TabPane tabPane;
 
   /**
-   * Previos button
+   * Previous button
    */
   @FXML
-  private Button previosBut;
+  private Button previousBut;
 
   /**
    * Next button
@@ -46,13 +46,13 @@ public class CreateCaseController extends TabController {
         nextBut.setText("Næste");
 
         if (newValue.intValue() == 0) {
-          previosBut.setVisible(false);
+          previousBut.setVisible(false);
           return;
         } else if (newValue.intValue() == tabPane.getTabs().size() - 1) {
           nextBut.setText("Gem");
         }
 
-        previosBut.setVisible(true);
+        previousBut.setVisible(true);
       }
     });
   }
