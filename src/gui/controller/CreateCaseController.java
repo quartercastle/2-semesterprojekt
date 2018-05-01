@@ -43,6 +43,8 @@ public class CreateCaseController extends ControllerCreateCase {
     tabPane.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
       @Override
       public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+        nextBut.setText("Næste");
+
         if (newValue.intValue() == 0) {
           previosBut.setVisible(false);
           return;
