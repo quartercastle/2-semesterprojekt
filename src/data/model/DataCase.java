@@ -145,6 +145,16 @@ public class DataCase implements ICase {
   }
 
   /**
+   * Set citizen
+   *
+   * @param citizen
+   */
+  @Override
+  public void setCitizen(ICitizen citizen) {
+    this.citizen = citizen;
+  }
+
+  /**
    * Get informed about rights status
    *
    * @return informedAboutRights
@@ -202,15 +212,5 @@ public class DataCase implements ICase {
   @Override
   public void setCircumstance(String circumstance) {
     this.circumstance = circumstance;
-  }
-
-  /**
-   * Set citizen
-   *
-   * @param citizen
-   */
-  @Override
-  public void setCitizen(ICitizen citizen) {
-    this.citizen = citizen;
   }
 }

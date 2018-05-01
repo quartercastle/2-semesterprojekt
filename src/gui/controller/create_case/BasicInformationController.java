@@ -84,8 +84,8 @@ public class BasicInformationController extends TabController {
    * @return address
    */
   private IAddress getAddress() {
-    if (getCase().getCitizen().getAddress() == null) {
-      getCase().getCitizen().setAddress(GUI.getInstance().getDomain().createAddress());
+    if (getCitizen().getAddress() == null) {
+      getCitizen().setAddress(GUI.getInstance().getDomain().createAddress());
     }
 
     return getCase().getCitizen().getAddress();

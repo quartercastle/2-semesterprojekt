@@ -58,6 +58,13 @@ public interface ICase {
   void setInquiry(String referral);
 
   /**
+   * Set citizen
+   *
+   * @param citizen
+   */
+  void setCitizen(ICitizen citizen);
+
+  /**
    * Get informed about rights status
    *
    * @return informedAboutRights
@@ -98,11 +105,4 @@ public interface ICase {
    * @param circumstance
    */
   void setCircumstance(String circumstance);
-
-  /**
-   * Set citizen
-   *
-   * @param citizen
-   */
-  void setCitizen(ICitizen citizen);
 }
