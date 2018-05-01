@@ -68,7 +68,7 @@ public class DomainFacade implements IDomain {
    */
   @Override
   public Case createCase() {
-    return new Case();
+    return new Case(null, null, null);
 
   }
 }
