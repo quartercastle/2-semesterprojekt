@@ -2,19 +2,63 @@ package gui.controller.create_case;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 
-/**
- * FXML Controller class
- *
- */
 public class BasicInformationController extends TabController {
 
   /**
-   * Initializes the controller class.
+   * First name
    */
-  @Override
-  public void initialize(URL url, ResourceBundle rb) {
-    // TODO
-  }
+  @FXML
+  private TextField firstName;
+
+  /**
+   * Middle name
+   */
+  @FXML
+  private TextField middleName;
+
+  /**
+   * Last nane
+   */
+  @FXML
+  private TextField lastName;
+
+  /**
+   * CPR number
+   */
+  @FXML
+  private TextField cpr;
+
+  /**
+   * Address field
+   */
+  @FXML
+  private TextField address;
+
+  /**
+   * Zip code
+   */
+  @FXML
+  private TextField zip;
+
+  /**
+   * City
+   */
+  @FXML
+  private TextField city;
+
+  /**
+   * Email
+   */
+  @FXML
+  private TextField email;
+
+  /**
+   * Phone
+   */
+  @FXML
+  private TextField phone;
 
 }
