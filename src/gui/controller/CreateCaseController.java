@@ -13,7 +13,7 @@ public class CreateCaseController extends Controller {
    * Tabpane holding the different stages in case-creation
    */
   @FXML
-  private TabPane TabPane;
+  private TabPane tabPane;
 
   /**
    * Initializes the controller class.
