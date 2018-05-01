@@ -25,18 +25,8 @@ public class InquiryController extends TabController {
     referral.textProperty().addListener(new ChangeListener<String>() {
       @Override
       public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-        c.setReferral(newValue);
+        getCase().setReferral(newValue);
       }
     });
-  }
-
-  /**
-   * Set case
-   *
-   * @param c
-   */
-  @Override
-  public void setCase(ICase c) {
-    this.c = c;
   }
 }

@@ -62,8 +62,8 @@ public class CreateCaseController extends TabController {
    */
   public void open() {
     super.open();
-    if (c == null) {
-      c = GUI.getInstance().getDomain().createCase();
+    if (getCase() == null) {
+      setCase(GUI.getInstance().getDomain().createCase());
       setupControllers();
     }
   }
@@ -87,7 +87,7 @@ public class CreateCaseController extends TabController {
         ex.printStackTrace();
       }
 
-      ((TabController) loader.getController()).setCase(c);
+      ((TabController) loader.getController()).setCase(getCase());
     }
   }
 

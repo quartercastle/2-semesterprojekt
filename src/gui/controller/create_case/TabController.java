@@ -11,14 +11,14 @@ public abstract class TabController extends Controller {
   /**
    * Reference Case
    */
-  protected ICase c;
+  private ICase c;
 
   /**
    * Get case
    *
    * @return
    */
-  public ICase getC() {
+  public ICase getCase() {
     return c;
   }
 
