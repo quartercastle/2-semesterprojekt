@@ -1,59 +1,56 @@
 package gui.controller;
 
-import acq.ICase;
 import gui.GUI;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.input.InputMethodEvent;
+import javafx.scene.layout.Pane;
 
-public class CreateCaseController extends Controller {
+public class CreateCaseController extends ControllerCreateCase {
 
   /**
    * Tabpane holding the different stages in case-creation
    */
   @FXML
   private TabPane tabPane;
-  /**
-   * Refreence Case
-   */
-  private ICase c;
-
-  @FXML
-  private TextArea referral;
 
   /**
-   * Go to next tab in the process
-   *
-   * @param event
+   * Previos button
    */
   @FXML
-  private void nextButtonClicked(ActionEvent event) {
-    tabPane.getSelectionModel().selectNext();
-  }
+  private Button previosBut;
 
   /**
-   * Go to previous tab in the process
-   *
-   * @param event
+   * Next button
    */
   @FXML
-  private void previousButtonClicked(ActionEvent event) {
-    tabPane.getSelectionModel().selectPrevious();
-  }
+  private Button nextBut;
 
+  /**
+   * Initializes the controller class.
+   */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    referral.textProperty().addListener(new ChangeListener<String>() {
+    tabPane.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
       @Override
-      public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-        c.setReferral(newValue);
+      public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+        if (newValue.intValue() == 0) {
+          previosBut.setVisible(false);
+          return;
+        } else if (newValue.intValue() == tabPane.getTabs().size() - 1) {
+          nextBut.setText("Gem");
+        }
+
+        previosBut.setVisible(true);
       }
     });
   }
@@ -65,6 +62,55 @@ public class CreateCaseController extends Controller {
     super.open();
     if (c == null) {
       c = GUI.getInstance().getDomain().createCase();
+      setupControllers();
     }
+  }
+
+  /**
+   * Setup the controllers
+   */
+  private void setupControllers() {
+    //A array of all the names of the fxml files
+    String[] tabNames = {"Inquiry", "Rights", "BasicInformation", "Circumstances", "FurtherCourse"};
+    //A list of all the tabs
+    ObservableList<Tab> tabs = tabPane.getTabs();
+
+    for (int i = 0; i < tabs.size(); i++) {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/" + tabNames[i] + ".fxml"));
+
+      try {
+        Pane statPane = loader.load();
+        tabs.get(i).setContent(statPane);
+      } catch (IOException ex) {
+        ex.printStackTrace();
+      }
+
+      ((ControllerCreateCase) loader.getController()).setC(c);
+    }
+  }
+
+  /**
+   * Go to previous tab in the process
+   *
+   * @param event
+   */
+  @FXML
+  private void previousButAction(ActionEvent event) {
+    tabPane.getSelectionModel().selectPrevious();
+  }
+
+  /**
+   * Go to next tab in the process, if at last tab save the case
+   *
+   * @param event
+   */
+  @FXML
+  private void nextButAction(ActionEvent event) {
+    if (tabPane.getSelectionModel().getSelectedIndex() == tabPane.getTabs().size() - 1) {
+      //SAVE CASE
+      return;
+    }
+    tabPane.getSelectionModel().selectNext();
+    System.out.println("TAB " + tabPane.getSelectionModel().getSelectedIndex());
   }
 }
