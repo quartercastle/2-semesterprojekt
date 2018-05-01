@@ -155,6 +155,15 @@ public class Case implements ICase {
   }
 
   /**
+   * Set citizen
+   *
+   * @param citizen
+   */
+  public void setCitizen(ICitizen citizen) {
+    this.citizen = (Citizen) citizen;
+  }
+
+  /**
    * Sets the effort asigned to the case
    *
    * @param effort

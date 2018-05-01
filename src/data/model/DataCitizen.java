@@ -136,4 +136,73 @@ public class DataCitizen implements ICitizen {
     return this.email;
   }
 
+  /**
+   * Set firstname
+   *
+   * @param name
+   */
+  @Override
+  public void setFirstName(String name) {
+    this.firstName = name;
+  }
+
+  /**
+   * Set middle name
+   *
+   * @param name
+   */
+  @Override
+  public void setMiddleName(String name) {
+    this.middleName = name;
+  }
+
+  /**
+   * Set last name
+   *
+   * @param name
+   */
+  @Override
+  public void setLastName(String name) {
+    this.lastName = name;
+  }
+
+  /**
+   * Set CPR
+   *
+   * @param cpr
+   */
+  @Override
+  public void setCPR(String cpr) {
+    this.CPR = cpr;
+  }
+
+  /**
+   * Set address
+   *
+   * @param address
+   */
+  @Override
+  public void setAddress(IAddress address) {
+    this.address = address;
+  }
+
+  /**
+   * Set phone
+   *
+   * @param phone
+   */
+  @Override
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
+  /**
+   * Set email
+   * @param email
+   */
+  @Override
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
 }

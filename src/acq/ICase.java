@@ -99,4 +99,10 @@ public interface ICase {
    */
   void setCircumstance(String circumstance);
 
+  /**
+   * Set citizen
+   *
+   * @param citizen
+   */
+  void setCitizen(ICitizen citizen);
 }

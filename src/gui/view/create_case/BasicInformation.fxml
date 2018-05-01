@@ -26,11 +26,11 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="firstName" promptText="Fornavn" GridPane.rowIndex="1" />
+            <TextField fx:id="firstName" onKeyPressed="#firstNameChanged" promptText="Fornavn" GridPane.rowIndex="1" />
             <TextField fx:id="middleName" promptText="Mellemnavn" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="lastName" promptText="Efternavn" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField fx:id="lastName" onKeyPressed="#lastNameChanged" promptText="Efternavn" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Personlige oplysninger" />
-            <TextField fx:id="cpr" promptText="CPR Nr." GridPane.rowIndex="2" />
+            <TextField fx:id="cpr" onKeyPressed="#cprChanged" promptText="CPR Nr." GridPane.rowIndex="2" />
          </children>
          <VBox.margin>
             <Insets top="4.0" />
@@ -55,13 +55,13 @@
             <Insets top="20.0" />
          </VBox.margin>
          <children>
-            <TextField fx:id="address" promptText="Adresse line" GridPane.columnSpan="3" GridPane.rowIndex="1" />
-            <TextField fx:id="zip" promptText="Post Nr." GridPane.rowIndex="2" />
-            <TextField fx:id="city" promptText="By" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+            <TextField fx:id="address" onKeyPressed="#addressChanged" promptText="Adresse line" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+            <TextField fx:id="zip" onKeyPressed="#zipChanged" promptText="Post Nr." GridPane.rowIndex="2" />
+            <TextField fx:id="city" onKeyPressed="#cityChanged" promptText="By" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kontakt" GridPane.columnIndex="4" />
-            <TextField fx:id="email" promptText="Email" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="1" />
-            <TextField fx:id="phone" promptText="Mobil tlf." GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="2" />
+            <TextField fx:id="email" onKeyPressed="#emailChanged" promptText="Email" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+            <TextField fx:id="phone" onKeyPressed="#phoneChanged" promptText="Mobil tlf." GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <GridPane hgap="4.0" vgap="4.0">

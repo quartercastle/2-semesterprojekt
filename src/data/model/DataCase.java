@@ -203,4 +203,14 @@ public class DataCase implements ICase {
   public void setCircumstance(String circumstance) {
     this.circumstance = circumstance;
   }
+
+  /**
+   * Set citizen
+   *
+   * @param citizen
+   */
+  @Override
+  public void setCitizen(ICitizen citizen) {
+    this.citizen = citizen;
+  }
 }
