@@ -1,11 +1,12 @@
-package gui.controller;
+package gui.controller.create_case;
 
 import acq.ICase;
+import gui.controller.Controller;
 
 /**
  * A controller used in controllers that is a part of create case
  */
-public abstract class ControllerCreateCase extends Controller {
+public abstract class TabController extends Controller {
 
   /**
    * Reference Case
@@ -17,7 +18,7 @@ public abstract class ControllerCreateCase extends Controller {
    *
    * @param c
    */
-  public void setC(ICase c) {
+  public void setCase(ICase c) {
     this.c = c;
   }
 }

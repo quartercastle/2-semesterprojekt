@@ -1,4 +1,4 @@
-package gui.controller;
+package gui.controller.create_case;
 
 import gui.GUI;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.Pane;
 
-public class CreateCaseController extends ControllerCreateCase {
+public class CreateCaseController extends TabController {
 
   /**
    * Tabpane holding the different stages in case-creation
@@ -78,7 +78,7 @@ public class CreateCaseController extends ControllerCreateCase {
     ObservableList<Tab> tabs = tabPane.getTabs();
 
     for (int i = 0; i < tabs.size(); i++) {
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/" + tabNames[i] + ".fxml"));
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/create_case" + tabNames[i] + ".fxml"));
 
       try {
         Pane statPane = loader.load();
@@ -87,7 +87,7 @@ public class CreateCaseController extends ControllerCreateCase {
         ex.printStackTrace();
       }
 
-      ((ControllerCreateCase) loader.getController()).setC(c);
+      ((TabController) loader.getController()).setCase(c);
     }
   }
 

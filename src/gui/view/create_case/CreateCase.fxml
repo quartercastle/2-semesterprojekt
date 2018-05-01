@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateCaseController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.create_case.CreateCaseController">
   <children>
     <TabPane fx:id="tabPane" prefHeight="428.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
       <tabs>
@@ -26,12 +26,12 @@
         <Insets bottom="25.0" left="25.0" right="25.0" />
       </padding>
       <children>
-            <Button fx:id="previosBut" mnemonicParsing="false" onAction="#previousButAction" text="Forrige" visible="false" />
+        <Button fx:id="previousBut" mnemonicParsing="false" onAction="#previousButAction" text="Forrige" visible="false" />
         <Button fx:id="nextBut" mnemonicParsing="false" onAction="#nextButAction" text="Næste" />
       </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
+      <VBox.margin>
+        <Insets />
+      </VBox.margin>
     </HBox>
   </children>
 </VBox>

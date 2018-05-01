@@ -1,4 +1,4 @@
-package gui.controller;
+package gui.controller.create_case;
 
 import acq.ICase;
 import java.net.URL;
@@ -12,7 +12,7 @@ import javafx.scene.control.TextArea;
  * FXML Controller class
  *
  */
-public class InquiryController extends ControllerCreateCase {
+public class InquiryController extends TabController {
 
   @FXML
   private TextArea referral;

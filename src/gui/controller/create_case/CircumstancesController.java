@@ -1,4 +1,4 @@
-package gui.controller;
+package gui.controller.create_case;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
  * FXML Controller class
  *
  */
-public class BasicInformationController extends ControllerCreateCase {
+public class CircumstancesController extends TabController {
 
   /**
    * Initializes the controller class.
