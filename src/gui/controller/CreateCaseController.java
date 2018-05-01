@@ -30,7 +30,7 @@ public class CreateCaseController extends Controller {
    */
   @FXML
   private void nextButtonClicked(ActionEvent event) {
-    caseTabPane.getSelectionModel().selectNext();
+    tabPane.getSelectionModel().selectNext();
   }
 
   /**
