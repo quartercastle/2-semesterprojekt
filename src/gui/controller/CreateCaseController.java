@@ -1,6 +1,7 @@
-package gui.controller.create_case;
+package gui.controller;
 
 import gui.GUI;
+import gui.controller.create_case.TabController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -78,7 +79,7 @@ public class CreateCaseController extends TabController {
     ObservableList<Tab> tabs = tabPane.getTabs();
 
     for (int i = 0; i < tabs.size(); i++) {
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/create_case" + tabNames[i] + ".fxml"));
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/create_case/" + tabNames[i] + ".fxml"));
 
       try {
         Pane statPane = loader.load();
