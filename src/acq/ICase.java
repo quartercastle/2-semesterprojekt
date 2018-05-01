@@ -56,4 +56,33 @@ public interface ICase {
    * @param referral
    */
   void setInquiry(String referral);
+
+  /**
+   * Get informed about rights status
+   *
+   * @return informedAboutRights
+   */
+  boolean isInformedAboutRights();
+
+  /**
+   * Set whether citizen is informed about rights
+   *
+   * @param informed
+   */
+  void setInformedAboutRights(boolean informed);
+
+  /**
+   * Get informed about duties status
+   *
+   * @return informedAboutDuties
+   */
+  boolean isInformedAboutDuties();
+
+  /**
+   * Set whether citizen is informed about duties
+   *
+   * @param informed
+   */
+  void setInformedAboutDuties(boolean informed);
+
 }

@@ -38,6 +38,16 @@ public class Case implements ICase {
   private String inquiry;
 
   /**
+   * Has the citizen been informed of his/her rights, from Case-opening
+   */
+  private boolean informedAboutRights;
+
+  /**
+   * Has the citizen been informed of his/her duties, from Case-opening
+   */
+  private boolean informedAboutDuties;
+
+  /**
    * Case constructor
    *
    * @param responsible
@@ -124,6 +134,7 @@ public class Case implements ICase {
    *
    * @return inquiry
    */
+  @Override
   public String getInquiry() {
     return inquiry;
   }
@@ -133,6 +144,7 @@ public class Case implements ICase {
    *
    * @param inquiry
    */
+  @Override
   public void setInquiry(String inquiry) {
     this.inquiry = inquiry;
   }
@@ -163,6 +175,46 @@ public class Case implements ICase {
    */
   public void setParticipants(Collection<ICitizen> participants) {
     this.participants = participants;
+  }
+
+  /**
+   * Get informed about rights status
+   *
+   * @return informedAboutRights
+   */
+  @Override
+  public boolean isInformedAboutRights() {
+    return this.informedAboutRights;
+  }
+
+  /**
+   * Set whether citizen is informed about rights
+   *
+   * @param informed
+   */
+  @Override
+  public void setInformedAboutRights(boolean informed) {
+    this.informedAboutRights = informed;
+  }
+
+  /**
+   * Get informed about duties status
+   *
+   * @return informedAboutRights
+   */
+  @Override
+  public boolean isInformedAboutDuties() {
+    return this.informedAboutDuties;
+  }
+
+  /**
+   * Set whether citizen is informed about rights
+   *
+   * @param informed
+   */
+  @Override
+  public void setInformedAboutDuties(boolean informed) {
+    this.informedAboutDuties = informed;
   }
 
 }
