@@ -4,10 +4,14 @@ import acq.ICase;
 import gui.GUI;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.input.InputMethodEvent;
 
 public class CreateCaseController extends Controller {
 
@@ -20,6 +24,9 @@ public class CreateCaseController extends Controller {
    * Refreence Case
    */
   private ICase c;
+
+  @FXML
+  private TextArea referral;
 
   /**
    * Go to next tab in the process
@@ -41,6 +48,16 @@ public class CreateCaseController extends Controller {
     tabPane.getSelectionModel().selectPrevious();
   }
 
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    referral.textProperty().addListener(new ChangeListener<String>() {
+      @Override
+      public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+        c.setReferral(newValue);
+      }
+    });
+  }
+
   /**
    * Method for open window
    */
@@ -50,5 +67,4 @@ public class CreateCaseController extends Controller {
       c = GUI.getInstance().getDomain().createCase();
     }
   }
-
 }

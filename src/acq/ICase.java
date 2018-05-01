@@ -43,4 +43,17 @@ public interface ICase {
    */
   Collection<ICitizen> getParticipants();
 
+  /**
+   * Get Referral
+   *
+   * @return referral
+   */
+  String getReferral();
+
+  /**
+   * Set Referral
+   *
+   * @param referral
+   */
+  void setReferral(String referral);
 }
