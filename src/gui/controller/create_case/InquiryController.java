@@ -1,6 +1,5 @@
 package gui.controller.create_case;
 
-import acq.ICase;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
