@@ -54,6 +54,11 @@ public class DataCase implements ICase {
   private boolean informedAboutDuties;
 
   /**
+   * Eventual circumstances to the case
+   */
+  private String circumstance;
+
+  /**
    * Create a new DataCase
    *
    * @param id
@@ -179,4 +184,23 @@ public class DataCase implements ICase {
     this.informedAboutDuties = informed;
   }
 
+  /**
+   * Get eventual circumstance
+   *
+   * @return
+   */
+  @Override
+  public String getCircumstance() {
+    return circumstance;
+  }
+
+  /**
+   * Set circumstance
+   *
+   * @param circumstance
+   */
+  @Override
+  public void setCircumstance(String circumstance) {
+    this.circumstance = circumstance;
+  }
 }

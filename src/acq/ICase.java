@@ -85,4 +85,18 @@ public interface ICase {
    */
   void setInformedAboutDuties(boolean informed);
 
+  /**
+   * Get eventual circumstance
+   *
+   * @return
+   */
+  String getCircumstance();
+
+  /**
+   * Set circumstance
+   *
+   * @param circumstance
+   */
+  void setCircumstance(String circumstance);
+
 }
