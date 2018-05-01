@@ -31,10 +31,11 @@ public class Case implements ICase {
    * Participating citizens
    */
   private Collection<ICitizen> participants;
+
   /**
-   * Holding information about the case
+   * Case inquiry
    */
-  private String referral;
+  private String inquiry;
 
   /**
    * Case constructor
@@ -119,21 +120,21 @@ public class Case implements ICase {
   }
 
   /**
-   * Get referral
+   * Get inquiry
    *
-   * @return referral
+   * @return inquiry
    */
-  public String getReferral() {
-    return referral;
+  public String getInquiry() {
+    return inquiry;
   }
 
   /**
-   * Set referral
+   * Set inquiry
    *
-   * @param referral
+   * @param inquiry
    */
-  public void setReferral(String referral) {
-    this.referral = referral;
+  public void setInquiry(String inquiry) {
+    this.inquiry = inquiry;
   }
 
   /**
