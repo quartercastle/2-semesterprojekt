@@ -30,7 +30,13 @@ public class InquiryController extends TabController {
     });
   }
 
-  public void setC(ICase c) {
+  /**
+   * Set case
+   *
+   * @param c
+   */
+  @Override
+  public void setCase(ICase c) {
     this.c = c;
   }
 }

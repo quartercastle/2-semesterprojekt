@@ -14,6 +14,15 @@ public abstract class TabController extends Controller {
   protected ICase c;
 
   /**
+   * Get case
+   *
+   * @return
+   */
+  public ICase getC() {
+    return c;
+  }
+
+  /**
    * Set case
    *
    * @param c
