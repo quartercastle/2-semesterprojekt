@@ -113,6 +113,5 @@ public class CreateCaseController extends TabController {
       return;
     }
     tabPane.getSelectionModel().selectNext();
-    System.out.println("TAB " + tabPane.getSelectionModel().getSelectedIndex());
   }
 }
