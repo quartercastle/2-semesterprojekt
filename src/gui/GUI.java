@@ -50,7 +50,7 @@ public class GUI extends Application implements IGUI {
    * @param domain
    */
   public void inject(IDomain domain) {
-    this.domain = domain;
+    GUI.domain = domain;
   }
 
   /**
