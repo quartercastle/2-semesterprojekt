@@ -48,12 +48,6 @@ public class Case implements ICase {
   }
 
   /**
-   * No arg constructor
-   */
-  public Case() {
-  }
-
-  /**
    * Returns case ID
    *
    * @return id

@@ -40,7 +40,7 @@ public class CreateCaseController extends Controller {
    */
   @FXML
   private void previousButtonClicked(ActionEvent event) {
-    caseTabPane.getSelectionModel().selectPrevious();
+    tabPane.getSelectionModel().selectPrevious();
   }
 
 }
