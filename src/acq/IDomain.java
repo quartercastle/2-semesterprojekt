@@ -18,4 +18,11 @@ public interface IDomain {
    */
   boolean verify(String username, String password);
 
+  /**
+   * Creats ICase
+   *
+   * @return ICase
+   */
+  ICase createCase();
+
 }

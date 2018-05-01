@@ -13,11 +13,30 @@ public class Controller implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
   }
 
+  /**
+   * Get stage
+   *
+   * @return stage
+   */
   public Stage getStage() {
     return stage;
   }
 
+  /**
+   * Set stage
+   *
+   * @param stage
+   */
   public void setStage(Stage stage) {
     this.stage = stage;
   }
+
+  /**
+   * open window
+   */
+  public void open() {
+    stage.show();
+    stage.requestFocus();
+  }
+
 }

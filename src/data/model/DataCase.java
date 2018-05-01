@@ -30,19 +30,22 @@ public class DataCase implements ICase {
   private ICitizen citizen;
 
   /**
-   * Effort
-   * TODO not described correctly?
+   * Effort TODO not described correctly?
    */
   private IEffort effort;
 
   /**
-   * Collection of case participants
-   * TODO Not currently implemented
+   * Collection of case participants TODO Not currently implemented
    */
   private Collection<ICitizen> participants;
+  /**
+   * Holding information about the case
+   */
+  private String referral;
 
   /**
    * Create a new DataCase
+   *
    * @param id
    * @param responsible
    * @param citizen
@@ -58,6 +61,7 @@ public class DataCase implements ICase {
 
   /**
    * Get id
+   *
    * @return id
    */
   @Override
@@ -67,6 +71,7 @@ public class DataCase implements ICase {
 
   /**
    * Get responsible
+   *
    * @return responsible
    */
   @Override
@@ -76,6 +81,7 @@ public class DataCase implements ICase {
 
   /**
    * Get Citizen
+   *
    * @return Citizen
    */
   @Override
@@ -85,6 +91,7 @@ public class DataCase implements ICase {
 
   /**
    * Get effort
+   *
    * @return effort
    */
   @Override
@@ -94,11 +101,32 @@ public class DataCase implements ICase {
 
   /**
    * Get participants
+   *
    * @return participants
    */
   @Override
   public Collection<ICitizen> getParticipants() {
     return this.participants;
+  }
+
+  /**
+   * Get referral
+   *
+   * @return referral
+   */
+  @Override
+  public String getReferral() {
+    return referral;
+  }
+
+  /**
+   * Set referral
+   *
+   * @param referral
+   */
+  @Override
+  public void setReferral(String referral) {
+    this.referral = referral;
   }
 
 }

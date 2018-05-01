@@ -76,7 +76,9 @@ public class GUI extends Application implements IGUI {
     //this.stage = stage;
     controllers.put("Login", load("Login"));
     controllers.get("Login").getStage().show();
+    controllers.put("CreateCase", load("CreateCase"));
     controllers.put("Overview", load("Overview"));
+
   }
 
   /**
@@ -143,6 +145,16 @@ public class GUI extends Application implements IGUI {
    */
   public Map<String, Controller> getControllers() {
     return controllers;
+  }
+
+  /**
+   * Get controller
+   *
+   * @param name
+   * @return name
+   */
+  public Controller getController(String name) {
+    return controllers.get(name);
   }
 
 }

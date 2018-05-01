@@ -31,6 +31,10 @@ public class Case implements ICase {
    * Participating citizens
    */
   private Collection<ICitizen> participants;
+  /**
+   * Holding information about the case
+   */
+  private String referral;
 
   /**
    * Case constructor
@@ -112,6 +116,24 @@ public class Case implements ICase {
   @Override
   public Effort getEffort() {
     return effort;
+  }
+
+  /**
+   * Get referral
+   *
+   * @return referral
+   */
+  public String getReferral() {
+    return referral;
+  }
+
+  /**
+   * Set referral
+   *
+   * @param referral
+   */
+  public void setReferral(String referral) {
+    this.referral = referral;
   }
 
   /**

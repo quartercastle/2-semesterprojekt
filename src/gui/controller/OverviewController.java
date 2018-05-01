@@ -1,8 +1,8 @@
 package gui.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import gui.GUI;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 
 /**
  * FXML Controller class
@@ -11,11 +11,13 @@ import javafx.fxml.Initializable;
 public class OverviewController extends Controller {
 
   /**
-   * Initializes the controller class.
+   * Opens up CreateCase stage
+   *
+   * @param event
    */
-  @Override
-  public void initialize(URL url, ResourceBundle rb) {
-    // TODO
-  }
+  @FXML
+  private void openCaseAction(ActionEvent event) {
 
+    GUI.getInstance().getController("CreateCase").open();
+  }
 }
