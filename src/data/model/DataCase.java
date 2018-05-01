@@ -39,9 +39,9 @@ public class DataCase implements ICase {
    */
   private Collection<ICitizen> participants;
   /**
-   * Holding information about the case
+   * Case inquiry
    */
-  private String referral;
+  private String inquiry;
 
   /**
    * Create a new DataCase
@@ -110,23 +110,23 @@ public class DataCase implements ICase {
   }
 
   /**
-   * Get referral
+   * Get inquiry
    *
-   * @return referral
+   * @return inquiry
    */
   @Override
-  public String getReferral() {
-    return referral;
+  public String getInquiry() {
+    return inquiry;
   }
 
   /**
-   * Set referral
+   * Set inquiry
    *
-   * @param referral
+   * @param inquiry
    */
   @Override
-  public void setReferral(String referral) {
-    this.referral = referral;
+  public void setInquiry(String inquiry) {
+    this.inquiry = inquiry;
   }
 
 }

@@ -44,16 +44,16 @@ public interface ICase {
   Collection<ICitizen> getParticipants();
 
   /**
-   * Get Referral
+   * Get inquiry
    *
    * @return referral
    */
-  String getReferral();
+  String getInquiry();
 
   /**
-   * Set Referral
+   * Set inquiry
    *
    * @param referral
    */
-  void setReferral(String referral);
+  void setInquiry(String referral);
 }

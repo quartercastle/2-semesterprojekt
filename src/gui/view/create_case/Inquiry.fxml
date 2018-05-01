@@ -15,7 +15,7 @@
         <Insets bottom="6.0" left="25.0" right="25.0" />
       </VBox.margin>
     </Text>
-    <TextArea fx:id="referral" prefHeight="181.0" prefWidth="600.0">
+    <TextArea fx:id="inquiry" prefHeight="181.0" prefWidth="600.0">
       <padding>
         <Insets left="25.0" right="25.0" />
       </padding>

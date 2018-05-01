@@ -15,17 +15,17 @@ import javafx.scene.control.TextArea;
 public class InquiryController extends TabController {
 
   @FXML
-  private TextArea referral;
+  private TextArea inquiry;
 
   /**
    * Initializes the controller class.
    */
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    referral.textProperty().addListener(new ChangeListener<String>() {
+    inquiry.textProperty().addListener(new ChangeListener<String>() {
       @Override
       public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-        getCase().setReferral(newValue);
+        getCase().setInquiry(newValue);
       }
     });
   }
