@@ -18,7 +18,6 @@ public class OverviewController extends Controller {
   @FXML
   private void openCaseAction(ActionEvent event) {
 
-    GUI.getInstance().showStage("CreateCase");
-    GUI.getInstance().getDomain().createCase();
+    GUI.getInstance().getController("CreateCase").open();
   }
 }

@@ -20,4 +20,10 @@ public class Controller implements Initializable {
   public void setStage(Stage stage) {
     this.stage = stage;
   }
+
+  public void open() {
+    stage.show();
+    stage.requestFocus();
+  }
+
 }

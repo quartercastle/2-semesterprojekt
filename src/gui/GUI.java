@@ -146,4 +146,8 @@ public class GUI extends Application implements IGUI {
     return controllers;
   }
 
+  public Controller getController(String name) {
+    return controllers.get(name);
+  }
+
 }

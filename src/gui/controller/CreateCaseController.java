@@ -1,5 +1,7 @@
 package gui.controller;
 
+import acq.ICase;
+import gui.GUI;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -14,14 +16,10 @@ public class CreateCaseController extends Controller {
    */
   @FXML
   private TabPane tabPane;
-
   /**
-   * Initializes the controller class.
+   * Refreence Case
    */
-  @Override
-  public void initialize(URL url, ResourceBundle rb) {
-    // TODO
-  }
+  private ICase c;
 
   /**
    * Go to next tab in the process
@@ -41,6 +39,16 @@ public class CreateCaseController extends Controller {
   @FXML
   private void previousButtonClicked(ActionEvent event) {
     tabPane.getSelectionModel().selectPrevious();
+  }
+
+  /**
+   * Method for open window
+   */
+  public void open() {
+    super.open();
+    if (c == null) {
+      c = GUI.getInstance().getDomain().createCase();
+    }
   }
 
 }
