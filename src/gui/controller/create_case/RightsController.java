@@ -14,12 +14,12 @@ import javafx.scene.control.CheckBox;
 public class RightsController extends TabController {
 
   /**
-   * Checkbox representing Case bolean informedAboutRights
+   * Checkbox representing Case boolean informedAboutRights
    */
   @FXML
   private CheckBox rightsCheckBox;
   /**
-   * Checkbox representing Case bolean informedAboutDuties
+   * Checkbox representing Case boolean informedAboutDuties
    */
   @FXML
   private CheckBox dutiesCheckBox;

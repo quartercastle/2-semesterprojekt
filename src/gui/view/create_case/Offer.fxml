@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.create_case.OfferController">
+  <children>
+    <VBox fx:id="contentBox" layoutY="65.0" prefHeight="321.0" prefWidth="625.0" visible="false">
+      <children>
+        <HBox fx:id="hboxLabel1" alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="600.0">
+          <children>
+            <Label text="Hvis ja, angiv da hvad borgeren søger om (afkrydsning af ydelser/§)">
+              <font>
+                <Font name="System Font" size="13.0" />
+              </font>
+            </Label>
+          </children>
+          <opaqueInsets>
+            <Insets />
+          </opaqueInsets>
+        </HBox>
+        <HBox fx:id="hboxCheckbox2" prefHeight="134.0" prefWidth="600.0">
+          <children>
+            <VBox alignment="CENTER_LEFT" prefHeight="134.0" prefWidth="355.0" spacing="9.0">
+              <children>
+                <CheckBox fx:id="supportPracticalTasks" mnemonicParsing="false" text="Støtte til praktiske opgaver i hjemmet(§ 85)" />
+                <CheckBox fx:id="supportPersonalCare" mnemonicParsing="false" text="Støtte til personlig pleje (§ 85)" />
+                <CheckBox fx:id="supportGrosery" mnemonicParsing="false" text="Støtte til indkøb og kost (§ 85)" />
+                <CheckBox fx:id="temporaryStay" mnemonicParsing="false" text="Midlertidigt ophold (§ 107)" />
+              </children>
+            </VBox>
+            <VBox alignment="CENTER_LEFT" prefHeight="134.0" prefWidth="297.0" spacing="9.0">
+              <children>
+                <CheckBox fx:id="longerStay" mnemonicParsing="false" text="Længere ophold (§ 108)" />
+                <CheckBox fx:id="supportLearning" mnemonicParsing="false" text="Støtte til læring (§ 81)" />
+                <CheckBox fx:id="supportRehabilitation" mnemonicParsing="false" text="Støtte til genoptræning (§ 90)" />
+                <CheckBox fx:id="supportDriving" mnemonicParsing="false" text="Støtte til kørsel (§ 95)" />
+              </children>
+            </VBox>
+          </children>
+        </HBox>
+        <HBox fx:id="hboxLabel2" alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="600.0">
+          <children>
+            <Label text="Hvis ja, angiv tilbud (afkrydsning af tilbud)">
+              <font>
+                <Font name="System Bold" size="13.0" />
+              </font>
+            </Label>
+          </children>
+          <opaqueInsets>
+            <Insets />
+          </opaqueInsets>
+        </HBox>
+        <HBox fx:id="hboxCheckbox2" prefHeight="100.0" prefWidth="600.0">
+          <children>
+            <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="318.0" spacing="9.0">
+              <children>
+                <CheckBox fx:id="temporaryHouseOffer" mnemonicParsing="false" text="Midlertidigt botilbud" />
+                <CheckBox fx:id="supportOfferPersonalCare" mnemonicParsing="false" text="Støttetilbud til personlig pleje" />
+                <CheckBox fx:id="supportOfferGrocery" mnemonicParsing="false" text="Støttetilbud til indkøb og kost (§ 85)" />
+              </children>
+            </VBox>
+            <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="276.0" spacing="9.0">
+              <children>
+                <CheckBox fx:id="longerStayOffer" mnemonicParsing="false" text="Længerevarende botilbud" />
+                <CheckBox fx:id="supportOfferLearning" mnemonicParsing="false" text="Støttetilbud til skolelæring" />
+                <CheckBox fx:id="supportOfferRehabilitation" mnemonicParsing="false" text="Støttetilbud til genoptræning" />
+              </children>
+            </VBox>
+          </children>
+        </HBox>
+      </children>
+      <opaqueInsets>
+        <Insets />
+      </opaqueInsets>
+      <padding>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+      </padding>
+    </VBox>
+    <HBox alignment="CENTER_LEFT" layoutX="25.0" layoutY="14.0" prefHeight="70.0" prefWidth="550.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
+      <children>
+        <Label text="Er det klart hvad borgeren søger om?" />
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+          <opaqueInsets>
+            <Insets />
+          </opaqueInsets>
+          <HBox.margin>
+            <Insets />
+          </HBox.margin>
+          <children>
+            <RadioButton graphicTextGap="5.0" mnemonicParsing="false" text="Ja">
+              <toggleGroup>
+                <ToggleGroup fx:id="YesOrNo" />
+              </toggleGroup>
+              <VBox.margin>
+                <Insets right="6.0" />
+              </VBox.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" selected="true" text="Nej" toggleGroup="$YesOrNo" />
+          </children>
+        </VBox>
+      </children>
+      <opaqueInsets>
+        <Insets />
+      </opaqueInsets>
+    </HBox>
+  </children>
+</AnchorPane>

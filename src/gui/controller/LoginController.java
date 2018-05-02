@@ -1,8 +1,6 @@
 package gui.controller;
 
 import gui.GUI;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -14,9 +12,6 @@ import javafx.scene.input.KeyEvent;
 
 public class LoginController extends Controller {
 
-  /**
-   * Reference to the label instance
-   */
   /**
    * Username textfield
    */

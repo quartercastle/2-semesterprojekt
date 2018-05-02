@@ -73,7 +73,7 @@ public class CreateCaseController extends TabController {
    */
   private void setupControllers() {
     //A array of all the names of the fxml files
-    String[] tabNames = {"Inquiry", "Rights", "BasicInformation", "Circumstances", "FurtherCourse"};
+    String[] tabNames = {"Inquiry", "Offer", "Rights", "BasicInformation", "Circumstances", "FurtherCourse"};
     //A list of all the tabs
     ObservableList<Tab> tabs = tabPane.getTabs();
 
