@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui.controller.create_case;
 
 import java.net.URL;
@@ -10,47 +5,118 @@ import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
  *
- * @author niclasjohansen
+ *
  */
 public class OfferController extends TabController {
 
+  /**
+   * Togglegroup representing if the offer content should be shown
+   */
   @FXML
   private ToggleGroup YesOrNo;
+
+  /**
+   * Checkbox representing Case boolean for supportPracticalTasks
+   */
   @FXML
   private CheckBox supportPracticalTasks;
+
+  /**
+   * Checkbox representing Case boolean for supportPersonalCare
+   */
   @FXML
   private CheckBox supportPersonalCare;
+
+  /**
+   * Checkbox representing Case boolean for supportGrosery
+   */
   @FXML
   private CheckBox supportGrosery;
+
+  /**
+   * Checkbox representing Case boolean for temporaryStay
+   */
   @FXML
   private CheckBox temporaryStay;
+
+  /**
+   * Checkbox representing Case boolean for longerStay
+   */
   @FXML
   private CheckBox longerStay;
+
+  /**
+   * Checkbox representing Case boolean for supportLearning
+   */
   @FXML
   private CheckBox supportLearning;
+
+  /**
+   * Checkbox representing Case boolean for supportRehabilitation
+   */
   @FXML
   private CheckBox supportRehabilitation;
+
+  /**
+   * Checkbox representing Case boolean for supportDriving
+   */
   @FXML
   private CheckBox supportDriving;
+
+  /**
+   * Checkbox representing Case boolean for temporaryHouseOffer
+   */
   @FXML
   private CheckBox temporaryHouseOffer;
+
+  /**
+   * Checkbox representing Case boolean for supportOfferPersonalCare
+   */
   @FXML
   private CheckBox supportOfferPersonalCare;
+
+  /**
+   * Checkbox representing Case boolean for supportOfferGrocery
+   */
   @FXML
   private CheckBox supportOfferGrocery;
+
+  /**
+   * Checkbox representing Case boolean for longerStayOffer
+   */
   @FXML
   private CheckBox longerStayOffer;
+
+  /**
+   * Checkbox representing Case boolean for supportOfferLearning
+   */
   @FXML
   private CheckBox supportOfferLearning;
+
+  /**
+   * Checkbox representing Case boolean for supportOfferRehabilitation
+   */
   @FXML
   private CheckBox supportOfferRehabilitation;
+
+  /**
+   * VBox that contains all the offer content
+   */
+  @FXML
+  private VBox contentBox;
+
+  /**
+   * toggled boolean value to toggle content
+   */
+  private boolean toggled = false;
 
   /**
    * Initializes the controller class.
@@ -206,6 +272,27 @@ public class OfferController extends TabController {
         getCase().setRehabilitationOffer(newValue);
       }
     });
+
+    /**
+     * Sets if the content should be shown. If true content is shown.
+     */
+    YesOrNo.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+      @Override
+      public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
+        toggleContent(!toggled);
+        toggled = !toggled;
+      }
+
+    });
+
   }
 
+  /**
+   * Method that toggles the visibily of the content
+   *
+   * @param toggle
+   */
+  public void toggleContent(boolean toggle) {
+    contentBox.setVisible(toggle);
+  }
 }
