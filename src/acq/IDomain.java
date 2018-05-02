@@ -27,14 +27,23 @@ public interface IDomain {
 
   /**
    * Create a new ICitizen
+   *
    * @return citizen
    */
   ICitizen createCitizen();
 
   /**
    * Create a new IAddress
+   *
    * @return address
    */
   IAddress createAddress();
+
+  /**
+   * Saves the cases to collection
+   *
+   * @param c
+   */
+  public void saveCase(ICase c);
 
 }
