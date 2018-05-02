@@ -115,6 +115,44 @@ public class BasicInformationController extends TabController {
   private CheckBox informationSavedOnline;
 
   /**
+   * Initializes the controller class and setup change listeners.
+   */
+  @Override
+  public void initialize(URL url, ResourceBundle rb) {
+    guardianship.selectedProperty().addListener((e, oldState, state) -> {
+      getCase().setGuardianship(state);
+    });
+
+    noneActingGuardian.selectedProperty().addListener((e, oldState, state) -> {
+      getCase().setNoneActingGuardian(state);
+    });
+
+    curatorship.selectedProperty().addListener((e, oldState, state) -> {
+      getCase().setCuratorship(state);
+    });
+
+    assessor.selectedProperty().addListener((e, oldState, state) -> {
+      getCase().setAssessor(state);
+    });
+
+    partyRepresentative.selectedProperty().addListener((e, oldState, state) -> {
+      getCase().setPartyRepresentative(state);
+    });
+
+    powerOfAttorney.selectedProperty().addListener((e, oldState, state) -> {
+      getCase().setPowerOfAttorney(state);
+    });
+
+    rightToAssessorOrPartyRepresentative.selectedProperty().addListener((e, oldState, state) -> {
+      getCase().setRightToAssessorOrPartyRepresentative(state);
+    });
+
+    informationSavedOnline.selectedProperty().addListener((e, oldState, state) -> {
+      getCase().setInformationSavedOnline(state);
+    });
+  }
+
+  /**
    * Helper method to retreive the Citizen
    *
    * @return citizen
