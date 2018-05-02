@@ -48,6 +48,11 @@ public class Case implements ICase {
   private boolean informedAboutDuties;
 
   /**
+   * Eventual circumstances to the case
+   */
+  private String circumstance;
+
+  /**
    * Case constructor
    *
    * @param responsible
@@ -217,4 +222,23 @@ public class Case implements ICase {
     this.informedAboutDuties = informed;
   }
 
+  /**
+   * Get eventual circumstance
+   *
+   * @return
+   */
+  @Override
+  public String getCircumstance() {
+    return circumstance;
+  }
+
+  /**
+   * Set circumstance
+   *
+   * @param circumstance
+   */
+  @Override
+  public void setCircumstance(String circumstance) {
+    this.circumstance = circumstance;
+  }
 }
