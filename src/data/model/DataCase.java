@@ -99,6 +99,11 @@ public class DataCase implements ICase {
   private boolean informationSavedOnline;
 
   /**
+   * Further course for case
+   */
+  private String furtherCourse;
+
+  /**
    * Create a new DataCase
    *
    * @param id
@@ -256,6 +261,7 @@ public class DataCase implements ICase {
 
   /**
    * Is guardian
+   *
    * @return guardianship
    */
   public boolean isGuardianship() {
@@ -411,4 +417,25 @@ public class DataCase implements ICase {
   public void setInformationSavedOnline(boolean informationSavedOnline) {
     this.informationSavedOnline = informationSavedOnline;
   }
+
+  /**
+   * Get fourther cource for case
+   *
+   * @return furtherCource
+   */
+  @Override
+  public String getFurtherCourse() {
+    return furtherCourse;
+  }
+
+  /**
+   * Set furtherCource
+   *
+   * @param furtherCourse
+   */
+  @Override
+  public void setFurtherCourse(String furtherCourse) {
+    this.furtherCourse = furtherCourse;
+  }
+
 }

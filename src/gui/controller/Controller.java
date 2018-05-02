@@ -5,13 +5,12 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 
-public class Controller implements Initializable {
+public abstract class Controller implements Initializable {
 
+  /**
+   * Stage for window
+   */
   private Stage stage;
-
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-  }
 
   /**
    * Get stage

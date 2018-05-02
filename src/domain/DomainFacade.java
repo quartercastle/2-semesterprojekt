@@ -74,14 +74,14 @@ public class DomainFacade implements IDomain {
   /**
    * Create a new Citizen
    */
-  public Citizen createCitizen () {
+  public Citizen createCitizen() {
     return new Citizen("", "", "", "", null, "", "");
   }
 
   /**
    * Create a new Address
    */
-  public Address createAddress () {
+  public Address createAddress() {
     return new Address("", "", "", "", "");
   }
 }

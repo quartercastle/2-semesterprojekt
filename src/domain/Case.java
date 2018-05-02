@@ -91,6 +91,10 @@ public class Case implements ICase {
    * Citizen is informed aboute their data is saved online
    */
   private boolean informationSavedOnline;
+  /**
+   * Further cource for case
+   */
+  private String furtherCourse;
 
   /**
    * Case constructor
@@ -449,5 +453,28 @@ public class Case implements ICase {
   @Override
   public void setInformationSavedOnline(boolean informationSavedOnline) {
     this.informationSavedOnline = informationSavedOnline;
+
+  }
+
+  /**
+   *
+   * Get further course for case
+   *
+   * @return furtherCourse
+   */
+  @Override
+  public String getFurtherCourse() {
+    return furtherCourse;
+  }
+
+  /**
+   *
+   * Set furtherCourse
+   *
+   * @param furtherCourse
+   */
+  @Override
+  public void setFurtherCourse(String furtherCourse) {
+    this.furtherCourse = furtherCourse;
   }
 }
