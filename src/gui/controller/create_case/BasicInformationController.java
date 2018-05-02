@@ -6,6 +6,7 @@ import gui.GUI;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
@@ -66,6 +67,54 @@ public class BasicInformationController extends TabController {
   private TextField phone;
 
   /**
+   * Guardianship
+   */
+  @FXML
+  private CheckBox guardianship;
+
+  /**
+   * None Acting Guardian
+   */
+  @FXML
+  private CheckBox noneActingGuardian;
+
+  /**
+   * Curatorship
+   */
+  @FXML
+  private CheckBox curatorship;
+
+  /**
+   * Assessor
+   */
+  @FXML
+  private CheckBox assessor;
+
+  /**
+   * Party Representative
+   */
+  @FXML
+  private CheckBox partyRepresentative;
+
+  /**
+   * Power of Attorney
+   */
+  @FXML
+  private CheckBox powerOfAttorney;
+
+  /**
+   * Right to Assessor or Party Representative
+   */
+  @FXML
+  private CheckBox rightToAssessorOrPartyRepresentative;
+
+  /**
+   * Information Saved Online
+   */
+  @FXML
+  private CheckBox informationSavedOnline;
+
+  /**
    * Helper method to retreive the Citizen
    *
    * @return citizen
@@ -106,6 +155,7 @@ public class BasicInformationController extends TabController {
    *
    * @param event
    */
+  @FXML
   private void middleNameChanged(KeyEvent event) {
     getCitizen().setMiddleName(middleName.getText());
   }

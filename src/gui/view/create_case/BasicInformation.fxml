@@ -77,23 +77,23 @@
         </rowConstraints>
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Værge, partsrepræsentant, samt rettigheder og pligter" />
-            <CheckBox mnemonicParsing="false" text="Værgemål" GridPane.rowIndex="1" />
-            <CheckBox mnemonicParsing="false" text="Værgemål med frataget retslig handleevne" GridPane.rowIndex="2" />
-            <CheckBox mnemonicParsing="false" text="Samværgemål" GridPane.rowIndex="3" />
-            <CheckBox mnemonicParsing="false" text="Bisidder" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <CheckBox mnemonicParsing="false" text="Partsrepræsentant" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <CheckBox mnemonicParsing="false" text="Fuldmagt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <CheckBox fx:id="guardianship" mnemonicParsing="false" text="Værgemål" GridPane.rowIndex="1" />
+            <CheckBox fx:id="noneActingGuardian" mnemonicParsing="false" text="Værgemål med frataget retslig handleevne" GridPane.rowIndex="2" />
+            <CheckBox fx:id="curatorship" mnemonicParsing="false" text="Samværgemål" GridPane.rowIndex="3" />
+            <CheckBox fx:id="assessor" mnemonicParsing="false" text="Bisidder" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <CheckBox fx:id="partyRepresentative" mnemonicParsing="false" text="Partsrepræsentant" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <CheckBox fx:id="powerOfAttorney" mnemonicParsing="false" text="Fuldmagt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin>
       </GridPane>
-      <CheckBox mnemonicParsing="false" text="Ret til bisidder og partsrepræsentant">
+      <CheckBox fx:id="rightToAssessorOrPartyRepresentative" mnemonicParsing="false" text="Ret til bisidder og partsrepræsentant">
          <VBox.margin>
             <Insets top="25.0" />
          </VBox.margin>
       </CheckBox>
-      <CheckBox mnemonicParsing="false" text="Er borgeren informeret om at oplysningerneer registreret elektronisk?">
+      <CheckBox fx:id="informationSavedOnline" mnemonicParsing="false" text="Er borgeren informeret om at oplysningerneer registreret elektronisk?">
          <VBox.margin>
             <Insets top="12.0" />
          </VBox.margin>
