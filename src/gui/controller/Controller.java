@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 
-public class Controller implements Initializable {
+public abstract class Controller implements Initializable {
 
   private Stage stage;
 

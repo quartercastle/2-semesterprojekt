@@ -136,6 +136,7 @@ public interface ICase {
 
   /**
    * Is curatorship
+   *
    * @return curatorship
    */
   boolean isCuratorship();
@@ -216,4 +217,19 @@ public interface ICase {
    * @param informationSavedOnline
    */
   void setInformationSavedOnline(boolean informationSavedOnline);
+
+  /**
+   * Get further course for case
+   *
+   * @return
+   */
+  String getFurtherCourse();
+
+  /**
+   * Set furtherCource
+   *
+   * @param fourtherCourse
+   */
+  void setFurtherCourse(String fourtherCourse);
+
 }
