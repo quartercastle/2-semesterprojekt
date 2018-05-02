@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.create_case.CreateCaseController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.create_case.CreateCaseController">
   <children>
-    <TabPane fx:id="tabPane" prefHeight="428.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+    <TabPane fx:id="tabPane" prefHeight="690.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
       <tabs>
         <Tab text="Henvendelse" />
         <Tab text="Rettigheder" />
@@ -18,12 +18,12 @@
         <Tab text="Videre forløb" />
       </tabs>
     </TabPane>
-    <HBox alignment="BOTTOM_RIGHT" prefHeight="151.0" prefWidth="600.0" spacing="10.0">
+    <HBox alignment="BOTTOM_RIGHT" prefHeight="36.0" prefWidth="600.0" spacing="10.0">
       <opaqueInsets>
         <Insets />
       </opaqueInsets>
       <padding>
-        <Insets bottom="25.0" left="25.0" right="25.0" />
+        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
       </padding>
       <children>
         <Button fx:id="previousBut" mnemonicParsing="false" onAction="#previousButAction" text="Forrige" visible="false" />

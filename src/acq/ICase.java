@@ -58,6 +58,13 @@ public interface ICase {
   void setInquiry(String referral);
 
   /**
+   * Set citizen
+   *
+   * @param citizen
+   */
+  void setCitizen(ICitizen citizen);
+
+  /**
    * Get informed about rights status
    *
    * @return informedAboutRights
@@ -99,4 +106,114 @@ public interface ICase {
    */
   void setCircumstance(String circumstance);
 
+  /**
+   * Is guardianship
+   *
+   * @return guardianship
+   */
+  boolean isGuardianship();
+
+  /**
+   * Set Guardianship
+   *
+   * @param guardianship
+   */
+  void setGuardianship(boolean guardianship);
+
+  /**
+   * Is None Acting Guardian
+   *
+   * @return none acting guardian
+   */
+  boolean isNoneActingGuardian();
+
+  /**
+   * Set none acting guardian
+   *
+   * @param noneActingGuardian
+   */
+  void setNoneActingGuardian(boolean noneActingGuardian);
+
+  /**
+   * Is curatorship
+   * @return curatorship
+   */
+  boolean isCuratorship();
+
+  /**
+   * Set curatorship
+   *
+   * @param curatorship
+   */
+  void setCuratorship(boolean curatorship);
+
+  /**
+   * Is assessor
+   *
+   * @return assessor
+   */
+  boolean isAssessor();
+
+  /**
+   * Set assessor
+   *
+   * @param assessor
+   */
+  void setAssessor(boolean assessor);
+
+  /**
+   * Is Party Representative
+   *
+   * @return Party Representative
+   */
+  boolean isPartyRepresentative();
+
+  /**
+   * Set Party Representative
+   *
+   * @param partyRepresentative
+   */
+  void setPartyRepresentative(boolean partyRepresentative);
+
+  /**
+   * Is Power Of Attorney
+   *
+   * @return powerOfAttorney
+   */
+  boolean isPowerOfAttorney();
+
+  /**
+   * Set Power Of Attorney
+   *
+   * @param powerOfAttorney
+   */
+  void setPowerOfAttorney(boolean powerOfAttorney);
+
+  /**
+   * Is Right To Assessor Or Party Representative
+   *
+   * @return rightToAssessorOrPartyRepresentative
+   */
+  boolean isRightToAssessorOrPartyRepresentative();
+
+  /**
+   * Set Right To Assessor Or Party Representative
+   *
+   * @param rightToAssessorOrPartyRepresentative
+   */
+  void setRightToAssessorOrPartyRepresentative(boolean rightToAssessorOrPartyRepresentative);
+
+  /**
+   * Is Information Saved Online
+   *
+   * @return informationSavedOnline
+   */
+  boolean isInformationSavedOnline();
+
+  /**
+   * Set Information Saved Online
+   *
+   * @param informationSavedOnline
+   */
+  void setInformationSavedOnline(boolean informationSavedOnline);
 }

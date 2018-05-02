@@ -69,6 +69,19 @@ public class DomainFacade implements IDomain {
   @Override
   public Case createCase() {
     return new Case(null, null, null);
+  }
 
+  /**
+   * Create a new Citizen
+   */
+  public Citizen createCitizen () {
+    return new Citizen("", "", "", "", null, "", "");
+  }
+
+  /**
+   * Create a new Address
+   */
+  public Address createAddress () {
+    return new Address("", "", "", "", "");
   }
 }

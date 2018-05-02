@@ -40,4 +40,22 @@ public interface IAddress {
    */
   String getCountry();
 
+  /**
+   * Set primary line
+   * @param line
+   */
+  void setPrimaryLine(String line);
+
+  /**
+   * Set zip
+   * @param zip
+   */
+  void setZip(String zip);
+
+  /**
+   * Set city
+   * @param city
+   */
+  void setCity(String city);
+
 }
