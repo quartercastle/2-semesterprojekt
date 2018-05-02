@@ -221,7 +221,7 @@ public interface ICase {
   /**
    * Get further course for case
    *
-   * @return
+   * @return getFurtherCourse
    */
   String getFurtherCourse();
 

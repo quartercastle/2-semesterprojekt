@@ -91,7 +91,9 @@ public class Case implements ICase {
    * Citizen is informed aboute their data is saved online
    */
   private boolean informationSavedOnline;
-
+  /**
+   * Further cource for case
+   */
   private String furtherCourse;
 
   /**
@@ -458,7 +460,7 @@ public class Case implements ICase {
    *
    * Get further course for case
    *
-   * @return
+   * @return furtherCourse
    */
   @Override
   public String getFurtherCourse() {

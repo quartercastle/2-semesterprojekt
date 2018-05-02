@@ -98,6 +98,9 @@ public class DataCase implements ICase {
    */
   private boolean informationSavedOnline;
 
+  /**
+   * Further course for case
+   */
   private String furtherCourse;
 
   /**
