@@ -131,7 +131,7 @@ public class OfferController extends TabController {
     supportPracticalTasks.selectedProperty().addListener(new ChangeListener<Boolean>() {
       @Override
       public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-        getCase().setSupportPracticalTasks(newValue);
+        getCase().setPracticalTasksSupport(newValue);
       }
     });
 
@@ -141,7 +141,7 @@ public class OfferController extends TabController {
     supportPersonalCare.selectedProperty().addListener(new ChangeListener<Boolean>() {
       @Override
       public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-        getCase().setSupportPersonalCare(newValue);
+        getCase().setPersonalCareSupport(newValue);
       }
     });
 
@@ -151,7 +151,7 @@ public class OfferController extends TabController {
     supportGrosery.selectedProperty().addListener(new ChangeListener<Boolean>() {
       @Override
       public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-        getCase().setSupportGrosery(newValue);
+        getCase().setGrocerySupport(newValue);
       }
     });
 

@@ -97,7 +97,7 @@ public interface ICase {
    *
    * @param needSupport
    */
-  void setSupportPracticalTasks(boolean needSupport);
+  void setPracticalTasksSupport(boolean needSupport);
 
   /**
    * Get informed about if the citizen need support for personal care
@@ -111,21 +111,21 @@ public interface ICase {
    *
    * @param needSupport
    */
-  void setSupportPersonalCare(boolean needSupport);
+  void setPersonalCareSupport(boolean needSupport);
 
   /**
    * Get informed about if the citizen need support for grosery shopping
    *
    * @return needGroserySupport
    */
-  boolean needGroserySupport();
+  boolean needGrocerySupport();
 
   /**
    * Set whether the citizen needs support for grosery shopping
    *
    * @param needSupport
    */
-  void setSupportGrosery(boolean needSupport);
+  void setGrocerySupport(boolean needSupport);
 
   /**
    * Get informed if the citizen needs support for a temporary stay

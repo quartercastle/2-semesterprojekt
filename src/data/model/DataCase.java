@@ -265,7 +265,7 @@ public class DataCase implements ICase {
    * @param needSupport
    */
   @Override
-  public void setSupportPracticalTasks(boolean needSupport) {
+  public void setPracticalTasksSupport(boolean needSupport) {
     this.practicalTasksSupport = needSupport;
   }
 
@@ -285,7 +285,7 @@ public class DataCase implements ICase {
    * @param needSupport
    */
   @Override
-  public void setSupportPersonalCare(boolean needSupport) {
+  public void setPersonalCareSupport(boolean needSupport) {
     this.personalCareSupport = needSupport;
   }
 
@@ -295,7 +295,7 @@ public class DataCase implements ICase {
    * @return needGroserySupport
    */
   @Override
-  public boolean needGroserySupport() {
+  public boolean needGrocerySupport() {
     return this.groserySupport;
   }
 
@@ -305,7 +305,7 @@ public class DataCase implements ICase {
    * @param needSupport
    */
   @Override
-  public void setSupportGrosery(boolean needSupport) {
+  public void setGrocerySupport(boolean needSupport) {
     this.groserySupport = needSupport;
   }
 
