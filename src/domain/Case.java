@@ -116,7 +116,7 @@ public class Case implements ICase {
    * Does the citizen need an offer for rehabilitation, from Case-opening
    */
   private boolean rehabilitationOffer;
-  
+
   /**
    * Eventual circumstances to the case
    */
@@ -624,7 +624,7 @@ public class Case implements ICase {
   public void setRehabilitationOffer(boolean needRehabilitationOffer) {
     this.rehabilitationOffer = needRehabilitationOffer;
   }
-  
+
   /**
    * Get eventual circumstance
    *

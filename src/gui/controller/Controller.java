@@ -38,4 +38,13 @@ public abstract class Controller implements Initializable {
     stage.requestFocus();
   }
 
+  /**
+   * Initialize
+   *
+   * @param location
+   * @param resources
+   */
+  public void initialize(URL location, ResourceBundle resources) {
+  }
+
 }

@@ -287,7 +287,7 @@ public interface ICase {
    * @param needRehabilitationOffer
    */
   void setRehabilitationOffer(boolean needRehabilitationOffer);
-  
+
   /**
    * Get eventual circumstance
    *
