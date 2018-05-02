@@ -54,4 +54,46 @@ public interface ICitizen {
    */
   String getEmail();
 
+  /**
+   * Set first name
+   * @param name
+   */
+  void setFirstName (String name);
+
+  /**
+   * Set middle name
+   * @param name
+   */
+  void setMiddleName (String name);
+
+  /**
+   * Set last name
+   * @param name
+   */
+  void setLastName (String name);
+
+  /**
+   * Set CPR
+   * @param cpr
+   */
+  void setCPR (String cpr);
+
+  /**
+   * Set Address
+   * @param cpr
+   */
+  void setAddress (IAddress address);
+
+  /**
+   * Set phone
+   * @param phone
+   */
+  void setPhone (String phone);
+
+  /**
+   * Set email
+   * @param email
+   */
+  void setEmail (String email);
+
 }

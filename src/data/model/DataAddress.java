@@ -48,6 +48,7 @@ public class DataAddress implements IAddress {
 
   /**
    * Get primary line
+   *
    * @return primary line
    */
   @Override
@@ -57,6 +58,7 @@ public class DataAddress implements IAddress {
 
   /**
    * Get secondary line
+   *
    * @return secondary line
    */
   @Override
@@ -66,6 +68,7 @@ public class DataAddress implements IAddress {
 
   /**
    * Get zip
+   *
    * @return zip line
    */
   @Override
@@ -75,6 +78,7 @@ public class DataAddress implements IAddress {
 
   /**
    * Get City
+   *
    * @return Get city
    */
   @Override
@@ -84,11 +88,42 @@ public class DataAddress implements IAddress {
 
   /**
    * Get country
+   *
    * @return get country
    */
   @Override
   public String getCountry() {
     return this.country;
+  }
+
+  /**
+   * Set Primary line
+   *
+   * @param line
+   */
+  @Override
+  public void setPrimaryLine(String line) {
+    this.primaryLine = line;
+  }
+
+  /**
+   * Set zip
+   *
+   * @param zip
+   */
+  @Override
+  public void setZip(String zip) {
+    this.zip = zip;
+  }
+
+  /**
+   * Set city
+   *
+   * @param city
+   */
+  @Override
+  public void setCity(String city) {
+    this.city = city;
   }
 
 }

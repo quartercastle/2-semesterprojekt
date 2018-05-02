@@ -1,5 +1,6 @@
 package domain;
 
+import acq.IAddress;
 import acq.ICitizen;
 
 /*
@@ -195,6 +196,15 @@ public class Citizen implements ICitizen {
    */
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  /**
+   * Set Address
+   * @param name
+   */
+  @Override
+  public void setAddress(IAddress address) {
+    this.address = (Address) address;
   }
 
 }

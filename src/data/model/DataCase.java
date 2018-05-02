@@ -122,6 +122,56 @@ public class DataCase implements ICase {
    * Does the citizen need an offer for rehabilitation, from Case-opening
    */
   private boolean rehabilitationOffer;
+  
+  /**
+   * Eventual circumstances to the case
+   */
+  private String circumstance;
+
+  /**
+   * Guardianship
+   */
+  private boolean guardianship;
+
+  /**
+   * None acting Guardian
+   */
+  private boolean noneActingGuardian;
+
+  /**
+   * Curatorship
+   */
+  private boolean curatorship;
+
+  /**
+   * Assesor
+   */
+  private boolean assessor;
+
+  /**
+   * Party Representative
+   */
+  private boolean partyRepresentative;
+
+  /**
+   * Power of Attorney
+   */
+  private boolean powerOfAttorney;
+
+  /**
+   * Right To Assessor Or Party Representative
+   */
+  private boolean rightToAssessorOrPartyRepresentative;
+
+  /**
+   * Citizen is informed aboute their data is saved online
+   */
+  private boolean informationSavedOnline;
+
+  /**
+   * Further course for case
+   */
+  private String furtherCourse;
 
   /**
    * Create a new DataCase
@@ -207,6 +257,16 @@ public class DataCase implements ICase {
   @Override
   public void setInquiry(String inquiry) {
     this.inquiry = inquiry;
+  }
+
+  /**
+   * Set citizen
+   *
+   * @param citizen
+   */
+  @Override
+  public void setCitizen(ICitizen citizen) {
+    this.citizen = citizen;
   }
 
   /**
@@ -527,6 +587,205 @@ public class DataCase implements ICase {
   @Override
   public void setRehabilitationOffer(boolean needRehabilitationOffer) {
     this.rehabilitationOffer = needRehabilitationOffer;
+  }
+  
+  /**
+   * Get eventual circumstance
+   *
+   * @return
+   */
+  @Override
+  public String getCircumstance() {
+    return circumstance;
+  }
+
+  /**
+   * Set circumstance
+   *
+   * @param circumstance
+   */
+  @Override
+  public void setCircumstance(String circumstance) {
+    this.circumstance = circumstance;
+  }
+
+  /**
+   * Is guardian
+   *
+   * @return guardianship
+   */
+  public boolean isGuardianship() {
+    return guardianship;
+  }
+
+  /**
+   * Set Guardianship
+   *
+   * @param guardianship
+   */
+  @Override
+  public void setGuardianship(boolean guardianship) {
+    this.guardianship = guardianship;
+  }
+
+  /**
+   * Is none acting guardian
+   *
+   * @return noneActingGuardian
+   */
+  @Override
+  public boolean isNoneActingGuardian() {
+    return noneActingGuardian;
+  }
+
+  /**
+   * Set None Acting Guardian
+   *
+   * @param noneActingGuardian
+   */
+  @Override
+  public void setNoneActingGuardian(boolean noneActingGuardian) {
+    this.noneActingGuardian = noneActingGuardian;
+  }
+
+  /**
+   * Is curatorship
+   *
+   * @return curatorship
+   */
+  @Override
+  public boolean isCuratorship() {
+    return curatorship;
+  }
+
+  /**
+   * Set curatorship
+   *
+   * @param curatorship
+   */
+  @Override
+  public void setCuratorship(boolean curatorship) {
+    this.curatorship = curatorship;
+  }
+
+  /**
+   * Is assesort
+   *
+   * @return assessor
+   */
+  @Override
+  public boolean isAssessor() {
+    return assessor;
+  }
+
+  /**
+   * Set assessor
+   *
+   * @param assessor
+   */
+  @Override
+  public void setAssessor(boolean assessor) {
+    this.assessor = assessor;
+  }
+
+  /**
+   * Is party representative
+   *
+   * @return partyRepresentative
+   */
+  @Override
+  public boolean isPartyRepresentative() {
+    return partyRepresentative;
+  }
+
+  /**
+   * Set party representative
+   *
+   * @param partyRepresentative
+   */
+  @Override
+  public void setPartyRepresentative(boolean partyRepresentative) {
+    this.partyRepresentative = partyRepresentative;
+  }
+
+  /**
+   * Is power of attorney
+   *
+   * @return powerOfAttorney
+   */
+  @Override
+  public boolean isPowerOfAttorney() {
+    return powerOfAttorney;
+  }
+
+  /**
+   * Set power of attorney
+   *
+   * @param powerOfAttorney
+   */
+  @Override
+  public void setPowerOfAttorney(boolean powerOfAttorney) {
+    this.powerOfAttorney = powerOfAttorney;
+  }
+
+  /**
+   * is Right To Assessor Or Party Representative
+   *
+   * @return rightToAssessorOrPartyRepresentative
+   */
+  @Override
+  public boolean isRightToAssessorOrPartyRepresentative() {
+    return rightToAssessorOrPartyRepresentative;
+  }
+
+  /**
+   * Set Right To Assessor Or Party Representative
+   *
+   * @param rightToAssessorOrPartyRepresentative
+   */
+  @Override
+  public void setRightToAssessorOrPartyRepresentative(boolean rightToAssessorOrPartyRepresentative) {
+    this.rightToAssessorOrPartyRepresentative = rightToAssessorOrPartyRepresentative;
+  }
+
+  /**
+   * Is information saved online
+   *
+   * @return informationSavedOnline
+   */
+  @Override
+  public boolean isInformationSavedOnline() {
+    return informationSavedOnline;
+  }
+
+  /**
+   * Set informationSavedOnline
+   *
+   * @param informationSavedOnline
+   */
+  @Override
+  public void setInformationSavedOnline(boolean informationSavedOnline) {
+    this.informationSavedOnline = informationSavedOnline;
+  }
+
+  /**
+   * Get fourther cource for case
+   *
+   * @return furtherCource
+   */
+  @Override
+  public String getFurtherCourse() {
+    return furtherCourse;
+  }
+
+  /**
+   * Set furtherCource
+   *
+   * @param furtherCourse
+   */
+  @Override
+  public void setFurtherCourse(String furtherCourse) {
+    this.furtherCourse = furtherCourse;
   }
 
 }
