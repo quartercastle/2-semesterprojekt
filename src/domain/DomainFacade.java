@@ -84,4 +84,15 @@ public class DomainFacade implements IDomain {
   public Address createAddress() {
     return new Address("", "", "", "", "");
   }
+
+  /**
+   * Add the cases to collection
+   *
+   * @param c
+   */
+  @Override
+  public void addCase(ICase c) {
+    data.addCase(c);
+  }
+
 }
