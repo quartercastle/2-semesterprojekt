@@ -109,7 +109,7 @@ public class CreateCaseController extends TabController {
   @FXML
   private void nextButAction(ActionEvent event) {
     if (tabPane.getSelectionModel().getSelectedIndex() == tabPane.getTabs().size() - 1) {
-      GUI.getInstance().getDomain().saveCase(getCase());
+      GUI.getInstance().getDomain().addCase(getCase());
       return;
     }
     tabPane.getSelectionModel().selectNext();
