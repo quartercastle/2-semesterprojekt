@@ -40,10 +40,10 @@ public interface IDomain {
   IAddress createAddress();
 
   /**
-   * Saves the cases to collection
+   * Add the cases to collection
    *
    * @param c
    */
-  public void saveCase(ICase c);
+  public void addCase(ICase c);
 
 }
