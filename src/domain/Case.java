@@ -827,4 +827,14 @@ public class Case implements ICase {
   public void setFurtherCourse(String furtherCourse) {
     this.furtherCourse = furtherCourse;
   }
+
+  /**
+   * To String
+   *
+   * @return string representation of Case
+   */
+  @Override
+  public String toString() {
+    return "Sags-ID: " + id + "\n" + "Borger under behandling: " + citizen + "\n" + "Ansvarlig sagsbehandler: " + responsible;
+  }
 }
