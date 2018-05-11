@@ -53,6 +53,6 @@ public interface IDomain {
    *
    * @return list of cases saved in persistence system
    */
-  public Collection<ICase> getCaseList();
+  public Collection<ICase> getCases();
 
 }

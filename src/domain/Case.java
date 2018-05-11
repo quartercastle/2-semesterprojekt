@@ -835,6 +835,6 @@ public class Case implements ICase {
    */
   @Override
   public String toString() {
-    return "Sags-ID: " + id + "\n" + "Borger under behandling: " + citizen + "\n" + "Ansvarlig sagsbehandler: " + responsible;
+    return "Sags-ID: " + id + "\n" + "Borger under behandling: " + citizen.getFirstName() + " " + citizen.getLastName() + "\n" + "Ansvarlig sagsbehandler: " + responsible;
   }
 }

@@ -20,14 +20,9 @@ import javafx.scene.control.ListView;
 public class OverviewController extends Controller {
 
   /**
-   * Singleton instance of the DomainFacade
-   */
-  private IDomain df = DomainFacade.getInstance();
-
-  /**
    * List of cases loaded from datalayer
    */
-  ArrayList<ICase> dataCaseList;
+  private ArrayList<ICase> cases;
 
   /**
    * Listview holding cases saved in the system
@@ -43,9 +38,8 @@ public class OverviewController extends Controller {
    */
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    dataCaseList = new ArrayList<>(df.getCaseList());
-    //ArrayList laves til ObservableList med FXColelctionsframeworket, grundet begrænsninger på ListView
-    ObservableList<ICase> observableCaseList = FXCollections.observableArrayList(dataCaseList);
+    cases = new ArrayList<>(DomainFacade.getInstance().getCases());
+    ObservableList<ICase> observableCaseList = FXCollections.observableArrayList(cases);
     caseListView.setItems(observableCaseList);
 
   }
