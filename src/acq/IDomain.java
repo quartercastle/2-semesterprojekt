@@ -1,5 +1,7 @@
 package acq;
 
+import java.util.Collection;
+
 public interface IDomain {
 
   /**
@@ -45,5 +47,12 @@ public interface IDomain {
    * @param c
    */
   public void addCase(ICase c);
+
+  /**
+   * Get the list of cases saved in the database
+   *
+   * @return list of cases saved in persistence system
+   */
+  public Collection<ICase> getCases();
 
 }

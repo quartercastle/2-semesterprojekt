@@ -6,6 +6,7 @@ package domain;
 import acq.ICase;
 import acq.IData;
 import acq.IDomain;
+import java.util.Collection;
 
 public class DomainFacade implements IDomain {
 
@@ -93,6 +94,15 @@ public class DomainFacade implements IDomain {
   @Override
   public void addCase(ICase c) {
     data.addCase(c);
+  }
+
+  /**
+   *
+   * @return list of cases saved ini persistence system
+   */
+  @Override
+  public Collection<ICase> getCases() {
+    return data.getCases();
   }
 
 }
