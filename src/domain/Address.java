@@ -33,6 +33,14 @@ public class Address implements IAddress {
    */
   private String country;
 
+  public Address() {
+  }
+
+  @Override
+  public String toString() {
+    return "Address{" + "primaryLine=" + primaryLine + ", secondaryLine=" + secondaryLine + ", zip=" + zip + ", city=" + city + ", country=" + country + '}';
+  }
+
   /**
    * Constructor for the Address instance.
    *
