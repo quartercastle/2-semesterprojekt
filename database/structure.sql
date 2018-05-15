@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS users,roles,case_workers,citizens,companies,addresses,persons,cases,efforts,effort_paragraphs,services,offers,paragraphs;
+
 CREATE TABLE users(
   id SERIAL PRIMARY KEY,
   username VARCHAR(255),
@@ -35,8 +37,8 @@ CREATE TABLE companies(
 
 CREATE TABLE addresses(
   id SERIAL PRIMARY KEY,
-  primary VARCHAR(255),
-  secondary VARCHAR(255),
+  primary_line VARCHAR(255),
+  secondary_line VARCHAR(255),
   zip_code VARCHAR(255),
   city VARCHAR(255),
   country VARCHAR(255)
@@ -49,7 +51,7 @@ CREATE TABLE persons(
   last_name VARCHAR(255),
   phone VARCHAR(255),
   email VARCHAR(255),
-  citizenship VARCHAR(255)
+  citizenship VARCHAR(255),
   address_id INTEGER NOT NULL
 );
 
@@ -57,11 +59,12 @@ CREATE TABLE cases(
   id SERIAL PRIMARY KEY,
   citizen_id INTEGER NOT NULL,
   case_worker_id INTEGER NOT NULL,
-  circumstance VARCHAR(255),
-  further_course VARCHAR(255),
+  circumstance TEXT,
+  inquiry TEXT,
+  further_course TEXT,
   is_informed_about_rights BOOLEAN,
   is_informed_about_duties BOOLEAN,
-  responsibility User,
+  company_id INTEGER NOT NULL,
   practical_tasks_support BOOLEAN,
   personal_care_support BOOLEAN,
   temporary_stay BOOLEAN,
@@ -96,7 +99,7 @@ CREATE TABLE efforts(
   responsibility VARCHAR(255)
 );
 
-CREATE TABLE efforts(
+CREATE TABLE effort_paragraphs(
   effort_id INTEGER NOT NULL,
   paragraph_id INTEGER NOT NULL
 );
@@ -104,11 +107,11 @@ CREATE TABLE efforts(
 CREATE TABLE services(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  frequens INTEGER NOT,
+  frequens INTEGER NOT NULL,
   unit INTEGER NOT NULL,
   price INTEGER NOT NULL,
   repetition INTEGER NOT NULL,
-  description TEXT,
+  description TEXT
 );
 
 
