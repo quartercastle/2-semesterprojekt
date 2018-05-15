@@ -53,19 +53,8 @@ public class Mapper {
 
       runThroughClass(classToBeMapped, instanceOfClass, toBeMapped);
 
-    } catch (ClassNotFoundException ex) {
-      Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (NoSuchMethodException ex) {
-      Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (SecurityException ex) {
-      Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (InstantiationException ex) {
-      Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (IllegalAccessException ex) {
-      Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (IllegalArgumentException ex) {
-      Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (InvocationTargetException ex) {
+    } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
+            | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
       Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
     }
 
@@ -154,25 +143,26 @@ public class Mapper {
   private static <O, T> Collection mapCollection(Method currentMethod, T toBeMapped, O instanceOfClass) throws IllegalAccessException, InvocationTargetException {
     Type genericFieldType = currentMethod.getGenericReturnType();
 
-    if (genericFieldType instanceof ParameterizedType) {
-      ParameterizedType type = (ParameterizedType) genericFieldType;
-      Type fieldArgTypes = type.getActualTypeArguments()[0];
-
-      Class checkForInterface = (Class) fieldArgTypes;
-
-      Collection tmpC = (Collection) currentMethod.invoke(toBeMapped);
-      Collection retC = (Collection) currentMethod.invoke(instanceOfClass);
-
-      if (checkForInterface.isInterface() && tmpC != null) {
-        for (Object o : tmpC) {
-          retC.add(map(o));
-        }
-        return retC;
-      } else {
-        return tmpC;
-      }
+    if (!(genericFieldType instanceof ParameterizedType)) {
+      throw new IllegalArgumentException("Input not a Collection");
     }
-    throw new IllegalArgumentException("Input not a Collection");
+
+    ParameterizedType type = (ParameterizedType) genericFieldType;
+    Type fieldArgTypes = type.getActualTypeArguments()[0];
+
+    Class checkForInterface = (Class) fieldArgTypes;
+
+    Collection tmpC = (Collection) currentMethod.invoke(toBeMapped);
+    Collection retC = (Collection) currentMethod.invoke(instanceOfClass);
+
+    if (checkForInterface.isInterface() && tmpC != null) {
+      for (Object o : tmpC) {
+        retC.add(map(o));
+      }
+      return retC;
+    } else {
+      return tmpC;
+    }
   }
 
   /**
@@ -191,34 +181,27 @@ public class Mapper {
   private static <O, T> Map mapMap(Method currentMethod, T toBeMapped, O instanceOfMyClass) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
     Type genericFieldType = currentMethod.getGenericReturnType();
 
-    if (genericFieldType instanceof ParameterizedType) {
-      ParameterizedType type = (ParameterizedType) genericFieldType;
-      Type key = type.getActualTypeArguments()[0];
-      Class k = (Class) key;
-
-      Type value = type.getActualTypeArguments()[1];
-      Class v = (Class) value;
-
-      Map tmpMap = (Map) currentMethod.invoke(toBeMapped);
-      Map retMap = (Map) currentMethod.invoke(instanceOfMyClass);
-
-      if (tmpMap != null) {
-        for (Object o : tmpMap.keySet()) {
-          retMap.put(
-                  (k.isInterface()) ? map(o) : o,
-                  (v.isInterface()) ? map(tmpMap.get(o)) : tmpMap.get(o));
-        }
-      }
-      return retMap;
+    if (!(genericFieldType instanceof ParameterizedType)) {
+      throw new IllegalArgumentException("Input not a Map");
     }
-    throw new IllegalArgumentException("Input not a Map");
-  }
 
-  //TEST TEST TEST TEST TEST TEST
-  public static void main(String[] args) {
-    DataAddress da = new DataAddress("pri", "sec", "zip", "city", "con");
+    ParameterizedType type = (ParameterizedType) genericFieldType;
+    Type key = type.getActualTypeArguments()[0];
+    Class k = (Class) key;
 
-    Address a = map(da);
-    System.out.println(a.toString());
+    Type value = type.getActualTypeArguments()[1];
+    Class v = (Class) value;
+
+    Map tmpMap = (Map) currentMethod.invoke(toBeMapped);
+    Map retMap = (Map) currentMethod.invoke(instanceOfMyClass);
+
+    if (tmpMap != null) {
+      for (Object o : tmpMap.keySet()) {
+        retMap.put(
+                (k.isInterface()) ? map(o) : o,
+                (v.isInterface()) ? map(tmpMap.get(o)) : tmpMap.get(o));
+      }
+    }
+    return retMap;
   }
 }
