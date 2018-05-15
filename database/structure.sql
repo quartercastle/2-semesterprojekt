@@ -24,7 +24,7 @@ CREATE TABLE case_workers(
 CREATE TABLE citizens(
   id SERIAL PRIMARY KEY,
   person_id INTEGER NOT NULL,
-  cpr INTEGER NOT NULL
+  cpr VARCHAR(255)
 );
 
 CREATE TABLE companies(
@@ -37,7 +37,7 @@ CREATE TABLE addresses(
   id SERIAL PRIMARY KEY,
   primary VARCHAR(255),
   secondary VARCHAR(255),
-  zip_code INTEGER NOT NULL,
+  zip_code VARCHAR(255),
   city VARCHAR(255),
   country VARCHAR(255)
 );
@@ -46,10 +46,10 @@ CREATE TABLE persons(
   id SERIAL PRIMARY KEY,
   first_name VARCHAR(255),
   middle_name VARCHAR(255),
-  last_name INTEGER NOT NULL,
-  phone INTEGER NOT NULL,
+  last_name VARCHAR(255),
+  phone VARCHAR(255),
   email VARCHAR(255),
-  country VARCHAR(255)
+  citizenship VARCHAR(255)
   address_id INTEGER NOT NULL
 );
 
@@ -104,12 +104,11 @@ CREATE TABLE efforts(
 CREATE TABLE services(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  frequens VARCHAR(255),
+  frequens INTEGER NOT,
   unit INTEGER NOT NULL,
   price INTEGER NOT NULL,
-  repetition VARCHAR(255),
-  description VARCHAR(255),
-  responsibility VARCHAR(255)
+  repetition INTEGER NOT NULL,
+  description TEXT,
 );
 
 
@@ -117,7 +116,7 @@ CREATE TABLE offers(
   id SERIAL PRIMARY KEY,
   number INTEGER NOT NULL,
   title VARCHAR(255),
-  description VARCHAR(255)
+  description TEXT
 );
 
 
