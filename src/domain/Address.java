@@ -34,6 +34,12 @@ public class Address implements IAddress {
   private String country;
 
   /**
+   * No-agrs constructor
+   */
+  public Address() {
+  }
+
+  /**
    * Constructor for the Address instance.
    *
    * @param primaryLine
