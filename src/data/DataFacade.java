@@ -2,12 +2,6 @@ package data;
 
 import acq.ICase;
 import acq.IData;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.ArrayList;
 import java.util.Collection;
 
 public class DataFacade implements IData {
@@ -17,11 +11,6 @@ public class DataFacade implements IData {
    * initially, instantiated if needed though getInstance()
    */
   public static DataFacade data;
-
-  /**
-   * Create a new collection of cases
-   */
-  public CaseCollection cases = new CaseCollection();
 
   /**
    * Disable normal instantiation
@@ -50,7 +39,7 @@ public class DataFacade implements IData {
    */
   @Override
   public void addCase(ICase c) {
-    cases.add(c);
+    // TODO
   }
 
   /**
@@ -59,7 +48,7 @@ public class DataFacade implements IData {
    * @param c
    */
   public void deleteCase(ICase c) {
-    cases.delete(c);
+    // TODO
   }
 
   /**
@@ -69,7 +58,7 @@ public class DataFacade implements IData {
    */
   @Override
   public Collection<ICase> getCases() {
-    return cases.getCollection();
+    // TODO
   }
 
   /**
