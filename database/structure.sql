@@ -2,7 +2,8 @@ CREATE TABLE users(
   id SERIAL PRIMARY KEY,
   username VARCHAR(255),
   password VARCHAR(255),
-  role_id INTEGER NOT NULL
+  role_id INTEGER NOT NULL,
+  inactive BOOLEAN
 );
 
 CREATE TABLE roles(
@@ -57,6 +58,7 @@ CREATE TABLE cases(
   citizen_id INTEGER NOT NULL,
   case_worker_id INTEGER NOT NULL,
   circumstance VARCHAR(255),
+  further_course VARCHAR(255),
   is_informed_about_rights BOOLEAN,
   is_informed_about_duties BOOLEAN,
   responsibility User,
@@ -80,8 +82,7 @@ CREATE TABLE cases(
   party_representative BOOLEAN,
   power_of_attorney BOOLEAN,
   right_to_assessor_or_party_representative BOOLEAN,
-  information_saved_online BOOLEAN,
-  further_course VARCHAR(255)
+  information_saved_online BOOLEAN
 );
 
 CREATE TABLE efforts(
@@ -90,21 +91,21 @@ CREATE TABLE efforts(
   service_id INTEGER NOT NULL,
   offer_id INTEGER NOT NULL,
   total_price INTEGER NOT NULL,
-  start_date VARCHAR(255),
-  end_date VARCHAR(255),
+  start_date Timestamp,
+  end_date Timestamp,
   responsibility VARCHAR(255)
 );
 
 CREATE TABLE efforts(
   effort_id INTEGER NOT NULL,
-  paragraph_id INTEGER NOT NULL,
+  paragraph_id INTEGER NOT NULL
 );
 
 CREATE TABLE services(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
   frequens VARCHAR(255),
-  unit service_unit,
+  unit INTEGER NOT NULL,
   price INTEGER NOT NULL,
   repetition VARCHAR(255),
   description VARCHAR(255),
@@ -124,5 +125,5 @@ CREATE TABLE paragraphs(
   id SERIAL PRIMARY KEY,
   number INTEGER NOT NULL,
   title VARCHAR(255),
-  description VARCHAR(255)
+  description TEXT
 );
