@@ -23,10 +23,13 @@ public class DataFacade implements IData {
    */
   public CaseCollection cases = new CaseCollection();
 
+  private Database database;
+
   /**
    * Disable normal instantiation
    */
   private DataFacade() {
+    database.getInstance();
   }
 
   /**
