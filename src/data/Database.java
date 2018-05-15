@@ -1,6 +1,6 @@
 package data;
 
-import Config.PostgreSQLConfig;
+import config.PostgreSQLConfig;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
