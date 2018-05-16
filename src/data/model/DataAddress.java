@@ -157,10 +157,20 @@ public class DataAddress implements IAddress {
     this.primaryLine = line;
   }
 
+  /**
+   * Set secondary line
+   *
+   * @param secondaryLine
+   */
   public void setSecondaryLine(String secondaryLine) {
     this.secondaryLine = secondaryLine;
   }
 
+  /**
+   * Set country
+   *
+   * @param country
+   */
   public void setCountry(String country) {
     this.country = country;
   }
@@ -185,10 +195,20 @@ public class DataAddress implements IAddress {
     this.city = city;
   }
 
+  /**
+   * Get id
+   *
+   * @return id
+   */
   public int getId() {
     return id;
   }
 
+  /**
+   * Set id
+   *
+   * @param id
+   */
   public void setId(int id) {
     this.id = id;
   }

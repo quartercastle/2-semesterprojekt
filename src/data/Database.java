@@ -108,7 +108,7 @@ public class Database {
     ResultSet resultSet = null;
     try (Statement statement = this.connection.createStatement()) {
 
-      if (query.toUpperCase().startsWith("INSERT") | query.toUpperCase().startsWith("UPDATE")) {
+      if (query.toUpperCase().startsWith("INSERT") || query.toUpperCase().startsWith("UPDATE")) {
         statement.execute(query);
       } else {
         resultSet = statement.executeQuery(query);
