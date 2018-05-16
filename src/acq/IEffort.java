@@ -35,4 +35,46 @@ public interface IEffort {
    */
   ICompany getResponsible();
 
+  /**
+   * Set service
+   *
+   * @param service
+   */
+  void setService(IService service);
+
+  /**
+   * Set offer
+   *
+   * @param offer
+   */
+  void setOffer(IOffer offer);
+
+  /**
+   * set paragraph
+   *
+   * @param paragraph
+   */
+  void setParagraph(IParagraph paragraph);
+
+  /**
+   * get service
+   *
+   * @return service
+   */
+  IService getService();
+
+  /**
+   * Get offer
+   *
+   * @return
+   */
+  IOffer getOffer();
+
+  /**
+   * get paragraph
+   *
+   * @return paragraph
+   */
+  IParagraph getParagraph();
+
 }

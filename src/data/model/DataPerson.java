@@ -35,6 +35,25 @@ public class DataPerson {
   private String email;
 
   /**
+   * Constructor for DataPerson
+   *
+   * @param firstName
+   * @param middleName
+   * @param lastName
+   * @param address
+   * @param phone
+   * @param email
+   */
+  public DataPerson(String firstName, String middleName, String lastName, IAddress address, String phone, String email) {
+    this.firstName = firstName;
+    this.middleName = middleName;
+    this.lastName = lastName;
+    this.address = address;
+    this.phone = phone;
+    this.email = email;
+  }
+
+  /**
    * Get first name
    *
    * @return first name
