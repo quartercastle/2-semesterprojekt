@@ -1,4 +1,4 @@
-package domain;
+package domain.system;
 
 import acq.IEffort;
 import acq.IOffer;
