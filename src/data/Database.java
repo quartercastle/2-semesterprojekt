@@ -6,17 +6,43 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Database {
 
+  /**
+   * Instance of class
+   */
   private static Database instance;
 
+  /**
+   * Host address
+   */
   private final String host;
+
+  /**
+   * Username to database
+   */
   private final String user;
+
+  /**
+   * Password to database
+   */
   private final String password;
 
+  /**
+   * Connection to database
+   */
   private Connection connection;
 
+  /**
+   * Private constructor
+   *
+   * @param host
+   * @param user
+   * @param password
+   */
   private Database(String host, String user, String password) {
     this.host = host;
     this.user = user;
@@ -24,10 +50,15 @@ public class Database {
     this.connect();
   }
 
+  /**
+   * Get instance of database
+   *
+   * @return instance of database
+   */
   public static Database getInstance() {
     if (instance == null) {
       PostgreSQLConfig config = new PostgreSQLConfig();
-      Database db = new Database(
+      instance = new Database(
               config.host,
               config.user,
               config.password
@@ -36,6 +67,9 @@ public class Database {
     return instance;
   }
 
+  /**
+   * Connect to database
+   */
   private void connect() {
     try {
       Class.forName("org.postgresql.Driver");
@@ -54,6 +88,9 @@ public class Database {
     }
   }
 
+  /**
+   * Use to make a query
+   */
   @FunctionalInterface
   public interface Handler {
 
@@ -61,20 +98,34 @@ public class Database {
 
   }
 
+  /**
+   * Called to make a query to database
+   *
+   * @param query
+   * @param handler
+   */
   public void query(String query, Handler handler) {
-    Statement statement = null;
     ResultSet resultSet = null;
+    try (Statement statement = this.connection.createStatement()) {
 
-    try {
-      statement = this.connection.createStatement();
-      resultSet = statement.executeQuery(query);
-      while (resultSet.next()) {
-        handler.execute(resultSet);
+      if (query.toUpperCase().startsWith("INSERT") | query.toUpperCase().startsWith("UPDATE")) {
+        statement.execute(query);
+      } else {
+        resultSet = statement.executeQuery(query);
+        while (resultSet.next()) {
+          handler.execute(resultSet);
+        }
       }
-      resultSet.close();
-      statement.close();
-    } catch (Exception e) {
+    } catch (SQLException e) {
       e.printStackTrace();
+    } finally {
+      if (resultSet != null) {
+        try {
+          resultSet.close();
+        } catch (SQLException ex) {
+          Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      }
     }
   }
 }
