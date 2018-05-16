@@ -46,4 +46,14 @@ public class DataCompany implements ICompany {
     return this.address;
   }
 
+  @Override
+  public void setAddress(IAddress address) {
+    this.address = address;
+  }
+
+  @Override
+  public void setName(String name) {
+    this.name = name;
+  }
+
 }
