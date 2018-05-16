@@ -1,7 +1,11 @@
-package domain;
+package domain.system;
 
 import acq.IOffer;
 
+/**
+ *
+ * Offer class that implements IOffer.
+ */
 public class Offer implements IOffer {
 
   /**

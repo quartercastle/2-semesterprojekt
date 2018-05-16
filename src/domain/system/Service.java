@@ -1,8 +1,13 @@
-package domain;
+package domain.system;
 
 import acq.ServiceUnit;
 import acq.IService;
 
+/**
+ *
+ * Service class that implements the IService interface and holds getters and
+ * setters methods.
+ */
 public class Service implements IService {
 
   /**

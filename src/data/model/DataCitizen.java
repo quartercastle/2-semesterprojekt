@@ -4,7 +4,7 @@ import acq.ICitizen;
 
 /**
  *
- * @author niclasjohansen
+ *
  */
 public class DataCitizen extends DataPerson implements ICitizen {
 

@@ -38,9 +38,10 @@ public class OverviewController extends Controller {
    */
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    cases = new ArrayList<>(DomainFacade.getInstance().getCases());
-    ObservableList<ICase> observableCaseList = FXCollections.observableArrayList(cases);
-    caseListView.setItems(observableCaseList);
+    // TODO returning null because of getcases doesn't exist anymore.
+//    cases = new ArrayList<>(DomainFacade.getInstance().getCases());
+//    ObservableList<ICase> observableCaseList = FXCollections.observableArrayList(cases);
+//    caseListView.setItems(observableCaseList);
 
   }
 

@@ -1,8 +1,31 @@
-package data.model;
+package domain.system;
 
 import acq.IAddress;
 
-public class DataPerson {
+/**
+ *
+ * Person class that implements IPerson.
+ */
+public class Person {
+
+  /**
+   * Constructor for person
+   *
+   * @param firstName
+   * @param middleName
+   * @param lastName
+   * @param address
+   * @param phone
+   * @param email
+   */
+  public Person(String firstName, String middleName, String lastName, IAddress address, String phone, String email) {
+    this.firstName = firstName;
+    this.middleName = middleName;
+    this.lastName = lastName;
+    this.address = address;
+    this.phone = phone;
+    this.email = email;
+  }
 
   /**
    * First name of person
@@ -141,4 +164,5 @@ public class DataPerson {
   public void setEmail(String email) {
     this.email = email;
   }
+
 }

@@ -1,10 +1,10 @@
-package domain;
+package domain.system;
 
 import acq.IAddress;
 import acq.ICompany;
 
 /**
- * Company
+ * Company class
  */
 public class Company implements ICompany {
 

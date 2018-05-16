@@ -59,6 +59,7 @@ public class DataFacade implements IData {
   @Override
   public Collection<ICase> getCases() {
     // TODO
+    return null;
   }
 
   /**
