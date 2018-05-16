@@ -2,6 +2,9 @@ package data.model;
 
 import acq.ICompany;
 import acq.IEffort;
+import acq.IOffer;
+import acq.IParagraph;
+import acq.IService;
 import java.util.GregorianCalendar;
 
 public class DataEffort implements IEffort {
@@ -25,6 +28,21 @@ public class DataEffort implements IEffort {
    * Company which is responsible for the effort
    */
   private DataCompany responsible;
+
+  /**
+   * offer connected to the effort
+   */
+  private IOffer offer;
+
+  /**
+   * Service connected to effort
+   */
+  private IService service;
+
+  /**
+   * Paragraph cnnected to effort
+   */
+  private IParagraph paragraph;
 
   /**
    * Create a new instance of a DataEffort
@@ -79,6 +97,66 @@ public class DataEffort implements IEffort {
   @Override
   public ICompany getResponsible() {
     return this.responsible;
+  }
+
+  /**
+   * set service
+   *
+   * @param service
+   */
+  @Override
+  public void setService(IService service) {
+    this.service = service;
+  }
+
+  /**
+   * set offer
+   *
+   * @param offer
+   */
+  @Override
+  public void setOffer(IOffer offer) {
+    this.offer = offer;
+  }
+
+  /**
+   * set paragraph
+   *
+   * @param paragraph
+   */
+  @Override
+  public void setParagraph(IParagraph paragraph) {
+    this.paragraph = paragraph;
+  }
+
+  /**
+   * get service
+   *
+   * @return service
+   */
+  @Override
+  public IService getService() {
+    return this.service;
+  }
+
+  /**
+   * get offer
+   *
+   * @return offer
+   */
+  @Override
+  public IOffer getOffer() {
+    return this.offer;
+  }
+
+  /**
+   * get paragraph
+   *
+   * @return paragraph
+   */
+  @Override
+  public IParagraph getParagraph() {
+    return this.paragraph;
   }
 
 }

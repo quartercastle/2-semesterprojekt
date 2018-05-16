@@ -1,6 +1,9 @@
 package domain;
 
 import acq.IEffort;
+import acq.IOffer;
+import acq.IParagraph;
+import acq.IService;
 import java.util.GregorianCalendar;
 
 /**
@@ -27,6 +30,21 @@ public class Effort implements IEffort {
    * Company responsible of effort
    */
   private Company responsible;
+
+  /**
+   * offer connected to the effort
+   */
+  private IOffer offer;
+
+  /**
+   * Service connected to effort
+   */
+  private IService service;
+
+  /**
+   * Paragraph cnnected to effort
+   */
+  private IParagraph paragraph;
 
   /**
    * Constructor for efforts
@@ -67,6 +85,7 @@ public class Effort implements IEffort {
    *
    * @return startDate
    */
+  @Override
   public GregorianCalendar getStartDate() {
     return startDate;
   }
@@ -116,5 +135,35 @@ public class Effort implements IEffort {
    */
   public void setResponsible(Company responsible) {
     this.responsible = responsible;
+  }
+
+  @Override
+  public void setService(IService service) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  @Override
+  public void setOffer(IOffer offer) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  @Override
+  public void setParagraph(IParagraph paragraph) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  @Override
+  public IService getService() {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  @Override
+  public IOffer getOffer() {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  @Override
+  public IParagraph getParagraph() {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 }
