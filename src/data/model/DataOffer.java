@@ -24,6 +24,7 @@ public class DataOffer implements IOffer {
    *
    * @return name
    */
+  @Override
   public String getName() {
     return name;
   }
@@ -33,6 +34,7 @@ public class DataOffer implements IOffer {
    *
    * @param name
    */
+  @Override
   public void setName(String name) {
     this.name = name;
   }
@@ -42,6 +44,7 @@ public class DataOffer implements IOffer {
    *
    * @return price
    */
+  @Override
   public int getPrice() {
     return price;
   }
@@ -51,6 +54,7 @@ public class DataOffer implements IOffer {
    *
    * @param price
    */
+  @Override
   public void setPrice(int price) {
     this.price = price;
   }
@@ -60,6 +64,7 @@ public class DataOffer implements IOffer {
    *
    * @return description
    */
+  @Override
   public String getDescription() {
     return description;
   }
@@ -69,6 +74,7 @@ public class DataOffer implements IOffer {
    *
    * @param description
    */
+  @Override
   public void setDescription(String description) {
     this.description = description;
   }
