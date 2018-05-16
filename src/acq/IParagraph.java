@@ -1,14 +1,47 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package acq;
 
-/**
- *
- * @author Victor Gram
- */
 public interface IParagraph {
-  
+
+  /**
+   * Get number
+   *
+   * @return number
+   */
+  int getNumber();
+
+  /**
+   * Get title
+   *
+   * @return title
+   */
+  String getTitle();
+
+  /**
+   * Get Description
+   *
+   * @return description
+   */
+  String getDescription();
+
+  /**
+   * Set number
+   *
+   * @param number
+   */
+  void setNumber(int number);
+
+  /**
+   * Set title
+   *
+   * @param title
+   */
+  void setTitle(String title);
+
+  /**
+   * Set description
+   *
+   * @param description
+   */
+  void setDescription(String description);
+
 }

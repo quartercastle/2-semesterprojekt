@@ -1,6 +1,8 @@
 package domain;
 
-public class Offer {
+import acq.IOffer;
+
+public class Offer implements IOffer {
 
   /**
    * Name of offer
@@ -35,6 +37,7 @@ public class Offer {
    *
    * @return name
    */
+  @Override
   public String getName() {
     return name;
   }
@@ -44,6 +47,7 @@ public class Offer {
    *
    * @param name
    */
+  @Override
   public void setName(String name) {
     this.name = name;
   }
@@ -53,6 +57,7 @@ public class Offer {
    *
    * @return price
    */
+  @Override
   public int getPrice() {
     return price;
   }
@@ -62,6 +67,7 @@ public class Offer {
    *
    * @param price
    */
+  @Override
   public void setPrice(int price) {
     this.price = price;
   }
@@ -71,6 +77,7 @@ public class Offer {
    *
    * @return description
    */
+  @Override
   public String getDescription() {
     return description;
   }
@@ -80,6 +87,7 @@ public class Offer {
    *
    * @param description
    */
+  @Override
   public void setDescription(String description) {
     this.description = description;
   }
