@@ -137,33 +137,62 @@ public class Effort implements IEffort {
     this.responsible = responsible;
   }
 
+  /**
+   *
+   * @param service
+   */
   @Override
   public void setService(IService service) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    this.service = service;
   }
 
+  /**
+   * set offer
+   *
+   * @param offer
+   */
   @Override
   public void setOffer(IOffer offer) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    this.offer = offer;
   }
 
+  /**
+   * set paragraph
+   *
+   * @param paragraph
+   */
   @Override
   public void setParagraph(IParagraph paragraph) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    this.paragraph = paragraph;
   }
 
+  /**
+   * get service
+   *
+   * @return service
+   */
   @Override
   public IService getService() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.service;
   }
 
+  /**
+   * get offer
+   *
+   * @return offer
+   */
   @Override
   public IOffer getOffer() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.offer;
   }
 
+  /**
+   * get paragraph
+   *
+   * @return paragraph
+   */
   @Override
   public IParagraph getParagraph() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return this.paragraph;
   }
 }
