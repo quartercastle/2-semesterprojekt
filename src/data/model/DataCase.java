@@ -788,14 +788,4 @@ public class DataCase implements ICase {
     this.furtherCourse = furtherCourse;
   }
 
-  /**
-   * To String
-   *
-   * @return string representation of Case
-   */
-  @Override
-  public String toString() {
-    return "Sags-ID: " + id + "\n" + "Borger under behandling: " + citizen.getFirstName() + " " + citizen.getLastName() + "\n" + "Ansvarlig sagsbehandler: " + responsible;
-  }
-
 }

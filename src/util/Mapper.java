@@ -1,7 +1,7 @@
 package util;
 
 import data.model.DataAddress;
-import domain.Address;
+import domain.system.Address;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

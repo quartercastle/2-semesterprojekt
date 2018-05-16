@@ -1,14 +1,15 @@
-/**
- * Case class, containing the data relevant for each individual case
- */
-package domain;
+package domain.system;
 
 import acq.ICitizen;
 import java.util.Collection;
 import java.util.UUID;
 import acq.ICase;
+import security.User;
 import java.util.HashSet;
 
+/**
+ * Case class, containing the data relevant for each individual case
+ */
 public class Case implements ICase {
 
   /**

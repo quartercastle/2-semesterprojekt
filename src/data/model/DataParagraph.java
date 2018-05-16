@@ -1,6 +1,9 @@
-package domain;
+package data.model;
 
-public class Paragraph {
+import acq.IParagraph;
+
+public class DataParagraph implements IParagraph {
+
   /**
    * Numbber of the paragraph
    */
@@ -18,49 +21,62 @@ public class Paragraph {
 
   /**
    * Get number
+   *
    * @return number
    */
-  public int getNumber () {
+  @Override
+  public int getNumber() {
     return this.number;
   }
 
   /**
    * Get title
+   *
    * @return title
    */
-  public String getTitle () {
+  @Override
+  public String getTitle() {
     return this.title;
   }
 
   /**
    * Get Description
+   *
    * @return description
    */
-  public String getDescription () {
+  @Override
+  public String getDescription() {
     return this.description;
   }
 
   /**
    * Set number
+   *
    * @param number
    */
-  public void setNumber (int number) {
+  @Override
+  public void setNumber(int number) {
     this.number = number;
   }
 
   /**
    * Set title
+   *
    * @param title
    */
-  public void setTitle (String title) {
+  @Override
+  public void setTitle(String title) {
     this.title = title;
   }
 
   /**
    * Set description
+   *
    * @param description
    */
-  public void setDescription (String description) {
+  @Override
+  public void setDescription(String description) {
     this.description = description;
   }
+
 }

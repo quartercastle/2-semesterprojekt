@@ -1,6 +1,9 @@
-package domain;
+package domain.system;
 
 import acq.IEffort;
+import acq.IOffer;
+import acq.IParagraph;
+import acq.IService;
 import java.util.GregorianCalendar;
 
 /**
@@ -27,6 +30,21 @@ public class Effort implements IEffort {
    * Company responsible of effort
    */
   private Company responsible;
+
+  /**
+   * offer connected to the effort
+   */
+  private IOffer offer;
+
+  /**
+   * Service connected to effort
+   */
+  private IService service;
+
+  /**
+   * Paragraph cnnected to effort
+   */
+  private IParagraph paragraph;
 
   /**
    * Constructor for efforts
@@ -67,6 +85,7 @@ public class Effort implements IEffort {
    *
    * @return startDate
    */
+  @Override
   public GregorianCalendar getStartDate() {
     return startDate;
   }
@@ -116,5 +135,64 @@ public class Effort implements IEffort {
    */
   public void setResponsible(Company responsible) {
     this.responsible = responsible;
+  }
+
+  /**
+   *
+   * @param service
+   */
+  @Override
+  public void setService(IService service) {
+    this.service = service;
+  }
+
+  /**
+   * set offer
+   *
+   * @param offer
+   */
+  @Override
+  public void setOffer(IOffer offer) {
+    this.offer = offer;
+  }
+
+  /**
+   * set paragraph
+   *
+   * @param paragraph
+   */
+  @Override
+  public void setParagraph(IParagraph paragraph) {
+    this.paragraph = paragraph;
+  }
+
+  /**
+   * get service
+   *
+   * @return service
+   */
+  @Override
+  public IService getService() {
+    return this.service;
+  }
+
+  /**
+   * get offer
+   *
+   * @return offer
+   */
+  @Override
+  public IOffer getOffer() {
+    return this.offer;
+  }
+
+  /**
+   * get paragraph
+   *
+   * @return paragraph
+   */
+  @Override
+  public IParagraph getParagraph() {
+    return this.paragraph;
   }
 }
