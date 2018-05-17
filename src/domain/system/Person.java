@@ -6,7 +6,7 @@ import acq.IAddress;
  *
  * Person class that implements IPerson.
  */
-public class Person {
+public abstract class Person {
 
   /**
    * Constructor for person
