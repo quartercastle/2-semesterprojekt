@@ -28,6 +28,11 @@ public class Person {
   }
 
   /**
+   * Id
+   */
+  private int id;
+
+  /**
    * First name of person
    */
   private String firstName;
@@ -109,6 +114,10 @@ public class Person {
    */
   public String getEmail() {
     return this.email;
+  }
+
+  public int getId() {
+    return id;
   }
 
   /**

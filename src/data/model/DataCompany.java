@@ -61,7 +61,7 @@ public class DataCompany implements ICompany {
     String query = null;
 
     if (getId() == 0) {
-      String[] values = {getName(), "" + getAddress().getId(), ""};
+      String[] values = {getName(), "" + getAddress().getId()};
       query = "INSERT INTO companies (name, address_id) "
               + "VALUES('" + String.join("','", values) + "')";
     } else {
