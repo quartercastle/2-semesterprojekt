@@ -20,6 +20,13 @@ public interface ICitizen {
   void setCPR(String cpr);
 
   /**
+   * Get ID
+   *
+   * @return id
+   */
+  int getID();
+
+  /**
    * Get first name
    *
    * @return first name of citizen

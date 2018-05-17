@@ -274,6 +274,7 @@ public class Case implements ICase {
    *
    * @param citizen
    */
+  @Override
   public void setCitizen(ICitizen citizen) {
     this.citizen = (Citizen) citizen;
   }
@@ -563,7 +564,7 @@ public class Case implements ICase {
    */
   @Override
   public void setSupportGroceryOffer(boolean needSupportGroceryOffer) {
-    this.supportGroceryOffer = supportGroceryOffer;
+    this.supportGroceryOffer = needSupportGroceryOffer;
   }
 
   /**

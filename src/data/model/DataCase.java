@@ -25,7 +25,7 @@ public class DataCase implements ICase {
   private IUser responsible;
 
   /**
-   * The citizin which the case is about
+   * The citizen which the case is about
    */
   private ICitizen citizen;
 
@@ -526,7 +526,7 @@ public class DataCase implements ICase {
    */
   @Override
   public void setSupportGroceryOffer(boolean needSupportGroceryOffer) {
-    this.supportGroceryOffer = supportGroceryOffer;
+    this.supportGroceryOffer = needSupportGroceryOffer;
   }
 
   /**
@@ -614,6 +614,7 @@ public class DataCase implements ICase {
    *
    * @return guardianship
    */
+  @Override
   public boolean isGuardianship() {
     return guardianship;
   }
