@@ -4,20 +4,12 @@
 package acq;
 
 public interface IUser {
-
   /**
-   * Get name
+   * Get username
    *
-   * @return name of User
+   * @return username
    */
-  String getName();
-
-  /**
-   * Get email
-   *
-   * @return email of User
-   */
-  String getEmail();
+  String getUsername();
 
   /**
    * Get Password
@@ -33,4 +25,13 @@ public interface IUser {
    */
   IRole getRole();
 
+  /**
+   * Set username
+   */
+  void setUsername(String email);
+
+  /**
+   * Set Password
+   */
+  void setPassword(String password);
 }

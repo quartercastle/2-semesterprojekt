@@ -5,6 +5,13 @@ package acq;
 
 public interface IRole {
   /**
+   * Get id
+   *
+   * @return id
+   */
+  int getId();
+
+  /**
    * Get name
    *
    * @return name of role

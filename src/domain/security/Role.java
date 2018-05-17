@@ -5,6 +5,11 @@ import acq.IRole;
 public class Role implements IRole {
 
   /**
+   * id
+   */
+  private int id;
+
+  /**
    * Name of role
    */
   private String name;
@@ -49,13 +54,23 @@ public class Role implements IRole {
    * @param canCloseCase
    * @param canCreateCase
    */
-  public Role(String name, boolean canCreateCase, boolean canViewCase, boolean canEditCase, boolean canCloseCase) {
+  public Role(int id, String name, boolean canCreateCase, boolean canViewCase, boolean canEditCase, boolean canCloseCase) {
+    this.id = id;
     this.name = name;
     this.canCreateCase = canCreateCase;
     this.canViewCase = canViewCase;
     this.canEditCase = canEditCase;
     this.canCloseCase = canCloseCase;
     this.canCreateCase = canCreateCase;
+  }
+
+  /**
+   * Get id
+   * @return
+   */
+  @Override
+  public int getId() {
+    return id;
   }
 
   /**
