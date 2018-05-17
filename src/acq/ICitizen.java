@@ -6,6 +6,20 @@ package acq;
 public interface ICitizen {
 
   /**
+   * Get CPR
+   *
+   * @return CPR number of citizen
+   */
+  String getCPR();
+
+  /**
+   * Set CPR
+   *
+   * @param cpr
+   */
+  void setCPR(String cpr);
+
+  /**
    * Get first name
    *
    * @return first name of citizen
@@ -25,13 +39,6 @@ public interface ICitizen {
    * @return last name of citizen
    */
   String getLastName();
-
-  /**
-   * Get CPR
-   *
-   * @return CPR number of citizen
-   */
-  String getCPR();
 
   /**
    * Get Address
@@ -56,44 +63,44 @@ public interface ICitizen {
 
   /**
    * Set first name
+   *
    * @param name
    */
-  void setFirstName (String name);
+  void setFirstName(String name);
 
   /**
    * Set middle name
+   *
    * @param name
    */
-  void setMiddleName (String name);
+  void setMiddleName(String name);
 
   /**
    * Set last name
+   *
    * @param name
    */
-  void setLastName (String name);
-
-  /**
-   * Set CPR
-   * @param cpr
-   */
-  void setCPR (String cpr);
+  void setLastName(String name);
 
   /**
    * Set Address
-   * @param cpr
+   *
+   * @param address
    */
-  void setAddress (IAddress address);
+  void setAddress(IAddress address);
 
   /**
    * Set phone
+   *
    * @param phone
    */
-  void setPhone (String phone);
+  void setPhone(String phone);
 
   /**
    * Set email
+   *
    * @param email
    */
-  void setEmail (String email);
+  void setEmail(String email);
 
 }

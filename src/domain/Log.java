@@ -3,6 +3,8 @@
  */
 package domain;
 
+import security.User;
+import domain.system.Case;
 import java.util.GregorianCalendar;
 
 public class Log {

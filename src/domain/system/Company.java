@@ -1,9 +1,10 @@
-package domain;
+package domain.system;
 
+import acq.IAddress;
 import acq.ICompany;
 
 /**
- * Company
+ * Company class
  */
 public class Company implements ICompany {
 
@@ -15,7 +16,7 @@ public class Company implements ICompany {
   /**
    * The company's address
    */
-  private Address address;
+  private IAddress address;
 
   /**
    * Construct Address
@@ -43,6 +44,7 @@ public class Company implements ICompany {
    *
    * @param name
    */
+  @Override
   public void setName(String name) {
     this.name = name;
   }
@@ -53,7 +55,7 @@ public class Company implements ICompany {
    * @return address
    */
   @Override
-  public Address getAddress() {
+  public IAddress getAddress() {
     return address;
   }
 
@@ -63,6 +65,11 @@ public class Company implements ICompany {
    * @param address
    */
   public void setAddress(Address address) {
+    this.address = address;
+  }
+
+  @Override
+  public void setAddress(IAddress address) {
     this.address = address;
   }
 

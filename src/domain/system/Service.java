@@ -1,6 +1,15 @@
-package domain;
+package domain.system;
 
-public class Service {
+import acq.ServiceUnit;
+import acq.IService;
+
+/**
+ *
+ * Service class that implements the IService interface and holds getters and
+ * setters methods.
+ */
+public class Service implements IService {
+
   /**
    * Name of service
    */
@@ -33,91 +42,121 @@ public class Service {
 
   /**
    * Get name
+   *
    * @return name
    */
-  public String getName () {
+  @Override
+  public String getName() {
     return this.name;
   }
 
   /**
    * Get description
+   *
    * @return description
    */
-  public String getDescription () {
+  @Override
+  public String getDescription() {
     return this.description;
   }
 
   /**
    * Get frequency
+   *
    * @return frequency
    */
-  public int getFrequency () {
+  @Override
+  public int getFrequency() {
     return this.frequency;
   }
 
   /**
    * Get unit
+   *
    * @return unit
    */
-  public ServiceUnit getUnit () {
+  @Override
+  public ServiceUnit getUnit() {
     return this.unit;
   }
 
   /**
    * Get price
+   *
    * @return price
    */
-  public int getPrice () {
+  @Override
+  public int getPrice() {
     return this.price;
   }
 
   /**
    * Get repetition
+   *
    * @return repetition
    */
-  public int getRepetition () {
+  @Override
+  public int getRepetition() {
     return this.repetition;
   }
 
   /**
-   * Set name
+   * set name
+   *
+   * @param name
    */
-  public void setName (String name) {
+  @Override
+  public void setName(String name) {
     this.name = name;
   }
 
   /**
-   * Set description
+   * set description
+   *
+   * @param description
    */
-  public void setDescription (String description) {
+  @Override
+  public void setDescription(String description) {
     this.description = description;
   }
 
   /**
-   * Set frequency
+   * set frequency
+   *
+   * @param frequency
    */
-  public void setFrequency (int frequency) {
+  @Override
+  public void setFrequency(int frequency) {
     this.frequency = frequency;
   }
 
   /**
-   * Set unit
+   * set unit
+   *
+   * @param unit
    */
-  public void setUnit (ServiceUnit unit) {
+  @Override
+  public void setUnit(ServiceUnit unit) {
     this.unit = unit;
   }
 
   /**
    * Set price
+   *
+   * @param price
    */
-  public void setPrice (int price) {
+  @Override
+  public void setPrice(int price) {
     this.price = price;
   }
 
   /**
-   * Set repetition
+   * set repitition
+   *
+   * @param repetition
    */
-  public void setRepetition (int repetition) {
+  @Override
+  public void setRepetition(int repetition) {
     this.repetition = repetition;
   }
 }

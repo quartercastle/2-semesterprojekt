@@ -19,4 +19,17 @@ public interface ICompany {
    */
   IAddress getAddress();
 
+  /**
+   * Set address
+   *
+   * @param address
+   */
+  void setAddress(IAddress address);
+
+  /**
+   * Set company name
+   *
+   * @param name
+   */
+  void setName(String name);
 }

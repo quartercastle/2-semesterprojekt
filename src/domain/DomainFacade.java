@@ -3,6 +3,10 @@
  */
 package domain;
 
+import security.AuthManager;
+import domain.system.Citizen;
+import domain.system.Address;
+import domain.system.Case;
 import acq.ICase;
 import acq.IData;
 import acq.IDomain;
@@ -76,7 +80,7 @@ public class DomainFacade implements IDomain {
    * Create a new Citizen
    */
   public Citizen createCitizen() {
-    return new Citizen("", "", "", "", null, "", "");
+    return new Citizen("", "", "", null, "", "");
   }
 
   /**

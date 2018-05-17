@@ -2,8 +2,6 @@ package data;
 
 import acq.ICase;
 import acq.IData;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 
 public class DataFacade implements IData {
@@ -13,11 +11,6 @@ public class DataFacade implements IData {
    * initially, instantiated if needed though getInstance()
    */
   public static DataFacade data;
-
-  /**
-   * Create a new collection of cases
-   */
-  public CaseCollection cases = new CaseCollection();
 
   /**
    * Instance of database
@@ -52,7 +45,7 @@ public class DataFacade implements IData {
    */
   @Override
   public void addCase(ICase c) {
-    cases.add(c);
+    // TODO
   }
 
   /**
@@ -61,7 +54,7 @@ public class DataFacade implements IData {
    * @param c
    */
   public void deleteCase(ICase c) {
-    cases.delete(c);
+    // TODO
   }
 
   /**
@@ -71,7 +64,8 @@ public class DataFacade implements IData {
    */
   @Override
   public Collection<ICase> getCases() {
-    return cases.getCollection();
+    // TODO
+    return null;
   }
 
   /**
@@ -79,17 +73,6 @@ public class DataFacade implements IData {
    */
   @Override
   public void initialize() {
-    Collection<ICase> caseCollection = null;
-    try {
-      JsonToJava jtj = new JsonToJava("cases.json");
-      caseCollection = new ArrayList<>(jtj.loadCases());
-
-    } catch (IOException ex) {
-      ex.printStackTrace();
-    }
-
-    for (ICase c : caseCollection) {
-      cases.add(c, false);
-    }
+    // TODO
   }
 }
