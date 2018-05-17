@@ -13,9 +13,15 @@ public class DataFacade implements IData {
   public static DataFacade data;
 
   /**
+   * Instance of database
+   */
+  private Database database;
+
+  /**
    * Disable normal instantiation
    */
   private DataFacade() {
+    database.getInstance();
   }
 
   /**

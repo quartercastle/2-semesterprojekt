@@ -1,8 +1,14 @@
 package data.model;
 
 import acq.IAddress;
+import data.Database;
 
 public class DataAddress implements IAddress {
+
+  /**
+   * Server id
+   */
+  private int id;
 
   /**
    * Name of primaryLine
@@ -44,6 +50,51 @@ public class DataAddress implements IAddress {
     this.zip = zip;
     this.city = city;
     this.country = country;
+    id = 0;
+  }
+
+  /**
+   * Called to find a dataaddress in database
+   *
+   * @param id of the address to find
+   * @return a instance of DataAddress if found.
+   */
+  public static DataAddress find(int id) {
+    DataAddress da = new DataAddress(null, null, null, null, null);
+    Database.getInstance().query(
+            "SELECT id, primary_line, secondary_line, zip_code, city, country "
+            + "FROM addresses "
+            + "WHERE id = " + id,
+            rs -> {
+              da.setId(rs.getInt(1));
+              da.setPrimaryLine(rs.getString(2));
+              da.setSecondaryLine(rs.getString(3));
+              da.setZip(rs.getString(4));
+              da.setCity(rs.getString(5));
+              da.setCountry(rs.getString(6));
+            });
+
+    return da;
+  }
+
+  /**
+   * Called to save
+   */
+  public void save() {
+    String query = null;
+
+    if (getId() == 0) {
+      query = "INSERT INTO addresses (primary_line, secondary_line, zip_code, city, country) "
+              + "VALUES('" + primaryLine + "','" + secondaryLine + "','" + zip + "','" + city + "','" + country + "');";
+    } else {
+      query = "UPDATE addresses "
+              + "SET primary_line = '" + getPrimaryLine() + "', secondary_line ='"
+              + getZip() + "', city='" + getCity() + "', country='" + getCountry() + "' "
+              + "WHERE id = " + id;
+    }
+
+    Database.getInstance().query(query, rs -> {
+    });
   }
 
   /**
@@ -107,6 +158,24 @@ public class DataAddress implements IAddress {
   }
 
   /**
+   * Set secondary line
+   *
+   * @param secondaryLine
+   */
+  public void setSecondaryLine(String secondaryLine) {
+    this.secondaryLine = secondaryLine;
+  }
+
+  /**
+   * Set country
+   *
+   * @param country
+   */
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+  /**
    * Set zip
    *
    * @param zip
@@ -126,4 +195,21 @@ public class DataAddress implements IAddress {
     this.city = city;
   }
 
+  /**
+   * Get id
+   *
+   * @return id
+   */
+  public int getId() {
+    return id;
+  }
+
+  /**
+   * Set id
+   *
+   * @param id
+   */
+  public void setId(int id) {
+    this.id = id;
+  }
 }
