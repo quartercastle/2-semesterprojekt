@@ -177,7 +177,7 @@ public class DataCase implements ICase {
   /**
    * Create a new DataCase
    *
-   * @param id
+   *
    * @param responsible
    * @param citizen
    * @param effort
@@ -800,22 +800,81 @@ public class DataCase implements ICase {
     this.furtherCourse = furtherCourse;
   }
 
-  public DataCase find(int id) {
-    // TODO
-    return null;
+  /**
+   * Method to find DataCase in database
+   *
+   * @param id of the case to find
+   * @return if found, the instance of DataCase with the specified ID
+   */
+  public static DataCase find(int id) {
+    DataCase dc = new DataCase(null, null, null);
+    Database.getInstance().query(
+            "SELECT id, circumstance, inquiry, further_course, is_informed_about_rights, is_informed_about_duties, "
+            + "responsibility, practical_tasks_support, personal_care_support, temporary_stay, longer_stay, rehabilitation_support, "
+            + "driving_support, temporary_house_offer, personal_care_offer, support_grocery_offer, longer_stay_offer, learning_offer, "
+            + "rehabilitation_offer, guardianship, none_acting_guardian, curatorship, assessor, party_representative, power_of_attorney, "
+            + "right_to_assessor_or_party_representative, information_saved_online "
+            + "FROM cases "
+            + "WHERE id = " + id,
+            rs -> {
+              dc.setID(rs.getInt(1));
+              dc.setCircumstance(rs.getString(2));
+              dc.setInquiry(rs.getString(3));
+              dc.setFurtherCourse(rs.getString(4));
+              dc.setInformedAboutRights(rs.getBoolean(5));
+              dc.setInformedAboutDuties(rs.getBoolean(6));
+              dc.fuckingresponsibilitywhatotodo(rs.getString(7));
+              dc.setPracticalTasksSupport(rs.getBoolean(8));
+              dc.setPersonalCareSupport(rs.getBoolean(9));
+              dc.setTemporaryStay(rs.getBoolean(10));
+              dc.setLongerStay(rs.getBoolean(11));
+              dc.setRehabilitationSupport(rs.getBoolean(12));
+              dc.setDrivingSupport(rs.getBoolean(13));
+              dc.setTemporaryHouseOffer(rs.getBoolean(14));
+              dc.setPersonalCareOffer(rs.getBoolean(15));
+              dc.setSupportGroceryOffer(rs.getBoolean(16));
+              dc.setLongerStayOffer(rs.getBoolean(17));
+              dc.setLearningOffer(rs.getBoolean(18));
+              dc.setRehabilitationOffer(rs.getBoolean(19));
+              dc.setGuardianship(rs.getBoolean(20));
+              dc.setNoneActingGuardian(rs.getBoolean(21));
+              dc.setCuratorship(rs.getBoolean(22));
+              dc.setAssessor(rs.getBoolean(23));
+              dc.setPartyRepresentative(rs.getBoolean(24));
+              dc.setPowerOfAttorney(rs.getBoolean(25));
+              dc.setRightToAssessorOrPartyRepresentative(rs.getBoolean(26));
+              dc.setInformationSavedOnline(rs.getBoolean(27));
+            });
+    return dc;
   }
 
   public void save() {
     String query = null;
 
     if (getID() == 0) {
-      query = "INSERT INTO addresses (primary_line, secondary_line, zip_code, city, country) "
-              + "VALUES('" + primaryLine + "','" + secondaryLine + "','" + zip + "','" + city + "','" + country + "');";
+      query = "INSERT INTO addresses (circumstance, inquiry, further_course, is_informed_about_rights, is_informed_about_duties, "
+              + "responsibility, practical_tasks_support, personal_care_support, temporary_stay, longer_stay, rehabilitation_support, "
+              + "driving_support, temporary_house_offer, personal_care_offer, support_grocery_offer, longer_stay_offer, learning_offer, "
+              + "rehabilitation_offer, guardianship, none_acting_guardian, curatorship, assessor, party_representative, power_of_attorney, "
+              + "right_to_assessor_or_party_representative, information_saved_online ) "
+              + "VALUES('" + getCircumstance() + "','" + getInquiry() + "','" + getFurtherCourse() + "','" + isInformedAboutRights() + "','" + isInformedAboutDuties() + "','" + method()
+              + "','" + needPracticalTasksSupport() + "','" + needPersonalCareSupport() + "','" + needTemporaryStay() + "','" + needLongerStay() + "','" + needRehabilitationSupport() + "','"
+              + needDrivingSupport() + "','" + needTemporaryHouseOffer() + "','" + needPersonalCareOffer() + "','" + needSupportGroceryOffer() + "','" + needLongerStayOffer() + "','" + needLearningOffer()
+              + "','" + needRehabilitationOffer() + "','" + isGuardianship() + "','" + isNoneActingGuardian() + "','" + isCuratorship() + "','" + isAssessor() + "','" + isPartyRepresentative()
+              + "','" + isPowerOfAttorney() + "','" + isRightToAssessorOrPartyRepresentative() + "','" + isInformationSavedOnline() + "');";
     } else {
       query = "UPDATE addresses "
-              + "SET primary_line = '" + getPrimaryLine() + "', secondary_line ='"
-              + getZip() + "', city='" + getCity() + "', country='" + getCountry() + "' "
-              + "WHERE id = " + id;
+              + "SET circumtance = '" + getCircumstance() + "', inquiry ='"
+              + getInquiry() + "', further_curse='" + getFurtherCourse() + "', is_informed_about_rights='" + isInformedAboutRights()
+              + "', is_informed_About_duties='" + isInformedAboutDuties() + "', responsiblity='" + method() + "', practical_tasks_support='" + needPracticalTasksSupport()
+              + "', personal_care_support='" + needPersonalCareSupport() + "', temporary_stay='" + needTemporaryStay() + "', longer_stay='" + needLongerStay() + "', rehabilitation_support='"
+              + needRehabilitationSupport() + "', driving_support='" + needDrivingSupport() + "', temporary_house_offer='" + needTemporaryHouseOffer() + "', personal_care_offer='"
+              + needPersonalCareOffer() + "', support_grocery_offer='" + needSupportGroceryOffer() + "', longer_stay_offer='" + needLongerStayOffer() + "', learning_offer='" + needLearningOffer()
+              + "', rehabilitation_offer='" + needRehabilitationOffer() + "', guardianship='" + isGuardianship() + "', none_acting_offer='" + isNoneActingGuardian() + "', curatorship='"
+              + isCuratorship() + "', assessor='" + isAssessor() + "', party_representative='" + isPartyRepresentative() + "', power_of_attorney='" + isPowerOfAttorney()
+              + "', right_to_asssessor_or_party_representative='" + isRightToAssessorOrPartyRepresentative() + "', information_saved_online='" + isInformationSavedOnline()
+              + "' "
+              + "WHERE id = " + ID;
     }
 
     Database.getInstance().query(query, rs -> {
