@@ -46,18 +46,30 @@ public class DataCitizen extends DataPerson implements ICitizen {
     this.CPR = cpr;
   }
 
+  @Override
   public int getID() {
     return this.id;
   }
 
-//  public DataCitizen find(String cpr) {
-//
-//  }
+  /**
+   * Searches for citizen in database
+   *
+   * @param cpr of citizen
+   * @return if found, returns instanse of DataCitizen
+   */
+  public DataCitizen find(String cpr) {
+    //TODO
+    return null;
+  }
+
+  /**
+   * saves DataCitizen to database
+   */
   public void save() {
     String query = null;
 
     if (getID() == 0) {
-      query = "INSERT INTO citizens (id, person_id, cpr) "
+      query = "INSERT INTO citizens (person_id, cpr) "
               + "VALUES('" + CPR + "');";
     } else {
       query = "UPDATE citizens "
