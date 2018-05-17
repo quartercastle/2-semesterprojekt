@@ -4,7 +4,7 @@ import acq.ICitizen;
 import java.util.Collection;
 import java.util.UUID;
 import acq.ICase;
-import security.User;
+import domain.security.User;
 import java.util.HashSet;
 
 /**

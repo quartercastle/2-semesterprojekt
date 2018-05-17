@@ -1,6 +1,6 @@
-package security;
+package domain.security;
 
-import security.Role;
+import domain.security.Role;
 import acq.IUser;
 
 public class User implements IUser {
