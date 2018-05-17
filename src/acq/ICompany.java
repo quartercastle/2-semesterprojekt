@@ -20,6 +20,13 @@ public interface ICompany {
   IAddress getAddress();
 
   /**
+   * Get id
+   *
+   * @return id
+   */
+  int getId();
+
+  /**
    * Set address
    *
    * @param address

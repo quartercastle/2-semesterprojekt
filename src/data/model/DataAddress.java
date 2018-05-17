@@ -200,15 +200,11 @@ public class DataAddress implements IAddress {
    *
    * @return id
    */
+  @Override
   public int getId() {
     return id;
   }
 
-  /**
-   * Set id
-   *
-   * @param id
-   */
   public void setId(int id) {
     this.id = id;
   }
