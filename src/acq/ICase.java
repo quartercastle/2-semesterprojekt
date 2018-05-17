@@ -13,7 +13,21 @@ public interface ICase {
    *
    * @return unique case ID
    */
-  UUID getId();
+  UUID getCaseID();
+
+  /**
+   * set server id
+   *
+   * @param id
+   */
+  void setServerID(int id);
+
+  /**
+   * get serverid
+   *
+   * @return serverid
+   */
+  int getServerID();
 
   /**
    * Get responsible user

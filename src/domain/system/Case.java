@@ -2,7 +2,6 @@ package domain.system;
 
 import acq.ICitizen;
 import java.util.Collection;
-import java.util.UUID;
 import acq.ICase;
 import security.User;
 import java.util.HashSet;
@@ -13,9 +12,9 @@ import java.util.HashSet;
 public class Case implements ICase {
 
   /**
-   * Unique ID for the case
+   * Case id
    */
-  private UUID id;
+  private int ID;
   /**
    * The user responsile for the case
    */
@@ -175,21 +174,11 @@ public class Case implements ICase {
    * @param effort
    */
   public Case(User responsible, Citizen citizen, Effort effort) {
-    this.id = new UUID(5, 7);
     this.responsible = responsible;
     this.citizen = citizen;
     this.effort = effort;
     this.participants = new HashSet<>();
-  }
-
-  /**
-   * Returns case ID
-   *
-   * @return id
-   */
-  @Override
-  public UUID getId() {
-    return id;
+    this.ID = 0;
   }
 
   /**
@@ -197,8 +186,19 @@ public class Case implements ICase {
    *
    * @param id
    */
-  public void setId(UUID id) {
-    this.id = id;
+  @Override
+  public void setID(int id) {
+    this.ID = id;
+  }
+
+  /**
+   * get id
+   *
+   * @return id
+   */
+  @Override
+  public int getID() {
+    return this.ID;
   }
 
   /**
@@ -837,6 +837,6 @@ public class Case implements ICase {
    */
   @Override
   public String toString() {
-    return "Sags-ID: " + id + "\n" + "Borger under behandling: " + citizen.getFirstName() + " " + citizen.getLastName() + "\n" + "Ansvarlig sagsbehandler: " + responsible;
+    return "Sags-ID: " + ID + "\n" + "Borger under behandling: " + citizen.getFirstName() + " " + citizen.getLastName() + "\n" + "Ansvarlig sagsbehandler: " + responsible;
   }
 }

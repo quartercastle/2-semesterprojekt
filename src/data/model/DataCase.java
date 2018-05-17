@@ -4,6 +4,7 @@ import acq.ICase;
 import acq.ICitizen;
 import acq.IEffort;
 import acq.IUser;
+import data.Database;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;
@@ -13,11 +14,6 @@ import java.util.UUID;
  * DataCase class
  */
 public class DataCase implements ICase {
-
-  /**
-   * Id of the case
-   */
-  private UUID id;
 
   /**
    * The responsible user for the case
@@ -174,6 +170,11 @@ public class DataCase implements ICase {
   private String furtherCourse;
 
   /**
+   * Case ID
+   */
+  private int ID;
+
+  /**
    * Create a new DataCase
    *
    * @param id
@@ -181,8 +182,8 @@ public class DataCase implements ICase {
    * @param citizen
    * @param effort
    */
-  public DataCase(UUID id, IUser responsible, ICitizen citizen, IEffort effort) {
-    this.id = id;
+  public DataCase(IUser responsible, ICitizen citizen, IEffort effort) {
+    this.ID = 0;
     this.responsible = responsible;
     this.citizen = citizen;
     this.effort = effort;
@@ -190,13 +191,23 @@ public class DataCase implements ICase {
   }
 
   /**
-   * Get id
+   * get case id
    *
    * @return id
    */
   @Override
-  public UUID getId() {
-    return this.id;
+  public int getID() {
+    return this.ID;
+  }
+
+  /**
+   * set server id
+   *
+   * @param id
+   */
+  @Override
+  public void setID(int id) {
+    this.ID = id;
   }
 
   /**
@@ -787,6 +798,28 @@ public class DataCase implements ICase {
   @Override
   public void setFurtherCourse(String furtherCourse) {
     this.furtherCourse = furtherCourse;
+  }
+
+  public DataCase find(int id) {
+    // TODO
+    return null;
+  }
+
+  public void save() {
+    String query = null;
+
+    if (getID() == 0) {
+      query = "INSERT INTO addresses (primary_line, secondary_line, zip_code, city, country) "
+              + "VALUES('" + primaryLine + "','" + secondaryLine + "','" + zip + "','" + city + "','" + country + "');";
+    } else {
+      query = "UPDATE addresses "
+              + "SET primary_line = '" + getPrimaryLine() + "', secondary_line ='"
+              + getZip() + "', city='" + getCity() + "', country='" + getCountry() + "' "
+              + "WHERE id = " + id;
+    }
+
+    Database.getInstance().query(query, rs -> {
+    });
   }
 
 }
