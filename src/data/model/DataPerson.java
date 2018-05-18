@@ -90,7 +90,7 @@ public class DataPerson {
   public void save() {
     String query = null;
 
-    ((DataAddress) address).save();
+    ((DataAddress) getAddress()).save();
 
     if (getId() == 0) {
       String[] values = {getFirstName(), getMiddleName(), getLastName(), getPhone(), getEmail(), "" + getAddress().getId()};
@@ -235,6 +235,16 @@ public class DataPerson {
    * @param id
    */
   public void setId(int id) {
+    this.id = id;
+  }
+
+  /**
+   * s
+   * Sets id of parent person-class
+   *
+   * @param id
+   */
+  public void setPersonId(int id) {
     this.id = id;
   }
 }

@@ -52,8 +52,18 @@ public class DataCitizen extends DataPerson implements ICitizen {
    * @return Citizen id
    */
   @Override
-  public int getID() {
+  public int getId() {
     return this.id;
+  }
+
+  /**
+   * set id
+   *
+   * @param id
+   */
+  @Override
+  public void setId(int id) {
+    this.id = id;
   }
 
   /**
@@ -65,18 +75,20 @@ public class DataCitizen extends DataPerson implements ICitizen {
   public static DataCitizen find(int id) {
     DataCitizen dc = new DataCitizen(null, null, null, null, null, null, null);
     Database.getInstance().query(
-            "SELECT person_id, cpr "
-            + "FROM citizens"
+            "SELECT id, person_id, cpr "
+            + "FROM citizens "
             + "WHERE id = " + id,
             rs -> {
-              DataPerson dp = DataPerson.find(rs.getInt(1));
+              DataPerson dp = DataPerson.find(rs.getInt(2));
+              dc.setId(rs.getInt(1));
+              dc.setPersonId(rs.getInt(2));
               dc.setFirstName(dp.getFirstName());
               dc.setMiddleName(dp.getMiddleName());
               dc.setLastName(dp.getLastName());
               dc.setAddress(dp.getAddress());
               dc.setPhone(dp.getPhone());
               dc.setEmail(dp.getEmail());
-              dc.setCPR(rs.getString(2));
+              dc.setCPR(rs.getString(3));
 
             });
 
@@ -86,20 +98,25 @@ public class DataCitizen extends DataPerson implements ICitizen {
   /**
    * saves DataCitizen to database
    */
+  @Override
   public void save() {
     String query = null;
     super.save();
 
-    if (getID() == 0) {
+    if (getId() == 0) {
 
       query = "INSERT INTO citizens (person_id, cpr) "
-              + "VALUES(" + super.getId() + ", '" + CPR + "');";
+              + "VALUES(" + super.getId() + ", '" + CPR + "') "
+              + "RETURNING id;";
     } else {
       query = "UPDATE citizens "
-              + "SET person_id=" + super.getId() + "'cpr = '" + getCPR() + "WHERE id = " + id;
+              + "SET cpr = '" + getCPR() + "' WHERE id = " + id;
     }
 
     Database.getInstance().query(query, rs -> {
+      if (id == 0) {
+        id = rs.getInt(1);
+      }
     });
   }
 

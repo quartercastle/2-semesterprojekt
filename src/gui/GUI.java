@@ -2,6 +2,8 @@ package gui;
 
 import acq.IGUI;
 import acq.IDomain;
+import data.model.DataAddress;
+import data.model.DataCitizen;
 import gui.controller.Controller;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -78,6 +80,7 @@ public class GUI extends Application implements IGUI {
     controllers.get("Login").getStage().show();
     controllers.put("CreateCase", load("create_case/CreateCase"));
     controllers.put("Overview", load("Overview"));
+
   }
 
   /**

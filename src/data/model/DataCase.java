@@ -828,7 +828,7 @@ public class DataCase implements ICase {
             rs -> {
               dc.setID(rs.getInt(1));
               dc.setCitizen(DataCitizen.find(rs.getInt(2)));
-              dc.setResponsible(DataCaseWorker.find(rs.getInt(3)));
+              //dc.setResponsible(DataCaseWorker.find(rs.getInt(3)));
               dc.setCircumstance(rs.getString(4));
               dc.setInquiry(rs.getString(5));
               dc.setFurtherCourse(rs.getString(6));
@@ -867,14 +867,15 @@ public class DataCase implements ICase {
               + "driving_support, temporary_house_offer, personal_care_offer, support_grocery_offer, longer_stay_offer, learning_offer, "
               + "rehabilitation_offer, guardianship, none_acting_guardian, curatorship, assessor, party_representative, power_of_attorney, "
               + "right_to_assessor_or_party_representative, information_saved_online ) "
-              + "VALUES('" + getCitizen().getID() + "','" + getResponsible().getID() + "','" + getCircumstance() + "','" + getInquiry() + "','" + getFurtherCourse() + "','" + isInformedAboutRights() + "','" + isInformedAboutDuties()
+              + "VALUES('" + getCitizen().getId() + "','" + getResponsible().getID() + "','" + getCircumstance() + "','" + getInquiry() + "','" + getFurtherCourse() + "','" + isInformedAboutRights() + "','" + isInformedAboutDuties()
               + "','" + needPracticalTasksSupport() + "','" + needPersonalCareSupport() + "','" + needTemporaryStay() + "','" + needLongerStay() + "','" + needRehabilitationSupport() + "','"
               + needDrivingSupport() + "','" + needTemporaryHouseOffer() + "','" + needPersonalCareOffer() + "','" + needSupportGroceryOffer() + "','" + needLongerStayOffer() + "','" + needLearningOffer()
               + "','" + needRehabilitationOffer() + "','" + isGuardianship() + "','" + isNoneActingGuardian() + "','" + isCuratorship() + "','" + isAssessor() + "','" + isPartyRepresentative()
-              + "','" + isPowerOfAttorney() + "','" + isRightToAssessorOrPartyRepresentative() + "','" + isInformationSavedOnline() + "');";
+              + "','" + isPowerOfAttorney() + "','" + isRightToAssessorOrPartyRepresentative() + "','" + isInformationSavedOnline() + "') "
+              + "RETURNING id;";
     } else {
       query = "UPDATE addresses "
-              + "SET citizen_id =" + getCitizen().getID() + "', case_worker_id='" + getResponsible().getID() + "'circumtance = '" + getCircumstance() + "', inquiry ='"
+              + "SET citizen_id =" + getCitizen().getId() + "', case_worker_id='" + getResponsible().getID() + "'circumtance = '" + getCircumstance() + "', inquiry ='"
               + getInquiry() + "', further_curse='" + getFurtherCourse() + "', is_informed_about_rights='" + isInformedAboutRights()
               + "', is_informed_About_duties='" + isInformedAboutDuties() + "', practical_tasks_support='" + needPracticalTasksSupport()
               + "', personal_care_support='" + needPersonalCareSupport() + "', temporary_stay='" + needTemporaryStay() + "', longer_stay='" + needLongerStay() + "', rehabilitation_support='"
@@ -888,6 +889,9 @@ public class DataCase implements ICase {
     }
 
     Database.getInstance().query(query, rs -> {
+      if (ID == 0) {
+        ID = rs.getInt(1);
+      }
     });
   }
 

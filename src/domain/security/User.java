@@ -1,5 +1,5 @@
+package domain.security;
 
-import domain.security.Role;
 import acq.IUser;
 
 public class User implements IUser {
@@ -22,7 +22,6 @@ public class User implements IUser {
   /**
    * User contructor
    *
-   * @param name
    * @param username
    * @param password
    * @param role

@@ -24,7 +24,7 @@ public interface ICitizen {
    *
    * @return id
    */
-  int getID();
+  int getId();
 
   /**
    * Get first name

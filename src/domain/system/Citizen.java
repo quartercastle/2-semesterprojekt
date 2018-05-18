@@ -54,7 +54,7 @@ public class Citizen extends Person implements ICitizen {
   }
 
   @Override
-  public int getID() {
+  public int getId() {
     return this.id;
   }
 
