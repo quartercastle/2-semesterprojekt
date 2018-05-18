@@ -10,39 +10,9 @@ import acq.ICitizen;
 public class Citizen extends Person implements ICitizen {
 
   /**
-   * Firstname of citizen
-   */
-  private String firstName;
-
-  /**
-   * middleName of citizen
-   */
-  private String middleName;
-
-  /**
-   * lastname of citizen
-   */
-  private String lastName;
-
-  /**
    * CPR of citizen
    */
   private String CPR;
-
-  /**
-   * address of citizen
-   */
-  private Address address;
-
-  /**
-   * phonenumber of citizen
-   */
-  private String phone;
-
-  /**
-   * email of citizen
-   */
-  private String email;
 
   /**
    * Constructor for Citizen instance
