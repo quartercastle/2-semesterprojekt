@@ -116,6 +116,11 @@ public class Person {
     return this.email;
   }
 
+  /**
+   * Get id
+   *
+   * @return id
+   */
   public int getId() {
     return id;
   }

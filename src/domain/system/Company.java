@@ -73,11 +73,21 @@ public class Company implements ICompany {
     this.address = address;
   }
 
+  /**
+   * Get address
+   *
+   * @param address
+   */
   @Override
   public void setAddress(IAddress address) {
     this.address = address;
   }
 
+  /**
+   * Get id
+   *
+   * @return id
+   */
   @Override
   public int getId() {
     return id;

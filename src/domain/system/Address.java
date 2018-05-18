@@ -156,6 +156,11 @@ public class Address implements IAddress {
     this.country = country;
   }
 
+  /**
+   * Get id
+   *
+   * @return id
+   */
   @Override
   public int getId() {
     return id;
