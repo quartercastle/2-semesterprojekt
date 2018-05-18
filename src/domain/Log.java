@@ -3,7 +3,7 @@
  */
 package domain;
 
-import security.User;
+import domain.security.User;
 import domain.system.Case;
 import java.util.GregorianCalendar;
 
