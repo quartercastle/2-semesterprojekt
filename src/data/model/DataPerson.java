@@ -1,8 +1,14 @@
 package data.model;
 
 import acq.IAddress;
+import data.Database;
 
 public class DataPerson {
+
+  /**
+   * Id
+   */
+  private int id;
 
   /**
    * First name of person
@@ -51,6 +57,59 @@ public class DataPerson {
     this.address = address;
     this.phone = phone;
     this.email = email;
+  }
+
+  /**
+   * Called to find a DataPerson in database
+   *
+   * @param id of the person to find
+   * @return a instance of DataPerson if found.
+   */
+  public static DataPerson find(int id) {
+    DataPerson d = new DataPerson(null, null, null, null, null, null);
+    Database.getInstance().query(
+            "SELECT id, first_name, middle_name, last_name, phone, email, address_id "
+            + "FROM persons "
+            + "WHERE id = " + id,
+            rs -> {
+              d.setId(rs.getInt(1));
+              d.setFirstName(rs.getString(2));
+              d.setMiddleName(rs.getString(3));
+              d.setLastName(rs.getString(4));
+              d.setPhone(rs.getString(5));
+              d.setEmail(rs.getString(6));
+              d.setAddress(DataAddress.find(rs.getInt(7)));
+            });
+
+    return d;
+  }
+
+  /**
+   * Called to save
+   */
+  public void save() {
+    String query = null;
+
+    ((DataAddress) address).save();
+
+    if (getId() == 0) {
+      String[] values = {getFirstName(), getMiddleName(), getLastName(), getPhone(), getEmail(), "" + getAddress().getId()};
+      query = "INSERT INTO persons (first_name, middle_name, last_name, phone, email, address_id) "
+              + "VALUES('" + String.join("','", values) + "') "
+              + "RETURNING id";
+    } else {
+      query = "UPDATE persons "
+              + "SET first_name = '" + getFirstName() + "', middle_name = '"
+              + getMiddleName() + "', last_name = '" + getLastName() + "', phone =' " + getPhone()
+              + "', email ='" + getEmail() + "', address_id = " + getAddress().getId()
+              + "WHERE id = " + id;
+    }
+
+    Database.getInstance().query(query, rs -> {
+      if (id == 0) {
+        id = rs.getInt(1);
+      }
+    });
   }
 
   /**
@@ -108,6 +167,15 @@ public class DataPerson {
   }
 
   /**
+   * Get id
+   *
+   * @return id
+   */
+  public int getId() {
+    return id;
+  }
+
+  /**
    * Set firstname
    *
    * @param name
@@ -159,5 +227,14 @@ public class DataPerson {
    */
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  /**
+   * Set id
+   *
+   * @param id
+   */
+  public void setId(int id) {
+    this.id = id;
   }
 }

@@ -85,7 +85,8 @@ public class DataAddress implements IAddress {
 
     if (getId() == 0) {
       query = "INSERT INTO addresses (primary_line, secondary_line, zip_code, city, country) "
-              + "VALUES('" + primaryLine + "','" + secondaryLine + "','" + zip + "','" + city + "','" + country + "');";
+              + "VALUES('" + primaryLine + "','" + secondaryLine + "','" + zip + "','" + city + "','" + country + "') "
+              + "RETURNING id";
     } else {
       query = "UPDATE addresses "
               + "SET primary_line = '" + getPrimaryLine() + "', secondary_line ='"
@@ -94,6 +95,9 @@ public class DataAddress implements IAddress {
     }
 
     Database.getInstance().query(query, rs -> {
+      if (id == 0) {
+        id = rs.getInt(1);
+      }
     });
   }
 
@@ -200,15 +204,11 @@ public class DataAddress implements IAddress {
    *
    * @return id
    */
+  @Override
   public int getId() {
     return id;
   }
 
-  /**
-   * Set id
-   *
-   * @param id
-   */
   public void setId(int id) {
     this.id = id;
   }
