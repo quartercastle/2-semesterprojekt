@@ -4,6 +4,12 @@
 package acq;
 
 public interface IRole {
+  /**
+   * Get id
+   *
+   * @return id
+   */
+  int getId();
 
   /**
    * Get name
@@ -27,11 +33,11 @@ public interface IRole {
   boolean canViewCase();
 
   /**
-   * Can role evaluate a case
+   * Can role edit a case
    *
    * @return whether it is possible to evaluate a case
    */
-  boolean canEvaluateCase();
+  boolean canEditCase();
 
   /**
    * Can role close a case
@@ -39,6 +45,13 @@ public interface IRole {
    * @return whether it is possible to close a case
    */
   boolean canCloseCase();
+
+  /**
+   * Set name
+   *
+   * @param name
+   */
+  void setName(String name);
 
   /**
    * Set whether a role can create a case
@@ -55,11 +68,11 @@ public interface IRole {
   void setCanViewCase(boolean permission);
 
   /**
-   * Set whether a role can evaluate a case
+   * Set whether a role can edit a case
    *
    * @param permission
    */
-  void setCanEvaluateCase(boolean permission);
+  void setCanEditCase(boolean permission);
 
   /**
    * Set whether a role can close a case

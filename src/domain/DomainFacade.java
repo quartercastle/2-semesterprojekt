@@ -3,7 +3,7 @@
  */
 package domain;
 
-import security.AuthManager;
+import domain.security.AuthManager;
 import domain.system.Citizen;
 import domain.system.Address;
 import domain.system.Case;

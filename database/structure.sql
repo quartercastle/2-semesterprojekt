@@ -51,7 +51,6 @@ CREATE TABLE persons(
   last_name VARCHAR(255),
   phone VARCHAR(255),
   email VARCHAR(255),
-  citizenship VARCHAR(255),
   address_id INTEGER NOT NULL
 );
 

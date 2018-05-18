@@ -4,7 +4,6 @@ import acq.ICitizen;
 import java.util.Collection;
 import acq.ICase;
 import acq.ICaseWorker;
-import security.User;
 import java.util.HashSet;
 
 /**

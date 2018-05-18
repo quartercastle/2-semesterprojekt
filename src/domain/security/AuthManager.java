@@ -1,4 +1,4 @@
-package security;
+package domain.security;
 
 public class AuthManager {
 

@@ -1,8 +1,13 @@
-package security;
+package domain.security;
 
 import acq.IRole;
 
 public class Role implements IRole {
+
+  /**
+   * id
+   */
+  private int id;
 
   /**
    * Name of role
@@ -20,9 +25,9 @@ public class Role implements IRole {
   private boolean canViewCase;
 
   /**
-   * can the role evaluate case
+   * can the role edit case
    */
-  private boolean canEvaluateCase;
+  private boolean canEditCase;
 
   /**
    * can close case
@@ -45,17 +50,27 @@ public class Role implements IRole {
    * @param name
    * @param canCreateCase
    * @param canViewCase
-   * @param canEvaluateCase
+   * @param canEditCase
    * @param canCloseCase
    * @param canCreateCase
    */
-  public Role(String name, boolean canCreateCase, boolean canViewCase, boolean canEvaluateCase, boolean canCloseCase) {
+  public Role(int id, String name, boolean canCreateCase, boolean canViewCase, boolean canEditCase, boolean canCloseCase) {
+    this.id = id;
     this.name = name;
     this.canCreateCase = canCreateCase;
     this.canViewCase = canViewCase;
-    this.canEvaluateCase = canEvaluateCase;
+    this.canEditCase = canEditCase;
     this.canCloseCase = canCloseCase;
     this.canCreateCase = canCreateCase;
+  }
+
+  /**
+   * Get id
+   * @return
+   */
+  @Override
+  public int getId() {
+    return id;
   }
 
   /**
@@ -79,13 +94,13 @@ public class Role implements IRole {
   }
 
   /**
-   * Can role evaluate Case
+   * Can role edit Case
    *
-   * @return canEvaluateCase
+   * @return canEditCase
    */
   @Override
-  public boolean canEvaluateCase() {
-    return canEvaluateCase;
+  public boolean canEditCase() {
+    return canEditCase;
   }
 
   /**
@@ -128,13 +143,13 @@ public class Role implements IRole {
   }
 
   /**
-   * Set whether a role can evaluate a case
+   * Set whether a role can edit a case
    *
    * @param permission
    */
   @Override
-  public void setCanEvaluateCase(boolean permission) {
-    this.canEvaluateCase = permission;
+  public void setCanEditCase(boolean permission) {
+    this.canEditCase = permission;
   }
 
   /**

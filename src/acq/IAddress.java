@@ -6,6 +6,13 @@ package acq;
 public interface IAddress {
 
   /**
+   * Get id
+   *
+   * @return id
+   */
+  int getId();
+
+  /**
    * Get primary line
    *
    * @return primary address line
@@ -42,18 +49,21 @@ public interface IAddress {
 
   /**
    * Set primary line
+   *
    * @param line
    */
   void setPrimaryLine(String line);
 
   /**
    * Set zip
+   *
    * @param zip
    */
   void setZip(String zip);
 
   /**
    * Set city
+   *
    * @param city
    */
   void setCity(String city);

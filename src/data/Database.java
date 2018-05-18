@@ -108,7 +108,7 @@ public class Database {
     ResultSet resultSet = null;
     try (Statement statement = this.connection.createStatement()) {
 
-      if (query.toUpperCase().startsWith("INSERT") || query.toUpperCase().startsWith("UPDATE")) {
+      if (query.toUpperCase().startsWith("UPDATE")) {
         statement.execute(query);
       } else {
         resultSet = statement.executeQuery(query);
@@ -127,5 +127,22 @@ public class Database {
         }
       }
     }
+  }
+
+  /**
+   * Query statement without a handler
+   * @param query
+   */
+  public void query(String query) {
+    query(query, rs -> {});
+  }
+
+  /**
+   * Compose sql lines together
+   * @param  lines
+   * @return a sql statement
+   */
+  public static String compose(String... lines) {
+    return String.join("\n", lines);
   }
 }

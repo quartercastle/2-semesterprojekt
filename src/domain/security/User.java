@@ -1,18 +1,13 @@
-package security;
 
+import domain.security.Role;
 import acq.IUser;
 
 public class User implements IUser {
 
   /**
-   * Name of the user
+   * The user's username
    */
-  private String name;
-
-  /**
-   * The user's email
-   */
-  private String email;
+  private String username;
 
   /**
    * The user's password
@@ -28,35 +23,24 @@ public class User implements IUser {
    * User contructor
    *
    * @param name
-   * @param email
+   * @param username
    * @param password
    * @param role
    */
-  public User(String name, String email, String password, Role role) {
-    this.name = name;
-    this.email = email;
+  public User(String username, String password, Role role) {
+    this.username = username;
     this.password = password;
     this.role = role;
   }
 
   /**
-   * Get name
+   * Get username
    *
-   * @return name
+   * @return username
    */
   @Override
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Get email
-   *
-   * @return email
-   */
-  @Override
-  public String getEmail() {
-    return email;
+  public String getUsername() {
+    return username;
   }
 
   /**
@@ -80,21 +64,12 @@ public class User implements IUser {
   }
 
   /**
-   * Set name
+   * Set username
    *
-   * @param name
+   * @param username
    */
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   * Set email
-   *
-   * @param email
-   */
-  public void setEmail(String email) {
-    this.email = email;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   /**

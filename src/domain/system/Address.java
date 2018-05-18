@@ -9,6 +9,11 @@ import acq.IAddress;
 public class Address implements IAddress {
 
   /**
+   * Address id
+   */
+  private int id;
+
+  /**
    * Name of primaryLine
    */
   private String primaryLine;
@@ -152,6 +157,16 @@ public class Address implements IAddress {
    */
   public void setCountry(String country) {
     this.country = country;
+  }
+
+  /**
+   * Get id
+   *
+   * @return id
+   */
+  @Override
+  public int getId() {
+    return id;
   }
 
 }

@@ -28,6 +28,11 @@ public abstract class Person {
   }
 
   /**
+   * Id
+   */
+  private int id;
+
+  /**
    * First name of person
    */
   private String firstName;
@@ -109,6 +114,15 @@ public abstract class Person {
    */
   public String getEmail() {
     return this.email;
+  }
+
+  /**
+   * Get id
+   *
+   * @return id
+   */
+  public int getId() {
+    return id;
   }
 
   /**

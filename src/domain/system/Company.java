@@ -9,6 +9,11 @@ import acq.ICompany;
 public class Company implements ICompany {
 
   /**
+   * Company id
+   */
+  private int id;
+
+  /**
    * Name of the company
    */
   private String name;
@@ -68,9 +73,23 @@ public class Company implements ICompany {
     this.address = address;
   }
 
+  /**
+   * Get address
+   *
+   * @param address
+   */
   @Override
   public void setAddress(IAddress address) {
     this.address = address;
   }
 
+  /**
+   * Get id
+   *
+   * @return id
+   */
+  @Override
+  public int getId() {
+    return id;
+  }
 }

@@ -1,8 +1,14 @@
 package data.model;
 
 import acq.IRole;
+import data.Database;
 
 public class DataRole implements IRole {
+
+  /**
+   * id
+   */
+  private int id;
 
   /**
    * Name of role
@@ -22,7 +28,7 @@ public class DataRole implements IRole {
   /**
    * Can Evaluate Case
    */
-  private boolean canEvaluateCase;
+  private boolean canEditCase;
 
   /**
    * Can close case
@@ -35,17 +41,25 @@ public class DataRole implements IRole {
    * @param name
    * @param canCreateCase
    * @param canViewCase
-   * @param canEvaluateCase
+   * @param canEditCase
    * @param canCloseCase
    *
    */
-  public DataRole(String name, boolean canCreateCase, boolean canViewCase, boolean canEvaluateCase, boolean canCloseCase) {
+  public DataRole(String name, boolean canCreateCase, boolean canViewCase, boolean canEditCase, boolean canCloseCase) {
     this.name = name;
     this.canCreateCase = canCreateCase;
     this.canViewCase = canViewCase;
-    this.canEvaluateCase = canEvaluateCase;
+    this.canEditCase = canEditCase;
     this.canCloseCase = canCloseCase;
     this.canCreateCase = canCreateCase;
+  }
+
+  /**
+   * Get id
+   * @return
+   */
+  public int getId() {
+    return this.id;
   }
 
   /**
@@ -79,13 +93,13 @@ public class DataRole implements IRole {
   }
 
   /**
-   * can evaluate case
+   * can edit case
    *
-   * @return can evaluate case
+   * @return can edit case
    */
   @Override
-  public boolean canEvaluateCase() {
-    return this.canEvaluateCase;
+  public boolean canEditCase() {
+    return this.canEditCase;
   }
 
   /**
@@ -96,6 +110,22 @@ public class DataRole implements IRole {
   @Override
   public boolean canCloseCase() {
     return this.canCloseCase;
+  }
+
+  /**
+   * Set id
+   * @param id
+   */
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  /**
+   * Set name
+   * @param name
+   */
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
@@ -115,11 +145,11 @@ public class DataRole implements IRole {
   }
 
   /**
-   * set can evaluate case
+   * set can edit case
    */
   @Override
-  public void setCanEvaluateCase(boolean permission) {
-    this.canEvaluateCase = permission;
+  public void setCanEditCase(boolean permission) {
+    this.canEditCase = permission;
   }
 
   /**
@@ -128,5 +158,56 @@ public class DataRole implements IRole {
   @Override
   public void setCanCloseCase(boolean permission) {
     this.canCloseCase = permission;
+  }
+
+  /**
+   * Find role in database
+   * @param  id
+   * @return  role
+   */
+  public static DataRole find(int id) {
+    DataRole role = new DataRole(null, false, false, false, false);
+    Database.getInstance().query(Database.compose(
+        "SELECT id, name, create_case, view_case, edit_case, close_case",
+        "FROM roles",
+        "WHERE id = " + id
+      ),
+      rs -> {
+        role.setId(rs.getInt(1));
+        role.setName(rs.getString(2));
+        role.setCanCreateCase(rs.getBoolean(3));
+        role.setCanViewCase(rs.getBoolean(4));
+        role.setCanEditCase(rs.getBoolean(5));
+        role.setCanCloseCase(rs.getBoolean(6));
+      });
+
+    return role;
+  }
+
+  /**
+   * Save role to database
+   */
+  public void save() {
+    String query = null;
+
+    if (getId() == 0) {
+      String[] values = {getName(), ""+canCreateCase(), ""+canViewCase(), ""+canEditCase(), ""+canCloseCase()};
+      query = Database.compose(
+        "INSERT INTO roles (name, create_case, view_case, edit_case, close_case)",
+        "VALUES('" + String.join("','", values) + "')"
+      );
+    } else {
+      query = Database.compose(
+        "UPDATE roles SET",
+        "name = '" + getName() + "',",
+        "create_case = " + canCreateCase() + ",",
+        "view_case = " + canViewCase() + ",",
+        "edit_case = " + canEditCase() + ",",
+        "close_case = " + canCloseCase(),
+        "WHERE id = " + getId()
+      );
+    }
+
+    Database.getInstance().query(query);
   }
 }
