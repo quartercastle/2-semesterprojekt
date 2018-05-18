@@ -60,6 +60,10 @@ public class CaseWorker extends Person implements ICaseWorker {
     return new Case(null, null, null);
   }
 
+  /**
+   *
+   * @return caseworker id
+   */
   @Override
   public int getID() {
     return this.id;

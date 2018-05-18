@@ -59,12 +59,28 @@ public class DataCitizen extends DataPerson implements ICitizen {
   /**
    * Searches for citizen in database
    *
-   * @param cpr of citizen
+   * @param id of citizen
    * @return if found, returns instanse of DataCitizen
    */
   public static DataCitizen find(int id) {
-    //TODO
-    return null;
+    DataCitizen dc = new DataCitizen(null, null, null, null, null, null, null);
+    Database.getInstance().query(
+            "SELECT person_id, cpr "
+            + "FROM citizens"
+            + "WHERE id = " + id,
+            rs -> {
+              DataPerson dp = DataPerson.find(rs.getInt(1));
+              dc.setFirstName(dp.getFirstName());
+              dc.setMiddleName(dp.getMiddleName());
+              dc.setLastName(dp.getLastName());
+              dc.setAddress(dp.getAddress());
+              dc.setPhone(dp.getPhone());
+              dc.setEmail(dp.getEmail());
+              dc.setCPR(rs.getString(2));
+
+            });
+
+    return dc;
   }
 
   /**
@@ -72,13 +88,15 @@ public class DataCitizen extends DataPerson implements ICitizen {
    */
   public void save() {
     String query = null;
+    super.save();
 
     if (getID() == 0) {
+
       query = "INSERT INTO citizens (person_id, cpr) "
-              + "VALUES('" + CPR + "');";
+              + "VALUES(" + super.getId() + ", '" + CPR + "');";
     } else {
       query = "UPDATE citizens "
-              + "SET cpr = '" + getCPR() + "WHERE id = " + id;
+              + "SET person_id=" + super.getId() + "'cpr = '" + getCPR() + "WHERE id = " + id;
     }
 
     Database.getInstance().query(query, rs -> {

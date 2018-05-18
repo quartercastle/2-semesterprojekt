@@ -834,7 +834,6 @@ public class DataCase implements ICase {
               dc.setFurtherCourse(rs.getString(6));
               dc.setInformedAboutRights(rs.getBoolean(7));
               dc.setInformedAboutDuties(rs.getBoolean(8));
-
               dc.setPracticalTasksSupport(rs.getBoolean(9));
               dc.setPersonalCareSupport(rs.getBoolean(10));
               dc.setTemporaryStay(rs.getBoolean(11));
