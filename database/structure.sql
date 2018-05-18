@@ -107,7 +107,7 @@ CREATE TABLE effort_paragraphs(
 CREATE TABLE services(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  frequens INTEGER NOT NULL,
+  frequency INTEGER NOT NULL,
   unit INTEGER NOT NULL,
   price INTEGER NOT NULL,
   repetition INTEGER NOT NULL,
@@ -117,8 +117,8 @@ CREATE TABLE services(
 
 CREATE TABLE offers(
   id SERIAL PRIMARY KEY,
-  number INTEGER NOT NULL,
-  title VARCHAR(255),
+  name VARCHAR(255),
+  price INTEGER NOT NULL,
   description TEXT
 );
 

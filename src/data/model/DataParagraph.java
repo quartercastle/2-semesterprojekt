@@ -1,8 +1,14 @@
 package data.model;
 
 import acq.IParagraph;
+import data.Database;
 
 public class DataParagraph implements IParagraph {
+
+  /**
+   * ID
+   */
+  private int id;
 
   /**
    * Numbber of the paragraph
@@ -18,6 +24,28 @@ public class DataParagraph implements IParagraph {
    * Description of Paragraph
    */
   private String description;
+
+  /**
+   * Constructor for dataparagraph
+   *
+   * @param number
+   * @param title
+   * @param description
+   */
+  public DataParagraph(int number, String title, String description) {
+    this.number = number;
+    this.title = title;
+    this.description = description;
+  }
+
+  /**
+   * Get id
+   *
+   * @return id
+   */
+  public int getID() {
+    return this.id;
+  }
 
   /**
    * Get number
@@ -50,6 +78,15 @@ public class DataParagraph implements IParagraph {
   }
 
   /**
+   * Set ID
+   *
+   * @param id
+   */
+  public void setID(int id) {
+    this.id = id;
+  }
+
+  /**
    * Set number
    *
    * @param number
@@ -77,6 +114,53 @@ public class DataParagraph implements IParagraph {
   @Override
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  /**
+   * Find paragraph in Database
+   *
+   * @param id
+   * @return paragraph
+   */
+  public static DataParagraph find(int id) {
+    DataParagraph paragraph = new DataParagraph(0, null, null);
+    Database.getInstance().query(Database.compose(
+            "SELECT id, number, title, description",
+            "FROM paragraphs",
+            "WHERE id = " + id
+    ),
+            rs -> {
+              paragraph.setID(rs.getInt(1));
+              paragraph.setNumber(rs.getInt(2));
+              paragraph.setTitle(rs.getString(3));
+              paragraph.setDescription(rs.getString(4));
+            }
+    );
+    return paragraph;
+  }
+
+  /**
+   * Save paragraphs to database
+   */
+  public void save() {
+    String query = null;
+
+    if (getID() == 0) {
+      String[] values = {"" + getNumber(), getTitle(), getDescription()};
+      query = Database.compose(
+              "INSERT INTO paragraphs (number, title, description)",
+              "VALUES('" + String.join("','", values) + "')"
+      );
+    } else {
+      query = Database.compose(
+              "UPDATE paragraphs SET",
+              "number = " + getNumber() + ",",
+              "title = '" + getTitle() + "',",
+              "description = '" + getDescription() + "'",
+              "WHERE id = " + getID()
+      );
+    }
+    Database.getInstance().query(query);
   }
 
 }

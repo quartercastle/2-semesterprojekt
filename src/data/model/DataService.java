@@ -2,8 +2,14 @@ package data.model;
 
 import acq.IService;
 import acq.ServiceUnit;
+import data.Database;
 
 public class DataService implements IService {
+
+  /**
+   * ID
+   */
+  private int id;
 
   /**
    * Name of service
@@ -34,6 +40,33 @@ public class DataService implements IService {
    * How often should the service be repeated
    */
   private int repetition;
+
+  /**
+   * Constructor for Dataservice
+   *
+   * @param name
+   * @param description
+   * @param frequency
+   * @param unit
+   * @param price
+   * @param repetition
+   */
+  public DataService(String name, String description, int frequency, ServiceUnit unit, int price, int repetition) {
+    this.name = name;
+    this.description = description;
+    this.frequency = frequency;
+    this.unit = unit;
+    this.price = price;
+    this.repetition = repetition;
+  }
+
+  /**
+   *
+   * @return id
+   */
+  public int getID() {
+    return this.id;
+  }
 
   /**
    * Get name
@@ -96,6 +129,13 @@ public class DataService implements IService {
   }
 
   /**
+   * Set id
+   */
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  /**
    * set name
    *
    * @param name
@@ -153,5 +193,58 @@ public class DataService implements IService {
   @Override
   public void setRepetition(int repetition) {
     this.repetition = repetition;
+  }
+
+  /**
+   * Find service in Database
+   *
+   * @param id
+   * @return service
+   */
+  public static DataService find(int id) {
+    DataService service = new DataService(null, null, 0, null, 0, 0);
+    Database.getInstance().query(Database.compose(
+            "SELECT id, name, frequency, unit, price, repetition, description",
+            "FROM services",
+            "WHERE id = " + id
+    ),
+            rs -> {
+              service.setId(rs.getInt(1));
+              service.setName(rs.getString(2));
+              service.setFrequency(rs.getInt(3));
+              service.setUnit(ServiceUnit.find(rs.getInt(4)));
+              service.setPrice(rs.getInt(5));
+              service.setRepetition(rs.getInt(6));
+              service.setDescription(rs.getString(7));
+            }
+    );
+    return service;
+  }
+
+  /**
+   * Save services to database
+   */
+  public void save() {
+    String query = null;
+
+    if (getID() == 0) {
+      String[] values = {getName(), "" + getFrequency(), "" + getUnit(), "" + getPrice(), "" + getRepetition(), getDescription()};
+      query = Database.compose(
+              "INSERT INTO services (name, frequency, unit, price, repetition, description)",
+              "VALUES('" + String.join("','", values) + "')"
+      );
+    } else {
+      query = Database.compose(
+              "UPDATE services SET",
+              "name = '" + getName() + "',",
+              "frequency = " + getFrequency() + ",",
+              "unit = " + getUnit() + ",",
+              "price =" + getPrice() + ",",
+              "repetition = " + getRepetition() + ",",
+              "description = '" + getDescription() + "'",
+              "WHERE id = " + getID()
+      );
+    }
+    Database.getInstance().query(query);
   }
 }
