@@ -90,7 +90,7 @@ public class DataUser implements IUser {
    * Get inactive
    * @return inactive
    */
-  public boolean getInactive() {
+  public boolean isInactive() {
     return inactive;
   }
 
@@ -174,7 +174,7 @@ public class DataUser implements IUser {
     String query = null;
 
     if (getId() == 0) {
-      String[] values = {getUsername(), getPassword(), ""+getRole().getId(), ""+getInactive()};
+      String[] values = {getUsername(), getPassword(), ""+getRole().getId(), ""+isInactive()};
       query = Database.compose(
         "INSERT INTO users (username, password, role_id, inactive)",
         "VALUES('" +  String.join("','", values) + "')"
@@ -185,7 +185,7 @@ public class DataUser implements IUser {
         "username = '" + getUsername() + "',",
         "password = '" + getPassword() + "',",
         "role_id = " + getRole().getId() + ",",
-        "inactive = " + getInactive(),
+        "inactive = " + isInactive(),
         "WHERE id = " + getId()
       );
     }
