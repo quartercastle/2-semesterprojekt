@@ -60,18 +60,24 @@ public class DataCompany implements ICompany {
   public void save() {
     String query = null;
 
+    ((DataAddress) address).save();
+
     if (getId() == 0) {
       String[] values = {getName(), "" + getAddress().getId()};
       query = "INSERT INTO companies (name, address_id) "
-              + "VALUES('" + String.join("','", values) + "')";
+              + "VALUES('" + String.join("','", values) + "') "
+              + "RETURNING id";
     } else {
-      query = "UPDATE addresses "
+      query = "UPDATE companies "
               + "SET name = '" + getName() + "', address_id = "
               + getAddress().getId()
               + "WHERE id = " + id;
     }
 
     Database.getInstance().query(query, rs -> {
+      if (id == 0) {
+        id = rs.getInt(1);
+      }
     });
   }
 

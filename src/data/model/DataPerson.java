@@ -90,12 +90,15 @@ public class DataPerson {
   public void save() {
     String query = null;
 
+    ((DataAddress) address).save();
+
     if (getId() == 0) {
       String[] values = {getFirstName(), getMiddleName(), getLastName(), getPhone(), getEmail(), "" + getAddress().getId()};
-      query = "INSERT INTO companies (name, address_id) "
-              + "VALUES('" + String.join("','", values) + "')";
+      query = "INSERT INTO persons (first_name, middle_name, last_name, phone, email, address_id) "
+              + "VALUES('" + String.join("','", values) + "') "
+              + "RETURNING id";
     } else {
-      query = "UPDATE addresses "
+      query = "UPDATE persons "
               + "SET first_name = '" + getFirstName() + "', middle_name = '"
               + getMiddleName() + "', last_name = '" + getLastName() + "', phone =' " + getPhone()
               + "', email ='" + getEmail() + "', address_id = " + getAddress().getId()
@@ -103,6 +106,9 @@ public class DataPerson {
     }
 
     Database.getInstance().query(query, rs -> {
+      if (id == 0) {
+        id = rs.getInt(1);
+      }
     });
   }
 
