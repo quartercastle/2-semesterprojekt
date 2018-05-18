@@ -60,21 +60,32 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
 
   public void save() {
     String query = null;
-
+    super.save();
     if (getId() == 0) {
       String[] values = {
-        super.getId() + ""
+        super.getId() + "",
         getUser().getId() + ""
+      };
+      query = Database.compose(
+              "INSERT INTO case_workers (person_id, user_id)",
+              "VALUES (" + String.join(",", values) + ")"
+      );
+    } else {
+      query = Database.compose(
+              "UPDATE case_workers SET",
+              "first_name = " + getFirstName() + ",",
+              "middle_name = " + getMiddleName() + ",",
+              "last_name = " + getLastName() + ",",
+              "phone" + getPhone() + ",",
+              "email" + getEmail() + ",",
+              "user" + getUser() + ",",
+              "address_id" + getAddress() + ",",
+      );
+
     }
-    query = Database.compose(
-            "INSERT INTO case_workers (person_id, user_id)",
-            "VALUES"
-    )
   }
 
-}
-
-public int getId() {
+  public int getId() {
     return id;
   }
 
