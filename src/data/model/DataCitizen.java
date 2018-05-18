@@ -46,6 +46,11 @@ public class DataCitizen extends DataPerson implements ICitizen {
     this.CPR = cpr;
   }
 
+  /**
+   * get id
+   *
+   * @return Citizen id
+   */
   @Override
   public int getID() {
     return this.id;
@@ -57,7 +62,7 @@ public class DataCitizen extends DataPerson implements ICitizen {
    * @param cpr of citizen
    * @return if found, returns instanse of DataCitizen
    */
-  public DataCitizen find(String cpr) {
+  public static DataCitizen find(int id) {
     //TODO
     return null;
   }

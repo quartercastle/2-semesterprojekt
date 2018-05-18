@@ -3,6 +3,7 @@ package domain.system;
 import acq.ICitizen;
 import java.util.Collection;
 import acq.ICase;
+import acq.ICaseWorker;
 import security.User;
 import java.util.HashSet;
 
@@ -18,7 +19,7 @@ public class Case implements ICase {
   /**
    * The user responsile for the case
    */
-  private User responsible;
+  private ICaseWorker responsible;
   /**
    * Citizen attached to the case
    */
@@ -173,7 +174,7 @@ public class Case implements ICase {
    * @param citizen
    * @param effort
    */
-  public Case(User responsible, Citizen citizen, Effort effort) {
+  public Case(ICaseWorker responsible, Citizen citizen, Effort effort) {
     this.responsible = responsible;
     this.citizen = citizen;
     this.effort = effort;
@@ -207,7 +208,7 @@ public class Case implements ICase {
    * @return responsible
    */
   @Override
-  public User getResponsible() {
+  public ICaseWorker getResponsible() {
     return responsible;
   }
 
@@ -216,7 +217,7 @@ public class Case implements ICase {
    *
    * @param responsible
    */
-  public void setResponsible(User responsible) {
+  public void setResponsible(ICaseWorker responsible) {
     this.responsible = responsible;
   }
 

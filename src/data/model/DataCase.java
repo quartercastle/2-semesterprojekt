@@ -1,13 +1,12 @@
 package data.model;
 
 import acq.ICase;
+import acq.ICaseWorker;
 import acq.ICitizen;
 import acq.IEffort;
-import acq.IUser;
 import data.Database;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.UUID;
 
 /**
  *
@@ -18,7 +17,7 @@ public class DataCase implements ICase {
   /**
    * The responsible user for the case
    */
-  private IUser responsible;
+  private ICaseWorker responsible;
 
   /**
    * The citizen which the case is about
@@ -182,7 +181,7 @@ public class DataCase implements ICase {
    * @param citizen
    * @param effort
    */
-  public DataCase(IUser responsible, ICitizen citizen, IEffort effort) {
+  public DataCase(ICaseWorker responsible, ICitizen citizen, IEffort effort) {
     this.ID = 0;
     this.responsible = responsible;
     this.citizen = citizen;
@@ -216,7 +215,7 @@ public class DataCase implements ICase {
    * @return responsible
    */
   @Override
-  public IUser getResponsible() {
+  public ICaseWorker getResponsible() {
     return this.responsible;
   }
 
@@ -801,6 +800,16 @@ public class DataCase implements ICase {
   }
 
   /**
+   * set responsbile caewoker
+   *
+   * @param responsible responsible caseworker
+   */
+  @Override
+  public void setResponsible(ICaseWorker responsible) {
+    this.responsible = responsible;
+  }
+
+  /**
    * Method to find DataCase in database
    *
    * @param id of the case to find
@@ -809,8 +818,8 @@ public class DataCase implements ICase {
   public static DataCase find(int id) {
     DataCase dc = new DataCase(null, null, null);
     Database.getInstance().query(
-            "SELECT id, circumstance, inquiry, further_course, is_informed_about_rights, is_informed_about_duties, "
-            + "responsibility, practical_tasks_support, personal_care_support, temporary_stay, longer_stay, rehabilitation_support, "
+            "SELECT id, citizen_id, case_worker_id, circumstance, inquiry, further_course, is_informed_about_rights, is_informed_about_duties, "
+            + "practical_tasks_support, personal_care_support, temporary_stay, longer_stay, rehabilitation_support, "
             + "driving_support, temporary_house_offer, personal_care_offer, support_grocery_offer, longer_stay_offer, learning_offer, "
             + "rehabilitation_offer, guardianship, none_acting_guardian, curatorship, assessor, party_representative, power_of_attorney, "
             + "right_to_assessor_or_party_representative, information_saved_online "
@@ -818,32 +827,34 @@ public class DataCase implements ICase {
             + "WHERE id = " + id,
             rs -> {
               dc.setID(rs.getInt(1));
-              dc.setCircumstance(rs.getString(2));
-              dc.setInquiry(rs.getString(3));
-              dc.setFurtherCourse(rs.getString(4));
-              dc.setInformedAboutRights(rs.getBoolean(5));
-              dc.setInformedAboutDuties(rs.getBoolean(6));
-              dc.fuckingresponsibilitywhatotodo(rs.getString(7));
-              dc.setPracticalTasksSupport(rs.getBoolean(8));
-              dc.setPersonalCareSupport(rs.getBoolean(9));
-              dc.setTemporaryStay(rs.getBoolean(10));
-              dc.setLongerStay(rs.getBoolean(11));
-              dc.setRehabilitationSupport(rs.getBoolean(12));
-              dc.setDrivingSupport(rs.getBoolean(13));
-              dc.setTemporaryHouseOffer(rs.getBoolean(14));
-              dc.setPersonalCareOffer(rs.getBoolean(15));
-              dc.setSupportGroceryOffer(rs.getBoolean(16));
-              dc.setLongerStayOffer(rs.getBoolean(17));
-              dc.setLearningOffer(rs.getBoolean(18));
-              dc.setRehabilitationOffer(rs.getBoolean(19));
-              dc.setGuardianship(rs.getBoolean(20));
-              dc.setNoneActingGuardian(rs.getBoolean(21));
-              dc.setCuratorship(rs.getBoolean(22));
-              dc.setAssessor(rs.getBoolean(23));
-              dc.setPartyRepresentative(rs.getBoolean(24));
-              dc.setPowerOfAttorney(rs.getBoolean(25));
-              dc.setRightToAssessorOrPartyRepresentative(rs.getBoolean(26));
-              dc.setInformationSavedOnline(rs.getBoolean(27));
+              dc.setCitizen(DataCitizen.find(rs.getInt(2)));
+              dc.setResponsible(DataCaseWorker.find(rs.getInt(3)));
+              dc.setCircumstance(rs.getString(4));
+              dc.setInquiry(rs.getString(5));
+              dc.setFurtherCourse(rs.getString(6));
+              dc.setInformedAboutRights(rs.getBoolean(7));
+              dc.setInformedAboutDuties(rs.getBoolean(8));
+
+              dc.setPracticalTasksSupport(rs.getBoolean(9));
+              dc.setPersonalCareSupport(rs.getBoolean(10));
+              dc.setTemporaryStay(rs.getBoolean(11));
+              dc.setLongerStay(rs.getBoolean(12));
+              dc.setRehabilitationSupport(rs.getBoolean(13));
+              dc.setDrivingSupport(rs.getBoolean(14));
+              dc.setTemporaryHouseOffer(rs.getBoolean(15));
+              dc.setPersonalCareOffer(rs.getBoolean(16));
+              dc.setSupportGroceryOffer(rs.getBoolean(17));
+              dc.setLongerStayOffer(rs.getBoolean(18));
+              dc.setLearningOffer(rs.getBoolean(19));
+              dc.setRehabilitationOffer(rs.getBoolean(20));
+              dc.setGuardianship(rs.getBoolean(21));
+              dc.setNoneActingGuardian(rs.getBoolean(22));
+              dc.setCuratorship(rs.getBoolean(23));
+              dc.setAssessor(rs.getBoolean(24));
+              dc.setPartyRepresentative(rs.getBoolean(25));
+              dc.setPowerOfAttorney(rs.getBoolean(26));
+              dc.setRightToAssessorOrPartyRepresentative(rs.getBoolean(27));
+              dc.setInformationSavedOnline(rs.getBoolean(28));
             });
     return dc;
   }
@@ -852,21 +863,21 @@ public class DataCase implements ICase {
     String query = null;
 
     if (getID() == 0) {
-      query = "INSERT INTO addresses (circumstance, inquiry, further_course, is_informed_about_rights, is_informed_about_duties, "
-              + "responsibility, practical_tasks_support, personal_care_support, temporary_stay, longer_stay, rehabilitation_support, "
+      query = "INSERT INTO addresses (citizen_id, case_worker_id, circumstance, inquiry, further_course, is_informed_about_rights, is_informed_about_duties, "
+              + "practical_tasks_support, personal_care_support, temporary_stay, longer_stay, rehabilitation_support, "
               + "driving_support, temporary_house_offer, personal_care_offer, support_grocery_offer, longer_stay_offer, learning_offer, "
               + "rehabilitation_offer, guardianship, none_acting_guardian, curatorship, assessor, party_representative, power_of_attorney, "
               + "right_to_assessor_or_party_representative, information_saved_online ) "
-              + "VALUES('" + getCircumstance() + "','" + getInquiry() + "','" + getFurtherCourse() + "','" + isInformedAboutRights() + "','" + isInformedAboutDuties() + "','" + method()
+              + "VALUES('" + getCitizen().getID() + "','" + getResponsible().getID() + "','" + getCircumstance() + "','" + getInquiry() + "','" + getFurtherCourse() + "','" + isInformedAboutRights() + "','" + isInformedAboutDuties()
               + "','" + needPracticalTasksSupport() + "','" + needPersonalCareSupport() + "','" + needTemporaryStay() + "','" + needLongerStay() + "','" + needRehabilitationSupport() + "','"
               + needDrivingSupport() + "','" + needTemporaryHouseOffer() + "','" + needPersonalCareOffer() + "','" + needSupportGroceryOffer() + "','" + needLongerStayOffer() + "','" + needLearningOffer()
               + "','" + needRehabilitationOffer() + "','" + isGuardianship() + "','" + isNoneActingGuardian() + "','" + isCuratorship() + "','" + isAssessor() + "','" + isPartyRepresentative()
               + "','" + isPowerOfAttorney() + "','" + isRightToAssessorOrPartyRepresentative() + "','" + isInformationSavedOnline() + "');";
     } else {
       query = "UPDATE addresses "
-              + "SET circumtance = '" + getCircumstance() + "', inquiry ='"
+              + "SET citizen_id =" + getCitizen().getID() + "', case_worker_id='" + getResponsible().getID() + "'circumtance = '" + getCircumstance() + "', inquiry ='"
               + getInquiry() + "', further_curse='" + getFurtherCourse() + "', is_informed_about_rights='" + isInformedAboutRights()
-              + "', is_informed_About_duties='" + isInformedAboutDuties() + "', responsiblity='" + method() + "', practical_tasks_support='" + needPracticalTasksSupport()
+              + "', is_informed_About_duties='" + isInformedAboutDuties() + "', practical_tasks_support='" + needPracticalTasksSupport()
               + "', personal_care_support='" + needPersonalCareSupport() + "', temporary_stay='" + needTemporaryStay() + "', longer_stay='" + needLongerStay() + "', rehabilitation_support='"
               + needRehabilitationSupport() + "', driving_support='" + needDrivingSupport() + "', temporary_house_offer='" + needTemporaryHouseOffer() + "', personal_care_offer='"
               + needPersonalCareOffer() + "', support_grocery_offer='" + needSupportGroceryOffer() + "', longer_stay_offer='" + needLongerStayOffer() + "', learning_offer='" + needLearningOffer()

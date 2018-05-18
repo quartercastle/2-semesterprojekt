@@ -4,7 +4,6 @@
 package acq;
 
 import java.util.Collection;
-import java.util.UUID;
 
 public interface ICase {
 
@@ -13,28 +12,21 @@ public interface ICase {
    *
    * @return unique case ID
    */
-  UUID getCaseID();
+  int getID();
 
   /**
-   * set server id
+   * set id
    *
    * @param id
    */
-  void setServerID(int id);
+  void setID(int id);
 
   /**
-   * get serverid
+   * Get responsible caseworker
    *
-   * @return serverid
+   * @return caseworker resposible for the case
    */
-  int getServerID();
-
-  /**
-   * Get responsible user
-   *
-   * @return User resposible for the case
-   */
-  IUser getResponsible();
+  ICaseWorker getResponsible();
 
   /**
    * Get citizen
@@ -77,6 +69,13 @@ public interface ICase {
    * @param citizen
    */
   void setCitizen(ICitizen citizen);
+
+  /**
+   * set responsible caseworker
+   *
+   * @param responsible responsible caseworker
+   */
+  void setResponsible(ICaseWorker responsible);
 
   /**
    * Get informed about rights status

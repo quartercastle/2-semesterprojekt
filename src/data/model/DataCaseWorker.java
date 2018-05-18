@@ -11,8 +11,11 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
    */
   private IUser user;
 
+  private int id;
+
   public DataCaseWorker(String firstName, String middleName, String lastName, IAddress address, String phone, String email) {
     super(firstName, middleName, lastName, address, phone, email);
+    this.id = 0;
   }
 
   /**
@@ -33,6 +36,16 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
   @Override
   public IUser getUser() {
     return this.user;
+  }
+
+  /**
+   * Get caseworker id
+   *
+   * @return id for caseworker
+   */
+  @Override
+  public int getID() {
+    return this.id;
   }
 
 }

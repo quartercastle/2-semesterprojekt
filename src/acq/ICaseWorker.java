@@ -16,4 +16,11 @@ public interface ICaseWorker {
    */
   IUser getUser();
 
+  /**
+   * get ID for caseworker
+   *
+   * @return caseworker id
+   */
+  int getID();
+
 }
