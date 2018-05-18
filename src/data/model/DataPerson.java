@@ -230,6 +230,15 @@ public class DataPerson {
   }
 
   /**
+   * get id
+   *
+   * @param id
+   */
+  public void SetPersonId(int id) {
+    this.id = id;
+  }
+
+  /**
    * Set id
    *
    * @param id

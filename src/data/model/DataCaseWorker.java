@@ -46,7 +46,8 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
     ),
             rs -> {
               caseWorker.setId(rs.getInt(1));
-              DataPerson dataPerson = new DataPerson.find(rs.getint(2));
+              caseWorker.SetPersonId(rs.getInt(2));
+              DataPerson dataPerson = DataPerson.find(rs.getInt(2));
               caseWorker.setFirstName(dataPerson.getFirstName());
               caseWorker.setMiddleName(dataPerson.getMiddleName());
               caseWorker.setLastName(dataPerson.getMiddleName());
@@ -60,12 +61,12 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
 
   public void save() {
     String query = null;
-    super.save();
+    ((DataPerson) this).save();
+
+    System.out.println("id " + id);
     if (getId() == 0) {
-      String[] values = {
-        super.getId() + "",
-        getUser().getId() + ""
-      };
+      String[] values = {super.getId() + "", "" + getUser().getId()};
+
       query = Database.compose(
               "INSERT INTO case_workers (person_id, user_id)",
               "VALUES (" + String.join(",", values) + ")"
@@ -73,24 +74,13 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
     } else {
       query = Database.compose(
               "UPDATE case_workers SET",
-              "first_name = " + getFirstName() + ",",
-              "middle_name = " + getMiddleName() + ",",
-              "last_name = " + getLastName() + ",",
-              "phone" + getPhone() + ",",
-              "email" + getEmail() + ",",
-              "user" + getUser() + ",",
-              "address_id" + getAddress() + ",",
+              "person_id = " + super.getId() + ",",
+              "user_id = " + getUser().getId() + "",
+              "WHERE id = " + getId()
       );
 
     }
-  }
 
-  public int getId() {
-    return id;
+    Database.getInstance().query(query);
   }
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
 }
