@@ -61,6 +61,7 @@ public class DataService implements IService {
   }
 
   /**
+   * Get id
    *
    * @return id
    */
@@ -130,6 +131,8 @@ public class DataService implements IService {
 
   /**
    * Set id
+   *
+   * @param id
    */
   public void setId(int id) {
     this.id = id;

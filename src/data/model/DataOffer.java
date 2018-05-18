@@ -38,6 +38,11 @@ public class DataOffer implements IOffer {
     this.description = description;
   }
 
+  /**
+   * Get ID
+   *
+   * @return id
+   */
   public int getID() {
     return this.id;
   }
