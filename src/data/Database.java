@@ -131,15 +131,18 @@ public class Database {
 
   /**
    * Query statement without a handler
+   *
    * @param query
    */
   public void query(String query) {
-    query(query, rs -> {});
+    query(query, rs -> {
+    });
   }
 
   /**
    * Compose sql lines together
-   * @param  lines
+   *
+   * @param lines
    * @return a sql statement
    */
   public static String compose(String... lines) {

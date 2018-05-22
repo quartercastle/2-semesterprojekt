@@ -88,6 +88,7 @@ public class DataUser implements IUser {
 
   /**
    * Get inactive
+   *
    * @return inactive
    */
   public boolean isInactive() {
@@ -150,22 +151,21 @@ public class DataUser implements IUser {
   public static DataUser find(int id) {
     DataUser user = new DataUser(null, null, null, false);
     Database.getInstance().query(Database.compose(
-        "SELECT id, username, password, role_id, inactive",
-        "FROM users",
-        "WHERE id = " + id
-      ),
-      rs -> {
-        user.setId(rs.getInt(1));
-        user.setUsername(rs.getString(2));
-        user.setPassword(rs.getString(3));
-        user.setRole(DataRole.find(rs.getInt(4)));
-        user.setInactive(rs.getBoolean(5));
-      }
+            "SELECT id, username, password, role_id, inactive",
+            "FROM users",
+            "WHERE id = " + id
+    ),
+            rs -> {
+              user.setId(rs.getInt(1));
+              user.setUsername(rs.getString(2));
+              user.setPassword(rs.getString(3));
+              user.setRole(DataRole.find(rs.getInt(4)));
+              user.setInactive(rs.getBoolean(5));
+            }
     );
 
     return user;
   }
-
 
   /**
    * Save user
@@ -174,23 +174,28 @@ public class DataUser implements IUser {
     String query = null;
 
     if (getId() == 0) {
-      String[] values = {getUsername(), getPassword(), ""+getRole().getId(), ""+isInactive()};
+      String[] values = {getUsername(), getPassword(), "" + getRole().getId(), "" + isInactive()};
       query = Database.compose(
-        "INSERT INTO users (username, password, role_id, inactive)",
-        "VALUES('" +  String.join("','", values) + "')"
+              "INSERT INTO users (username, password, role_id, inactive)",
+              "VALUES('" + String.join("','", values) + "')",
+              "RETURNING id"
       );
     } else {
       query = Database.compose(
-        "UPDATE users SET",
-        "username = '" + getUsername() + "',",
-        "password = '" + getPassword() + "',",
-        "role_id = " + getRole().getId() + ",",
-        "inactive = " + isInactive(),
-        "WHERE id = " + getId()
+              "UPDATE users SET",
+              "username = '" + getUsername() + "',",
+              "password = '" + getPassword() + "',",
+              "role_id = " + getRole().getId() + ",",
+              "inactive = " + isInactive(),
+              "WHERE id = " + getId()
       );
     }
 
-    Database.getInstance().query(query);
+    Database.getInstance().query(query, rs -> {
+      if (id == 0) {
+        id = rs.getInt(1);
+      }
+    });
   }
 
 }

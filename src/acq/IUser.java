@@ -4,6 +4,14 @@
 package acq;
 
 public interface IUser {
+
+  /**
+   * Get ID
+   *
+   * @return id
+   */
+  int getId();
+
   /**
    * Get username
    *

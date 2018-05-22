@@ -149,7 +149,8 @@ public class DataOffer implements IOffer {
       String[] values = {getName(), "" + getPrice(), getDescription()};
       query = Database.compose(
               "INSERT INTO offers (name, price, description)",
-              "VALUES('" + String.join("','", values) + "')"
+              "VALUES('" + String.join("','", values) + "')",
+              "RETURNING id"
       );
     } else {
       query = Database.compose(
@@ -160,6 +161,10 @@ public class DataOffer implements IOffer {
               "WHERE id = " + getID()
       );
     }
-    Database.getInstance().query(query);
+    Database.getInstance().query(query, rs -> {
+      if (id == 0) {
+        id = rs.getInt(1);
+      }
+    });
   }
 }

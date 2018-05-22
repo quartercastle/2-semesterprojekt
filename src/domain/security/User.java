@@ -4,6 +4,12 @@ import domain.security.Role;
 import acq.IUser;
 
 public class User implements IUser {
+
+  /**
+   * User id
+   */
+  private int id;
+
   /**
    * The user's username
    */
@@ -31,6 +37,16 @@ public class User implements IUser {
     this.username = username;
     this.password = password;
     this.role = role;
+  }
+
+  /**
+   * Get id
+   *
+   * @return id
+   */
+  @Override
+  public int getId() {
+    return id;
   }
 
   /**
