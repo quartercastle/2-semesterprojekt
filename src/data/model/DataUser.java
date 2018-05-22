@@ -35,7 +35,8 @@ public class DataUser implements IUser {
   /**
    * No args for our mapper to use
    */
-  public DataUser(){}
+  public DataUser() {
+  }
 
   /**
    * Create a new DataUser
@@ -57,6 +58,7 @@ public class DataUser implements IUser {
    *
    * @return id
    */
+  @Override
   public int getId() {
     return this.id;
   }
@@ -96,6 +98,7 @@ public class DataUser implements IUser {
    *
    * @return inactive
    */
+  @Override
   public boolean isInactive() {
     return inactive;
   }
@@ -105,6 +108,7 @@ public class DataUser implements IUser {
    *
    * @param id
    */
+  @Override
   public void setId(int id) {
     this.id = id;
   }
@@ -134,8 +138,9 @@ public class DataUser implements IUser {
    *
    * @param role
    */
-  public void setRole(DataRole role) {
-    this.role = role;
+  @Override
+  public void setRole(IRole role) {
+    this.role = (DataRole) role;
   }
 
   /**
@@ -143,6 +148,7 @@ public class DataUser implements IUser {
    *
    * @param inactive
    */
+  @Override
   public void setInactive(boolean inactive) {
     this.inactive = inactive;
   }
@@ -154,7 +160,7 @@ public class DataUser implements IUser {
    * @return user
    */
   public static DataUser find(int id) {
-    return where("id", ""+id);
+    return where("id", "" + id);
   }
 
   /**
@@ -190,8 +196,9 @@ public class DataUser implements IUser {
 
   /**
    * Find user in database with where clause
-   * @param  key
-   * @param  value
+   *
+   * @param key
+   * @param value
    * @return a User
    */
   public static DataUser where(String key, String value) {

@@ -115,6 +115,8 @@ public class Mapper {
 
       if (currentMethod.getName().startsWith("can")) {
         nameOnSetterMethod = currentMethod.getName().replace("can", "setCan");
+      } else if (currentMethod.getName().startsWith("is")) {
+        nameOnSetterMethod = currentMethod.getName().replace("is", "set");
       } else if (currentMethod.getName().startsWith("get")) {
         nameOnSetterMethod = currentMethod.getName().replace("get", "set");
       } else {
@@ -145,6 +147,8 @@ public class Mapper {
             method.invoke(instanceOfClass, currentMethod.invoke(toBeMapped));
           }
         } catch (Exception ex) {
+          System.out.println(method + " " + toBeMapped + " " + instanceOfClass);
+          ex.printStackTrace();
         }
       }
     }
