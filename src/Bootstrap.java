@@ -10,7 +10,6 @@ import domain.DomainFacade;
 import gui.GUI;
 
 public class Bootstrap {
-
   /**
    * Boot application
    *
