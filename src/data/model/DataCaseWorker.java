@@ -61,15 +61,15 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
 
   public void save() {
     String query = null;
-    ((DataPerson) this).save();
+    super.save();
 
-    System.out.println("id " + id);
     if (getId() == 0) {
       String[] values = {super.getId() + "", "" + getUser().getId()};
 
       query = Database.compose(
               "INSERT INTO case_workers (person_id, user_id)",
-              "VALUES (" + String.join(",", values) + ")"
+              "VALUES('" + String.join("','", values) + "')",
+              "RETURNING id"
       );
     } else {
       query = Database.compose(
@@ -81,6 +81,14 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
 
     }
 
-    Database.getInstance().query(query);
+    Database.getInstance().query(query, rs -> {
+      if (id == 0) {
+        id = rs.getInt(1);
+      }
+    });
+  }
+
+  public int getId() {
+    return id;
   }
 }

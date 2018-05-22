@@ -57,7 +57,10 @@ public class DataRole implements IRole {
   /**
    * Get id
    *
-   * @return id
+   * <<<<<<< HEAD @
+   *
+   *
+   * return id ======= @return >>>>>>> fix
    */
   public int getId() {
     return this.id;
@@ -198,7 +201,8 @@ public class DataRole implements IRole {
       String[] values = {getName(), "" + canCreateCase(), "" + canViewCase(), "" + canEditCase(), "" + canCloseCase()};
       query = Database.compose(
               "INSERT INTO roles (name, create_case, view_case, edit_case, close_case)",
-              "VALUES('" + String.join("','", values) + "')"
+              "VALUES('" + String.join("','", values) + "')",
+              "RETURNING id"
       );
     } else {
       query = Database.compose(
@@ -212,6 +216,10 @@ public class DataRole implements IRole {
       );
     }
 
-    Database.getInstance().query(query);
+    Database.getInstance().query(query, rs -> {
+      if (id == 0) {
+        id = rs.getInt(1);
+      }
+    });
   }
 }
