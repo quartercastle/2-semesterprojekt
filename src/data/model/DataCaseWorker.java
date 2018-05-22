@@ -58,7 +58,7 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
   }
 
   /**
-   * Find a Case worker
+   * Find a Case worker from db
    * @param  id
    * @return CaseWorker
    */
