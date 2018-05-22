@@ -71,6 +71,12 @@ public class DataEffort implements IEffort {
     this.responsible = responsible;
   }
 
+  /**
+   * Find dataEffort
+   *
+   * @param id
+   * @return dataEffort
+   */
   public static DataEffort find(int id) {
     DataEffort effort = new DataEffort(null, null, null, null);
     Database.getInstance().query(Database.compose(
@@ -105,8 +111,50 @@ public class DataEffort implements IEffort {
     return effort;
   }
 
+  /**
+   * Save
+   */
   public void save() {
+    String query = null;
 
+    ((DataCompany) responsible).save();
+    ((DataOffer) offer).save();
+    ((DataService) service).save();
+    if (paragraphs.size() != 0) {
+      for (IParagraph p : paragraphs) {
+        ((DataParagraph) p).save();
+        Database.getInstance().query(
+                "INSERT INTO effort_paragraphs (effort_id, paragraph_id) "
+                + "VALUES (" + id + ", " + ((DataParagraph) p).getID() + ")"
+        );
+      }
+    }
+
+    if (getId() == 0) {
+      String[] values = {"" + getCaseId(), "" + ((DataService) getService()).getID(), "" + ((DataOffer) getOffer()).getID(), "" + getTotalPrice(),
+        "" + getStartDate().getTimeInMillis(), "" + getEndDate().getTimeInMillis(), "" + ((DataCompany) getResponsible()).getId()};
+      query = "INSERT INTO companies (case_id, service_id, offer_id, total_price, start_date, end_date, responsibility) "
+              + "VALUES('" + String.join("','", values) + "') "
+              + "RETURNING id";
+    } else {
+      query = Database.compose(
+              "UPDATE offers SET",
+              "case_id = " + getCaseId() + ",",
+              "service_id = " + ((DataService) getService()).getID() + ",",
+              "offer_id = " + ((DataOffer) getOffer()).getID() + ",",
+              "total_price = " + getTotalPrice() + ",",
+              "start_date = " + getStartDate().getTimeInMillis() + ",",
+              "end_date = " + getEndDate().getTimeInMillis() + ",",
+              "responsibility = " + ((DataCompany) getResponsible()).getId() + " ",
+              "WHERE id = " + getId() + " ",
+              "RETURNING id");
+    }
+
+    Database.getInstance().query(query, rs -> {
+      if (id == 0) {
+        id = rs.getInt(1);
+      }
+    });
   }
 
   /**
