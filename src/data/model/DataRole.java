@@ -36,6 +36,11 @@ public class DataRole implements IRole {
   private boolean canCloseCase;
 
   /**
+   * No args for our mapper to use
+   */
+  public DataRole(){}
+
+  /**
    * Create a new instance of DataRole
    *
    * @param name
@@ -57,7 +62,7 @@ public class DataRole implements IRole {
   /**
    * Get id
    *
-   * return id 
+   * return id
    */
   public int getId() {
     return this.id;

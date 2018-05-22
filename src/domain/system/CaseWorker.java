@@ -15,6 +15,12 @@ public class CaseWorker extends Person {
   private IUser user;
 
   /**
+   * No args constructor for CaseWorker
+   */
+  public CaseWorker() {
+  }
+
+  /**
    * Constructor for Caseworker
    *
    * @param firstName
@@ -46,8 +52,16 @@ public class CaseWorker extends Person {
     this.user = user;
   }
 
+  /**
+   * Create a new case
+   *
+   * @return
+   */
   public Case createCase() {
-    // TODO validate priviliges and finish implementation
+    if (!user.getRole().canCreateCase()) {
+      return null;
+    }
+
     return new Case(null, null, null);
   }
 
