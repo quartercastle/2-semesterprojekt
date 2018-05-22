@@ -828,7 +828,7 @@ public class DataCase implements ICase {
             rs -> {
               dc.setID(rs.getInt(1));
               dc.setCitizen(DataCitizen.find(rs.getInt(2)));
-              //dc.setResponsible(DataCaseWorker.find(rs.getInt(3)));
+              dc.setResponsible(DataCaseWorker.find(rs.getInt(3)));
               dc.setCircumstance(rs.getString(4));
               dc.setInquiry(rs.getString(5));
               dc.setFurtherCourse(rs.getString(6));

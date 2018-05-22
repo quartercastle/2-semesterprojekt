@@ -13,8 +13,6 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
    */
   private IUser user;
 
-  private int id;
-
   public DataCaseWorker(String firstName, String middleName, String lastName, IAddress address, String phone, String email) {
     super(firstName, middleName, lastName, address, phone, email);
     this.id = 0;
@@ -40,7 +38,6 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
     return this.user;
   }
 
-<<<<<<< HEAD
   /**
    * Get caseworker id
    *
@@ -51,7 +48,6 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
     return this.id;
   }
 
-=======
   public static DataCaseWorker find(int id) {
     DataCaseWorker caseWorker = new DataCaseWorker(null, null, null, null, null, null);
     Database.getInstance().query(Database.compose(
@@ -107,5 +103,5 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
   public int getId() {
     return id;
   }
->>>>>>> master
+
 }

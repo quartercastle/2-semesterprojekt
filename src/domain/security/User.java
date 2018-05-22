@@ -4,14 +4,11 @@ import acq.IUser;
 
 public class User implements IUser {
 
-<<<<<<< HEAD
-=======
   /**
    * User id
    */
   private int id;
 
->>>>>>> master
   /**
    * The user's username
    */
@@ -85,6 +82,7 @@ public class User implements IUser {
    *
    * @param username
    */
+  @Override
   public void setUsername(String username) {
     this.username = username;
   }
@@ -94,6 +92,7 @@ public class User implements IUser {
    *
    * @param password
    */
+  @Override
   public void setPassword(String password) {
     this.password = password;
   }
