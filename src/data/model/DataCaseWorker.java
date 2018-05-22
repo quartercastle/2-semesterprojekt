@@ -57,10 +57,18 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
     return this.user;
   }
 
+  /**
+   * Find a Case worker
+   * @param  id
+   * @return CaseWorker
+   */
   public static DataCaseWorker find(int id) {
     return where("id", "" + id);
   }
 
+  /**
+   * Save the case worker to database
+   */
   public void save() {
     String query = null;
     super.save();
@@ -100,6 +108,12 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
     return id;
   }
 
+  /**
+   * Fetch Case worker from where cluase
+   * @param  key
+   * @param  value
+   * @return case worker
+   */
   public static DataCaseWorker where(String key, String value) {
     DataCaseWorker caseWorker = new DataCaseWorker(null, null, null, null, null, null);
     Database.getInstance().query(Database.compose(

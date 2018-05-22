@@ -151,7 +151,7 @@ public class DataUser implements IUser {
    * Find user from id
    *
    * @param id
-   * @return
+   * @return user
    */
   public static DataUser find(int id) {
     return where("id", ""+id);

@@ -53,7 +53,7 @@ public class CaseWorker extends Person {
   }
 
   /**
-   * The
+   * Create a new case
    *
    * @return
    */
