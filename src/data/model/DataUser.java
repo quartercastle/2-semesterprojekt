@@ -33,6 +33,11 @@ public class DataUser implements IUser {
   private boolean inactive;
 
   /**
+   * No args for our mapper to use
+   */
+  public DataUser(){}
+
+  /**
    * Create a new DataUser
    *
    * @param id
@@ -143,28 +148,13 @@ public class DataUser implements IUser {
   }
 
   /**
-   * Find user
+   * Find user from id
    *
    * @param id
    * @return
    */
   public static DataUser find(int id) {
-    DataUser user = new DataUser(null, null, null, false);
-    Database.getInstance().query(Database.compose(
-            "SELECT id, username, password, role_id, inactive",
-            "FROM users",
-            "WHERE id = " + id
-    ),
-            rs -> {
-              user.setId(rs.getInt(1));
-              user.setUsername(rs.getString(2));
-              user.setPassword(rs.getString(3));
-              user.setRole(DataRole.find(rs.getInt(4)));
-              user.setInactive(rs.getBoolean(5));
-            }
-    );
-
-    return user;
+    return where("id", ""+id);
   }
 
   /**
@@ -196,6 +186,32 @@ public class DataUser implements IUser {
         id = rs.getInt(1);
       }
     });
+  }
+
+  /**
+   * Find user in database with where clause
+   * @param  key
+   * @param  value
+   * @return a User
+   */
+  public static DataUser where(String key, String value) {
+    DataUser user = new DataUser(null, null, null, false);
+
+    Database.getInstance().query(Database.compose(
+            "SELECT id, username, password, role_id, inactive",
+            "FROM users",
+            "WHERE " + key + " = '" + value + "'"
+    ),
+            rs -> {
+              user.setId(rs.getInt(1));
+              user.setUsername(rs.getString(2));
+              user.setPassword(rs.getString(3));
+              user.setRole(DataRole.find(rs.getInt(4)));
+              user.setInactive(rs.getBoolean(5));
+            }
+    );
+
+    return user;
   }
 
 }

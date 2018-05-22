@@ -45,6 +45,11 @@ public class Role implements IRole {
   }
 
   /**
+   * No args for our mapper to use
+   */
+  public Role(){}
+
+  /**
    * Role constructor
    *
    * @param name
@@ -71,6 +76,15 @@ public class Role implements IRole {
   @Override
   public int getId() {
     return id;
+  }
+
+  /**
+   * Set id
+   *
+   * @param id
+   */
+  public void setId(int id) {
+    this.id = id;
   }
 
   /**

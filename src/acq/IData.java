@@ -22,4 +22,17 @@ public interface IData {
    * @param c
    */
   public void addCase(ICase c);
+
+  /**
+   * find a user with a username
+   * @param username
+   */
+  IUser findUser(String username);
+
+  /**
+   * find a case worker from an id
+   * @param  id
+   * @return case worker
+   */
+  ICaseWorker findCaseWorker(int id);
 }

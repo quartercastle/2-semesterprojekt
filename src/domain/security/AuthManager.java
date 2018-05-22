@@ -1,5 +1,9 @@
 package domain.security;
 
+import acq.IUser;
+import domain.DomainFacade;
+import util.Mapper;
+
 public class AuthManager {
 
   /**
@@ -9,7 +13,17 @@ public class AuthManager {
    * @param password
    * @return true if ok
    */
-  public static boolean verify(String username, String password) {
-    return username.equals("admin") && password.equals("admin");
+  public static IUser verify(String username, String password) {
+    User user = Mapper.map(DomainFacade.getInstance().getData().findUser(username), false);
+
+    if (user == null) {
+      return null;
+    }
+
+    if (!user.verify(password)) {
+      return null;
+    }
+
+    return user;
   }
 }
