@@ -819,7 +819,7 @@ public class DataCase implements ICase {
     DataCase dc = new DataCase(null, null, null);
     Database.getInstance().query(
             "SELECT id, citizen_id, case_worker_id, circumstance, inquiry, further_course, is_informed_about_rights, is_informed_about_duties, "
-            + "practical_tasks_support, personal_care_support, temporary_stay, longer_stay, rehabilitation_support, "
+            + "practical_tasks_support, personal_care_support, grocery_support, temporary_stay, longer_stay, rehabilitation_support, "
             + "driving_support, temporary_house_offer, personal_care_offer, support_grocery_offer, longer_stay_offer, learning_offer, "
             + "rehabilitation_offer, guardianship, none_acting_guardian, curatorship, assessor, party_representative, power_of_attorney, "
             + "right_to_assessor_or_party_representative, information_saved_online "
@@ -836,24 +836,25 @@ public class DataCase implements ICase {
               dc.setInformedAboutDuties(rs.getBoolean(8));
               dc.setPracticalTasksSupport(rs.getBoolean(9));
               dc.setPersonalCareSupport(rs.getBoolean(10));
-              dc.setTemporaryStay(rs.getBoolean(11));
-              dc.setLongerStay(rs.getBoolean(12));
-              dc.setRehabilitationSupport(rs.getBoolean(13));
-              dc.setDrivingSupport(rs.getBoolean(14));
-              dc.setTemporaryHouseOffer(rs.getBoolean(15));
-              dc.setPersonalCareOffer(rs.getBoolean(16));
-              dc.setSupportGroceryOffer(rs.getBoolean(17));
-              dc.setLongerStayOffer(rs.getBoolean(18));
-              dc.setLearningOffer(rs.getBoolean(19));
-              dc.setRehabilitationOffer(rs.getBoolean(20));
-              dc.setGuardianship(rs.getBoolean(21));
-              dc.setNoneActingGuardian(rs.getBoolean(22));
-              dc.setCuratorship(rs.getBoolean(23));
-              dc.setAssessor(rs.getBoolean(24));
-              dc.setPartyRepresentative(rs.getBoolean(25));
-              dc.setPowerOfAttorney(rs.getBoolean(26));
-              dc.setRightToAssessorOrPartyRepresentative(rs.getBoolean(27));
-              dc.setInformationSavedOnline(rs.getBoolean(28));
+              dc.setGrocerySupport(rs.getBoolean(11));
+              dc.setTemporaryStay(rs.getBoolean(12));
+              dc.setLongerStay(rs.getBoolean(13));
+              dc.setRehabilitationSupport(rs.getBoolean(14));
+              dc.setDrivingSupport(rs.getBoolean(15));
+              dc.setTemporaryHouseOffer(rs.getBoolean(16));
+              dc.setPersonalCareOffer(rs.getBoolean(17));
+              dc.setSupportGroceryOffer(rs.getBoolean(18));
+              dc.setLongerStayOffer(rs.getBoolean(19));
+              dc.setLearningOffer(rs.getBoolean(20));
+              dc.setRehabilitationOffer(rs.getBoolean(21));
+              dc.setGuardianship(rs.getBoolean(22));
+              dc.setNoneActingGuardian(rs.getBoolean(23));
+              dc.setCuratorship(rs.getBoolean(24));
+              dc.setAssessor(rs.getBoolean(25));
+              dc.setPartyRepresentative(rs.getBoolean(26));
+              dc.setPowerOfAttorney(rs.getBoolean(27));
+              dc.setRightToAssessorOrPartyRepresentative(rs.getBoolean(28));
+              dc.setInformationSavedOnline(rs.getBoolean(29));
             });
     return dc;
   }
@@ -862,28 +863,28 @@ public class DataCase implements ICase {
     String query = null;
 
     if (getID() == 0) {
-      query = "INSERT INTO addresses (citizen_id, case_worker_id, circumstance, inquiry, further_course, is_informed_about_rights, is_informed_about_duties, "
-              + "practical_tasks_support, personal_care_support, temporary_stay, longer_stay, rehabilitation_support, "
+      query = "INSERT INTO cases (citizen_id, case_worker_id, circumstance, inquiry, further_course, is_informed_about_rights, is_informed_about_duties, "
+              + "practical_tasks_support, personal_care_support, grocery_support, temporary_stay, longer_stay, rehabilitation_support, "
               + "driving_support, temporary_house_offer, personal_care_offer, support_grocery_offer, longer_stay_offer, learning_offer, "
               + "rehabilitation_offer, guardianship, none_acting_guardian, curatorship, assessor, party_representative, power_of_attorney, "
               + "right_to_assessor_or_party_representative, information_saved_online ) "
               + "VALUES('" + getCitizen().getId() + "','" + getResponsible().getID() + "','" + getCircumstance() + "','" + getInquiry() + "','" + getFurtherCourse() + "','" + isInformedAboutRights() + "','" + isInformedAboutDuties()
-              + "','" + needPracticalTasksSupport() + "','" + needPersonalCareSupport() + "','" + needTemporaryStay() + "','" + needLongerStay() + "','" + needRehabilitationSupport() + "','"
+              + "','" + needPracticalTasksSupport() + "','" + needPersonalCareSupport() + "','" + needGrocerySupport() + "','" + needTemporaryStay() + "','" + needLongerStay() + "','" + needRehabilitationSupport() + "','"
               + needDrivingSupport() + "','" + needTemporaryHouseOffer() + "','" + needPersonalCareOffer() + "','" + needSupportGroceryOffer() + "','" + needLongerStayOffer() + "','" + needLearningOffer()
               + "','" + needRehabilitationOffer() + "','" + isGuardianship() + "','" + isNoneActingGuardian() + "','" + isCuratorship() + "','" + isAssessor() + "','" + isPartyRepresentative()
               + "','" + isPowerOfAttorney() + "','" + isRightToAssessorOrPartyRepresentative() + "','" + isInformationSavedOnline() + "') "
               + "RETURNING id;";
     } else {
-      query = "UPDATE addresses "
-              + "SET citizen_id =" + getCitizen().getId() + "', case_worker_id='" + getResponsible().getID() + "'circumtance = '" + getCircumstance() + "', inquiry ='"
-              + getInquiry() + "', further_curse='" + getFurtherCourse() + "', is_informed_about_rights='" + isInformedAboutRights()
+      query = "UPDATE cases "
+              + "SET citizen_id ='" + getCitizen().getId() + "', case_worker_id='" + getResponsible().getID() + "', circumstance = '" + getCircumstance() + "', inquiry ='"
+              + getInquiry() + "', further_course='" + getFurtherCourse() + "', is_informed_about_rights='" + isInformedAboutRights()
               + "', is_informed_About_duties='" + isInformedAboutDuties() + "', practical_tasks_support='" + needPracticalTasksSupport()
-              + "', personal_care_support='" + needPersonalCareSupport() + "', temporary_stay='" + needTemporaryStay() + "', longer_stay='" + needLongerStay() + "', rehabilitation_support='"
+              + "', personal_care_support='" + needPersonalCareSupport() + "', grocery_support='" + needGrocerySupport() + "', temporary_stay='" + needTemporaryStay() + "', longer_stay='" + needLongerStay() + "', rehabilitation_support='"
               + needRehabilitationSupport() + "', driving_support='" + needDrivingSupport() + "', temporary_house_offer='" + needTemporaryHouseOffer() + "', personal_care_offer='"
               + needPersonalCareOffer() + "', support_grocery_offer='" + needSupportGroceryOffer() + "', longer_stay_offer='" + needLongerStayOffer() + "', learning_offer='" + needLearningOffer()
-              + "', rehabilitation_offer='" + needRehabilitationOffer() + "', guardianship='" + isGuardianship() + "', none_acting_offer='" + isNoneActingGuardian() + "', curatorship='"
+              + "', rehabilitation_offer='" + needRehabilitationOffer() + "', guardianship='" + isGuardianship() + "', none_acting_guardian='" + isNoneActingGuardian() + "', curatorship='"
               + isCuratorship() + "', assessor='" + isAssessor() + "', party_representative='" + isPartyRepresentative() + "', power_of_attorney='" + isPowerOfAttorney()
-              + "', right_to_asssessor_or_party_representative='" + isRightToAssessorOrPartyRepresentative() + "', information_saved_online='" + isInformationSavedOnline()
+              + "', right_to_assessor_or_party_representative='" + isRightToAssessorOrPartyRepresentative() + "', information_saved_online='" + isInformationSavedOnline()
               + "' "
               + "WHERE id = " + ID;
     }

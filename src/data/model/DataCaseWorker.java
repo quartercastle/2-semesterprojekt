@@ -52,7 +52,7 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
     DataCaseWorker caseWorker = new DataCaseWorker(null, null, null, null, null, null);
     Database.getInstance().query(Database.compose(
             "SELECT id, person_id, user_id",
-            "FROM case_worker",
+            "FROM case_workers",
             "WHERE id = " + id
     ),
             rs -> {
