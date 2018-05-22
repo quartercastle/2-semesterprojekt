@@ -68,22 +68,14 @@ public class DataFacade implements IData {
    */
   @Override
   public Collection<ICase> getCases() {
-    // TODO
     return null;
-  }
-
-  /**
-   * Initializes database
-   */
-  @Override
-  public void initialize() {
-    // TODO
   }
 
   /**
    * Find a user from its username
    *
    * @param username
+   * @return case worker
    */
   @Override
   public IUser findUser(String username) {
@@ -94,6 +86,7 @@ public class DataFacade implements IData {
    * Find a caseworker from its user_id
    *
    * @param id
+   * @return CaseWorker
    */
   @Override
   public ICaseWorker findCaseWorker(int id) {
