@@ -1,7 +1,5 @@
 package util;
 
-import data.model.DataAddress;
-import domain.system.Address;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -27,21 +25,30 @@ public class Mapper {
    * this to work the data and domain class must have the same getters and
    * setters. And the domain class must have a public no-args constructor.
    *
-   * @param <O> the mapped Object, a domain class
+   * @param <O> the mapped Object
    * @param <T> the object to be mapped, a data class
    * @param toBeMapped the object to be mapped, a data class
-   * @return the mapped Object, a domain class
+   * @param toData if the a domain class is mapped to a data class, if false the
+   * reverse
+   * @return the mapped Object
    */
-  public static <O, T> O map(T toBeMapped) {
+  public static <O, T> O map(T toBeMapped, boolean toData) {
     if (toBeMapped == null) {
       return null;
     }
     O instanceOfClass = null;
 
-    try {
-      String mappedClassName = toBeMapped.getClass().getName().replace("Data", "");
-      mappedClassName = mappedClassName.replace("data.model", "domain");
+    String mappedClassName;
 
+    if (toData) {
+      mappedClassName = toBeMapped.getClass().getName();
+      mappedClassName = mappedClassName.replace("domain.system.", "data.model.Data");
+    } else {
+      mappedClassName = toBeMapped.getClass().getName().replace("Data", "");
+      mappedClassName = mappedClassName.replace("data.model", "domain.system");
+    }
+
+    try {
       //Class to be mapped
       Class classToBeMapped = Class.forName(mappedClassName);
 
@@ -51,7 +58,7 @@ public class Mapper {
       //Create an instance of the class
       instanceOfClass = (O) constructor.newInstance();
 
-      runThroughClass(classToBeMapped, instanceOfClass, toBeMapped);
+      runThroughClass(classToBeMapped, instanceOfClass, toBeMapped, toData);
 
     } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
             | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
@@ -69,13 +76,15 @@ public class Mapper {
    * @param c the class to run through
    * @param instanceOfClass a instance of the class
    * @param toBeMapped a object to be mapped
+   * @param toData if the a domain class is mapped to a data class, if false the
+   * reverse
    * @throws NoSuchMethodException
    * @throws IllegalAccessException
    * @throws InvocationTargetException
    */
-  private static <O, T> void runThroughClass(Class c, O instanceOfClass, T toBeMapped) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+  private static <O, T> void runThroughClass(Class c, O instanceOfClass, T toBeMapped, boolean toData) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
     for (Class i : c.getInterfaces()) {
-      runThroughMethods(i, instanceOfClass, toBeMapped);
+      runThroughMethods(i, instanceOfClass, toBeMapped, toData);
     }
   }
 
@@ -87,11 +96,13 @@ public class Mapper {
    * @param c the class of the object
    * @param instanceOfClass a instance of the class
    * @param toBeMapped a object to be mapped
+   * @param toData if the a domain class is mapped to a data class, if false the
+   * reverse
    * @throws NoSuchMethodException
    * @throws IllegalAccessException
    * @throws InvocationTargetException
    */
-  private static <O, T> void runThroughMethods(Class c, O instanceOfClass, T toBeMapped) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+  private static <O, T> void runThroughMethods(Class c, O instanceOfClass, T toBeMapped, boolean toData) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
 
     for (Method currentMethod : c.getMethods()) {
       //The name on the method
@@ -110,16 +121,16 @@ public class Mapper {
 
       if (Collection.class.isAssignableFrom(returnTypeForMethod)) {
 
-        method.invoke(instanceOfClass, mapCollection(currentMethod, toBeMapped, instanceOfClass));
+        method.invoke(instanceOfClass, mapCollection(currentMethod, toBeMapped, instanceOfClass, toData));
       } else if (Map.class.isAssignableFrom(returnTypeForMethod)) {
 
-        method.invoke(instanceOfClass, mapMap(currentMethod, toBeMapped, instanceOfClass));
+        method.invoke(instanceOfClass, mapMap(currentMethod, toBeMapped, instanceOfClass, toData));
 
       } else {
 
         if (returnTypeForMethod.isInterface()) {
           //Invokes method
-          method.invoke(instanceOfClass, map(currentMethod.invoke(toBeMapped)));
+          method.invoke(instanceOfClass, map(currentMethod.invoke(toBeMapped), toData));
         } else {
           //Invokes method
           method.invoke(instanceOfClass, currentMethod.invoke(toBeMapped));
@@ -136,11 +147,13 @@ public class Mapper {
    * @param currentMethod the method
    * @param toBeMapped the object to be mapped
    * @param instanceOfClass a instance of the class
+   * @param toData if the a domain class is mapped to a data class, if false the
+   * reverse
    * @return a collection with domain classes
    * @throws IllegalAccessException
    * @throws InvocationTargetException
    */
-  private static <O, T> Collection mapCollection(Method currentMethod, T toBeMapped, O instanceOfClass) throws IllegalAccessException, InvocationTargetException {
+  private static <O, T> Collection mapCollection(Method currentMethod, T toBeMapped, O instanceOfClass, boolean toData) throws IllegalAccessException, InvocationTargetException {
     Type genericFieldType = currentMethod.getGenericReturnType();
 
     if (!(genericFieldType instanceof ParameterizedType)) {
@@ -157,7 +170,7 @@ public class Mapper {
 
     if (checkForInterface.isInterface() && tmpC != null) {
       for (Object o : tmpC) {
-        retC.add(map(o));
+        retC.add(map(o, toData));
       }
       return retC;
     } else {
@@ -173,12 +186,14 @@ public class Mapper {
    * @param currentMethod the method
    * @param toBeMapped the object to be mapped
    * @param instanceOfMyClass a instance of the class
+   * @param toData if the a domain class is mapped to a data class, if false the
+   * reverse
    * @return a map with domain classes
    * @throws IllegalAccessException
    * @throws IllegalArgumentException
    * @throws InvocationTargetException
    */
-  private static <O, T> Map mapMap(Method currentMethod, T toBeMapped, O instanceOfMyClass) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+  private static <O, T> Map mapMap(Method currentMethod, T toBeMapped, O instanceOfMyClass, boolean toData) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
     Type genericFieldType = currentMethod.getGenericReturnType();
 
     if (!(genericFieldType instanceof ParameterizedType)) {
@@ -198,8 +213,8 @@ public class Mapper {
     if (tmpMap != null) {
       for (Object o : tmpMap.keySet()) {
         retMap.put(
-                (k.isInterface()) ? map(o) : o,
-                (v.isInterface()) ? map(tmpMap.get(o)) : tmpMap.get(o));
+                (k.isInterface()) ? map(o, toData) : o,
+                (v.isInterface()) ? map(tmpMap.get(o), toData) : tmpMap.get(o));
       }
     }
     return retMap;

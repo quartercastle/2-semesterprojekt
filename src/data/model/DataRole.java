@@ -26,7 +26,7 @@ public class DataRole implements IRole {
   private boolean canViewCase;
 
   /**
-   * Can Evaluate Case
+   * Can edit Case
    */
   private boolean canEditCase;
 
@@ -56,7 +56,8 @@ public class DataRole implements IRole {
 
   /**
    * Get id
-   * @return
+   *
+   * @return id
    */
   public int getId() {
     return this.id;
@@ -114,6 +115,7 @@ public class DataRole implements IRole {
 
   /**
    * Set id
+   *
    * @param id
    */
   public void setId(int id) {
@@ -122,6 +124,7 @@ public class DataRole implements IRole {
 
   /**
    * Set name
+   *
    * @param name
    */
   public void setName(String name) {
@@ -162,24 +165,25 @@ public class DataRole implements IRole {
 
   /**
    * Find role in database
-   * @param  id
-   * @return  role
+   *
+   * @param id
+   * @return role
    */
   public static DataRole find(int id) {
     DataRole role = new DataRole(null, false, false, false, false);
     Database.getInstance().query(Database.compose(
-        "SELECT id, name, create_case, view_case, edit_case, close_case",
-        "FROM roles",
-        "WHERE id = " + id
-      ),
-      rs -> {
-        role.setId(rs.getInt(1));
-        role.setName(rs.getString(2));
-        role.setCanCreateCase(rs.getBoolean(3));
-        role.setCanViewCase(rs.getBoolean(4));
-        role.setCanEditCase(rs.getBoolean(5));
-        role.setCanCloseCase(rs.getBoolean(6));
-      });
+            "SELECT id, name, create_case, view_case, edit_case, close_case",
+            "FROM roles",
+            "WHERE id = " + id
+    ),
+            rs -> {
+              role.setId(rs.getInt(1));
+              role.setName(rs.getString(2));
+              role.setCanCreateCase(rs.getBoolean(3));
+              role.setCanViewCase(rs.getBoolean(4));
+              role.setCanEditCase(rs.getBoolean(5));
+              role.setCanCloseCase(rs.getBoolean(6));
+            });
 
     return role;
   }
@@ -191,20 +195,20 @@ public class DataRole implements IRole {
     String query = null;
 
     if (getId() == 0) {
-      String[] values = {getName(), ""+canCreateCase(), ""+canViewCase(), ""+canEditCase(), ""+canCloseCase()};
+      String[] values = {getName(), "" + canCreateCase(), "" + canViewCase(), "" + canEditCase(), "" + canCloseCase()};
       query = Database.compose(
-        "INSERT INTO roles (name, create_case, view_case, edit_case, close_case)",
-        "VALUES('" + String.join("','", values) + "')"
+              "INSERT INTO roles (name, create_case, view_case, edit_case, close_case)",
+              "VALUES('" + String.join("','", values) + "')"
       );
     } else {
       query = Database.compose(
-        "UPDATE roles SET",
-        "name = '" + getName() + "',",
-        "create_case = " + canCreateCase() + ",",
-        "view_case = " + canViewCase() + ",",
-        "edit_case = " + canEditCase() + ",",
-        "close_case = " + canCloseCase(),
-        "WHERE id = " + getId()
+              "UPDATE roles SET",
+              "name = '" + getName() + "',",
+              "create_case = " + canCreateCase() + ",",
+              "view_case = " + canViewCase() + ",",
+              "edit_case = " + canEditCase() + ",",
+              "close_case = " + canCloseCase(),
+              "WHERE id = " + getId()
       );
     }
 

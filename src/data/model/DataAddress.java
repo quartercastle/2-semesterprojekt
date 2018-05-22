@@ -36,6 +36,12 @@ public class DataAddress implements IAddress {
   private String country;
 
   /**
+   * no-args constructor
+   */
+  public DataAddress() {
+  }
+
+  /**
    * Constructor for the DataAddress instance.
    *
    * @param primaryLine

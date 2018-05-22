@@ -169,4 +169,12 @@ public class Address implements IAddress {
     return id;
   }
 
+  /**
+   * Set id
+   *
+   * @param id
+   */
+  public void setId(int id) {
+    this.id = id;
+  }
 }
