@@ -4,12 +4,23 @@ import acq.IEffort;
 import acq.IOffer;
 import acq.IParagraph;
 import acq.IService;
+import java.util.Collection;
 import java.util.GregorianCalendar;
 
 /**
  * Effort
  */
 public class Effort implements IEffort {
+
+  /**
+   * Id
+   */
+  private int id;
+
+  /**
+   * caseId
+   */
+  private int caseId;
 
   /**
    * Total price of effort
@@ -42,9 +53,9 @@ public class Effort implements IEffort {
   private IService service;
 
   /**
-   * Paragraph cnnected to effort
+   * Paragraph connected to effort
    */
-  private IParagraph paragraph;
+  private Collection<IParagraph> paragraphs;
 
   /**
    * Constructor for efforts
@@ -163,7 +174,17 @@ public class Effort implements IEffort {
    */
   @Override
   public void setParagraph(IParagraph paragraph) {
-    this.paragraph = paragraph;
+    paragraphs.add(paragraph);
+  }
+
+  /**
+   * Set paragraphs
+   *
+   * @param paragraphs
+   */
+  @Override
+  public void setParagraphs(Collection<IParagraph> paragraphs) {
+    this.paragraphs = paragraphs;
   }
 
   /**
@@ -192,7 +213,27 @@ public class Effort implements IEffort {
    * @return paragraph
    */
   @Override
-  public IParagraph getParagraph() {
-    return this.paragraph;
+  public Collection<IParagraph> getParagraphs() {
+    return this.paragraphs;
+  }
+
+  /**
+   * Get id
+   *
+   * @return id
+   */
+  @Override
+  public int getId() {
+    return id;
+  }
+
+  /**
+   * Get caseId
+   *
+   * @return caseId
+   */
+  @Override
+  public int getCaseId() {
+    return caseId;
   }
 }
