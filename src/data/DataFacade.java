@@ -1,7 +1,11 @@
 package data;
 
 import acq.ICase;
+import acq.ICaseWorker;
+import acq.IUser;
 import acq.IData;
+import data.model.DataCaseWorker;
+import data.model.DataUser;
 import java.util.Collection;
 
 public class DataFacade implements IData {
@@ -64,15 +68,28 @@ public class DataFacade implements IData {
    */
   @Override
   public Collection<ICase> getCases() {
-    // TODO
     return null;
   }
 
   /**
-   * Initializes database
+   * Find a user from its username
+   *
+   * @param username
+   * @return case worker
    */
   @Override
-  public void initialize() {
-    // TODO
+  public IUser findUser(String username) {
+    return DataUser.where("username", username);
+  }
+
+  /**
+   * Find a caseworker from its user_id
+   *
+   * @param id
+   * @return CaseWorker
+   */
+  @Override
+  public ICaseWorker findCaseWorker(int id) {
+    return DataCaseWorker.where("user_id", "" + id);
   }
 }

@@ -45,7 +45,12 @@ public class Mapper {
       mappedClassName = mappedClassName.replace("domain.system.", "data.model.Data");
     } else {
       mappedClassName = toBeMapped.getClass().getName().replace("Data", "");
-      mappedClassName = mappedClassName.replace("data.model", "domain.system");
+      if (mappedClassName.equals("data.model.User")
+              || mappedClassName.equals("data.model.Role")) {
+        mappedClassName = mappedClassName.replace("data.model", "domain.security");
+      } else {
+        mappedClassName = mappedClassName.replace("data.model", "domain.system");
+      }
     }
 
     try {
@@ -107,7 +112,10 @@ public class Mapper {
     for (Method currentMethod : c.getMethods()) {
       //The name on the method
       String nameOnSetterMethod = null;
-      if (currentMethod.getName().startsWith("get")) {
+
+      if (currentMethod.getName().startsWith("can")) {
+        nameOnSetterMethod = currentMethod.getName().replace("can", "setCan");
+      } else if (currentMethod.getName().startsWith("get")) {
         nameOnSetterMethod = currentMethod.getName().replace("get", "set");
       } else {
         continue;
@@ -128,12 +136,15 @@ public class Mapper {
 
       } else {
 
-        if (returnTypeForMethod.isInterface()) {
-          //Invokes method
-          method.invoke(instanceOfClass, map(currentMethod.invoke(toBeMapped), toData));
-        } else {
-          //Invokes method
-          method.invoke(instanceOfClass, currentMethod.invoke(toBeMapped));
+        try {
+          if (returnTypeForMethod.isInterface()) {
+            //Invokes method
+            method.invoke(instanceOfClass, map(currentMethod.invoke(toBeMapped), toData));
+          } else {
+            //Invokes method
+            method.invoke(instanceOfClass, currentMethod.invoke(toBeMapped));
+          }
+        } catch (Exception ex) {
         }
       }
     }

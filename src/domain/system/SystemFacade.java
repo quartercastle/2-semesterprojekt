@@ -1,7 +1,10 @@
 package domain.system;
 
 import acq.ICase;
+import acq.IUser;
+import domain.DomainFacade;
 import java.util.Collection;
+import util.Mapper;
 
 /**
  *
@@ -12,6 +15,31 @@ public class SystemFacade {
   /**
    * Instance of the class itself, used for singleton setup. Is set to null
    * initially, instantiated if needed though getInstance()
+   */
+  public static SystemFacade system;
+
+  /**
+   * Disable normal instantiation
+   */
+  private SystemFacade() {
+  }
+
+  /**
+   * Singleton setup for SystemFacade, returns instance of the class if none has
+   * been made. If one has been made, returns that created instance
+   *
+   * @return Singleton instanse of SystemFacade
+   */
+  public static SystemFacade getInstance() {
+    if (system == null) {
+      system = new SystemFacade();
+    }
+
+    return system;
+  }
+
+  /**
+   * Caseworker instance
    */
   public static SystemFacade system;
 
@@ -37,20 +65,7 @@ public class SystemFacade {
   /**
    * Caseworker instance TODO should be bound to a user
    */
-  private CaseWorker caseWorker = new CaseWorker(
-          "test",
-          "test",
-          "test",
-          new Address(
-                  "test",
-                  "test",
-                  "test",
-                  "test",
-                  "test"
-          ),
-          "test",
-          "test"
-  );
+  private CaseWorker caseWorker;
 
   /**
    * Collection with cases
@@ -64,6 +79,20 @@ public class SystemFacade {
    */
   public Collection<ICase> getCases() {
     return cases;
+  }
+
+  /**
+   * bind an user instance and create a CaseWorker from it
+   *
+   * @param IUser
+   */
+  public void bind(IUser user) {
+    caseWorker = Mapper.map(
+            DomainFacade.getInstance()
+                    .getData()
+                    .findCaseWorker(user.getId()),
+            false
+    );
   }
 
   /**

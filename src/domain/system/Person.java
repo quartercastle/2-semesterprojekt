@@ -9,6 +9,12 @@ import acq.IAddress;
 public class Person {
 
   /**
+   * No args
+   */
+  public Person() {
+  }
+
+  /**
    * Constructor for person
    *
    * @param firstName

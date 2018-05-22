@@ -41,6 +41,12 @@ public class DataPerson {
   private String email;
 
   /**
+   * No Args DataPerson
+   */
+  public DataPerson() {
+  }
+
+  /**
    * Constructor for DataPerson
    *
    * @param firstName
@@ -227,6 +233,15 @@ public class DataPerson {
    */
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  /**
+   * get id
+   *
+   * @param id
+   */
+  public void SetPersonId(int id) {
+    this.id = id;
   }
 
   /**

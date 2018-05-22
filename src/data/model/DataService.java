@@ -234,7 +234,8 @@ public class DataService implements IService {
       String[] values = {getName(), "" + getFrequency(), "" + getUnit(), "" + getPrice(), "" + getRepetition(), getDescription()};
       query = Database.compose(
               "INSERT INTO services (name, frequency, unit, price, repetition, description)",
-              "VALUES('" + String.join("','", values) + "')"
+              "VALUES('" + String.join("','", values) + "')",
+              "RETURNING id"
       );
     } else {
       query = Database.compose(
@@ -248,6 +249,10 @@ public class DataService implements IService {
               "WHERE id = " + getID()
       );
     }
-    Database.getInstance().query(query);
+    Database.getInstance().query(query, rs -> {
+      if (id == 0) {
+        id = rs.getInt(1);
+      }
+    });
   }
 }

@@ -1,9 +1,16 @@
 package domain.security;
 
+import acq.IRole;
 import domain.security.Role;
 import acq.IUser;
 
 public class User implements IUser {
+
+  /**
+   * User id
+   */
+  private int id;
+
   /**
    * The user's username
    */
@@ -20,6 +27,12 @@ public class User implements IUser {
   private Role role;
 
   /**
+   * No args for our mapper to use
+   */
+  public User() {
+  }
+
+  /**
    * User contructor
    *
    * @param name
@@ -31,6 +44,16 @@ public class User implements IUser {
     this.username = username;
     this.password = password;
     this.role = role;
+  }
+
+  /**
+   * Get id
+   *
+   * @return id
+   */
+  @Override
+  public int getId() {
+    return id;
   }
 
   /**
@@ -59,8 +82,17 @@ public class User implements IUser {
    * @return role
    */
   @Override
-  public Role getRole() {
+  public IRole getRole() {
     return role;
+  }
+
+  /**
+   * Set id
+   *
+   * @param id
+   */
+  public void setId(int id) {
+    this.id = id;
   }
 
   /**
@@ -86,8 +118,21 @@ public class User implements IUser {
    *
    * @param role
    */
-  public void setRole(Role role) {
-    this.role = role;
+  public void setRole(IRole role) {
+    this.role = (Role) role;
   }
 
+  /**
+   * Check if the give password is valid
+   *
+   * @param password
+   * @return true if valid
+   */
+  public boolean verify(String password) {
+    if (this.password == null || password == null) {
+      return false;
+    }
+
+    return this.password.equals(password);
+  }
 }
