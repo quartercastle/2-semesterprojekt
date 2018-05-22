@@ -149,7 +149,8 @@ public class DataParagraph implements IParagraph {
       String[] values = {"" + getNumber(), getTitle(), getDescription()};
       query = Database.compose(
               "INSERT INTO paragraphs (number, title, description)",
-              "VALUES('" + String.join("','", values) + "')"
+              "VALUES('" + String.join("','", values) + "')",
+              "RETURNING id"
       );
     } else {
       query = Database.compose(
@@ -160,7 +161,11 @@ public class DataParagraph implements IParagraph {
               "WHERE id = " + getID()
       );
     }
-    Database.getInstance().query(query);
+    Database.getInstance().query(query, rs -> {
+      if (id == 0) {
+        id = rs.getInt(1);
+      }
+    });
   }
 
 }

@@ -62,6 +62,7 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
   public void save() {
     String query = null;
     super.save();
+    ((DataUser) user).save();
 
     if (getId() == 0) {
       String[] values = {super.getId() + "", "" + getUser().getId()};
