@@ -10,6 +10,7 @@ import domain.system.Case;
 import acq.ICase;
 import acq.IData;
 import acq.IDomain;
+import domain.system.SystemFacade;
 import java.util.Collection;
 
 public class DomainFacade implements IDomain {
@@ -72,8 +73,8 @@ public class DomainFacade implements IDomain {
    * @return Case
    */
   @Override
-  public Case createCase() {
-    return new Case(null, null, null);
+  public ICase createCase() {
+    return SystemFacade.getInstance().createCase();
   }
 
   /**

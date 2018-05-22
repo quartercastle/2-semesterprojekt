@@ -48,7 +48,7 @@ public class CaseWorker extends Person {
 
   public Case createCase() {
     // TODO validate priviliges and finish implementation
-    return new Case(null, null, null);
+    return new Case(null, null);
   }
 
 }

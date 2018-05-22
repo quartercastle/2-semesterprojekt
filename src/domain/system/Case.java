@@ -4,7 +4,13 @@ import acq.ICitizen;
 import java.util.Collection;
 import java.util.UUID;
 import acq.ICase;
+import acq.ICompany;
+import acq.IEffort;
+import acq.IOffer;
+import acq.IParagraph;
+import acq.IService;
 import domain.security.User;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 
 /**
@@ -24,14 +30,11 @@ public class Case implements ICase {
    * Citizen attached to the case
    */
   private Citizen citizen;
+
   /**
    * Effort attached to the case
    */
-  private Effort effort;
-  /**
-   * Participating citizens
-   */
-  private Collection<ICitizen> participants;
+  private Collection<Effort> efforts = new HashSet<>();
 
   /**
    * Case inquiry
@@ -174,12 +177,10 @@ public class Case implements ICase {
    * @param citizen
    * @param effort
    */
-  public Case(User responsible, Citizen citizen, Effort effort) {
+  public Case(User responsible, Citizen citizen) {
     this.id = new UUID(5, 7);
     this.responsible = responsible;
     this.citizen = citizen;
-    this.effort = effort;
-    this.participants = new HashSet<>();
   }
 
   /**
@@ -240,13 +241,19 @@ public class Case implements ICase {
   }
 
   /**
-   * Returns the effort created for the case
+   * Get effort
    *
    * @return effort
    */
   @Override
-  public Effort getEffort() {
-    return effort;
+  public Collection<IEffort> getEfforts() {
+    Collection<IEffort> ef = new HashSet<>();
+
+    for (Effort df : this.efforts) {
+      ef.add((IEffort) df);
+    }
+
+    return ef;
   }
 
   /**
@@ -276,34 +283,6 @@ public class Case implements ICase {
    */
   public void setCitizen(ICitizen citizen) {
     this.citizen = (Citizen) citizen;
-  }
-
-  /**
-   * Sets the effort asigned to the case
-   *
-   * @param effort
-   */
-  public void setEffort(Effort effort) {
-    this.effort = effort;
-  }
-
-  /**
-   * Returns the participants in the case
-   *
-   * @return participants
-   */
-  @Override
-  public Collection<ICitizen> getParticipants() {
-    return participants;
-  }
-
-  /**
-   * Sets participants in the case
-   *
-   * @param participants
-   */
-  public void setParticipants(Collection<ICitizen> participants) {
-    this.participants = participants;
   }
 
   /**
@@ -837,5 +816,26 @@ public class Case implements ICase {
   @Override
   public String toString() {
     return "Sags-ID: " + id + "\n" + "Borger under behandling: " + citizen.getFirstName() + " " + citizen.getLastName() + "\n" + "Ansvarlig sagsbehandler: " + responsible;
+  }
+
+  /**
+   * Add effort
+   *
+   * @param service
+   * @param offer
+   * @param paragraphs
+   * @param start
+   * @param end
+   * @param company
+   */
+  @Override
+  public void addEffort(IService service, IOffer offer, Collection<IParagraph> paragraphs, GregorianCalendar start, GregorianCalendar end, ICompany company) {
+    Effort effort = new Effort(
+            service.getPrice() + offer.getPrice(),
+            start,
+            end,
+            (Company) company
+    );
+    this.efforts.add(effort);
   }
 }
