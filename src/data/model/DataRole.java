@@ -57,10 +57,7 @@ public class DataRole implements IRole {
   /**
    * Get id
    *
-   * <<<<<<< HEAD @
-   *
-   *
-   * return id ======= @return >>>>>>> fix
+   * return id 
    */
   public int getId() {
     return this.id;
