@@ -105,8 +105,19 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
    *
    * @return int id
    */
+  @Override
   public int getId() {
     return id;
+  }
+
+  /**
+   * Set id
+   *
+   * @param id
+   */
+  @Override
+  public void setId(int id) {
+    this.id = id;
   }
 
   /**
@@ -120,7 +131,7 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
     Database.getInstance().query(Database.compose(
             "SELECT id, person_id, user_id",
             "FROM case_workers",
-            "WHERE " + value + " = '" + value + "'"
+            "WHERE " + key + " = " + value + ""
     ),
             rs -> {
               caseWorker.setId(rs.getInt(1));
@@ -134,6 +145,7 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
               caseWorker.setEmail(dataPerson.getEmail());
               caseWorker.setUser(DataUser.find(rs.getInt(3)));
             });
+
     return caseWorker;
   }
 }

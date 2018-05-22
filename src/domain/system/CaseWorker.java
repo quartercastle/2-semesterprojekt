@@ -89,7 +89,7 @@ public class CaseWorker extends Person implements ICaseWorker {
       return null;
     }
 
-    return new Case(null, null, null);
+    return new Case(null, null);
   }
 
 }

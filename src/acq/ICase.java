@@ -10,16 +10,16 @@ public interface ICase {
   /**
    * Get id
    *
-   * @return unique case ID
+   * @return unique case Id
    */
-  int getID();
+  int getId();
 
   /**
    * set id
    *
    * @param id
    */
-  void setID(int id);
+  void setId(int id);
 
   /**
    * Get responsible caseworker
@@ -41,13 +41,6 @@ public interface ICase {
    * @return Effort linked to the case
    */
   IEffort getEffort();
-
-  /**
-   * Get collection of participating citizens
-   *
-   * @return participants
-   */
-  Collection<ICitizen> getParticipants();
 
   /**
    * Get inquiry

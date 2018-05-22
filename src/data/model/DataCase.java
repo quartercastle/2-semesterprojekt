@@ -169,9 +169,15 @@ public class DataCase implements ICase {
   private String furtherCourse;
 
   /**
-   * Case ID
+   * Case id
    */
-  private int ID;
+  private int id;
+
+  /**
+   * No args
+   */
+  public DataCase() {
+  }
 
   /**
    * Create a new DataCase
@@ -181,12 +187,10 @@ public class DataCase implements ICase {
    * @param citizen
    * @param effort
    */
-  public DataCase(ICaseWorker responsible, ICitizen citizen, IEffort effort) {
-    this.ID = 0;
+  public DataCase(ICaseWorker responsible, ICitizen citizen) {
+    this.id = 0;
     this.responsible = responsible;
     this.citizen = citizen;
-    this.effort = effort;
-    this.participants = new ArrayList();
   }
 
   /**
@@ -195,8 +199,8 @@ public class DataCase implements ICase {
    * @return id
    */
   @Override
-  public int getID() {
-    return this.ID;
+  public int getId() {
+    return this.id;
   }
 
   /**
@@ -205,8 +209,8 @@ public class DataCase implements ICase {
    * @param id
    */
   @Override
-  public void setID(int id) {
-    this.ID = id;
+  public void setId(int id) {
+    this.id = id;
   }
 
   /**
@@ -237,16 +241,6 @@ public class DataCase implements ICase {
   @Override
   public IEffort getEffort() {
     return this.effort;
-  }
-
-  /**
-   * Get participants
-   *
-   * @return participants
-   */
-  @Override
-  public Collection<ICitizen> getParticipants() {
-    return this.participants;
   }
 
   /**
@@ -813,10 +807,10 @@ public class DataCase implements ICase {
    * Method to find DataCase in database
    *
    * @param id of the case to find
-   * @return if found, the instance of DataCase with the specified ID
+   * @return if found, the instance of DataCase with the specified id
    */
   public static DataCase find(int id) {
-    DataCase dc = new DataCase(null, null, null);
+    DataCase dc = new DataCase(null, null);
     Database.getInstance().query(
             "SELECT id, citizen_id, case_worker_id, circumstance, inquiry, further_course, is_informed_about_rights, is_informed_about_duties, "
             + "practical_tasks_support, personal_care_support, grocery_support, temporary_stay, longer_stay, rehabilitation_support, "
@@ -826,7 +820,7 @@ public class DataCase implements ICase {
             + "FROM cases "
             + "WHERE id = " + id,
             rs -> {
-              dc.setID(rs.getInt(1));
+              dc.setId(rs.getInt(1));
               dc.setCitizen(DataCitizen.find(rs.getInt(2)));
               dc.setResponsible(DataCaseWorker.find(rs.getInt(3)));
               dc.setCircumstance(rs.getString(4));
@@ -862,7 +856,7 @@ public class DataCase implements ICase {
   public void save() {
     String query = null;
 
-    if (getID() == 0) {
+    if (getId() == 0) {
       query = "INSERT INTO cases (citizen_id, case_worker_id, circumstance, inquiry, further_course, is_informed_about_rights, is_informed_about_duties, "
               + "practical_tasks_support, personal_care_support, grocery_support, temporary_stay, longer_stay, rehabilitation_support, "
               + "driving_support, temporary_house_offer, personal_care_offer, support_grocery_offer, longer_stay_offer, learning_offer, "
@@ -886,12 +880,12 @@ public class DataCase implements ICase {
               + isCuratorship() + "', assessor='" + isAssessor() + "', party_representative='" + isPartyRepresentative() + "', power_of_attorney='" + isPowerOfAttorney()
               + "', right_to_assessor_or_party_representative='" + isRightToAssessorOrPartyRepresentative() + "', information_saved_online='" + isInformationSavedOnline()
               + "' "
-              + "WHERE id = " + ID;
+              + "WHERE id = " + id;
     }
 
     Database.getInstance().query(query, rs -> {
-      if (ID == 0) {
-        ID = rs.getInt(1);
+      if (id == 0) {
+        id = rs.getInt(1);
       }
     });
   }

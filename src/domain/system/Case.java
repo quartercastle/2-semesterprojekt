@@ -14,7 +14,7 @@ public class Case implements ICase {
   /**
    * Case id
    */
-  private int ID;
+  private int id;
   /**
    * The user responsile for the case
    */
@@ -27,10 +27,6 @@ public class Case implements ICase {
    * Effort attached to the case
    */
   private Effort effort;
-  /**
-   * Participating citizens
-   */
-  private Collection<ICitizen> participants;
 
   /**
    * Case inquiry
@@ -167,18 +163,22 @@ public class Case implements ICase {
   private String furtherCourse;
 
   /**
+   * No args
+   */
+  public Case() {
+  }
+
+  /**
    * Case constructor
    *
    * @param responsible
    * @param citizen
    * @param effort
    */
-  public Case(ICaseWorker responsible, Citizen citizen, Effort effort) {
+  public Case(ICaseWorker responsible, Citizen citizen) {
     this.responsible = responsible;
     this.citizen = citizen;
-    this.effort = effort;
-    this.participants = new HashSet<>();
-    this.ID = 0;
+    this.id = 0;
   }
 
   /**
@@ -187,8 +187,8 @@ public class Case implements ICase {
    * @param id
    */
   @Override
-  public void setID(int id) {
-    this.ID = id;
+  public void setId(int id) {
+    this.id = id;
   }
 
   /**
@@ -197,8 +197,8 @@ public class Case implements ICase {
    * @return id
    */
   @Override
-  public int getID() {
-    return this.ID;
+  public int getId() {
+    return this.id;
   }
 
   /**
@@ -286,25 +286,6 @@ public class Case implements ICase {
    */
   public void setEffort(Effort effort) {
     this.effort = effort;
-  }
-
-  /**
-   * Returns the participants in the case
-   *
-   * @return participants
-   */
-  @Override
-  public Collection<ICitizen> getParticipants() {
-    return participants;
-  }
-
-  /**
-   * Sets participants in the case
-   *
-   * @param participants
-   */
-  public void setParticipants(Collection<ICitizen> participants) {
-    this.participants = participants;
   }
 
   /**
@@ -837,6 +818,6 @@ public class Case implements ICase {
    */
   @Override
   public String toString() {
-    return "Sags-ID: " + ID + "\n" + "Borger under behandling: " + citizen.getFirstName() + " " + citizen.getLastName() + "\n" + "Ansvarlig sagsbehandler: " + responsible;
+    return "Sags-id: " + id + "\n" + "Borger under behandling: " + citizen.getFirstName() + " " + citizen.getLastName() + "\n" + "Ansvarlig sagsbehandler: " + responsible;
   }
 }
