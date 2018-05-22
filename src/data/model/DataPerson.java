@@ -41,6 +41,12 @@ public class DataPerson {
   private String email;
 
   /**
+   * No Args DataPerson
+   */
+  public DataPerson() {
+  }
+
+  /**
    * Constructor for DataPerson
    *
    * @param firstName

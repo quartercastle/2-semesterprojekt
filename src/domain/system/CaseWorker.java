@@ -21,6 +21,12 @@ public class CaseWorker extends Person implements ICaseWorker {
   private int id;
 
   /**
+   * No args constructor for CaseWorker
+   */
+  public CaseWorker() {
+  }
+
+  /**
    * Constructor for Caseworker
    *
    * @param firstName
@@ -55,18 +61,35 @@ public class CaseWorker extends Person implements ICaseWorker {
     this.user = user;
   }
 
-  public Case createCase() {
-    // TODO validate priviliges and finish implementation
-    return new Case(null, null, null);
+  /**
+   * Get id
+   * @return
+   */
+  public int getId() {
+    return id;
   }
 
   /**
+   * Set id
    *
-   * @return caseworker id
+   * @param id
    */
   @Override
-  public int getID() {
-    return this.id;
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  /**
+   * Create a new case
+   *
+   * @return
+   */
+  public Case createCase() {
+    if (!user.getRole().canCreateCase()) {
+      return null;
+    }
+
+    return new Case(null, null, null);
   }
 
 }

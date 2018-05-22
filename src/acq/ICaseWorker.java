@@ -21,6 +21,13 @@ public interface ICaseWorker {
    *
    * @return caseworker id
    */
-  int getID();
+  int getId();
+
+  /**
+   * set ID
+   *
+   * @param id
+   */
+  void setId(int id);
 
 }

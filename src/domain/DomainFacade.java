@@ -10,6 +10,8 @@ import domain.system.Case;
 import acq.ICase;
 import acq.IData;
 import acq.IDomain;
+import acq.IUser;
+import domain.system.SystemFacade;
 import java.util.Collection;
 
 public class DomainFacade implements IDomain {
@@ -63,7 +65,24 @@ public class DomainFacade implements IDomain {
    */
   @Override
   public boolean verify(String username, String password) {
-    return AuthManager.verify(username, password);
+    IUser user = (IUser) AuthManager.verify(username, password);
+
+    if (user == null) {
+      return false;
+    }
+
+    SystemFacade.getInstance().bind(user);
+
+    return true;
+  }
+
+  /**
+   * Get data
+   *
+   * @return data
+   */
+  public IData getData() {
+    return data;
   }
 
   /**

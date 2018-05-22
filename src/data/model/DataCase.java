@@ -868,7 +868,7 @@ public class DataCase implements ICase {
               + "driving_support, temporary_house_offer, personal_care_offer, support_grocery_offer, longer_stay_offer, learning_offer, "
               + "rehabilitation_offer, guardianship, none_acting_guardian, curatorship, assessor, party_representative, power_of_attorney, "
               + "right_to_assessor_or_party_representative, information_saved_online ) "
-              + "VALUES('" + getCitizen().getId() + "','" + getResponsible().getID() + "','" + getCircumstance() + "','" + getInquiry() + "','" + getFurtherCourse() + "','" + isInformedAboutRights() + "','" + isInformedAboutDuties()
+              + "VALUES('" + getCitizen().getId() + "','" + getResponsible().getId() + "','" + getCircumstance() + "','" + getInquiry() + "','" + getFurtherCourse() + "','" + isInformedAboutRights() + "','" + isInformedAboutDuties()
               + "','" + needPracticalTasksSupport() + "','" + needPersonalCareSupport() + "','" + needGrocerySupport() + "','" + needTemporaryStay() + "','" + needLongerStay() + "','" + needRehabilitationSupport() + "','"
               + needDrivingSupport() + "','" + needTemporaryHouseOffer() + "','" + needPersonalCareOffer() + "','" + needSupportGroceryOffer() + "','" + needLongerStayOffer() + "','" + needLearningOffer()
               + "','" + needRehabilitationOffer() + "','" + isGuardianship() + "','" + isNoneActingGuardian() + "','" + isCuratorship() + "','" + isAssessor() + "','" + isPartyRepresentative()
@@ -876,7 +876,7 @@ public class DataCase implements ICase {
               + "RETURNING id;";
     } else {
       query = "UPDATE cases "
-              + "SET citizen_id ='" + getCitizen().getId() + "', case_worker_id='" + getResponsible().getID() + "', circumstance = '" + getCircumstance() + "', inquiry ='"
+              + "SET citizen_id ='" + getCitizen().getId() + "', case_worker_id='" + getResponsible().getId() + "', circumstance = '" + getCircumstance() + "', inquiry ='"
               + getInquiry() + "', further_course='" + getFurtherCourse() + "', is_informed_about_rights='" + isInformedAboutRights()
               + "', is_informed_About_duties='" + isInformedAboutDuties() + "', practical_tasks_support='" + needPracticalTasksSupport()
               + "', personal_care_support='" + needPersonalCareSupport() + "', grocery_support='" + needGrocerySupport() + "', temporary_stay='" + needTemporaryStay() + "', longer_stay='" + needLongerStay() + "', rehabilitation_support='"
