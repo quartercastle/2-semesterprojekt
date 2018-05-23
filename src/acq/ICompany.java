@@ -39,4 +39,11 @@ public interface ICompany {
    * @param name
    */
   void setName(String name);
+
+  /**
+   * Set id
+   *
+   * @param id
+   */
+  void setId(int id);
 }

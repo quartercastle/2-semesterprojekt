@@ -1,13 +1,14 @@
 package domain.system;
 
 import acq.IAddress;
+import acq.ICaseWorker;
 import acq.IUser;
 
 /**
  *
  * CaseWorker class that extends Person
  */
-public class CaseWorker extends Person {
+public class CaseWorker extends Person implements ICaseWorker {
 
   /**
    * Create IUser
@@ -62,7 +63,6 @@ public class CaseWorker extends Person {
       return null;
     }
 
-    return new Case(null, null, null);
+    return new Case(null, null);
   }
-
 }

@@ -3,9 +3,24 @@
  */
 package acq;
 
+import java.util.Collection;
 import java.util.GregorianCalendar;
 
 public interface IEffort {
+
+  /**
+   * Get id
+   *
+   * @return id
+   */
+  int getId();
+
+  /**
+   * Get caseId
+   *
+   * @return i caseId
+   */
+  int getCaseId();
 
   /**
    * Get total price
@@ -54,6 +69,13 @@ public interface IEffort {
    *
    * @param paragraph
    */
+  void setParagraphs(Collection<IParagraph> paragraphs);
+
+  /**
+   * Set paragraph
+   *
+   * @param paragraph
+   */
   void setParagraph(IParagraph paragraph);
 
   /**
@@ -71,10 +93,31 @@ public interface IEffort {
   IOffer getOffer();
 
   /**
-   * get paragraph
+   * get paragraphs
    *
-   * @return paragraph
+   * @return paragraphs
    */
-  IParagraph getParagraph();
+  Collection<IParagraph> getParagraphs();
+
+  /**
+   * set caseId
+   *
+   * @param id
+   */
+  void setCaseId(int id);
+
+  /**
+   * Set responsible company
+   *
+   * @param company
+   */
+  void setResponsible(ICompany company);
+
+  /**
+   * Set id
+   *
+   * @param id
+   */
+  void setId(int id);
 
 }

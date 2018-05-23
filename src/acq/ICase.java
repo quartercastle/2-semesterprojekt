@@ -4,6 +4,7 @@
 package acq;
 
 import java.util.Collection;
+import java.util.GregorianCalendar;
 import java.util.UUID;
 
 public interface ICase {
@@ -30,18 +31,30 @@ public interface ICase {
   ICitizen getCitizen();
 
   /**
-   * Get effort
+   * get efforts
    *
-   * @return Effort linked to the case
+   * @return efforts
    */
-  IEffort getEffort();
+  Collection<IEffort> getEfforts();
 
   /**
-   * Get collection of participating citizens
+   * Add new effort to a case
    *
-   * @return participants
+   * @param service
+   * @param offer
+   * @param paragraphs
+   * @param start
+   * @param end
+   * @param company
    */
-  Collection<ICitizen> getParticipants();
+  void addEffort(
+          IService service,
+          IOffer offer,
+          Collection<IParagraph> paragraphs,
+          GregorianCalendar start,
+          GregorianCalendar end,
+          ICompany company
+  );
 
   /**
    * Get inquiry
