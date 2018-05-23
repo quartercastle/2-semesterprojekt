@@ -40,7 +40,7 @@ public class DataEffort implements IEffort {
   /**
    * Company which is responsible for the effort
    */
-  private DataCompany responsible;
+  private ICompany responsible;
 
   /**
    * offer connected to the effort
@@ -56,6 +56,10 @@ public class DataEffort implements IEffort {
    * Paragraphs connected to effort
    */
   private Collection<IParagraph> paragraphs;
+
+  public DataEffort() {
+    paragraphs = new ArrayList<>();
+  }
 
   /**
    * Create a new instance of a DataEffort
@@ -342,6 +346,11 @@ public class DataEffort implements IEffort {
   @Override
   public void setParagraphs(Collection<IParagraph> paragraphs) {
     this.paragraphs = paragraphs;
+  }
+
+  @Override
+  public void setResponsible(ICompany company) {
+    responsible = company;
   }
 
 }

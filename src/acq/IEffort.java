@@ -106,4 +106,18 @@ public interface IEffort {
    */
   void setCaseId(int id);
 
+  /**
+   * Set responsible company
+   *
+   * @param company
+   */
+  void setResponsible(ICompany company);
+
+  /**
+   * Set id
+   *
+   * @param id
+   */
+  void setId(int id);
+
 }

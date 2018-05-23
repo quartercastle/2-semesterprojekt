@@ -63,7 +63,7 @@ public class SystemFacade {
    * @param IUser
    */
   public void bind(IUser user) {
-    caseWorker = Mapper.map(
+    caseWorker = (CaseWorker) Mapper.map(
             DomainFacade.getInstance()
                     .getData()
                     .findCaseWorker(user.getId()),

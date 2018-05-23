@@ -38,7 +38,8 @@ public class DataRole implements IRole {
   /**
    * No args for our mapper to use
    */
-  public DataRole(){}
+  public DataRole() {
+  }
 
   /**
    * Create a new instance of DataRole

@@ -1,9 +1,11 @@
 package domain.system;
 
+import acq.ICompany;
 import acq.IEffort;
 import acq.IOffer;
 import acq.IParagraph;
 import acq.IService;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.GregorianCalendar;
 
@@ -40,7 +42,7 @@ public class Effort implements IEffort {
   /**
    * Company responsible of effort
    */
-  private Company responsible;
+  private ICompany responsible;
 
   /**
    * offer connected to the effort
@@ -61,6 +63,7 @@ public class Effort implements IEffort {
    * No-args Constructor
    */
   public Effort() {
+    paragraphs = new ArrayList<>();
   }
 
   /**
@@ -76,6 +79,7 @@ public class Effort implements IEffort {
     this.startDate = startDate;
     this.endDate = endDate;
     this.responsible = responsible;
+    paragraphs = new ArrayList<>();
   }
 
   /**
@@ -141,17 +145,8 @@ public class Effort implements IEffort {
    * @return responsible
    */
   @Override
-  public Company getResponsible() {
+  public ICompany getResponsible() {
     return responsible;
-  }
-
-  /**
-   * Set responsible company
-   *
-   * @param responsible
-   */
-  public void setResponsible(Company responsible) {
-    this.responsible = responsible;
   }
 
   /**
@@ -246,5 +241,15 @@ public class Effort implements IEffort {
   @Override
   public void setCaseId(int id) {
     caseId = id;
+  }
+
+  @Override
+  public void setResponsible(ICompany company) {
+    responsible = company;
+  }
+
+  @Override
+  public void setId(int id) {
+    this.id = id;
   }
 }

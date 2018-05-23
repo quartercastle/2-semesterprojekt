@@ -23,6 +23,9 @@ public class Company implements ICompany {
    */
   private IAddress address;
 
+  public Company() {
+  }
+
   /**
    * Construct Address
    *
@@ -69,15 +72,6 @@ public class Company implements ICompany {
    *
    * @param address
    */
-  public void setAddress(Address address) {
-    this.address = address;
-  }
-
-  /**
-   * Get address
-   *
-   * @param address
-   */
   @Override
   public void setAddress(IAddress address) {
     this.address = address;
@@ -91,5 +85,10 @@ public class Company implements ICompany {
   @Override
   public int getId() {
     return id;
+  }
+
+  @Override
+  public void setId(int id) {
+    this.id = id;
   }
 }

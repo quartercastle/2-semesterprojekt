@@ -1,13 +1,14 @@
 package domain.system;
 
 import acq.IAddress;
+import acq.ICaseWorker;
 import acq.IUser;
 
 /**
  *
  * CaseWorker class that extends Person
  */
-public class CaseWorker extends Person {
+public class CaseWorker extends Person implements ICaseWorker {
 
   /**
    * Create IUser
@@ -58,11 +59,10 @@ public class CaseWorker extends Person {
    * @return
    */
   public Case createCase() {
-//    if (!user.getRole().canCreateCase()) {
-//      return null;
-//    }
+    if (!user.getRole().canCreateCase()) {
+      return null;
+    }
 
     return new Case(null, null);
   }
-
 }

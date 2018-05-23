@@ -25,18 +25,16 @@ public class Mapper {
    * this to work the data and domain class must have the same getters and
    * setters. And the domain class must have a public no-args constructor.
    *
-   * @param <O> the mapped Object
-   * @param <T> the object to be mapped, a data class
    * @param toBeMapped the object to be mapped, a data class
    * @param toData if the a domain class is mapped to a data class, if false the
    * reverse
    * @return the mapped Object
    */
-  public static <O, T> O map(T toBeMapped, boolean toData) {
+  public static Object map(Object toBeMapped, boolean toData) {
     if (toBeMapped == null) {
       return null;
     }
-    O instanceOfClass = null;
+    Object instanceOfClass = null;
 
     String mappedClassName;
 
@@ -54,19 +52,14 @@ public class Mapper {
     }
 
     try {
-      //Class to be mapped
-      Class classToBeMapped = Class.forName(mappedClassName);
-
-      //Gets the no-args constructor
-      Constructor constructor = classToBeMapped.getConstructor();
 
       //Create an instance of the class
-      instanceOfClass = (O) constructor.newInstance();
+      instanceOfClass = Class.forName(mappedClassName).newInstance();
 
-      runThroughClass(classToBeMapped, instanceOfClass, toBeMapped, toData);
+      runThroughClass(instanceOfClass.getClass(), instanceOfClass, toBeMapped, toData);
 
-    } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException
-            | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+    } catch (ClassNotFoundException | SecurityException | InstantiationException | NoSuchMethodException | InvocationTargetException
+            | IllegalAccessException | IllegalArgumentException ex) {
       Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
     }
 
@@ -76,8 +69,6 @@ public class Mapper {
   /**
    * Runs through the interfaces a class implements
    *
-   * @param <O>
-   * @param <T>
    * @param c the class to run through
    * @param instanceOfClass a instance of the class
    * @param toBeMapped a object to be mapped
@@ -87,7 +78,7 @@ public class Mapper {
    * @throws IllegalAccessException
    * @throws InvocationTargetException
    */
-  private static <O, T> void runThroughClass(Class c, O instanceOfClass, T toBeMapped, boolean toData) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+  private static void runThroughClass(Class c, Object instanceOfClass, Object toBeMapped, boolean toData) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
     for (Class i : c.getInterfaces()) {
       runThroughMethods(i, instanceOfClass, toBeMapped, toData);
     }
@@ -96,8 +87,6 @@ public class Mapper {
   /**
    * Runs through the methods on a class
    *
-   * @param <O>
-   * @param <T>
    * @param c the class of the object
    * @param instanceOfClass a instance of the class
    * @param toBeMapped a object to be mapped
@@ -107,8 +96,7 @@ public class Mapper {
    * @throws IllegalAccessException
    * @throws InvocationTargetException
    */
-  private static <O, T> void runThroughMethods(Class c, O instanceOfClass, T toBeMapped, boolean toData) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-
+  private static void runThroughMethods(Class c, Object instanceOfClass, Object toBeMapped, boolean toData) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
     for (Method currentMethod : c.getMethods()) {
       //The name on the method
       String nameOnSetterMethod = null;
@@ -157,8 +145,6 @@ public class Mapper {
   /**
    * Used when a method returns a collection
    *
-   * @param <O>
-   * @param <T>
    * @param currentMethod the method
    * @param toBeMapped the object to be mapped
    * @param instanceOfClass a instance of the class
@@ -168,7 +154,7 @@ public class Mapper {
    * @throws IllegalAccessException
    * @throws InvocationTargetException
    */
-  private static <O, T> Collection mapCollection(Method currentMethod, T toBeMapped, O instanceOfClass, boolean toData) throws IllegalAccessException, InvocationTargetException {
+  private static Collection mapCollection(Method currentMethod, Object toBeMapped, Object instanceOfClass, boolean toData) throws IllegalAccessException, InvocationTargetException {
     Type genericFieldType = currentMethod.getGenericReturnType();
 
     if (!(genericFieldType instanceof ParameterizedType)) {
@@ -196,8 +182,6 @@ public class Mapper {
   /**
    * Used when a method returns a map
    *
-   * @param <O>
-   * @param <T>
    * @param currentMethod the method
    * @param toBeMapped the object to be mapped
    * @param instanceOfMyClass a instance of the class
@@ -208,7 +192,7 @@ public class Mapper {
    * @throws IllegalArgumentException
    * @throws InvocationTargetException
    */
-  private static <O, T> Map mapMap(Method currentMethod, T toBeMapped, O instanceOfMyClass, boolean toData) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+  private static Map mapMap(Method currentMethod, Object toBeMapped, Object instanceOfMyClass, boolean toData) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
     Type genericFieldType = currentMethod.getGenericReturnType();
 
     if (!(genericFieldType instanceof ParameterizedType)) {
