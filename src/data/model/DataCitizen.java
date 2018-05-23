@@ -27,6 +27,12 @@ public class DataCitizen extends DataPerson implements ICitizen {
   }
 
   /**
+   * No args construct for DataCitizen
+   */
+  public DataCitizen() {
+  }
+
+  /**
    * get CPR
    *
    * @return CPR

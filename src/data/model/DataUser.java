@@ -25,7 +25,7 @@ public class DataUser implements IUser {
   /**
    * Assigned role
    */
-  private DataRole role;
+  private IRole role;
 
   /**
    * Is the user inactive;
@@ -35,7 +35,8 @@ public class DataUser implements IUser {
   /**
    * No args for our mapper to use
    */
-  public DataUser(){}
+  public DataUser() {
+  }
 
   /**
    * Create a new DataUser
@@ -134,7 +135,7 @@ public class DataUser implements IUser {
    *
    * @param role
    */
-  public void setRole(DataRole role) {
+  public void setRole(IRole role) {
     this.role = role;
   }
 
@@ -154,7 +155,7 @@ public class DataUser implements IUser {
    * @return user
    */
   public static DataUser find(int id) {
-    return where("id", ""+id);
+    return where("id", "" + id);
   }
 
   /**
@@ -190,8 +191,9 @@ public class DataUser implements IUser {
 
   /**
    * Find user in database with where clause
-   * @param  key
-   * @param  value
+   *
+   * @param key
+   * @param value
    * @return a User
    */
   public static DataUser where(String key, String value) {

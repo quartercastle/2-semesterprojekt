@@ -35,11 +35,29 @@ public interface IUser {
 
   /**
    * Set username
+   *
+   * @param email
    */
   void setUsername(String email);
 
   /**
    * Set Password
+   *
+   * @param password
    */
   void setPassword(String password);
+
+  /**
+   * Set role
+   *
+   * @param role
+   */
+  void setRole(IRole role);
+
+  /**
+   * set
+   *
+   * @param id
+   */
+  void setId(int id);
 }

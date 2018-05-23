@@ -119,6 +119,7 @@ public class User implements IUser {
    *
    * @param role
    */
+  @Override
   public void setRole(IRole role) {
     this.role = (Role) role;
   }

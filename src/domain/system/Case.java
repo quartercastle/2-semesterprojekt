@@ -4,6 +4,7 @@ import acq.ICitizen;
 import java.util.Collection;
 import acq.ICase;
 import acq.ICaseWorker;
+import acq.IEffort;
 import java.util.HashSet;
 
 /**
@@ -26,7 +27,7 @@ public class Case implements ICase {
   /**
    * Effort attached to the case
    */
-  private Effort effort;
+  private IEffort effort;
 
   /**
    * Case inquiry
@@ -173,7 +174,6 @@ public class Case implements ICase {
    *
    * @param responsible
    * @param citizen
-   * @param effort
    */
   public Case(ICaseWorker responsible, Citizen citizen) {
     this.responsible = responsible;
@@ -245,7 +245,7 @@ public class Case implements ICase {
    * @return effort
    */
   @Override
-  public Effort getEffort() {
+  public IEffort getEffort() {
     return effort;
   }
 
@@ -284,7 +284,8 @@ public class Case implements ICase {
    *
    * @param effort
    */
-  public void setEffort(Effort effort) {
+  @Override
+  public void setEffort(IEffort effort) {
     this.effort = effort;
   }
 

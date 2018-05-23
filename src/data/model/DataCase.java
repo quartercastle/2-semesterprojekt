@@ -184,7 +184,6 @@ public class DataCase implements ICase {
    *
    * @param responsible
    * @param citizen
-   * @param effort
    */
   public DataCase(ICaseWorker responsible, ICitizen citizen) {
     this.id = 0;
@@ -803,6 +802,16 @@ public class DataCase implements ICase {
   }
 
   /**
+   * Sets the effort asigned to the case
+   *
+   * @param effort
+   */
+  @Override
+  public void setEffort(IEffort effort) {
+    this.effort = effort;
+  }
+
+  /**
    * Method to find DataCase in database
    *
    * @param id of the case to find
@@ -854,7 +863,8 @@ public class DataCase implements ICase {
 
   public void save() {
     String query = null;
-    ((DataCaseWorker) responsible).save();
+    System.out.println(responsible);
+    //((DataCaseWorker) responsible).save();
     ((DataCitizen) citizen).save();
 
     if (getId() == 0) {
