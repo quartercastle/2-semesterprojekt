@@ -1,6 +1,5 @@
 package domain.security;
 
-import acq.IRole;
 import acq.IUser;
 import domain.DomainFacade;
 import util.Mapper;

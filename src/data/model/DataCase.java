@@ -878,6 +878,8 @@ public class DataCase implements ICase {
     ((DataCitizen) citizen).save();
 
     if (getId() == 0) {
+      System.out.println("getCitizen " + getCitizen());
+      System.out.println("getResponsible " + getResponsible());
       query = "INSERT INTO cases (citizen_id, case_worker_id, circumstance, inquiry, further_course, is_informed_about_rights, is_informed_about_duties, "
               + "practical_tasks_support, personal_care_support, grocery_support, temporary_stay, longer_stay, rehabilitation_support, "
               + "driving_support, temporary_house_offer, personal_care_offer, support_grocery_offer, longer_stay_offer, learning_offer, "

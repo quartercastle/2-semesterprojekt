@@ -7,7 +7,6 @@ import acq.IAddress;
 import domain.security.AuthManager;
 import domain.system.Citizen;
 import domain.system.Address;
-import domain.system.Case;
 import acq.ICase;
 import acq.ICitizen;
 import acq.IData;
