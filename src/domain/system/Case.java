@@ -859,5 +859,4 @@ public class Case implements ICase {
   public void setEfforts(Collection<IEffort> efforts) {
     this.efforts = efforts;
   }
-
 }

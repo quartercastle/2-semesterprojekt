@@ -1,7 +1,6 @@
 package domain.security;
 
 import acq.IRole;
-import domain.security.Role;
 import acq.IUser;
 
 public class User implements IUser {
@@ -163,5 +162,4 @@ public class User implements IUser {
 
     return this.password.equals(password);
   }
-
 }

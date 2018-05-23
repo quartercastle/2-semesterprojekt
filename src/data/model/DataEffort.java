@@ -352,5 +352,4 @@ public class DataEffort implements IEffort {
   public void setResponsible(ICompany company) {
     responsible = company;
   }
-
 }

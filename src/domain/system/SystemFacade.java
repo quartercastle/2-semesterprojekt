@@ -79,5 +79,4 @@ public class SystemFacade {
   public ICase createCase() {
     return caseWorker.createCase();
   }
-
 }

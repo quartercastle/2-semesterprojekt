@@ -3,7 +3,6 @@ package data.model;
 import acq.IRole;
 import acq.IUser;
 import data.Database;
-import data.model.DataRole;
 
 public class DataUser implements IUser {
 
@@ -221,5 +220,4 @@ public class DataUser implements IUser {
 
     return user;
   }
-
 }

@@ -57,5 +57,4 @@ public class Citizen extends Person implements ICitizen {
   public int getId() {
     return this.id;
   }
-
 }

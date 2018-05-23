@@ -92,6 +92,5 @@ public class CaseWorker extends Person implements ICaseWorker {
     }
 
     return new Case(this, null);
-
   }
 }

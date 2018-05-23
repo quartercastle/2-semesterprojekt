@@ -130,5 +130,4 @@ public class DomainFacade implements IDomain {
   public Collection<ICase> getCases() {
     return data.getCases();
   }
-
 }

@@ -6,7 +6,6 @@ import acq.ICitizen;
 import acq.ICompany;
 import acq.IEffort;
 import acq.IOffer;
-
 import data.Database;
 import acq.IParagraph;
 import acq.IService;
@@ -873,8 +872,7 @@ public class DataCase implements ICase {
 
   public void save() {
     String query = null;
-    System.out.println(responsible);
-    //((DataCaseWorker) responsible).save();
+
     ((DataCitizen) citizen).save();
 
     if (getId() == 0) {
@@ -927,7 +925,5 @@ public class DataCase implements ICase {
   public void addEffort(IService service, IOffer offer, Collection<IParagraph> paragraphs, GregorianCalendar start, GregorianCalendar end, ICompany company) {
     IEffort effort = new DataEffort(service.getPrice() + offer.getPrice(), start, end, (DataCompany) company);
     this.efforts.add(effort);
-
   }
-
 }

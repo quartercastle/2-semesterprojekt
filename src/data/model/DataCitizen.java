@@ -4,10 +4,6 @@ import acq.IAddress;
 import acq.ICitizen;
 import data.Database;
 
-/**
- *
- *
- */
 public class DataCitizen extends DataPerson implements ICitizen {
 
   /**
@@ -125,5 +121,4 @@ public class DataCitizen extends DataPerson implements ICitizen {
       }
     });
   }
-
 }
