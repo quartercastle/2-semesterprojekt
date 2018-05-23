@@ -5,7 +5,6 @@ import acq.ICaseWorker;
 import acq.ICitizen;
 import acq.IEffort;
 import data.Database;
-import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -855,6 +854,8 @@ public class DataCase implements ICase {
 
   public void save() {
     String query = null;
+    ((DataCaseWorker) responsible).save();
+    ((DataCitizen) citizen).save();
 
     if (getId() == 0) {
       query = "INSERT INTO cases (citizen_id, case_worker_id, circumstance, inquiry, further_course, is_informed_about_rights, is_informed_about_duties, "
