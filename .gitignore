@@ -12,4 +12,4 @@ nbproject/build-impl.xml
 .idea/
 out/
 *.iml
-src/config/PostgreSQLConfig.java
+src/config/*
