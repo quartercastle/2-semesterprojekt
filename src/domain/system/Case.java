@@ -836,6 +836,7 @@ public class Case implements ICase {
             end,
             (Company) company
     );
+
     this.efforts.add(effort);
   }
 }

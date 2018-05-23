@@ -6,6 +6,7 @@ import acq.IOffer;
 import acq.IParagraph;
 import acq.IService;
 import data.Database;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.GregorianCalendar;
 
@@ -69,6 +70,7 @@ public class DataEffort implements IEffort {
     this.startDate = startDate;
     this.endDate = endDate;
     this.responsible = responsible;
+    paragraphs = new ArrayList<>();
   }
 
   /**
@@ -120,25 +122,16 @@ public class DataEffort implements IEffort {
     ((DataCompany) responsible).save();
     ((DataOffer) offer).save();
     ((DataService) service).save();
-    if (paragraphs.size() != 0) {
-      for (IParagraph p : paragraphs) {
-        ((DataParagraph) p).save();
-        Database.getInstance().query(
-                "INSERT INTO effort_paragraphs (effort_id, paragraph_id) "
-                + "VALUES (" + id + ", " + ((DataParagraph) p).getID() + ")"
-        );
-      }
-    }
 
     if (getId() == 0) {
       String[] values = {"" + getCaseId(), "" + ((DataService) getService()).getID(), "" + ((DataOffer) getOffer()).getID(), "" + getTotalPrice(),
-        "" + getStartDate().getTimeInMillis(), "" + getEndDate().getTimeInMillis(), "" + ((DataCompany) getResponsible()).getId()};
-      query = "INSERT INTO companies (case_id, service_id, offer_id, total_price, start_date, end_date, responsibility) "
+        "" + getStartDate().getTime(), "" + getEndDate().getTime(), "" + ((DataCompany) getResponsible()).getId()};
+      query = "INSERT INTO efforts (case_id, service_id, offer_id, total_price, start_date, end_date, responsibility) "
               + "VALUES('" + String.join("','", values) + "') "
               + "RETURNING id";
     } else {
       query = Database.compose(
-              "UPDATE offers SET",
+              "UPDATE efforts SET",
               "case_id = " + getCaseId() + ",",
               "service_id = " + ((DataService) getService()).getID() + ",",
               "offer_id = " + ((DataOffer) getOffer()).getID() + ",",
@@ -155,6 +148,18 @@ public class DataEffort implements IEffort {
         id = rs.getInt(1);
       }
     });
+
+    if (paragraphs.size() != 0) {
+      for (IParagraph p : paragraphs) {
+        ((DataParagraph) p).save();
+        System.out.println("IIIIIIIDDDDDDDDDDd " + id);
+        Database.getInstance().query(
+                "INSERT INTO effort_paragraphs (effort_id, paragraph_id) "
+                + "VALUES (" + id + ", " + ((DataParagraph) p).getID() + ") "
+                + "RETURNING effort_id"
+        );
+      }
+    }
   }
 
   /**

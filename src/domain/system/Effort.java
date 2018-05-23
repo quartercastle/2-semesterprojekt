@@ -58,6 +58,12 @@ public class Effort implements IEffort {
   private Collection<IParagraph> paragraphs;
 
   /**
+   * No-args Constructor
+   */
+  public Effort() {
+  }
+
+  /**
    * Constructor for efforts
    *
    * @param totalPrice
@@ -235,5 +241,10 @@ public class Effort implements IEffort {
   @Override
   public int getCaseId() {
     return caseId;
+  }
+
+  @Override
+  public void setCaseId(int id) {
+    caseId = id;
   }
 }

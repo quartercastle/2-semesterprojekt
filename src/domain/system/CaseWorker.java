@@ -58,9 +58,9 @@ public class CaseWorker extends Person {
    * @return
    */
   public Case createCase() {
-    if (!user.getRole().canCreateCase()) {
-      return null;
-    }
+//    if (!user.getRole().canCreateCase()) {
+//      return null;
+//    }
 
     return new Case(null, null);
   }

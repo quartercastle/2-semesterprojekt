@@ -99,4 +99,11 @@ public interface IEffort {
    */
   Collection<IParagraph> getParagraphs();
 
+  /**
+   * set caseId
+   *
+   * @param id
+   */
+  void setCaseId(int id);
+
 }
