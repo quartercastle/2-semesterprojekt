@@ -38,10 +38,7 @@ public class OverviewController extends Controller {
    */
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-
-    cases = new ArrayList<>(DomainFacade.getInstance().getCases());
-    ObservableList<ICase> observableCaseList = FXCollections.observableArrayList(cases);
-    caseListView.setItems(observableCaseList);
+    updateCaseList();
 
   }
 
@@ -54,6 +51,16 @@ public class OverviewController extends Controller {
   private void openCaseAction(ActionEvent event) {
 
     GUI.getInstance().getController("CreateCase").open();
+  }
+
+  /**
+   * Updates overviewscreens list of cases
+   */
+  public void updateCaseList() {
+    cases = new ArrayList<>(DomainFacade.getInstance().getCases());
+    ObservableList<ICase> observableCaseList = FXCollections.observableArrayList(cases);
+    caseListView.setItems(observableCaseList);
+
   }
 
 }
