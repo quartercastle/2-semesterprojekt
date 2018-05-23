@@ -60,7 +60,8 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
 
   /**
    * Find a Case worker from db
-   * @param  id
+   *
+   * @param id
    * @return CaseWorker
    */
   public static DataCaseWorker find(int id) {
@@ -122,8 +123,9 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
 
   /**
    * Fetch Case worker from where cluase
-   * @param  key
-   * @param  value
+   *
+   * @param key
+   * @param value
    * @return case worker
    */
   public static DataCaseWorker where(String key, String value) {

@@ -23,6 +23,9 @@ public class Offer implements IOffer {
    */
   private String description;
 
+  public Offer() {
+  }
+
   /**
    * Constructor for offers
    *

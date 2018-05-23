@@ -58,6 +58,7 @@ public class DataUser implements IUser {
    *
    * @return id
    */
+  @Override
   public int getId() {
     return this.id;
   }
@@ -97,6 +98,7 @@ public class DataUser implements IUser {
    *
    * @return inactive
    */
+  @Override
   public boolean isInactive() {
     return inactive;
   }
@@ -106,6 +108,7 @@ public class DataUser implements IUser {
    *
    * @param id
    */
+  @Override
   public void setId(int id) {
     this.id = id;
   }
@@ -135,8 +138,10 @@ public class DataUser implements IUser {
    *
    * @param role
    */
+  @Override
   public void setRole(IRole role) {
-    this.role = role;
+    this.role = (DataRole) role;
+
   }
 
   /**
@@ -144,6 +149,7 @@ public class DataUser implements IUser {
    *
    * @param inactive
    */
+  @Override
   public void setInactive(boolean inactive) {
     this.inactive = inactive;
   }

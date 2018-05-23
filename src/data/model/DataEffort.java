@@ -5,9 +5,22 @@ import acq.IEffort;
 import acq.IOffer;
 import acq.IParagraph;
 import acq.IService;
+import data.Database;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.GregorianCalendar;
 
 public class DataEffort implements IEffort {
+
+  /**
+   * Id
+   */
+  private int id;
+
+  /**
+   * Case id
+   */
+  private int caseId;
 
   /**
    * Total price of effort
@@ -27,7 +40,7 @@ public class DataEffort implements IEffort {
   /**
    * Company which is responsible for the effort
    */
-  private DataCompany responsible;
+  private ICompany responsible;
 
   /**
    * offer connected to the effort
@@ -40,9 +53,13 @@ public class DataEffort implements IEffort {
   private IService service;
 
   /**
-   * Paragraph cnnected to effort
+   * Paragraphs connected to effort
    */
-  private IParagraph paragraph;
+  private Collection<IParagraph> paragraphs;
+
+  public DataEffort() {
+    paragraphs = new ArrayList<>();
+  }
 
   /**
    * Create a new instance of a DataEffort
@@ -57,6 +74,96 @@ public class DataEffort implements IEffort {
     this.startDate = startDate;
     this.endDate = endDate;
     this.responsible = responsible;
+    paragraphs = new ArrayList<>();
+  }
+
+  /**
+   * Find dataEffort
+   *
+   * @param id
+   * @return dataEffort
+   */
+  public static DataEffort find(int id) {
+    DataEffort effort = new DataEffort(null, null, null, null);
+    Database.getInstance().query(Database.compose(
+            "SELECT id, case_id, service_id, offer_id, total_price, start_date, end_date, responsibility",
+            "FROM efforts",
+            "WHERE id = " + id
+    ),
+            rs -> {
+              effort.setId(rs.getInt(1));
+              effort.setCaseId(rs.getInt(2));
+              effort.setService(DataService.find(rs.getInt(3)));
+              effort.setOffer(DataOffer.find(rs.getInt(4)));
+              effort.setTotalPrice(rs.getInt(5));
+              GregorianCalendar gc = new GregorianCalendar();
+              gc.setTimeInMillis(rs.getTimestamp(6).getTime());
+              effort.setStartDate(gc);
+              GregorianCalendar g = new GregorianCalendar();
+              gc.setTimeInMillis(rs.getTimestamp(7).getTime());
+              effort.setEndDate(g);
+              effort.setResponsible(DataCompany.find(rs.getInt(8)));
+            });
+
+    Database.getInstance().query(Database.compose(
+            "SELECT paragraphs.id, paragraphs.number, paragraphs.title, paragraphs.description",
+            "FROM paragraphs",
+            "INNER JOIN effort_paragraphs ON effort_paragraphs.effort_id=" + id
+    ), rs -> {
+      DataParagraph p = new DataParagraph(rs.getInt(1), rs.getString(2), rs.getString(3));
+      effort.setParagraph(p);
+    });
+
+    return effort;
+  }
+
+  /**
+   * Save
+   */
+  public void save() {
+    String query = null;
+
+    ((DataCompany) responsible).save();
+    ((DataOffer) offer).save();
+    ((DataService) service).save();
+
+    if (getId() == 0) {
+      String[] values = {"" + getCaseId(), "" + ((DataService) getService()).getID(), "" + ((DataOffer) getOffer()).getID(), "" + getTotalPrice(),
+        "" + getStartDate().getTime(), "" + getEndDate().getTime(), "" + ((DataCompany) getResponsible()).getId()};
+      query = "INSERT INTO efforts (case_id, service_id, offer_id, total_price, start_date, end_date, responsibility) "
+              + "VALUES('" + String.join("','", values) + "') "
+              + "RETURNING id";
+    } else {
+      query = Database.compose(
+              "UPDATE efforts SET",
+              "case_id = " + getCaseId() + ",",
+              "service_id = " + ((DataService) getService()).getID() + ",",
+              "offer_id = " + ((DataOffer) getOffer()).getID() + ",",
+              "total_price = " + getTotalPrice() + ",",
+              "start_date = " + getStartDate().getTimeInMillis() + ",",
+              "end_date = " + getEndDate().getTimeInMillis() + ",",
+              "responsibility = " + ((DataCompany) getResponsible()).getId() + " ",
+              "WHERE id = " + getId() + " ",
+              "RETURNING id");
+    }
+
+    Database.getInstance().query(query, rs -> {
+      if (id == 0) {
+        id = rs.getInt(1);
+      }
+    });
+
+    if (paragraphs.size() != 0) {
+      for (IParagraph p : paragraphs) {
+        ((DataParagraph) p).save();
+        System.out.println("IIIIIIIDDDDDDDDDDd " + id);
+        Database.getInstance().query(
+                "INSERT INTO effort_paragraphs (effort_id, paragraph_id) "
+                + "VALUES (" + id + ", " + ((DataParagraph) p).getID() + ") "
+                + "RETURNING effort_id"
+        );
+      }
+    }
   }
 
   /**
@@ -126,7 +233,7 @@ public class DataEffort implements IEffort {
    */
   @Override
   public void setParagraph(IParagraph paragraph) {
-    this.paragraph = paragraph;
+    paragraphs.add(paragraph);
   }
 
   /**
@@ -155,8 +262,95 @@ public class DataEffort implements IEffort {
    * @return paragraph
    */
   @Override
-  public IParagraph getParagraph() {
-    return this.paragraph;
+  public Collection<IParagraph> getParagraphs() {
+    return this.paragraphs;
+  }
+
+  /**
+   * Set id
+   *
+   * @param id
+   */
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  /**
+   * Get id
+   *
+   * @return id
+   */
+  @Override
+  public int getId() {
+    return id;
+  }
+
+  /**
+   * Get caseId
+   *
+   * @return caseId
+   */
+  @Override
+  public int getCaseId() {
+    return caseId;
+  }
+
+  /**
+   * Set caseId
+   */
+  public void setCaseId(int caseId) {
+    this.caseId = caseId;
+  }
+
+  /**
+   * Set totalPrice
+   *
+   * @param totalPrice
+   */
+  public void setTotalPrice(Integer totalPrice) {
+    this.totalPrice = totalPrice;
+  }
+
+  /**
+   * Set startDate
+   *
+   * @param startDate
+   */
+  public void setStartDate(GregorianCalendar startDate) {
+    this.startDate = startDate;
+  }
+
+  /**
+   * Set endDate
+   *
+   * @param endDate
+   */
+  public void setEndDate(GregorianCalendar endDate) {
+    this.endDate = endDate;
+  }
+
+  /**
+   * Set responsible
+   *
+   * @param responsible
+   */
+  public void setResponsible(DataCompany responsible) {
+    this.responsible = responsible;
+  }
+
+  /**
+   * Set paragraphs
+   *
+   * @param paragraphs
+   */
+  @Override
+  public void setParagraphs(Collection<IParagraph> paragraphs) {
+    this.paragraphs = paragraphs;
+  }
+
+  @Override
+  public void setResponsible(ICompany company) {
+    responsible = company;
   }
 
 }

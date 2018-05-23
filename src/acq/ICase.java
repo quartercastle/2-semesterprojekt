@@ -4,6 +4,7 @@
 package acq;
 
 import java.util.Collection;
+import java.util.GregorianCalendar;
 
 public interface ICase {
 
@@ -36,11 +37,30 @@ public interface ICase {
   ICitizen getCitizen();
 
   /**
-   * Get effort
+   * get efforts
    *
-   * @return Effort linked to the case
+   * @return efforts
    */
-  IEffort getEffort();
+  Collection<IEffort> getEfforts();
+
+  /**
+   * Add new effort to a case
+   *
+   * @param service
+   * @param offer
+   * @param paragraphs
+   * @param start
+   * @param end
+   * @param company
+   */
+  void addEffort(
+          IService service,
+          IOffer offer,
+          Collection<IParagraph> paragraphs,
+          GregorianCalendar start,
+          GregorianCalendar end,
+          ICompany company
+  );
 
   /**
    * Get inquiry
@@ -434,10 +454,4 @@ public interface ICase {
    */
   void setFurtherCourse(String fourtherCourse);
 
-  /**
-   * set effort
-   *
-   * @param effort
-   */
-  void setEffort(IEffort effort);
 }

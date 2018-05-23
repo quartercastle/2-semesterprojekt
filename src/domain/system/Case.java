@@ -4,7 +4,13 @@ import acq.ICitizen;
 import java.util.Collection;
 import acq.ICase;
 import acq.ICaseWorker;
+import acq.ICompany;
 import acq.IEffort;
+import acq.IOffer;
+import acq.IParagraph;
+import acq.IService;
+import domain.security.User;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 
 /**
@@ -24,10 +30,11 @@ public class Case implements ICase {
    * Citizen attached to the case
    */
   private Citizen citizen;
+
   /**
-   * Effort attached to the case
+   * Efforts attached to the case
    */
-  private IEffort effort;
+  private Collection<Effort> efforts = new HashSet<>();
 
   /**
    * Case inquiry
@@ -179,6 +186,7 @@ public class Case implements ICase {
     this.responsible = responsible;
     this.citizen = citizen;
     this.id = 0;
+
   }
 
   /**
@@ -240,13 +248,21 @@ public class Case implements ICase {
   }
 
   /**
-   * Returns the effort created for the case
+   * Get effort
    *
    * @return effort
    */
   @Override
-  public IEffort getEffort() {
-    return effort;
+
+  public Collection<IEffort> getEfforts() {
+    Collection<IEffort> ef = new HashSet<>();
+
+    for (Effort df : this.efforts) {
+      ef.add((IEffort) df);
+    }
+
+    return ef;
+
   }
 
   /**
@@ -280,17 +296,7 @@ public class Case implements ICase {
   }
 
   /**
-   * Sets the effort asigned to the case
    *
-   * @param effort
-   */
-  @Override
-  public void setEffort(IEffort effort) {
-    this.effort = effort;
-  }
-
-  /**
-   * Get informed about rights status
    *
    * @return informedAboutRights
    */
@@ -820,5 +826,27 @@ public class Case implements ICase {
   @Override
   public String toString() {
     return "Sags-id: " + id + "\n" + "Borger under behandling: " + citizen.getFirstName() + " " + citizen.getLastName() + "\n" + "Ansvarlig sagsbehandler: " + responsible;
+  }
+
+  /**
+   * Add effort
+   *
+   * @param service
+   * @param offer
+   * @param paragraphs
+   * @param start
+   * @param end
+   * @param company
+   */
+  @Override
+  public void addEffort(IService service, IOffer offer, Collection<IParagraph> paragraphs, GregorianCalendar start, GregorianCalendar end, ICompany company) {
+    Effort effort = new Effort(
+            service.getPrice() + offer.getPrice(),
+            start,
+            end,
+            (Company) company
+    );
+
+    this.efforts.add(effort);
   }
 }

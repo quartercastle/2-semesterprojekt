@@ -47,7 +47,8 @@ public class Role implements IRole {
   /**
    * No args for our mapper to use
    */
-  public Role(){}
+  public Role() {
+  }
 
   /**
    * Role constructor
@@ -71,6 +72,7 @@ public class Role implements IRole {
 
   /**
    * Get id
+   *
    * @return
    */
   @Override

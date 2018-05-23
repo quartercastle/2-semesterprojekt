@@ -13,6 +13,13 @@ public interface IUser {
   int getId();
 
   /**
+   * set ID
+   *
+   * @param id
+   */
+  void setId(int id);
+
+  /**
    * Get username
    *
    * @return username
@@ -34,6 +41,13 @@ public interface IUser {
   IRole getRole();
 
   /**
+   * Set IRole
+   *
+   * @param role
+   */
+  void setRole(IRole role);
+
+  /**
    * Set username
    *
    * @param email
@@ -48,16 +62,17 @@ public interface IUser {
   void setPassword(String password);
 
   /**
-   * Set role
+   * Is the user inactive
    *
-   * @param role
+   * @return boolean
    */
-  void setRole(IRole role);
+  boolean isInactive();
 
   /**
-   * set
+   * Set the user inactive
    *
-   * @param id
+   * @param inactive
    */
-  void setId(int id);
+  void setInactive(boolean inactive);
+
 }

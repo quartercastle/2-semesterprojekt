@@ -3,9 +3,16 @@ package data.model;
 import acq.ICase;
 import acq.ICaseWorker;
 import acq.ICitizen;
+import acq.ICompany;
 import acq.IEffort;
+import acq.IOffer;
+
 import data.Database;
+import acq.IParagraph;
+import acq.IService;
 import java.util.Collection;
+import java.util.GregorianCalendar;
+import java.util.HashSet;
 
 /**
  *
@@ -26,12 +33,8 @@ public class DataCase implements ICase {
   /**
    * Effort TODO not described correctly?
    */
-  private IEffort effort;
+  private Collection<DataEffort> efforts = new HashSet<>();
 
-  /**
-   * Collection of case participants TODO Not currently implemented
-   */
-  private Collection<ICitizen> participants;
   /**
    * Case inquiry
    */
@@ -189,6 +192,7 @@ public class DataCase implements ICase {
     this.id = 0;
     this.responsible = responsible;
     this.citizen = citizen;
+
   }
 
   /**
@@ -237,8 +241,14 @@ public class DataCase implements ICase {
    * @return effort
    */
   @Override
-  public IEffort getEffort() {
-    return this.effort;
+  public Collection<IEffort> getEfforts() {
+    Collection<IEffort> ef = new HashSet<>();
+
+    for (DataEffort df : this.efforts) {
+      ef.add((IEffort) df);
+    }
+
+    return ef;
   }
 
   /**
@@ -792,23 +802,13 @@ public class DataCase implements ICase {
   }
 
   /**
-   * set responsbile caewoker
+   * <<<<<<< HEAD set responsbile caewoker
    *
    * @param responsible responsible caseworker
    */
   @Override
   public void setResponsible(ICaseWorker responsible) {
     this.responsible = responsible;
-  }
-
-  /**
-   * Sets the effort asigned to the case
-   *
-   * @param effort
-   */
-  @Override
-  public void setEffort(IEffort effort) {
-    this.effort = effort;
   }
 
   /**
@@ -899,6 +899,23 @@ public class DataCase implements ICase {
         id = rs.getInt(1);
       }
     });
+  }
+
+  /**
+   * Add effort
+   *
+   * @param service
+   * @param offer
+   * @param paragraphs
+   * @param start
+   * @param end
+   * @param company
+   */
+  @Override
+  public void addEffort(IService service, IOffer offer, Collection<IParagraph> paragraphs, GregorianCalendar start, GregorianCalendar end, ICompany company) {
+    DataEffort effort = new DataEffort(service.getPrice() + offer.getPrice(), start, end, (DataCompany) company);
+    this.efforts.add(effort);
+
   }
 
 }

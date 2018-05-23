@@ -27,6 +27,11 @@ public class User implements IUser {
   private Role role;
 
   /**
+   * The user's role in the system
+   */
+  private boolean inactive;
+
+  /**
    * No args for our mapper to use
    */
   public User() {
@@ -90,6 +95,7 @@ public class User implements IUser {
    *
    * @param id
    */
+  @Override
   public void setId(int id) {
     this.id = id;
   }
@@ -125,6 +131,26 @@ public class User implements IUser {
   }
 
   /**
+   * Is inactive
+   *
+   * @return boolean
+   */
+  @Override
+  public boolean isInactive() {
+    return this.inactive;
+  }
+
+  /**
+   * Set inactive
+   *
+   * @param inactive
+   */
+  @Override
+  public void setInactive(boolean inactive) {
+    this.inactive = inactive;
+  }
+
+  /**
    * Check if the give password is valid
    *
    * @param password
@@ -137,4 +163,5 @@ public class User implements IUser {
 
     return this.password.equals(password);
   }
+
 }

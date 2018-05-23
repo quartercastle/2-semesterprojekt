@@ -87,11 +87,11 @@ public class CaseWorker extends Person implements ICaseWorker {
    * @return
    */
   public Case createCase() {
-//    if (!user.getRole().canCreateCase()) {
-//      return null;
-//    }
+    if (!user.getRole().canCreateCase()) {
+      return null;
+    }
 
-    return new Case(this, null);
+    return new Case(null, null);
+
   }
-
 }
