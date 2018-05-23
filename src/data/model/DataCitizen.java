@@ -16,6 +16,17 @@ public class DataCitizen extends DataPerson implements ICitizen {
    */
   private int id;
 
+  /**
+   * Constructer
+   *
+   * @param firstName
+   * @param middleName
+   * @param lastName
+   * @param address
+   * @param phone
+   * @param email
+   * @param CPR
+   */
   public DataCitizen(String firstName, String middleName, String lastName, IAddress address, String phone, String email, String CPR) {
     super(firstName, middleName, lastName, address, phone, email);
     this.CPR = CPR;

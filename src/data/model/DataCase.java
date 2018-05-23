@@ -30,7 +30,7 @@ public class DataCase implements ICase {
   private ICitizen citizen;
 
   /**
-   * Effort TODO not described correctly?
+   * Efforts
    */
   private Collection<IEffort> efforts = new HashSet<>();
 
