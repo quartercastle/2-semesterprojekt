@@ -2,8 +2,10 @@ package data.model;
 
 import acq.IAddress;
 import acq.ICaseWorker;
+import acq.IEffort;
 import acq.IUser;
 import data.Database;
+import java.util.Collection;
 
 public class DataCaseWorker extends DataPerson implements ICaseWorker {
 

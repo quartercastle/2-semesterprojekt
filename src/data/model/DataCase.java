@@ -33,7 +33,7 @@ public class DataCase implements ICase {
   /**
    * Effort TODO not described correctly?
    */
-  private Collection<DataEffort> efforts = new HashSet<>();
+  private Collection<IEffort> efforts = new HashSet<>();
 
   /**
    * Case inquiry
@@ -244,8 +244,8 @@ public class DataCase implements ICase {
   public Collection<IEffort> getEfforts() {
     Collection<IEffort> ef = new HashSet<>();
 
-    for (DataEffort df : this.efforts) {
-      ef.add((IEffort) df);
+    for (IEffort df : this.efforts) {
+      ef.add(df);
     }
 
     return ef;
@@ -802,7 +802,17 @@ public class DataCase implements ICase {
   }
 
   /**
-   * <<<<<<< HEAD set responsbile caewoker
+   * set efforts
+   *
+   * @param efforts
+   */
+  @Override
+  public void setEfforts(Collection<IEffort> efforts) {
+    this.efforts = efforts;
+  }
+
+  /**
+   *
    *
    * @param responsible responsible caseworker
    */
@@ -913,7 +923,7 @@ public class DataCase implements ICase {
    */
   @Override
   public void addEffort(IService service, IOffer offer, Collection<IParagraph> paragraphs, GregorianCalendar start, GregorianCalendar end, ICompany company) {
-    DataEffort effort = new DataEffort(service.getPrice() + offer.getPrice(), start, end, (DataCompany) company);
+    IEffort effort = new DataEffort(service.getPrice() + offer.getPrice(), start, end, (DataCompany) company);
     this.efforts.add(effort);
 
   }

@@ -9,7 +9,6 @@ import acq.IEffort;
 import acq.IOffer;
 import acq.IParagraph;
 import acq.IService;
-import domain.security.User;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 
@@ -34,7 +33,7 @@ public class Case implements ICase {
   /**
    * Efforts attached to the case
    */
-  private Collection<Effort> efforts = new HashSet<>();
+  private Collection<IEffort> efforts = new HashSet<>();
 
   /**
    * Case inquiry
@@ -224,6 +223,7 @@ public class Case implements ICase {
    *
    * @param responsible
    */
+  @Override
   public void setResponsible(ICaseWorker responsible) {
     this.responsible = responsible;
   }
@@ -257,7 +257,7 @@ public class Case implements ICase {
   public Collection<IEffort> getEfforts() {
     Collection<IEffort> ef = new HashSet<>();
 
-    for (Effort df : this.efforts) {
+    for (IEffort df : this.efforts) {
       ef.add((IEffort) df);
     }
 
@@ -849,4 +849,15 @@ public class Case implements ICase {
 
     this.efforts.add(effort);
   }
+
+  /**
+   * set efforts
+   *
+   * @param efforts
+   */
+  @Override
+  public void setEfforts(Collection<IEffort> efforts) {
+    this.efforts = efforts;
+  }
+
 }

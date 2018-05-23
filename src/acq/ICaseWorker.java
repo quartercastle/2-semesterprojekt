@@ -1,5 +1,7 @@
 package acq;
 
+import java.util.Collection;
+
 public interface ICaseWorker {
 
   /**

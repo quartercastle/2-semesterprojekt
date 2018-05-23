@@ -454,4 +454,10 @@ public interface ICase {
    */
   void setFurtherCourse(String fourtherCourse);
 
+  /**
+   * set efforts
+   *
+   * @param efforts
+   */
+  void setEfforts(Collection<IEffort> efforts);
 }

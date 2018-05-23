@@ -2,8 +2,6 @@ package gui;
 
 import acq.IGUI;
 import acq.IDomain;
-import data.model.DataAddress;
-import data.model.DataCitizen;
 import gui.controller.Controller;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -51,6 +49,7 @@ public class GUI extends Application implements IGUI {
    *
    * @param domain
    */
+  @Override
   public void inject(IDomain domain) {
     GUI.domain = domain;
   }
