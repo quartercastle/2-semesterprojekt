@@ -238,16 +238,31 @@ public class Effort implements IEffort {
     return caseId;
   }
 
+  /**
+   * Set caseId
+   *
+   * @param id
+   */
   @Override
   public void setCaseId(int id) {
     caseId = id;
   }
 
+  /**
+   * Set responsible company
+   *
+   * @param company
+   */
   @Override
   public void setResponsible(ICompany company) {
     responsible = company;
   }
 
+  /**
+   * Set id
+   *
+   * @param id
+   */
   @Override
   public void setId(int id) {
     this.id = id;
