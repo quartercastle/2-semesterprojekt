@@ -1,5 +1,7 @@
 package acq;
 
+import java.util.Collection;
+
 public interface ICaseWorker {
 
   /**
@@ -15,5 +17,19 @@ public interface ICaseWorker {
    * @return user
    */
   IUser getUser();
+
+  /**
+   * get ID for caseworker
+   *
+   * @return caseworker id
+   */
+  int getId();
+
+  /**
+   * set ID
+   *
+   * @param id
+   */
+  void setId(int id);
 
 }

@@ -1,15 +1,28 @@
 package domain.system;
 
+import acq.ICompany;
 import acq.IEffort;
 import acq.IOffer;
 import acq.IParagraph;
 import acq.IService;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.GregorianCalendar;
 
 /**
  * Effort
  */
 public class Effort implements IEffort {
+
+  /**
+   * Id
+   */
+  private int id;
+
+  /**
+   * caseId
+   */
+  private int caseId;
 
   /**
    * Total price of effort
@@ -29,7 +42,7 @@ public class Effort implements IEffort {
   /**
    * Company responsible of effort
    */
-  private Company responsible;
+  private ICompany responsible;
 
   /**
    * offer connected to the effort
@@ -42,9 +55,16 @@ public class Effort implements IEffort {
   private IService service;
 
   /**
-   * Paragraph cnnected to effort
+   * Paragraph connected to effort
    */
-  private IParagraph paragraph;
+  private Collection<IParagraph> paragraphs;
+
+  /**
+   * No-args Constructor
+   */
+  public Effort() {
+    paragraphs = new ArrayList<>();
+  }
 
   /**
    * Constructor for efforts
@@ -59,6 +79,7 @@ public class Effort implements IEffort {
     this.startDate = startDate;
     this.endDate = endDate;
     this.responsible = responsible;
+    paragraphs = new ArrayList<>();
   }
 
   /**
@@ -124,17 +145,8 @@ public class Effort implements IEffort {
    * @return responsible
    */
   @Override
-  public Company getResponsible() {
+  public ICompany getResponsible() {
     return responsible;
-  }
-
-  /**
-   * Set responsible company
-   *
-   * @param responsible
-   */
-  public void setResponsible(Company responsible) {
-    this.responsible = responsible;
   }
 
   /**
@@ -163,7 +175,17 @@ public class Effort implements IEffort {
    */
   @Override
   public void setParagraph(IParagraph paragraph) {
-    this.paragraph = paragraph;
+    paragraphs.add(paragraph);
+  }
+
+  /**
+   * Set paragraphs
+   *
+   * @param paragraphs
+   */
+  @Override
+  public void setParagraphs(Collection<IParagraph> paragraphs) {
+    this.paragraphs = paragraphs;
   }
 
   /**
@@ -192,7 +214,57 @@ public class Effort implements IEffort {
    * @return paragraph
    */
   @Override
-  public IParagraph getParagraph() {
-    return this.paragraph;
+  public Collection<IParagraph> getParagraphs() {
+    return this.paragraphs;
+  }
+
+  /**
+   * Get id
+   *
+   * @return id
+   */
+  @Override
+  public int getId() {
+    return id;
+  }
+
+  /**
+   * Get caseId
+   *
+   * @return caseId
+   */
+  @Override
+  public int getCaseId() {
+    return caseId;
+  }
+
+  /**
+   * Set caseId
+   *
+   * @param id
+   */
+  @Override
+  public void setCaseId(int id) {
+    caseId = id;
+  }
+
+  /**
+   * Set responsible company
+   *
+   * @param company
+   */
+  @Override
+  public void setResponsible(ICompany company) {
+    responsible = company;
+  }
+
+  /**
+   * Set id
+   *
+   * @param id
+   */
+  @Override
+  public void setId(int id) {
+    this.id = id;
   }
 }

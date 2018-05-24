@@ -1,7 +1,6 @@
 package domain.security;
 
 import acq.IRole;
-import domain.security.Role;
 import acq.IUser;
 
 public class User implements IUser {
@@ -27,6 +26,11 @@ public class User implements IUser {
   private Role role;
 
   /**
+   * The user's role in the system
+   */
+  private boolean inactive;
+
+  /**
    * No args for our mapper to use
    */
   public User() {
@@ -35,7 +39,6 @@ public class User implements IUser {
   /**
    * User contructor
    *
-   * @param name
    * @param username
    * @param password
    * @param role
@@ -91,6 +94,7 @@ public class User implements IUser {
    *
    * @param id
    */
+  @Override
   public void setId(int id) {
     this.id = id;
   }
@@ -100,6 +104,7 @@ public class User implements IUser {
    *
    * @param username
    */
+  @Override
   public void setUsername(String username) {
     this.username = username;
   }
@@ -109,6 +114,7 @@ public class User implements IUser {
    *
    * @param password
    */
+  @Override
   public void setPassword(String password) {
     this.password = password;
   }
@@ -118,8 +124,29 @@ public class User implements IUser {
    *
    * @param role
    */
+  @Override
   public void setRole(IRole role) {
     this.role = (Role) role;
+  }
+
+  /**
+   * Is inactive
+   *
+   * @return boolean
+   */
+  @Override
+  public boolean isInactive() {
+    return this.inactive;
+  }
+
+  /**
+   * Set inactive
+   *
+   * @param inactive
+   */
+  @Override
+  public void setInactive(boolean inactive) {
+    this.inactive = inactive;
   }
 
   /**

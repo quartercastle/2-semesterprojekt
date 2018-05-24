@@ -116,6 +116,7 @@ public class Address implements IAddress {
    *
    * @param primaryLine
    */
+  @Override
   public void setPrimaryLine(String primaryLine) {
     this.primaryLine = primaryLine;
   }
@@ -134,6 +135,7 @@ public class Address implements IAddress {
    *
    * @param zip
    */
+  @Override
   public void setZip(String zip) {
     this.zip = zip;
   }
@@ -143,6 +145,7 @@ public class Address implements IAddress {
    *
    * @param city
    */
+  @Override
   public void setCity(String city) {
     this.city = city;
   }

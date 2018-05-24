@@ -2,9 +2,14 @@ package domain.system;
 
 import acq.ICitizen;
 import java.util.Collection;
-import java.util.UUID;
 import acq.ICase;
-import domain.security.User;
+import acq.ICaseWorker;
+import acq.ICompany;
+import acq.IEffort;
+import acq.IOffer;
+import acq.IParagraph;
+import acq.IService;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 
 /**
@@ -13,25 +18,22 @@ import java.util.HashSet;
 public class Case implements ICase {
 
   /**
-   * Unique ID for the case
+   * Case id
    */
-  private UUID id;
+  private int id;
   /**
    * The user responsile for the case
    */
-  private User responsible;
+  private ICaseWorker responsible;
   /**
    * Citizen attached to the case
    */
   private Citizen citizen;
+
   /**
-   * Effort attached to the case
+   * Efforts attached to the case
    */
-  private Effort effort;
-  /**
-   * Participating citizens
-   */
-  private Collection<ICitizen> participants;
+  private Collection<IEffort> efforts = new HashSet<>();
 
   /**
    * Case inquiry
@@ -168,28 +170,22 @@ public class Case implements ICase {
   private String furtherCourse;
 
   /**
+   * No args
+   */
+  public Case() {
+  }
+
+  /**
    * Case constructor
    *
    * @param responsible
    * @param citizen
-   * @param effort
    */
-  public Case(User responsible, Citizen citizen, Effort effort) {
-    this.id = new UUID(5, 7);
+  public Case(ICaseWorker responsible, Citizen citizen) {
     this.responsible = responsible;
     this.citizen = citizen;
-    this.effort = effort;
-    this.participants = new HashSet<>();
-  }
+    this.id = 0;
 
-  /**
-   * Returns case ID
-   *
-   * @return id
-   */
-  @Override
-  public UUID getId() {
-    return id;
   }
 
   /**
@@ -197,8 +193,19 @@ public class Case implements ICase {
    *
    * @param id
    */
-  public void setId(UUID id) {
+  @Override
+  public void setId(int id) {
     this.id = id;
+  }
+
+  /**
+   * get id
+   *
+   * @return id
+   */
+  @Override
+  public int getId() {
+    return this.id;
   }
 
   /**
@@ -207,7 +214,7 @@ public class Case implements ICase {
    * @return responsible
    */
   @Override
-  public User getResponsible() {
+  public ICaseWorker getResponsible() {
     return responsible;
   }
 
@@ -216,7 +223,8 @@ public class Case implements ICase {
    *
    * @param responsible
    */
-  public void setResponsible(User responsible) {
+  @Override
+  public void setResponsible(ICaseWorker responsible) {
     this.responsible = responsible;
   }
 
@@ -240,13 +248,21 @@ public class Case implements ICase {
   }
 
   /**
-   * Returns the effort created for the case
+   * Get effort
    *
    * @return effort
    */
   @Override
-  public Effort getEffort() {
-    return effort;
+
+  public Collection<IEffort> getEfforts() {
+    Collection<IEffort> ef = new HashSet<>();
+
+    for (IEffort df : this.efforts) {
+      ef.add((IEffort) df);
+    }
+
+    return ef;
+
   }
 
   /**
@@ -274,40 +290,13 @@ public class Case implements ICase {
    *
    * @param citizen
    */
+  @Override
   public void setCitizen(ICitizen citizen) {
     this.citizen = (Citizen) citizen;
   }
 
   /**
-   * Sets the effort asigned to the case
    *
-   * @param effort
-   */
-  public void setEffort(Effort effort) {
-    this.effort = effort;
-  }
-
-  /**
-   * Returns the participants in the case
-   *
-   * @return participants
-   */
-  @Override
-  public Collection<ICitizen> getParticipants() {
-    return participants;
-  }
-
-  /**
-   * Sets participants in the case
-   *
-   * @param participants
-   */
-  public void setParticipants(Collection<ICitizen> participants) {
-    this.participants = participants;
-  }
-
-  /**
-   * Get informed about rights status
    *
    * @return informedAboutRights
    */
@@ -563,7 +552,7 @@ public class Case implements ICase {
    */
   @Override
   public void setSupportGroceryOffer(boolean needSupportGroceryOffer) {
-    this.supportGroceryOffer = supportGroceryOffer;
+    this.supportGroceryOffer = needSupportGroceryOffer;
   }
 
   /**
@@ -836,6 +825,38 @@ public class Case implements ICase {
    */
   @Override
   public String toString() {
-    return "Sags-ID: " + id + "\n" + "Borger under behandling: " + citizen.getFirstName() + " " + citizen.getLastName() + "\n" + "Ansvarlig sagsbehandler: " + responsible;
+    return "Sags-id: " + id + "\n" + "Borger under behandling: " + citizen.getFirstName() + " " + citizen.getLastName() + "\n" + "Ansvarlig sagsbehandler: " + responsible;
+  }
+
+  /**
+   * Add effort
+   *
+   * @param service
+   * @param offer
+   * @param paragraphs
+   * @param start
+   * @param end
+   * @param company
+   */
+  @Override
+  public void addEffort(IService service, IOffer offer, Collection<IParagraph> paragraphs, GregorianCalendar start, GregorianCalendar end, ICompany company) {
+    Effort effort = new Effort(
+            service.getPrice() + offer.getPrice(),
+            start,
+            end,
+            (Company) company
+    );
+
+    this.efforts.add(effort);
+  }
+
+  /**
+   * set efforts
+   *
+   * @param efforts
+   */
+  @Override
+  public void setEfforts(Collection<IEffort> efforts) {
+    this.efforts = efforts;
   }
 }

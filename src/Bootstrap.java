@@ -2,10 +2,6 @@
 import acq.IData;
 import acq.IDomain;
 import data.DataFacade;
-import data.model.DataAddress;
-import data.model.DataCaseWorker;
-import data.model.DataRole;
-import data.model.DataUser;
 import domain.DomainFacade;
 import gui.GUI;
 
@@ -20,6 +16,7 @@ public class Bootstrap {
     IData data = DataFacade.getInstance();
     IDomain domain = DomainFacade.getInstance();
     domain.inject(data);
+
     GUI.initialize(args, domain);
   }
 }

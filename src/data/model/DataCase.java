@@ -1,12 +1,17 @@
 package data.model;
 
 import acq.ICase;
+import acq.ICaseWorker;
 import acq.ICitizen;
+import acq.ICompany;
 import acq.IEffort;
-import acq.IUser;
-import java.util.ArrayList;
+import acq.IOffer;
+import data.Database;
+import acq.IParagraph;
+import acq.IService;
 import java.util.Collection;
-import java.util.UUID;
+import java.util.GregorianCalendar;
+import java.util.HashSet;
 
 /**
  *
@@ -15,29 +20,20 @@ import java.util.UUID;
 public class DataCase implements ICase {
 
   /**
-   * Id of the case
-   */
-  private UUID id;
-
-  /**
    * The responsible user for the case
    */
-  private IUser responsible;
+  private ICaseWorker responsible;
 
   /**
-   * The citizin which the case is about
+   * The citizen which the case is about
    */
   private ICitizen citizen;
 
   /**
-   * Effort TODO not described correctly?
+   * Efforts
    */
-  private IEffort effort;
+  private Collection<IEffort> efforts = new HashSet<>();
 
-  /**
-   * Collection of case participants TODO Not currently implemented
-   */
-  private Collection<ICitizen> participants;
   /**
    * Case inquiry
    */
@@ -174,29 +170,48 @@ public class DataCase implements ICase {
   private String furtherCourse;
 
   /**
-   * Create a new DataCase
-   *
-   * @param id
-   * @param responsible
-   * @param citizen
-   * @param effort
+   * Case id
    */
-  public DataCase(UUID id, IUser responsible, ICitizen citizen, IEffort effort) {
-    this.id = id;
-    this.responsible = responsible;
-    this.citizen = citizen;
-    this.effort = effort;
-    this.participants = new ArrayList();
+  private int id;
+
+  /**
+   * No args
+   */
+  public DataCase() {
   }
 
   /**
-   * Get id
+   * Create a new DataCase
+   *
+   *
+   * @param responsible
+   * @param citizen
+   */
+  public DataCase(ICaseWorker responsible, ICitizen citizen) {
+    this.id = 0;
+    this.responsible = responsible;
+    this.citizen = citizen;
+
+  }
+
+  /**
+   * get case id
    *
    * @return id
    */
   @Override
-  public UUID getId() {
+  public int getId() {
     return this.id;
+  }
+
+  /**
+   * set server id
+   *
+   * @param id
+   */
+  @Override
+  public void setId(int id) {
+    this.id = id;
   }
 
   /**
@@ -205,7 +220,7 @@ public class DataCase implements ICase {
    * @return responsible
    */
   @Override
-  public IUser getResponsible() {
+  public ICaseWorker getResponsible() {
     return this.responsible;
   }
 
@@ -225,18 +240,14 @@ public class DataCase implements ICase {
    * @return effort
    */
   @Override
-  public IEffort getEffort() {
-    return this.effort;
-  }
+  public Collection<IEffort> getEfforts() {
+    Collection<IEffort> ef = new HashSet<>();
 
-  /**
-   * Get participants
-   *
-   * @return participants
-   */
-  @Override
-  public Collection<ICitizen> getParticipants() {
-    return this.participants;
+    for (IEffort df : this.efforts) {
+      ef.add(df);
+    }
+
+    return ef;
   }
 
   /**
@@ -526,7 +537,7 @@ public class DataCase implements ICase {
    */
   @Override
   public void setSupportGroceryOffer(boolean needSupportGroceryOffer) {
-    this.supportGroceryOffer = supportGroceryOffer;
+    this.supportGroceryOffer = needSupportGroceryOffer;
   }
 
   /**
@@ -614,6 +625,7 @@ public class DataCase implements ICase {
    *
    * @return guardianship
    */
+  @Override
   public boolean isGuardianship() {
     return guardianship;
   }
@@ -788,4 +800,130 @@ public class DataCase implements ICase {
     this.furtherCourse = furtherCourse;
   }
 
+  /**
+   * set efforts
+   *
+   * @param efforts
+   */
+  @Override
+  public void setEfforts(Collection<IEffort> efforts) {
+    this.efforts = efforts;
+  }
+
+  /**
+   *
+   *
+   * @param responsible responsible caseworker
+   */
+  @Override
+  public void setResponsible(ICaseWorker responsible) {
+    this.responsible = responsible;
+  }
+
+  /**
+   * Method to find DataCase in database
+   *
+   * @param id of the case to find
+   * @return if found, the instance of DataCase with the specified id
+   */
+  public static DataCase find(int id) {
+    DataCase dc = new DataCase(null, null);
+    Database.getInstance().query(
+            "SELECT id, citizen_id, case_worker_id, circumstance, inquiry, further_course, is_informed_about_rights, is_informed_about_duties, "
+            + "practical_tasks_support, personal_care_support, grocery_support, temporary_stay, longer_stay, rehabilitation_support, "
+            + "driving_support, temporary_house_offer, personal_care_offer, support_grocery_offer, longer_stay_offer, learning_offer, "
+            + "rehabilitation_offer, guardianship, none_acting_guardian, curatorship, assessor, party_representative, power_of_attorney, "
+            + "right_to_assessor_or_party_representative, information_saved_online "
+            + "FROM cases "
+            + "WHERE id = " + id,
+            rs -> {
+              dc.setId(rs.getInt(1));
+              dc.setCitizen(DataCitizen.find(rs.getInt(2)));
+              dc.setResponsible(DataCaseWorker.find(rs.getInt(3)));
+              dc.setCircumstance(rs.getString(4));
+              dc.setInquiry(rs.getString(5));
+              dc.setFurtherCourse(rs.getString(6));
+              dc.setInformedAboutRights(rs.getBoolean(7));
+              dc.setInformedAboutDuties(rs.getBoolean(8));
+              dc.setPracticalTasksSupport(rs.getBoolean(9));
+              dc.setPersonalCareSupport(rs.getBoolean(10));
+              dc.setGrocerySupport(rs.getBoolean(11));
+              dc.setTemporaryStay(rs.getBoolean(12));
+              dc.setLongerStay(rs.getBoolean(13));
+              dc.setRehabilitationSupport(rs.getBoolean(14));
+              dc.setDrivingSupport(rs.getBoolean(15));
+              dc.setTemporaryHouseOffer(rs.getBoolean(16));
+              dc.setPersonalCareOffer(rs.getBoolean(17));
+              dc.setSupportGroceryOffer(rs.getBoolean(18));
+              dc.setLongerStayOffer(rs.getBoolean(19));
+              dc.setLearningOffer(rs.getBoolean(20));
+              dc.setRehabilitationOffer(rs.getBoolean(21));
+              dc.setGuardianship(rs.getBoolean(22));
+              dc.setNoneActingGuardian(rs.getBoolean(23));
+              dc.setCuratorship(rs.getBoolean(24));
+              dc.setAssessor(rs.getBoolean(25));
+              dc.setPartyRepresentative(rs.getBoolean(26));
+              dc.setPowerOfAttorney(rs.getBoolean(27));
+              dc.setRightToAssessorOrPartyRepresentative(rs.getBoolean(28));
+              dc.setInformationSavedOnline(rs.getBoolean(29));
+            });
+    return dc;
+  }
+
+  public void save() {
+    String query = null;
+
+    ((DataCitizen) citizen).save();
+
+    if (getId() == 0) {
+      System.out.println("getCitizen " + getCitizen());
+      System.out.println("getResponsible " + getResponsible());
+      query = "INSERT INTO cases (citizen_id, case_worker_id, circumstance, inquiry, further_course, is_informed_about_rights, is_informed_about_duties, "
+              + "practical_tasks_support, personal_care_support, grocery_support, temporary_stay, longer_stay, rehabilitation_support, "
+              + "driving_support, temporary_house_offer, personal_care_offer, support_grocery_offer, longer_stay_offer, learning_offer, "
+              + "rehabilitation_offer, guardianship, none_acting_guardian, curatorship, assessor, party_representative, power_of_attorney, "
+              + "right_to_assessor_or_party_representative, information_saved_online ) "
+              + "VALUES('" + getCitizen().getId() + "','" + getResponsible().getId() + "','" + getCircumstance() + "','" + getInquiry() + "','" + getFurtherCourse() + "','" + isInformedAboutRights() + "','" + isInformedAboutDuties()
+              + "','" + needPracticalTasksSupport() + "','" + needPersonalCareSupport() + "','" + needGrocerySupport() + "','" + needTemporaryStay() + "','" + needLongerStay() + "','" + needRehabilitationSupport() + "','"
+              + needDrivingSupport() + "','" + needTemporaryHouseOffer() + "','" + needPersonalCareOffer() + "','" + needSupportGroceryOffer() + "','" + needLongerStayOffer() + "','" + needLearningOffer()
+              + "','" + needRehabilitationOffer() + "','" + isGuardianship() + "','" + isNoneActingGuardian() + "','" + isCuratorship() + "','" + isAssessor() + "','" + isPartyRepresentative()
+              + "','" + isPowerOfAttorney() + "','" + isRightToAssessorOrPartyRepresentative() + "','" + isInformationSavedOnline() + "') "
+              + "RETURNING id;";
+    } else {
+      query = "UPDATE cases "
+              + "SET citizen_id ='" + getCitizen().getId() + "', case_worker_id='" + getResponsible().getId() + "', circumstance = '" + getCircumstance() + "', inquiry ='"
+              + getInquiry() + "', further_course='" + getFurtherCourse() + "', is_informed_about_rights='" + isInformedAboutRights()
+              + "', is_informed_About_duties='" + isInformedAboutDuties() + "', practical_tasks_support='" + needPracticalTasksSupport()
+              + "', personal_care_support='" + needPersonalCareSupport() + "', grocery_support='" + needGrocerySupport() + "', temporary_stay='" + needTemporaryStay() + "', longer_stay='" + needLongerStay() + "', rehabilitation_support='"
+              + needRehabilitationSupport() + "', driving_support='" + needDrivingSupport() + "', temporary_house_offer='" + needTemporaryHouseOffer() + "', personal_care_offer='"
+              + needPersonalCareOffer() + "', support_grocery_offer='" + needSupportGroceryOffer() + "', longer_stay_offer='" + needLongerStayOffer() + "', learning_offer='" + needLearningOffer()
+              + "', rehabilitation_offer='" + needRehabilitationOffer() + "', guardianship='" + isGuardianship() + "', none_acting_guardian='" + isNoneActingGuardian() + "', curatorship='"
+              + isCuratorship() + "', assessor='" + isAssessor() + "', party_representative='" + isPartyRepresentative() + "', power_of_attorney='" + isPowerOfAttorney()
+              + "', right_to_assessor_or_party_representative='" + isRightToAssessorOrPartyRepresentative() + "', information_saved_online='" + isInformationSavedOnline()
+              + "' "
+              + "WHERE id = " + id;
+    }
+
+    Database.getInstance().query(query, rs -> {
+      if (id == 0) {
+        id = rs.getInt(1);
+      }
+    });
+  }
+
+  /**
+   * Add effort
+   *
+   * @param service
+   * @param offer
+   * @param paragraphs
+   * @param start
+   * @param end
+   * @param company
+   */
+  @Override
+  public void addEffort(IService service, IOffer offer, Collection<IParagraph> paragraphs, GregorianCalendar start, GregorianCalendar end, ICompany company) {
+    IEffort effort = new DataEffort(service.getPrice() + offer.getPrice(), start, end, (DataCompany) company);
+    this.efforts.add(effort);
+  }
 }

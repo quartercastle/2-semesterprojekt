@@ -3,11 +3,12 @@
  */
 package domain;
 
+import acq.IAddress;
 import domain.security.AuthManager;
 import domain.system.Citizen;
 import domain.system.Address;
-import domain.system.Case;
 import acq.ICase;
+import acq.ICitizen;
 import acq.IData;
 import acq.IDomain;
 import acq.IUser;
@@ -91,21 +92,23 @@ public class DomainFacade implements IDomain {
    * @return Case
    */
   @Override
-  public Case createCase() {
-    return new Case(null, null, null);
+  public ICase createCase() {
+    return SystemFacade.getInstance().createCase();
   }
 
   /**
    * Create a new Citizen
    */
-  public Citizen createCitizen() {
+  @Override
+  public ICitizen createCitizen() {
     return new Citizen("", "", "", null, "", "");
   }
 
   /**
    * Create a new Address
    */
-  public Address createAddress() {
+  @Override
+  public IAddress createAddress() {
     return new Address("", "", "", "", "");
   }
 
@@ -127,5 +130,4 @@ public class DomainFacade implements IDomain {
   public Collection<ICase> getCases() {
     return data.getCases();
   }
-
 }

@@ -1,6 +1,7 @@
 package gui.controller.create_case;
 
 import gui.GUI;
+import gui.controller.OverviewController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -110,6 +111,9 @@ public class CreateCaseController extends TabController {
   private void nextButAction(ActionEvent event) {
     if (tabPane.getSelectionModel().getSelectedIndex() == tabPane.getTabs().size() - 1) {
       GUI.getInstance().getDomain().addCase(getCase());
+      getStage().close();
+      OverviewController ovc = (OverviewController) GUI.getInstance().getController("Overview");
+      ovc.updateCaseList();
       return;
     }
     tabPane.getSelectionModel().selectNext();

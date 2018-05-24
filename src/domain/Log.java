@@ -142,5 +142,4 @@ public class Log {
   public void setNewValue(String newValue) {
     this.newValue = newValue;
   }
-
 }

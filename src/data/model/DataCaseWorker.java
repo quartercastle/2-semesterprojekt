@@ -4,6 +4,7 @@ import acq.IAddress;
 import acq.ICaseWorker;
 import acq.IUser;
 import data.Database;
+import java.util.Collection;
 
 public class DataCaseWorker extends DataPerson implements ICaseWorker {
 
@@ -35,6 +36,7 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
    */
   public DataCaseWorker(String firstName, String middleName, String lastName, IAddress address, String phone, String email) {
     super(firstName, middleName, lastName, address, phone, email);
+    this.id = 0;
   }
 
   /**
@@ -59,7 +61,8 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
 
   /**
    * Find a Case worker from db
-   * @param  id
+   *
+   * @param id
    * @return CaseWorker
    */
   public static DataCaseWorker find(int id) {
@@ -104,14 +107,26 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
    *
    * @return int id
    */
+  @Override
   public int getId() {
     return id;
   }
 
   /**
+   * Set id
+   *
+   * @param id
+   */
+  @Override
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  /**
    * Fetch Case worker from where cluase
-   * @param  key
-   * @param  value
+   *
+   * @param key
+   * @param value
    * @return case worker
    */
   public static DataCaseWorker where(String key, String value) {
@@ -119,7 +134,7 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
     Database.getInstance().query(Database.compose(
             "SELECT id, person_id, user_id",
             "FROM case_workers",
-            "WHERE " + value + " = '" + value + "'"
+            "WHERE " + key + " = " + value + ""
     ),
             rs -> {
               caseWorker.setId(rs.getInt(1));
@@ -133,6 +148,7 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
               caseWorker.setEmail(dataPerson.getEmail());
               caseWorker.setUser(DataUser.find(rs.getInt(3)));
             });
+
     return caseWorker;
   }
 }

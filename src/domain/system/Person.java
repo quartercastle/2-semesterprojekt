@@ -6,7 +6,7 @@ import acq.IAddress;
  *
  * Person class that implements IPerson.
  */
-public class Person {
+public abstract class Person {
 
   /**
    * No args
@@ -184,5 +184,4 @@ public class Person {
   public void setEmail(String email) {
     this.email = email;
   }
-
 }

@@ -44,6 +44,7 @@ public abstract class Controller implements Initializable {
    * @param location
    * @param resources
    */
+  @Override
   public void initialize(URL location, ResourceBundle resources) {
   }
 

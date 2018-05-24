@@ -39,7 +39,7 @@ public class SystemFacade {
   }
 
   /**
-   * Caseworker instance
+   * Caseworker instance TODO should be bound to a user
    */
   private CaseWorker caseWorker;
 
@@ -63,7 +63,7 @@ public class SystemFacade {
    * @param IUser
    */
   public void bind(IUser user) {
-    caseWorker = Mapper.map(
+    caseWorker = (CaseWorker) Mapper.map(
             DomainFacade.getInstance()
                     .getData()
                     .findCaseWorker(user.getId()),
@@ -79,5 +79,4 @@ public class SystemFacade {
   public ICase createCase() {
     return caseWorker.createCase();
   }
-
 }

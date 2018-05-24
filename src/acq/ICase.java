@@ -4,23 +4,30 @@
 package acq;
 
 import java.util.Collection;
-import java.util.UUID;
+import java.util.GregorianCalendar;
 
 public interface ICase {
 
   /**
    * Get id
    *
-   * @return unique case ID
+   * @return unique case Id
    */
-  UUID getId();
+  int getId();
 
   /**
-   * Get responsible user
+   * set id
    *
-   * @return User resposible for the case
+   * @param id
    */
-  IUser getResponsible();
+  void setId(int id);
+
+  /**
+   * Get responsible caseworker
+   *
+   * @return caseworker resposible for the case
+   */
+  ICaseWorker getResponsible();
 
   /**
    * Get citizen
@@ -30,18 +37,30 @@ public interface ICase {
   ICitizen getCitizen();
 
   /**
-   * Get effort
+   * get efforts
    *
-   * @return Effort linked to the case
+   * @return efforts
    */
-  IEffort getEffort();
+  Collection<IEffort> getEfforts();
 
   /**
-   * Get collection of participating citizens
+   * Add new effort to a case
    *
-   * @return participants
+   * @param service
+   * @param offer
+   * @param paragraphs
+   * @param start
+   * @param end
+   * @param company
    */
-  Collection<ICitizen> getParticipants();
+  void addEffort(
+          IService service,
+          IOffer offer,
+          Collection<IParagraph> paragraphs,
+          GregorianCalendar start,
+          GregorianCalendar end,
+          ICompany company
+  );
 
   /**
    * Get inquiry
@@ -63,6 +82,13 @@ public interface ICase {
    * @param citizen
    */
   void setCitizen(ICitizen citizen);
+
+  /**
+   * set responsible caseworker
+   *
+   * @param responsible responsible caseworker
+   */
+  void setResponsible(ICaseWorker responsible);
 
   /**
    * Get informed about rights status
@@ -428,4 +454,10 @@ public interface ICase {
    */
   void setFurtherCourse(String fourtherCourse);
 
+  /**
+   * set efforts
+   *
+   * @param efforts
+   */
+  void setEfforts(Collection<IEffort> efforts);
 }

@@ -1,18 +1,24 @@
 package domain.system;
 
 import acq.IAddress;
+import acq.ICaseWorker;
 import acq.IUser;
 
 /**
  *
  * CaseWorker class that extends Person
  */
-public class CaseWorker extends Person {
+public class CaseWorker extends Person implements ICaseWorker {
 
   /**
    * Create IUser
    */
   private IUser user;
+
+  /**
+   * Caseworker id
+   */
+  private int id;
 
   /**
    * No args constructor for CaseWorker
@@ -32,6 +38,7 @@ public class CaseWorker extends Person {
    */
   public CaseWorker(String firstName, String middleName, String lastName, IAddress address, String phone, String email) {
     super(firstName, middleName, lastName, address, phone, email);
+    this.id = 0;
   }
 
   /**
@@ -39,6 +46,7 @@ public class CaseWorker extends Person {
    *
    * @return user;
    */
+  @Override
   public IUser getUser() {
     return user;
   }
@@ -48,8 +56,29 @@ public class CaseWorker extends Person {
    *
    * @param user
    */
+  @Override
   public void setUser(IUser user) {
     this.user = user;
+  }
+
+  /**
+   * Get id
+   *
+   * @return
+   */
+  @Override
+  public int getId() {
+    return id;
+  }
+
+  /**
+   * Set id
+   *
+   * @param id
+   */
+  @Override
+  public void setId(int id) {
+    this.id = id;
   }
 
   /**
@@ -62,7 +91,6 @@ public class CaseWorker extends Person {
       return null;
     }
 
-    return new Case(null, null, null);
+    return new Case(this, null);
   }
-
 }

@@ -15,7 +15,12 @@ public class Citizen extends Person implements ICitizen {
   private String CPR;
 
   /**
-   * Constructor for Citizen instance
+   * Server id
+   */
+  private int id;
+
+  /**
+   * Citizen constructor
    *
    * @param firstName
    * @param middleName
@@ -26,6 +31,7 @@ public class Citizen extends Person implements ICitizen {
    */
   public Citizen(String firstName, String middleName, String lastName, IAddress address, String phone, String email) {
     super(firstName, middleName, lastName, address, phone, email);
+    id = 0;
   }
 
   /**
@@ -47,4 +53,8 @@ public class Citizen extends Person implements ICitizen {
     this.CPR = CPR;
   }
 
+  @Override
+  public int getId() {
+    return this.id;
+  }
 }
