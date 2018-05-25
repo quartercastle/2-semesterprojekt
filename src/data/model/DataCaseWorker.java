@@ -4,7 +4,6 @@ import acq.IAddress;
 import acq.ICaseWorker;
 import acq.IUser;
 import data.Database;
-import java.util.Collection;
 
 public class DataCaseWorker extends DataPerson implements ICaseWorker {
 
@@ -72,6 +71,7 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
   /**
    * Save the case worker to database
    */
+  @Override
   public void save() {
     String query = null;
     super.save();
@@ -150,5 +150,15 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
             });
 
     return caseWorker;
+  }
+
+  /**
+   * To String
+   *
+   * @return string representation of DataCaseWorker
+   */
+  @Override
+  public String toString() {
+    return getFirstName() + " " + getLastName() + "\t" + "Sagsbehandler-ID: " + id;
   }
 }
