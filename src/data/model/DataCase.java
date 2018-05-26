@@ -926,4 +926,14 @@ public class DataCase implements ICase {
     IEffort effort = new DataEffort(service.getPrice() + offer.getPrice(), start, end, (DataCompany) company);
     this.efforts.add(effort);
   }
+
+  /**
+   * To string
+   *
+   * @return string representation of DataCase
+   */
+  @Override
+  public String toString() {
+    return "Sag vedrørende borger: " + citizen + "\n" + "Ansvarlig sagsbehandler: " + responsible + "\n" + "Sags-ID: " + id;
+  }
 }

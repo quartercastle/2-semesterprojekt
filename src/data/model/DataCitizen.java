@@ -132,4 +132,14 @@ public class DataCitizen extends DataPerson implements ICitizen {
       }
     });
   }
+
+  /**
+   * To string
+   *
+   * @return string representation of DataCitizen
+   */
+  @Override
+  public String toString() {
+    return getFirstName() + " " + getLastName();
+  }
 }
