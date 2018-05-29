@@ -95,8 +95,8 @@ public class DataAddress implements IAddress {
               + "RETURNING id";
     } else {
       query = "UPDATE addresses "
-              + "SET primary_line = '" + getPrimaryLine() + "', secondary_line ='"
-              + getZip() + "', city='" + getCity() + "', country='" + getCountry() + "' "
+              + "SET primary_line = '" + getPrimaryLine() + "', secondary_line ='" + getSecondaryLine()
+              + "',zip_code='" + getZip() + "', city='" + getCity() + "', country='" + getCountry() + "' "
               + "WHERE id = " + id;
     }
 

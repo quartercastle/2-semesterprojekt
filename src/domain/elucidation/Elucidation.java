@@ -60,7 +60,7 @@ public class Elucidation {
   /**
    * bind an user instance and create a CaseWorker from it
    *
-   * @param IUser
+   * @param user
    */
   public void bind(IUser user) {
     caseWorker = (CaseWorker) Mapper.map(

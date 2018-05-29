@@ -1,9 +1,7 @@
 package gui.controller;
 
 import acq.ICase;
-import acq.IDomain;
 import domain.DomainFacade;
-import domain.elucidation.Elucidation;
 import gui.GUI;
 import java.net.URL;
 import java.util.ArrayList;

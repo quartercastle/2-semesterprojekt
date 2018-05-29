@@ -40,14 +40,14 @@ public class Mapper {
 
     if (toData) {
       mappedClassName = toBeMapped.getClass().getName();
-      mappedClassName = mappedClassName.replace("domain.system.", "data.model.Data");
+      mappedClassName = mappedClassName.replace("domain.elucidation.", "data.model.Data");
     } else {
       mappedClassName = toBeMapped.getClass().getName().replace("Data", "");
       if (mappedClassName.equals("data.model.User")
               || mappedClassName.equals("data.model.Role")) {
         mappedClassName = mappedClassName.replace("data.model", "domain.security");
       } else {
-        mappedClassName = mappedClassName.replace("data.model", "domain.system");
+        mappedClassName = mappedClassName.replace("data.model", "domain.elucidation");
       }
     }
 
