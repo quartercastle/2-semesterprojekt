@@ -22,6 +22,13 @@ public class DataCompany implements ICompany {
   private IAddress address;
 
   /**
+   * No-Args
+   */
+  public DataCompany() {
+
+  }
+
+  /**
    * Create new instance of DataCompany
    *
    * @param name
@@ -40,7 +47,7 @@ public class DataCompany implements ICompany {
    * @return a instance of DataCompany if found.
    */
   public static DataCompany find(int id) {
-    DataCompany d = new DataCompany(null, null);
+    DataCompany d = new DataCompany();
     Database.getInstance().query(
             "SELECT id, name, address_id "
             + "FROM companies "

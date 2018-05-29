@@ -4,7 +4,7 @@
 package domain;
 
 import domain.security.User;
-import domain.system.Case;
+import domain.elucidation.Case;
 import java.util.GregorianCalendar;
 
 public class Log {

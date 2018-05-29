@@ -21,6 +21,7 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
    * No args constructor for CaseWorker
    */
   public DataCaseWorker() {
+    super();
   }
 
   /**
@@ -130,7 +131,7 @@ public class DataCaseWorker extends DataPerson implements ICaseWorker {
    * @return case worker
    */
   public static DataCaseWorker where(String key, String value) {
-    DataCaseWorker caseWorker = new DataCaseWorker(null, null, null, null, null, null);
+    DataCaseWorker caseWorker = new DataCaseWorker();
     Database.getInstance().query(Database.compose(
             "SELECT id, person_id, user_id",
             "FROM case_workers",

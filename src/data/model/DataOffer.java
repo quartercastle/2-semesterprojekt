@@ -26,6 +26,13 @@ public class DataOffer implements IOffer {
   private String description;
 
   /**
+   * No-Args
+   */
+  public DataOffer() {
+
+  }
+
+  /**
    * Constructor for DataOffer
    *
    * @param name
@@ -123,7 +130,7 @@ public class DataOffer implements IOffer {
    * @return offer
    */
   public static DataOffer find(int id) {
-    DataOffer offer = new DataOffer(null, 0, null);
+    DataOffer offer = new DataOffer();
     Database.getInstance().query(Database.compose(
             "SELECT id, name, price, description",
             "FROM offers",

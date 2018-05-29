@@ -5,14 +5,14 @@ package domain;
 
 import acq.IAddress;
 import domain.security.AuthManager;
-import domain.system.Citizen;
-import domain.system.Address;
+import domain.elucidation.Citizen;
+import domain.elucidation.Address;
 import acq.ICase;
 import acq.ICitizen;
 import acq.IData;
 import acq.IDomain;
 import acq.IUser;
-import domain.system.SystemFacade;
+import domain.elucidation.Elucidation;
 import java.util.Collection;
 
 public class DomainFacade implements IDomain {
@@ -72,7 +72,7 @@ public class DomainFacade implements IDomain {
       return false;
     }
 
-    SystemFacade.getInstance().bind(user);
+    Elucidation.getInstance().bind(user);
 
     return true;
   }
@@ -93,7 +93,7 @@ public class DomainFacade implements IDomain {
    */
   @Override
   public ICase createCase() {
-    return SystemFacade.getInstance().createCase();
+    return Elucidation.getInstance().createCase();
   }
 
   /**

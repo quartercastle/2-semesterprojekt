@@ -1,4 +1,4 @@
-package domain.system;
+package domain.elucidation;
 
 import acq.ICase;
 import acq.IUser;
@@ -10,29 +10,29 @@ import util.Mapper;
  *
  * Facade class for the system
  */
-public class SystemFacade {
+public class Elucidation {
 
   /**
    * Instance of the class itself, used for singleton setup. Is set to null
    * initially, instantiated if needed though getInstance()
    */
-  public static SystemFacade system;
+  public static Elucidation system;
 
   /**
    * Disable normal instantiation
    */
-  private SystemFacade() {
+  private Elucidation() {
   }
 
   /**
-   * Singleton setup for SystemFacade, returns instance of the class if none has
+   * Singleton setup for Elucidation, returns instance of the class if none has
    * been made. If one has been made, returns that created instance
    *
-   * @return Singleton instanse of SystemFacade
+   * @return Singleton instanse of Elucidation
    */
-  public static SystemFacade getInstance() {
+  public static Elucidation getInstance() {
     if (system == null) {
-      system = new SystemFacade();
+      system = new Elucidation();
     }
 
     return system;

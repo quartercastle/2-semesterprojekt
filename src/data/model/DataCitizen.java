@@ -37,6 +37,7 @@ public class DataCitizen extends DataPerson implements ICitizen {
    * No args construct for DataCitizen
    */
   public DataCitizen() {
+    super();
   }
 
   /**
@@ -86,7 +87,7 @@ public class DataCitizen extends DataPerson implements ICitizen {
    * @return if found, returns instanse of DataCitizen
    */
   public static DataCitizen find(int id) {
-    DataCitizen dc = new DataCitizen(null, null, null, null, null, null, null);
+    DataCitizen dc = new DataCitizen();
     Database.getInstance().query(
             "SELECT id, person_id, cpr "
             + "FROM citizens "
