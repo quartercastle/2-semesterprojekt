@@ -61,6 +61,7 @@ public class CreateCaseController extends TabController {
   /**
    * Method for open window
    */
+  @Override
   public void open() {
     super.open();
     if (getCase() == null) {
