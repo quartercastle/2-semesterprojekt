@@ -1,4 +1,4 @@
-package domain.system;
+package domain.elucidation;
 
 import acq.ICitizen;
 import java.util.Collection;
