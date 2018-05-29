@@ -827,7 +827,7 @@ public class DataCase implements ICase {
    * @return if found, the instance of DataCase with the specified id
    */
   public static DataCase find(int id) {
-    DataCase dc = new DataCase(null, null);
+    DataCase dc = new DataCase();
     Database.getInstance().query(
             "SELECT id, citizen_id, case_worker_id, circumstance, inquiry, further_course, is_informed_about_rights, is_informed_about_duties, "
             + "practical_tasks_support, personal_care_support, grocery_support, temporary_stay, longer_stay, rehabilitation_support, "

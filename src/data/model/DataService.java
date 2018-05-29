@@ -41,6 +41,9 @@ public class DataService implements IService {
    */
   private int repetition;
 
+  public DataService() {
+  }
+
   /**
    * Constructor for Dataservice
    *
@@ -205,7 +208,7 @@ public class DataService implements IService {
    * @return service
    */
   public static DataService find(int id) {
-    DataService service = new DataService(null, null, 0, null, 0, 0);
+    DataService service = new DataService();
     Database.getInstance().query(Database.compose(
             "SELECT id, name, frequency, unit, price, repetition, description",
             "FROM services",

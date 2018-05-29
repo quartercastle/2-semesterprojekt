@@ -72,7 +72,7 @@ public class DataPerson {
    * @return a instance of DataPerson if found.
    */
   public static DataPerson find(int id) {
-    DataPerson d = new DataPerson(null, null, null, null, null, null);
+    DataPerson d = new DataPerson();
     Database.getInstance().query(
             "SELECT id, first_name, middle_name, last_name, phone, email, address_id "
             + "FROM persons "

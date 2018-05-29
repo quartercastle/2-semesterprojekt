@@ -26,6 +26,13 @@ public class DataParagraph implements IParagraph {
   private String description;
 
   /**
+   * No-Args
+   */
+  public DataParagraph() {
+
+  }
+
+  /**
    * Constructor for dataparagraph
    *
    * @param number
@@ -123,7 +130,7 @@ public class DataParagraph implements IParagraph {
    * @return paragraph
    */
   public static DataParagraph find(int id) {
-    DataParagraph paragraph = new DataParagraph(0, null, null);
+    DataParagraph paragraph = new DataParagraph();
     Database.getInstance().query(Database.compose(
             "SELECT id, number, title, description",
             "FROM paragraphs",

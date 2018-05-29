@@ -84,7 +84,7 @@ public class DataEffort implements IEffort {
    * @return dataEffort
    */
   public static DataEffort find(int id) {
-    DataEffort effort = new DataEffort(null, null, null, null);
+    DataEffort effort = new DataEffort();
     Database.getInstance().query(Database.compose(
             "SELECT id, case_id, service_id, offer_id, total_price, start_date, end_date, responsibility",
             "FROM efforts",

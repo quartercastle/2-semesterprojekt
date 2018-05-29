@@ -176,7 +176,7 @@ public class DataRole implements IRole {
    * @return role
    */
   public static DataRole find(int id) {
-    DataRole role = new DataRole(null, false, false, false, false);
+    DataRole role = new DataRole();
     Database.getInstance().query(Database.compose(
             "SELECT id, name, create_case, view_case, edit_case, close_case",
             "FROM roles",

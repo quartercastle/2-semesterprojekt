@@ -66,7 +66,7 @@ public class DataAddress implements IAddress {
    * @return a instance of DataAddress if found.
    */
   public static DataAddress find(int id) {
-    DataAddress da = new DataAddress(null, null, null, null, null);
+    DataAddress da = new DataAddress();
     Database.getInstance().query(
             "SELECT id, primary_line, secondary_line, zip_code, city, country "
             + "FROM addresses "

@@ -202,7 +202,7 @@ public class DataUser implements IUser {
    * @return a User
    */
   public static DataUser where(String key, String value) {
-    DataUser user = new DataUser(null, null, null, false);
+    DataUser user = new DataUser();
 
     Database.getInstance().query(Database.compose(
             "SELECT id, username, password, role_id, inactive",
