@@ -21,7 +21,7 @@ directly from the terminal.
   - [Victor Gram Thomsen](https://github.com/grammeaway)
 
 ### Configuration
-Create a new file named `PostgreSQLConfig.java` within `src.config`. This files should include the authentication credentials for the postgres database.
+Create a new file named `PostgreSQLConfig.java` within `src.config` package. This files should include the authentication credentials for the postgres database.
 ```java
 public class PostgreSQLConfig {
   public String host = "jdbc:postgresql://localhost:5432";
