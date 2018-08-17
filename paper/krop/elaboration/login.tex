@@ -1,0 +1,34 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\subsubsection{Login}
+
+I dette afsnit vil implementeringen af login brugsmønsteret blive beskrevet og forklaret.
+
+	På kode eksempel \ref{AuthManager.verify()} ses implementeringen af metoden \code{verify}, som har ansvaret for at finde en \code{User} i databasen, ud fra et matchende username. Hvis der bliver fundet en user med matchende \code{username} i databasen, vil næste skridt være at verificere, at det givne password matcher med det, der blev fundet i databasen. 
+Hvis ingen bruger blev fundet med matchende username, vil systemet afbryde og returnere værdien \code{null} for at indikere, at authentificeringen fejlede. Ydermere vil metoden også afbryde, hvis det givne password ikke matcher med den fundne brugers password. Som det ses i kode eksemplet herunder, er instansen af den fundne \code{user} information expert, da den har ansvaret for at verificere at passwordet matcher med sit eget. Dette er valgt da det gør selve \code{AuthManager} implementeringen overskuelig, og det er nemt hurtigt at danne sig et overblik over, hvornår en bruger bliver authentificeret og hvornår der afbrydes.
+Når en bruger authentificeres returneres der en instans af brugeren, der har fået adgang. Dette muliggør, at man kan oprette en \code{CaseWorker} med rettighederne brugeren har til rådighed. \\
+
+\begin{lstlisting}[caption=AuthManager.verify(), captionpos=b, label=AuthManager.verify()]
+  public static IUser verify(String username, String password) {
+    User user = (User) Mapper.map(
+    	DomainFacade.getInstance().getData().findUser(username), 
+        false
+    );
+
+    if (user == null) {
+      return null;
+    }
+
+    if (!user.verify(password)) {
+      return null;
+    }
+
+    return user;
+  }
+\end{lstlisting}
+
+
+
+\end{document}

@@ -1,0 +1,214 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Detaljeret kravspecifikation}
+Til at beskrive funktionaliteten i systemet, blev der konstrueret detaljerede brugsmønstre. Et detaljeret brugsmønster udtrykker et forventet hændelsesforløb i systemet. Da hændelsesforløbet beskriver funktionaliteten i systemet, udtrykker det dermed også funktionelle krav i systemet.  De detaljerede brugsmønstre blev lavet ud fra tidligere arbejde fra inceptionsfasen, som for eksempel indebærer det overordnede brugsmønsterdiagram. Ud fra brugsmønster diagrammet kan man specificere og uddybe hver enkelt brugsmønster. Der bliver brugt skabelonen i \cite[s. 78]{arlow2005uml} da det er den mest almindelige, og passer godt til de udvalgte brugsmønstre. Skabelonen har fokus på holde de detaljerede brugsmønstre simple og overskuelige. Til at vise brugen af skabelonen, vil rapporten tage udgangspunkt i de detaljerede brugsmønstre “Sagsåbning” og “Log ind”.  
+
+
+\subsubsection{Detaljerede brugsmønsterbeskrivelser}
+Der vil i dette afsnit blive beskrevet detaljerede brugsmønsterbeskrivelser for sagsåbning og login. Derudover vil der blive beskrevet hvilke tanker der har været bag udviklingen af de detaljerede brugsmønsterbeskrivelser, og overvejelserne dertil.                    
+
+\subsubsection{Sagsåbning} 
+Det detaljerede brugsmønster “Sagsåbning" (ID: DB-0000), tabel \ref{db:0000}, beskriver hændelsesforløbet, når en sagsbehandler registrerer en henvendelse, og åbner en ny sag i systemet. Den primære aktør er sagsbehandleren, da det vil være sagsnehandleren der starter hændelsesforløbet.  
+Borgeren er sat som sekundær aktør, da dennes input er nødvendig for, at sagsbehandleren kan udfylde blanketten komplet. Man kan kalde borgeren for en kulisseaktør, da borgeren interagerer med sagsbehandleren og ikke systemet direkte. Til at beskrive hændelsesforløbet mere detaljeret, er der blevet lavet flere detaljeretde brugsmønstre, der ligger  i forlængelse af sagsåbningen. Postkondition viser de to mulige tilstande af systemet efter at sagsåbnings-brugsmønsteret er gennemført. 
+
+\begin{center}
+%\begin{longtable}[H]
+\tiny
+\begin{longtable}{| p{1\textwidth}|} 
+\hline
+Brugsmønster: Sagsåbning  \\ \hline
+
+ID: DB-0000 \\ \hline
+
+\textbf{Kort beskrivelse:} \\
+Sagsbehandleren logges ind (se DB-0001). Her får de muligheden for at registrere en ny henvendelse, hvis de har rettighederne til det. Herefter vil de komme igennem de forskellige scenarier, der skal udfyldes for, at en henvendelse er komplet.   \\ \hline
+
+\textbf{Primære aktører:} \\
+- Sagsbehandleren \\ \hline
+
+\textbf{Sekundære  aktører:} \\
+- Borgeren  \\ \hline
+
+\textbf{Prækondition:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Sagsbehandleren er logget ind i Sensum Udred med et gyldigt login.
+    \end{itemize}
+  \end{minipage} \\ \hline
+
+\textbf{Hovedhændelsesforløb:} 
+ \begin{adjustwidth}{1cm}{}
+  
+    \begin{enumerate}
+    \item Brugsmønsteret starter efter sagsbehandleren har valgt at “Registrere henvendelse”
+    \item Der kommer nu et view frem med de forskellige scenarier der skal udfyldes. 
+    \item Der skal nu udfyldes hvad henvendelsen drejer sig om. 
+    \item Hvis borgeren ikke er indforstået med henvendelsen
+    \begin{enumerate}[label=\Alph*]
+    	\item Sagsbehandleren kan ikke komme videre og henvendelsen kan ikke registreres.
+    \end{enumerate}
+    \item Når informationerne om henvendelsen er udfyldt, og “borgeren er indforstået med henvendelsen”, så kan sagsbehandleren komme videre til næste step.
+    \item Der vises nu en fane ved navn “Tilbud” , som indeholder to valg, der spørger sagsbehandleren, om det er klart hvad borgeren søger om.
+    \item Hvis det ikke er klart hvad borgeren søger om, vælges “nej”.
+    \begin{enumerate}[label=\Alph*]
+    \item Det som borgeren søger om skal nu i stedet udfyldes i slutingen af udredningsforløbet.
+    \end{enumerate}
+    \item Vælges der “Ja”, angives hvad borgeren søger om af ydelser.
+    \item Hvis borgeren ikke søger om nogen ydelser
+    \begin{enumerate}[label=\Alph*]
+    \item Gå videre til at vælge det tilbud, som borgeren søger.
+    \end{enumerate}
+    \item Hvis borgeren ikke søger nogen tilbud. 
+    \begin{enumerate}[label=\Alph*]
+    \item Udredningen kan ikke færdiggøres og lukkes.
+    \end{enumerate}
+    \item Efter ydelser og/eller tilbud er udfyldt kan sagsbehandleren komme til næste step.
+    \item Der vises nu en fane ved navn “Rettigheder” , som indeholder 2 valg, som beskriver hvorvidt borgeren er orienteret om deres rettigheder.
+    \item Hvis der ikke vælges noget.
+    \begin{enumerate}[label=\Alph*]
+    \item Sagsbehandleren kan ikke fortsætte til næste step og sagen kan ikke afsluttes.
+    \end{enumerate}
+    \item Er der valgt kan sagsbehandleren komme videre til næste step.
+    \item Der vises nu en fane ved navn “Basisoplysninger", som indeholder alle de basisoplysninger på borgeren, som sagsbehandleren kan indtaste.
+    \item Hvis de påkrævede felter ikke udfyldes.
+    \begin{enumerate}[label=\Alph*]
+    \item Sagsbehandleren kan ikke fortsætte til næste step og henvendelsen kan ikke oprettes.
+    \end{enumerate}
+    \item Når alle påkrævede basisoplysningsfelter er udfyldt kan der fortsættes til næste step.
+    \item Hvis sagsbehandleren vælger at gå tilbage til forrige sektion.
+    \begin{enumerate}[label=\Alph*]
+    \item Sagsbehandleren sendes tilbage til fanen der blev vist før den nuværende fane. 
+    \end{enumerate}
+    \item Der vises nu en fane ved navn “Særlige forhold” , hvor særlige forhold kan indtastes.
+    \item Hvis der ikke indtastes noget.
+    \begin{enumerate}[label=\Alph*]
+    \item Sagsbehandleren kan stadig fortsætte, da dette ikke var påkrævet.
+    \end{enumerate}
+    \item Der kan nu fortsættes til næste fane.
+    \item Der vises nu en fane ved navn “Særlige forhold” , hvor det videre forløb skal beskrives.
+    \item Hvis det videre forløb ikke beskrives.
+    \begin{enumerate}[label=\Alph*]
+    \item Sagsbehandleren kan ikke færdiggøre hendvendelsen.
+    \end{enumerate}
+    \item Vælges der gem, så gemmes hendvendelsen nu i en relationel database indeholdende alle tidligere indtastede oplysninger.
+    \item Vinduet til registrering af hendvendelse lukkes, og sagsbehandleren sendes tilbage til startskærmen. (se DB-0001). 
+    \end{enumerate}
+  \end{adjustwidth} \\ \hline
+
+\textbf{Postkondition:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Sagsbehandleren er enten påbegyndt en ny sagsåbning, eller er logget af igen.
+    \end{itemize}
+  \end{minipage} \\ \hline
+
+\textbf{Alternative hændelsesforløb:} \\
+  \begin{minipage}[t]{\textwidth}
+    
+  \end{minipage} \\ \hline
+ \caption{Detaljeret brugsmønster: Sagsåbning}
+ \label{db:0000}
+\end{longtable}
+\end{center}
+
+\subsubsection{Login}
+Det detaljerede brugsmønster “Login" (ID: DB-0001), tabel \ref{db:0001}, beskriver hændelsesforløbet hvor sagsbehandleren forsøger at få adgang til systemet ved at logge ind. Der er ingen sekundære aktører, da sagsbehandleren ikke skal rådføre sig ved nogen andre. Der kan argumenteres for at der kan være en system-administrator som en sekundær aktør. Dette vil dog kun være relevant i det alternative hændelsesforløb, hvor brugeren ikke kan logge ind i systemet. Det er dog blevet undladt, da der ikke er en system-administrator i denne prototype af systemet. Prækonditioner for brugsmønsteret er, at der ikke nogen logget ind i systemet, da man kun kan have én sagsbehandler logget ind ad gangen på en given enhed. Dette skyldes, at systemet skal logge brugerens aktivitet. I det alternative hændelsesforløb indtaster sagsbehandleren forkerte oplysninger, og kan derfor ikke logge ind, og kan prøve igen. I denne situation kunne det være en fordel at have en administrator som sekundær aktør, som sagsbehandleren kunne kontakte.  
+
+\begin{center}
+%\begin{longtable}[H]
+\tiny
+\begin{longtable}{| p{1\textwidth}|} \hline
+Brugsmønster: Login  \\ \hline
+
+ID: DB-0001 \\ \hline
+
+\textbf{Kort beskrivelse:} \\
+Sagsbehandleren logger ind i systemet ved at indtaste login oplysninger. Disse oplysninger verificeres og sagsbehandleren logges ind.   \\ \hline
+
+\textbf{Primære aktører:} \\
+- Sagsbehandler \\ \hline
+
+\textbf{Sekundære  aktører:} \\
+- Ingen  \\ \hline
+
+\textbf{Prækondition:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Sagsbehandleren er ikke logget ind i forvejen.
+    \end{itemize}
+  \end{minipage} \\ \hline
+
+\textbf{Hovedhændelsesforløb:} 
+ \begin{adjustwidth}{1cm}{}
+  \begin{enumerate}
+  \item Brugsmønsteret starter ved at sagsbehandleren indtaster deres brugernavn og deres tilhørende adgangskode.
+	\item Sagsbehandler klikker derefter på login.
+    \item Systemet tjekker om der eksisterer en bruger med det givne brugernavn.
+    \item Hvis en bruger ikke blev fundet
+	\begin{enumerate}[label=\Alph*]
+	\item Brugsmønster afbrydes 
+	\end{enumerate}
+    \item Systemet tjekker at adgangskoden matcher med den indtastet adgangskode.
+	\item Hvis adgangskoden ikke stemmer overens med brugernavnet
+    \begin{enumerate}[label=\Alph*]
+    \item Der kommer en pop-up, hvor der står du har indtastet forkert adgangskode.
+    \end{enumerate}
+    \item Sagsbehandler er nu logget ind
+  \end{enumerate}
+  \end{adjustwidth} \\ \hline
+
+\textbf{Postkondition:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Sagsbehandler er logget ind i systemet.
+    \end{itemize}
+  \end{minipage} \\ \hline
+
+\textbf{Alternative hændelsesforløb:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item Login oplysninger er ikke korrekte.
+    \end{itemize}
+  \end{minipage} \\ \hline
+  \caption{Detaljeret brugsmønster: Login}
+ \label{db:0001}
+\end{longtable}
+\end{center}
+
+\subsubsection{Detaljerede beskrivelser af supplerende krav}
+I dette afsnit vil supplerende krav i form af udefrakommendes påvirkning af systemet blive beskrevet. Disse vil være ikke-funktionelle krav, da de er en form for begræsning på systemet, og ting som alle funktionelle krav skal tage stilling til.
+
+\paragraph{GDPR}\mbox{} \\
+I forhold til den nye persondataforordning, er der en del punkter man som software ingeniør skal være opmærksom på. Persondataforordningen har stor betydning af flere grunde. En af grundene er selve sikkerheden i softwaresystemer, der i en tiltagende mere og mere digitaliseret verden, er vigtigere end nogensinde før. Dette optimeres med den nye lov. En anden ting er størrelsen på bøderne for ikke at overholde det. Bødestørrelser kan blive op til 4\% af den årlige globale omsætning eller op til 10.000.000 euro. Kilden på dette findes her. \cite{gdpr}
+
+De nedenstående emner er nogle af dem man skal være opmærksomme på som software udviklere.
+
+\paragraph{Retten til at blive glemt}\mbox{}\\
+Man skal som bruger af systemet kunne bede om at blive fjernet fra systemet fuldstændigt til hver en tid, samt det ikke er lovligt at beholde data på en bruger, som ikke bruges af systemet. Det betyder blandt andet for dette projekt, at når der oprettes en borger i systemet, så må borgeren ikke gemmes længere, når de intet har at gøre i systemet mere. Borgenen skal også kunne bede om at få deres data flyttet til hver en tid, og der skal man kunne flytte dataen på en brugbar måde til borgeren. Der kan dog forekomme aftaler/kontrakter der sikre ovenstående problemer.
+
+\paragraph{Pseudonymization}\mbox{}\\ 
+Personlige informationer omkring brugeren skal altid holdes adskilt. Det betyder, at skulle der opstå et sikkerhedsbrist i systemet, så må navnet på en borger ikke kunne sammendrives med deres CPR nummer og andre basisoplysninger.
+
+\paragraph{Sikkerhedsbrist}\mbox{}\\
+Skulle uheldet være ude og der sker et sikkerhedsbrist, skal brugerne af systemet informeres senest 72 timer efter uheldet.
+
+\paragraph{Større virksomheder/offentlig instanser}\mbox{}\\ 
+Hvis man er en større instans skal man have en Data Protection Officer i instansen. 
+
+Det er dog ikke sikkert at alle ovenstående emner når at blive implementeret i vores software, da det kun vil være en prototype. Skulle det ske, at produktet skulle færdiggøres, så ville ovenstående være en nødvendighed at implementere.
+
+\subsubsection{Programmeringssprog}
+Projektet udvikles i Java og er strukturet efter programmerings principper fra det objektorienterede programmerings-paradigme. Java er valgt da det er platformsuafhængigt. Det vil sige, at det kan eksekveres på alle platforme. På denne måde kan det sikres at systemet nemt kan migreres til fremtidige platforme. Java er derudover et af de mest benyttede sprog, og derfor er der mange resourcer online, som gør det nemt at finde hjælp hvis behovet opstår.
+
+
+
+
+
+
+
+
+
+            
+\end{document}

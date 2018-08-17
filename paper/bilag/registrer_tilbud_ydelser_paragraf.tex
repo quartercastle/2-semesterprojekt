@@ -1,0 +1,60 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\tocless\subsubsection{Registrer tilbud, ydelser og paragraffer (udvider DB-0000 Sagsåbning)}
+
+\begin{table}[H]
+\centering
+\resizebox{0.9 \textwidth}{!}{%
+\begin{tabular}{| p{1\textwidth}|} \hline
+Brugsmønster: RegistrerTilbudYdelseParagraf (udvider DB-0000 Sagsåbning)   \\ \hline
+
+ID: DB-0002 \\ \hline
+
+\textbf{Kort beskrivelse:} \\
+Sagsbehandleren registrerer eventuelt de tilbud og ydelser som den pågældende borger søger om, samt de paragraffer i lovgivningen de hører under.       \\ \hline
+
+\textbf{Primære aktører:} \\
+Sagsbehandler \\ \hline
+
+\textbf{Sekundære  aktører:} \\
+  \\ \hline
+
+\textbf{Prækondition:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] At henvendelse fra borger eller pårørende er registreret \\
+    \end{itemize}
+  \end{minipage} \\ \hline
+
+\textbf{Hovedhændelsesforløb:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{enumerate}
+    \item Sagsbehandler vurderer om den registrerede henvendelse tilstrækkeligt beskriver hvilke tilbud og ydelser borgeren søger om
+    \item Hvis henvendelsen er tilstrækkelig
+    \begin{enumerate}[label=\Alph*]
+    	\item Disse tilbud og ydelser samt de gældende paragraffer i lovgivningen registreres i systemet
+    \end{enumerate}
+    \item Hvis det ikke er klart ud fra ansøgningen hvad borgeren søger om
+    \begin{enumerate}[label=\Alph*]
+    	\item Registreringen tilsidelægges indtil slutningen af udredningen. \\
+    \end{enumerate} 
+    \end{enumerate}
+  \end{minipage} \\ \hline
+
+\textbf{Postkondition:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Enten er tilbud og ydelser registreret i systemet, ellers udskydes dette til afslutning af udredningen. \\
+    \end{itemize}
+  \end{minipage} \\ \hline
+
+\textbf{Alternative hændelsesforløb:} \\ \hline
+ 
+\end{tabular}}
+\caption{RegistrerTilbudYdelseParagraf}
+\label{db:002}
+\end{table}
+
+\end{document}

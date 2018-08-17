@@ -1,29 +1,206 @@
-\documentclass{paper}
+\documentclass[a4paper,10pt]{paper}
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.4}
+
 \usepackage[utf8]{inputenc}
 \usepackage{subfiles}
 \usepackage{listings}
 \usepackage{fancyhdr}
 \usepackage{tocloft}
-\usepackage[a4paper, total={6in, 8in}]{geometry}
-\setlength{\parskip}{1em}
-\renewcommand{\baselinestretch}{1.4}
 
-% Header and footer styles
+\usepackage[danish]{babel}
+\usepackage{float}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries}{}{0pt}{\Huge}
+\usepackage[hidelinks=true]{hyperref}
+\usepackage{tikz,pgfplots}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{changepage}
+\usepackage{url}
+\usepackage{rotating}
+
+\definecolor{codeColor}{RGB}{117,117,117}
+\newcommand{\code}[1] {{\color{codeColor}\texttt{#1}}}
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+\renewcommand{\lstlistingname}{Kode}
+\usepackage{enumitem}
+\usepackage{pdfpages}
+\usepackage{nameref}
+
+%%%%%%%%%%%%CHAR
+\newcounter{alphasect}
+\def\alphainsection{0}
+\usepackage{pgfplotstable}
+
+\let\oldsection=\section
+\def\section{%
+  \ifnum\alphainsection=1%
+    \addtocounter{alphasect}{1}
+  \fi%
+\oldsection}%
+
+\renewcommand\thesection{%
+  \ifnum\alphainsection=1%
+    \Alph{alphasect}
+  \else%
+    \arabic{section}
+  \fi%
+}%
+
+\newenvironment{alphasection}{%
+  \ifnum\alphainsection=1%
+    \errhelp={Let other blocks end at the beginning of the next block.}
+    \errmessage{Nested Alpha section not allowed}
+  \fi%
+  \setcounter{alphasect}{0}
+  \def\alphainsection{1}
+}{%
+  \setcounter{alphasect}{0}
+  \def\alphainsection{0}
+}%%%%%%%%%%%%%%
+
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+
+\usepackage{listings}
+\lstset{language=Java,
+    keywordstyle=\color{pblue},
+    basicstyle=\footnotesize\ttfamily,
+    commentstyle=\color{pgreen},
+    stringstyle=\color{pred},
+    rulecolor=\color{black},
+    upquote=true,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frameround=ftff,
+    frame=single,
+    %belowcaptionskip=5em,
+    %belowskip=3em,
+  moredelim=[il][\textcolor{pgrey}]{$$},
+  moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%}
+}
+
+\usepackage{xcolor}
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{json}{
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    upquote=true,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frameround=ftff,
+    frame=single,
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+
+\usepackage[style=bwl-FU]{biblatex}
+\addbibresource{Ref.bib}
+
+\begin{document}
+  % Prolog
+
+  \pagenumbering{roman}
+
+ % Header and footer styles
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{\thepage}
 \lhead{2. Semesterprojekt - Gruppe 11}
 
+  \subfile{prolog/forside}
+  \setcounter{page}{2}
+  \subfile{prolog/abstract}
+  \subfile{prolog/forord}
+  \subfile{prolog/indholdsfortegnelse}
+  \subfile{prolog/laesevejledning}
+  \subfile{prolog/ordliste}
+  \subfile{prolog/redaktionelt}
 
-\begin{document}
-  \subfile{sections/forside}
-  \subfile{sections/abstract}
-  \subfile{sections/forord}
-  \subfile{sections/indholdsfortegnelse}
-  \subfile{sections/laesevejledning}
-  \subfile{sections/ordliste}
-  \subfile{sections/indledning}
-  \subfile{sections/projektforslag}
-  \subfile{sections/konklusion}
-  \subfile{sections/perspektivering}
+  % Krop
+  \pagenumbering{arabic}
+
+  % Header and footer styles
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage ~ af \pageref{litte}}
+\lhead{2. Semesterprojekt - Gruppe 11}
+  \setcounter{page}{9}
+  \subfile{krop/indledning}
+  \subfile{krop/metoder_planer}
+  %\subfile{krop/organisation}
+  \subfile{krop/elaboration}
+
+  % Epilog
+  \subfile{epilog/diskussion}
+  \subfile{epilog/evaluering}
+  \subfile{epilog/konklusion}
+  \subfile{epilog/referenceliste}
+
+  % Bilag
+
+ % Header and footer styles
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\lhead{2. Semesterprojekt - Gruppe 11}
+  \begin{alphasection}
+
+  \subfile{bilag/code}
+  \subfile{other/projektforslag}
+  \subfile{other/inceptionsdokument}
+  \subfile{other/projektlog}
+
+  \section{Interne materialer}
+
+  \subfile{bilag/backlog}
+  \subfile{bilag/sprints}
+  \subsection{Udvidet brugsmønstre}
+  \subfile{bilag/registrer_henvendelse}
+  \subfile{bilag/registrer_tilbud_ydelser_paragraf}
+  \subfile{bilag/registrer_info_rettigheder_og_pligter}
+  \subfile{bilag/registrer_basis_oplysninger}
+  \subfile{bilag/registrer_forhold}
+  \subfile{bilag/registrer_videre}
+  \subfile{bilag/json}
+  \subfile{bilag/sql}
+  \subfile{bilag/github-board}
+  \subfile{bilag/designmodel}
+
+  \end{alphasection}
+
 \end{document}

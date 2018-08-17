@@ -1,0 +1,100 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+\subsubsection{Persistens}
+Vores persistens-lag, i systemet implementeret  som \code{Data}, har ansvaret for at skrive til og læse fra databasen. Databasen og dennes implementering er beskrevet i detaljer i afsnittet "Database Design". 
+
+Persistens-laget indeholder primært data-versionerne af domæne-lagets klasser. Disse ligger alle i pakken \code{data.model}. Disse klasser implementerer de tilsvarende interfaces, ligesom det ses i domæne-laget. 
+
+Hver af data-klasserne der repræsenterer en domæne-klasse har metoderne \code{save()} og \code{find()} implementeret.\code{save()} står for at gemme en instans af klassen til databasen, og den statiske \code{find()}, der tager et \code{id} som parameter, finder et resultatsæt med et matchende ID i databasen. Herefter oprettes en instans af data-klassen ud fra det hentede resultatsæt, via \code{set()} metoder. Denne instans returneres.
+\code{find()} er implementeret som en statisk metode, for at den kan benyttes uden instantiering. Dette skyldes at metoden skal kunne benyttes til instantiering, og derfor ikke er brugbar hvis den er bundet op på en klasseinstans. Nogle steder er \code{find()} erstattet af \code{where()}. \code{where()} tager i stedet et key-value pair, som den i stedet benytter til at søge efter en bestemt variabel sat til en bestemt værdi. Den fungerer derfor i modsætning til \code{find()}, der kun tager et id. 
+
+Nedenstående vil der blive givet eksempler på implementeringen af \code{save()} og \code{find()} metoderne fra klassen \code{DataAddress}. 
+
+\begin{lstlisting}[caption=DataAddress.find(),captionpos=b, label=DataAddress.find()]
+public static DataAddress find(ind id) { 
+	DataAddress da = new DataAddress(null, null, null, null, null);
+    Database.getInstance().query(
+      	"SELECT id, primary_line, secondary_line, zip_code, city, country "
+        + "FROM addresses "
+        + "WHERE id = " + id,
+        rs -> {
+            da.setId(rs.getInt(1));
+            da.setPrimaryLine(rs.getString(2));
+            da.setSecondaryLine(rs.getString(3));
+            da.setZip(rs.getString(4));
+            da.setCity(rs.getString(5));
+            da.setCountry(rs.getString(6));
+         }
+     );
+    return da;
+}
+
+\end{lstlisting}
+
+I metoden oprettes først en instans af klassen, hvor alle værdier sættes til \code{null}. Disse værdier sættes senere i metoden. \\
+Metoden kalder herefter metoden \code{query(String query, Handler handler)} på singleton instansen af Database-klassen, der tager et SQL query som argument, og et handler-objekt. Query'et gives som en String, og skrives som PostgreSQL-kode, indeholdende de værdier der ønskes læst fra databasen. 
+Disse værdier hentes sættes på instansen af klassen, ved at kalde den relevante \code{get()} metode på resultat-sættet. Til slut returneres det nu udfyldte objekt. 
+
+\begin{lstlisting}[caption=DataAddress.save(),captionpos=b, label=DataAddress.save()]
+public void save() {
+    String query = null;
+
+    if (getId() == 0) {
+      query = "INSERT INTO addresses (primary_line, secondary_line, zip_code, city, country) "
+              + "VALUES(" + primaryLine + "," + secondaryLine + "," + zip + "," + city + "," + country + ") "
+              + "RETURNING id";
+    } else {
+      query = "UPDATE addresses "
+              + "SET primary_line = " + getPrimaryLine() + ", secondary_line = "
+              + getZip() + ", city=" + getCity() + ", country=" + getCountry() + " "
+              + "WHERE id = " + id;
+    }
+
+    Database.getInstance().query(query, rs -> {
+      if (id == 0) {
+        id = rs.getInt(1);
+      }
+    });
+}
+
+\end{lstlisting}
+
+I metoden tjekkes der først om det givne Id er lig med 0. Dette tjek bruges til at undersøge om det er en ny tilføjelse, eller en opdatering af et datasæt der allerede ligger i basen. Dette tjek kan udføres således, da klasserne i deres constructor gives et id der sættes til 0. Når de gives til databasen, sørger den via sin implementering for at sætte det til det korrekte id i basen. Derfor vil metoden også vælge at opdatere, såfremt den får et id der ikke er 0, da vi ved at dette id vil være kommet fra databasen. \\
+Alt efter hvorvidt konditionen evalueres til \code{true} eller \code{false}, eksekveres enten en forespørgsel til at indsætte eller opdatere. Hvis der indsættes et nyt datasæt, returneres det nye id gennem et resultatsæt, og til sidst i metoden sættes det som id på den instans af klassen der arbejdes med.
+
+Udover \code{data.model}-klasserne, er der i data-laget også implementeret en controller klasse til Databasen. Denne er ligesom systemets andre cotroller-klasser implementeret som en singleton, og står for kommunikation med postgreSQL databasen. \code{Database} indeholder blandt andet metoderne\code{connect()} og \code{query()} til dette formål. Implementeringen af \code{query(String query, Handler handler)} kan ses nedenfor.
+
+
+\begin{lstlisting}[caption=Database.query(),captionpos=b, label=Database.query()]
+public void query(String query, Handler handler) {
+    ResultSet resultSet = null;
+    try (Statement statement = this.connection.createStatement()) {
+
+      if (query.toUpperCase().startsWith("UPDATE")) {
+        statement.execute(query);
+      } else {
+        resultSet = statement.executeQuery(query);
+        while (resultSet.next()) {
+          handler.execute(resultSet);
+        }
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      if (resultSet != null) {
+        try {
+          resultSet.close();
+        } catch (SQLException ex) {
+          Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      }
+    }
+  }
+
+\end{lstlisting}
+
+Som det kan ses, tager \code{query()} to parametre: Et query der skal sendes til databasen, og en instans af \code{Handler}. \code{Handler} er et Functional Interface, defineret i klassen Database, kun indeholdende metoden \code{excecute()}, der tager et ResultSet fra databasen som parameter.
+%WIP, not done, har ingen idé om hvad query gør
+
+\end{document}

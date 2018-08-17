@@ -1,0 +1,31 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Metode}
+I metode uddybes de metoder der er benyttet i projektet. Dette gøres ved at beskrive Unified Process og Scrum, samt beskrive hvordan de er kombineret i projektet.
+
+\subsubsection{Unified Process}
+Unified Process (UP) er en iterativ og inkrementel softwareudviklingsproces. UP bygger på konceptet, at det er mere overskueligt at løse mange små problemer, end at skulle løse ét enkelt stort problem. UP opdeles i fire faser: inception, elaboration, construction og transition. I projektet er der blevet arbejdet med inceptionsfasen og elaborationsfasen.  
+
+I inceptionsfasen blev projektet overvejet, og der blev dannet et overblik over hvilke krav der skulle stilles til systemet og projektet.
+I elaborationsfasen blev der udviklet centrale komponenter af systemet, opnået en større forståelse for kravene til systemet og opbygning af systemets arkitektur. Målet for elaborationsfasen var at få lavet et færdigt produkt der i sig selv overholder arkitekturen, men som stadig kan videreudvikles i de kommende faser. Det er en af de mest kritiske faser i UP, da de resterende faser i projektet afhænger af denne fases resultat.
+
+\subsubsection{Scrum}
+Scrum er et agilt proces til komplekse systemer, der er bygget op omkring ”sprints”. Sprints er korte udviklingscyklusser, hvor der udvikles et potentielt ”færdigt” system, klar til at blive udgivet. Tidsplanen for Sprints er fastsat, og må ikke ændres. I Scrum arbejdes der i et Scrum Team. Det består af udviklingsholdet, som står for selve arbejdet på hvert increment, en Scrum Master, der sørger for at reglerne i Scrum processen overholdes, og en Product Owner, som er en direkte kontakt til kunden, der ved hvad produktet skal indeholde og hvilken retning det skal føres i.
+Udover selve sprinten findes der i Scrum fire hovedevents; Sprint planning, Daily Scrum, Sprint review og Sprint retrospective. Disse beskrives i afsnit \ref{Ceremonier}, under Ceremonier.
+Sprints i Scrum ligger ryg mod ryg, så når ét sprint afsluttes, starter det næste så hurtigt som muligt.
+
+\subsubsection{Unified Process og Scrum kombineret}
+Vi vil i elaborationsfasen benytte os af en kombination af UP og Unified Process. Det sker ved at bruge de artefakter fra Scrum, som teamet har vurderet passer til elaborationsfasen og teamets behov. Det overordnede projekt har fulgt faserne fra Unified Process. Dette betyder at vi fra elaborationsfasens start allerede har et grundlag i form af et inceptionsdokument og overvejelser fra tidligere faser i projeket.
+Som supplement til dette vil vi benytte Scrumbuts. Scrumbuts er modifikationer af Scrum, hvor man undlader visse fremgangsmåder fra Scrum, som vurderes unødvendige i et givent projekt.   
+
+Teamets udgave af Scrumbuts er detaljeret beskrevet i afsnit \ref{Scrum-buts}, under Scrumbuts.
+
+\paragraph{Fordele}\mbox{}\\
+Fordelen ved at kombinere UP og Scrum er, at man har et planlægningsværktøj til både den overordnede udvikling af projektet, og til den konkrete daglige udvikling og implementering. UP giver et klart overblik over projektets handleplan og præcis dokumentation. Scrum er med til strukturere det daglige arbejde, og derved sikre at man når i mål.    
+
+\paragraph{Ulemper}\mbox{}\\
+Unified Process er en dokumentations og analyse orienteret arbejdsprocess. Dette kan medføre, at systemer bliver beskrevet på et for højt abstraktionsniveau, samt at de  bliver overanalyserede. Derved kan impleteringen blive unødig kompleks. Hvis modellerne ikke holdes opdateret undervejs kan der hurtigt opstå problemer i forhold til, at det implementerede kode ikke stemmer overens med diagrammerne. En dokumentations dreven process kan derfor være skyld i, at der bliver skrevet unødig dokumentation, som vil gøre det svært at få overblik over de væsentlige detaljer i et systemet, i forhold til en mere iterativ proces, hvor der er fokus på implementeringen frem for en detaljeret dokumentation.
+
+\end{document}

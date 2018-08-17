@@ -1,0 +1,164 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Projektforløb}
+Her beskrives det faktiske projektforløb. Dette gøres ved at inddrage Scrum artefakter, som sprint retrospektiv, sprint goals, burndown chart og sprint backlog.
+Der er valgt at præsentere to sprints fra henholdsvis uge 17 - 18 og uge 18 - 19. Grunden til disse er valgt, er at det ene sprint gik efter planen, og det andet indeholdte flere udfodringer. De er derfor interessante at analysere på. 
+
+\subsubsection{Sprint uge 17 - 18}
+\paragraph{Goal}\mbox{}\\
+Mål for dette sprint var at udføre brugsmønsterrealisering over alle emner i sagsåbning, og implementere koden ud fra resultatet af designmodellen. Ved sprintens afslutning, skulle sagsåbnings-pakken være klar.
+
+\paragraph{Retrospektiv}\mbox{}\\
+I dette sprint blev tidsplanen for sprintet overholdt da alle opgavers estimater var tæt på den reelt brugte tid. Teamet var gode til at arbejde sammen og reviewe hinandens kode igennem GitHub. Teamet var også gode til at reviewe implementeret kode sammen for at sikre, at alle i teamet havde overblik. Dette medførte yderligere at kode kvaliteten blev holdt høj. Uddelegering af opgaver mellem teammedlemmer var velbalanceret, så der var en god arbejdsfordeling. \\
+Teamet ønskede efterfølgende at få mere ud af vejledermøderne, ved at forberede sig mere, og være mere aktive under møderne. Der kunne for eksempel sættes mere dedikeret tid af til at planlægge spørgsmål til vejlederen. Dokumentation under udvikling havde plads til forbedringer. Der blev her vedtaget at holde en hårdere linje i forhold til hvornår et brugsmønster blev vurderet færdigt, således at det først markeres som afsluttet, når dokumentationen også var godkendt.       
+Overordnet er dette sprint gået godt, da vi fik brugt vores erfaring fra tidligere til at planlægge vores sprint bedre. Dog kan planlægningen af vores tid stadig forbedres, hvilket vi vil forsøge i næste sprint.
+
+
+\begin{center}
+\begin{figure}[H]
+\footnotesize
+\centering
+\begin{tikzpicture}[xscale=1.5]
+\begin{axis}[
+    title={Burndown chart uge 17 - 18},
+    xlabel={Dage},
+    ylabel={Timer},
+    xtick={0, 1, 2, 3, 4, 5, 6},
+    xticklabels={$24/04$, $25/04$, $27/04$, $01/05$, $02/05$, $04/05$, $05/05$},
+]
+ 
+\addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+    (0,114)(1,91)(2,79)(3,67)(4,33)(5,13)(6,0)
+    };
+    \addlegendentry{Forløb}
+    %\legend{CuSO$_4\cdot$5H$_2$O}
+    \addplot[mark=none] table[row sep=\\,
+    y={create col/linear regression={y=Y}}] % compute a linear regression from the
+    %input table
+    {
+        X Y\\
+        0 114\\
+        1 91\\
+        2 79\\
+        3 67\\
+        4 33\\
+        5 13\\
+        6 0\\
+    }; 
+    \addlegendentry{Tendenslinje}
+\end{axis}
+\end{tikzpicture}
+    \caption{Burn down chart uge 17 - 18}
+    \label{fig:burn_down_17_18}
+\end{figure}
+\end{center}
+
+
+\begin{center}
+\begin{table}[H]
+\resizebox{\textwidth}{!}{%
+    \begin{tabular}{| l | c | c | c | c | c | c | c |} 
+    \hline
+    Opgaver								  							 & 24/04 & 25/04 & 27/04 & 01/05 & 02/05 & 04/05 & 05/05\\ \hline
+    Fastlæg struktur for scrum burndown								 & 6   &    &    &  &  &  &\\ \hline
+    Persistenslag							 	 					 & 16  & 5  & 6  &  &  & &\\ \hline
+    Implementering af simpel Login									 & 12  & 8  & 2  &  &  & &\\ \hline
+    Test data i data-lag 							                 & 2   & 2  & 2  &  &  & &\\ \hline
+    Sagsåbning GUI Mockup										     & 4   & 2  &    &  &  & &\\ \hline
+    Registrere henvendelse    										 & 10  & 10 & 5  & 3  & 1 & &\\ \hline
+    Registrere tilbud, ydelse og paragraf   						 & 14  & 14 & 14 & 14 & 4 & 2 &\\ \hline
+    Registrere at borgeren er informeret om rettigheder og pligter.  & 8   & 8  & 8  & 8  & 1 & 2 & \\ \hline
+    Registrere basisoplysninger vedr. borger  						 & 12  & 12 & 12 & 12 & 3 & 2 &\\ \hline
+    Registrere eventuelle særlige forhold    						 & 8   & 8  & 8  & 8  & 2 & 1 &\\ \hline
+    Fastlægge det videre forløb 									 & 10  & 10 & 10 & 10 & 10 & 3 &\\ \hline
+    Review af sagsåbning										 	 & 12  & 12 & 12 & 12 & 12 & 6 &\\ \hline
+    Total                                 							 & 114 & 91 & 79 & 67 & 33 & 16 & 0\\ \hline
+    \end{tabular}}
+            \caption{Sprint backlog uge 17 - 18}
+    \label{tab:sprint_backlog_17_18}
+\end{table}
+\end{center}
+
+\subsubsection{Sprint uge 19 - 20}
+\paragraph{Goal}\mbox{}\\
+Teamets mål er at forbinde alle brugsmønstre til den relationelle database, samt validatere alle data i domain laget før det bliver skrevet til databasen. Diagrammer og dokumentation opdateres løbende så det passer til den endelige implementering af brugsmønstrerne.
+
+\paragraph{Retrospektiv}\mbox{}\\
+I dette sprint nåede teamet ikke alle opgaver. En af årsagerne var, at sprintet allerede var planlagt før vores sprint review. Dette medførte, at der var ændringer i forhold til det arbejde vi havde færdiggjort i forrige sprint, som akut skulle laves om inden vi kunne påbegynde opgaver i dette sprint. Derudover skyldes det også, at opgavemængden var for høj, i forhold til hvad teamet realistisk kunne nå i et enkelt sprint. Et andet problem var, at analysen af de foreliggende opgaver, ikke var udført godt nok, hvilket medførte at nogle opgaver viste sig mere omfattende, og at helt nye opgaver, som ikke var dokumenteret  sprintets backlog, opstod. 
+Selve samarbejdet i teamet har forbedret sig forhold til review og udarbejdelsen af kode. Værdien af vejledningsmøde er blevet forøget, da teamet har haft mere fokus på at forberede sig til møderne, og derved fået mere klarhed over visse emner.
+Overordnet har teamet løbet ind i nogle i uventede problemer, på grund af utilstrækkelig analyse af opgaver i sprint backloggen. Dette har medført, at alle opgaver ikke er blevet færdiggjort, og disse er derfor blevet flyttet til det næste sprint. Teamet er dog tilfredse med selve arbejdsindsatsen, og vil have fokus på at analysere de foreliggende opgave i den kommende sprint.       
+
+
+\begin{center}
+\begin{figure}[H]
+\footnotesize
+\centering
+\begin{tikzpicture}[xscale=1.5]
+\begin{axis}[
+    title={Burndown chart uge 19 - 20},
+    xlabel={Dage},
+    ylabel={Timer},
+    xtick={0, 1, 2, 3, 4, 5, 6},
+    xticklabels={$07/05$, $11/05$, $14/05$, $16/05$, $18/05$},
+]
+
+\addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+    (0,120)(1,117)(2,106)(3,94)(4,22)
+    };
+    \addlegendentry{Forløb}
+    %\legend{CuSO$_4\cdot$5H$_2$O}
+    \addplot[mark=none] table[row sep=\\,
+    y={create col/linear regression={y=Y}}] % compute a linear regression from the
+    %input table
+    {
+        X Y\\
+        0 120\\
+        1 117\\
+        2 106\\
+        3 94\\
+        4 22\\
+    }; 
+    \addlegendentry{Tendenslinje}
+ 
+\end{axis}
+\end{tikzpicture}
+    \caption{Burn down chart uge 19 - 20}
+    \label{fig:burn_down_19_20}
+\end{figure}
+\end{center}
+
+
+\begin{center}
+\begin{table}[H]
+\resizebox{\textwidth}{!}{%
+    \begin{tabular}{| l | c | c | c | c | c | c | c |} 
+    \hline
+    Opgaver								  							 & 07/05 & 11/05 & 15/05 & 16/05 & 18/05\\ \hline
+    Database integration									         & 8  & 8  & 8 & 4 & \\ \hline
+    Database schema									                 & 12 & 12 & 2 &   & \\ \hline
+    Overview side med liste af cases								 & 4  & 1  &   &   & \\ \hline
+    GDPR research													 & 10 & 10 & 10 & 8 & 2 \\ \hline
+    Forbind Registrere henvendelse med DB    				         & 14 & 14 & 14 & 10 & \\ \hline
+    Forbind Registrere tilbud, ydelse og paragraf med DB  			 & 14 & 14 & 14 & 14 &  \\ \hline
+    Forbind Registrere at borgeren er informeret om rettigheder og pligter med DB   & 14 & 14 & 14& 14& 4  \\ \hline
+    Forbind Registrere basisoplysninger vedr. borger  med DB  		 & 10 & 10 & 10 & 10 & 4 \\ \hline
+    Forbind Registrere eventuelle særlige forhold  med DB     		 & 10 & 10 & 10 & 10 & 2 \\ \hline
+    Forbind Fastlægge det videre forløb   med DB 					 & 10 & 10 & 10 & 10 & 2 \\ \hline
+    Forbind login med DB										     & 14 & 14 & 14 & 14 & 8 \\ \hline
+    Total                                 							 & 120 & 117 & 106& 94 & 22 \\ \hline
+    \end{tabular}}
+    \caption{Sprint backlog uge 19 - 20}
+    \label{tab:sprint_backlog_19_20}
+\end{table}
+\end{center}
+\end{document}

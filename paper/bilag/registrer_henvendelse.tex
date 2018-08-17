@@ -1,0 +1,61 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\tocless\subsubsection{Registrer Henvendelse (udvider DB-0000 Sagsåbning)}
+  
+\begin{table}[H]
+\centering
+\resizebox{0.9 \textwidth}{!}{%
+\begin{tabular}{| p{1\textwidth}|} \hline
+Brugsmønster: RegistrerHenvendelse (udvider DB-0000 Sagsåbning)   \\ \hline
+
+ID: DB-0001 \\ \hline
+
+\textbf{Kort beskrivelse:} \\
+Sagsbehandleren registrerer hvor henvendelsen kommer fra og hvad den drejer sig om. Og åbner sagen så dette er gjort.      \\ \hline
+
+\textbf{Primære aktører:} \\
+Sagsbehandler \\ \hline
+
+\textbf{Sekundære  aktører:} \\
+  \\ \hline
+
+\textbf{Prækondition:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Henvendelse fra borger, pårørende eller myndighed
+    \item[-] Sagsbehandleren har startet registrering af en ny henvendelse. \\
+    \end{itemize}
+  \end{minipage} \\ \hline
+
+\textbf{Hovedhændelsesforløb:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{enumerate}
+    \item Brugsmønsteret starter når sagsbehandleren indtaster i systemet hvad henvendelsen drejer sig om.
+    \item Sagsbehandleren registrerer hvor henvendelsen kommer fra.
+    \item Sagsbehandleren sikrer at borgeren er indforstået med henvendelsen.
+    \item Sagsbehandleren gemmer ændringerne. \\
+    \end{enumerate}
+  \end{minipage} \\ \hline
+
+\textbf{Postkondition:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Der er åbnet en sag. \\
+    \end{itemize}
+  \end{minipage} \\ \hline
+
+\textbf{Alternative hændelsesforløb:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Borgeren er ikke indforstået med henvendelsen.  \\
+    \end{itemize}
+  \end{minipage} \\ \hline
+ 
+\end{tabular}}
+\caption{RegistrerHenvendelse}
+\label{db:001}
+\end{table}      
+
+\end{document}

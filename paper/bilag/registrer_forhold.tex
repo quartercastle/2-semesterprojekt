@@ -1,0 +1,60 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\tocless\subsubsection{Registrer Særlige forhold (udvider DB-0000 Sagsåbning) }
+
+\begin{table}[H]
+\centering
+\resizebox{0.9 \textwidth}{!}{%
+\begin{tabular}{| p{1\textwidth} |} \hline
+Brugsmønster: RegistrerSærligeForhold (udvider DB-0000 Sagsåbning)   \\ \hline
+
+ID: DB-0005 \\ \hline
+
+\textbf{Kort beskrivelse:} \\
+Sagsbehandleren har mulighed for at notere særlige forhold ved den givne sag, hvis dette er nødvendigt.       \\ \hline
+
+\textbf{Primære aktører:} \\
+Sagsbehandler \\ \hline
+
+\textbf{Sekundære  aktører:} \\
+  \\ \hline
+
+\textbf{Prækondition:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Der er registreret en henvendelse 
+    \end{itemize}
+  \end{minipage} \\ \hline
+
+\textbf{Hovedhændelsesforløb:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{enumerate}
+    \item Brugsmønstret starter hvis sagsbehandleren trykker på “Registrer særlige forhold”
+    \item Sagsbehandleren noterer de særlige forhold i en tekstboks, skrevet i fri form
+    \item Sagsbehandleren vælger trykker på “Gem”, når særlige forhold vurderes tilstrækkeligt beskrevet
+    \item De særlige forhold gemmes som en del af henvendelsen \\
+    \end{enumerate}
+  \end{minipage} \\ \hline
+
+\textbf{Postkondition:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Der er gemt særlige forhold som en del af henvendelsen om voksenudredning \\
+    \end{itemize}
+  \end{minipage} \\ \hline
+
+\textbf{Alternative hændelsesforløb:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] 
+    \end{itemize}
+  \end{minipage} \\ \hline
+ 
+\end{tabular}}
+\caption{RegistrerSærligeForhold}
+\label{db:005}
+\end{table}
+
+\end{document}

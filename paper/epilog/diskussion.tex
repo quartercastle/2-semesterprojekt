@@ -1,0 +1,18 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\section{Diskussion}
+Der vil i dette afsnit blive diskuteret positive og negative elementer ved udvalgte dele af projektet.
+\paragraph{Lagdeling}\mbox{} \\
+Teamet valgte at bruge Acquaintance i projektet, hvilket skaber en lav kobling mellem de forskellige subsystemer i systemet. Men det indebærer også den del ulemper, i form af dobbeltarbejde. Dette skyldes at subsystemerne ikke kender til hinandens implementering, kun til interfacene. Så i vores projekt, for at kunne loade for eksempel en \code{Case} fra databasen, er vi nødt til at lave en instans af \code{ICase} i datalaget. Men dette er ikke tilladt, da man ikke kan lave en instans af et interface. Så derfor er der en \code{DataCase} i datalaget, som kan instantieres og sendes op til domainlaget.
+Her opstår endnu et problem ved denne løsning. Alle de metoder der ligger på klasserne i domænelaget kan ikke tilgås fra en datalags klasse. Så for at kunne lave domæne logik med den loadede instans, skal dataudgaven af klassen laves om til en domæneudgave. For at gøre dette, er man nødt til at mappe dataklassen til domæneklassen. Dette skaber en del kompleksitet, da man er nød til at lave en ny instans og kopiere alle attributterne fra den ene klasse til den anden. Da der også skal kunne gemmes data i en database, skal der laves querys. Dette foregår i datalaget og ligger på dataklasserne. Så her er det samme problem som før, bare omvendt; metoderne på klasserne i datalaget kan ikke tilgås. Så der skal også mappes hver gang noget skal gemmes. Hvilket er med til at skabe endnu mere kompleksitet. Men hvorfor så vælge denne løsning? Løsningen er valgt på grund af den lave kobling der skabes, hvilket allerede er blevet brugt under udvikling, da data laget skulle udskiftes. Her var det nemt at gå fra JSON til PostgreSQL. 
+Teamet havde også overvejet en anden løsning, nemlig dependency inversion, som kort fortalt går ud på at afhængigheden fra højtstående komponent går til et laverestående komponent \cite{dependency}. Med denne løsning vil det ikke være nødvendigt at mappe, da datalaget kender til domænelaget, og derfor kan lave instanser af dem. Men teamet gik med Acquaintance løsningen på grund af den lave kobling. Det kan dog overvejes om det gavner dette projekt at have en så skarp lagdeling, eller det ville være bedre med en løsere lagdeling. 
+
+\paragraph{Brugsmønsterrealisering}\mbox{} \\
+Teamet var for hurtige til at gå i gang med at skrive kode. Dette gjorde at alt analyse- og designarbejde ikke var helt klart, især i forhold til brugsmønsterrealiseringen. Dette gik op for teamet i forbindelse med projektseminaret der blev holdt i slutningen af 1. iteration, i forbindelse med planlægningen af 2. iteration. Dette medførte at teamet stoppede implementeringen, og gik tilbage til analyse og design. Og som det ses på burndown chartet på figur \ref{tab:sprint_backlog_19_20}, gik sprint planlægningen lidt i vasken på grund af dette, da dette analyse og design arbejde ikke var planlagt.   
+
+\paragraph{Brugsmønstre}\mbox{} \\
+Teamet havde i et forsøg på at opdele sagsåbningen i mindre og mere overskuelige dele opdelt sagsåbningen i flere små detaljerede brugsmønstre. Dette gjorde, at det var nemt at uddelegere arbejde, men samtidig var ingen af brugsmønsterene fyldestgørende. Der blev derfor lavet et samlet detaljeret brugsmønster for hele sagsåbningen. Dette skyldes, at et godt brugsmønster skal fuldføre en opgave, altså når man er færdig med at implementer et brugsmønster, skal der være en færdig funktionalitet.
+
+\end{document}
+

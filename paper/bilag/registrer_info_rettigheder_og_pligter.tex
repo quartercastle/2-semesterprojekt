@@ -1,0 +1,64 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\tocless\subsubsection{Registrer at borger er  infomeret om rettigheder og pligter (udvider DB-0000 Sagsåbning)}
+
+\begin{table}[H]
+\centering
+\resizebox{0.9 \textwidth}{!}{%
+\begin{tabular}{| p{1\textwidth} |} \hline
+Brugsmønster: RegistrerRettighederPligter (udvider DB-0000 Sagsåbning)   \\ \hline
+
+ID: DB-0003 \\ \hline
+
+\textbf{Kort beskrivelse:} \\
+Sagsbehandler registrerre om borgeren er blevet informeret om rettigheder og pligter.       \\ \hline
+
+\textbf{Primære aktører:} \\
+Sagsbehandler \\ \hline
+
+\textbf{Sekundære  aktører:} \\
+Borgeren  \\ \hline
+
+\textbf{Prækondition:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Der blevet registreret en henvendelse fra borgen
+    \item[-] Der er blevet registreret tilbud, ydelse og paragraf for henvendelsen \\
+    \end{itemize}
+  \end{minipage} \\ \hline
+
+\textbf{Hovedhændelsesforløb:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{enumerate}
+    \item Sagsbehandler kontakter borgeren for at blive informeret om borgeren er blevet informeret om rettigheder og pligter.
+    \item Borgen bekræfter eller afkræfter om han/hun er blevet informeret.
+    \item Hvis borgeren ikke bekræfter.
+    \begin{enumerate}[label=\Alph*]
+    	\item Sagsbehandler informerer borgeren om rettigheder og pligter.
+    \end{enumerate} 
+    \item[-] Sagsbehandler registrerer at borgeren er informeret om rettigheder og pligter. \\
+    \end{enumerate}
+  \end{minipage} \\ \hline
+
+\textbf{Postkondition:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Borgeren er informeret om rettigheder og pligter \\
+    \end{itemize}
+  \end{minipage} \\ \hline
+
+\textbf{Alternative hændelsesforløb:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Sagsbehandler informere borgeren om rettigheder og pligter \\
+    \end{itemize}
+  \end{minipage} \\ \hline
+ 
+\end{tabular}}
+\caption{RegistrerRettighederPligter}
+\label{db:003}
+\end{table}
+
+\end{document}

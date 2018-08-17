@@ -1,0 +1,29 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Implementering}
+I dette afsnit bliver systemets implementering beskrevet. Der vil blive gået i dybden med selve koden, samt hvilke overvejelser der er gjort i forhold til hvordan det endelige systems arkitektur og funktionalitet er implementeret.
+
+\subsubsection{Arkitektur}
+Systemets arkitektur er implementeret efter acquaintance-pricippet. Dette er beskrevet og uddybet yderligere i afsnit \ref{arkitektur}. 
+
+Ved brug af acquaintance, fjernes alle afhængigheder på tværs af lagene, udover under runtime. Dette gøres ved kommunikation gennem interfaces. Derfor har systemet også et inetface til alle klasser, der kunne tænkes at skulle kommunikere på tværs af lagene. Disse interfaces implementeres så i de relevante klasser. Interfacene indeholder de metoder der er nødvendige for kommunikation gennem lagene, således at alle klasser der implementerer disse, indeholder de nødvendige metoder. 
+
+Lagene forbindes af glue-code, der samler det hele i den samme starter-klasse, i systemet kaldet \code{Bootstrap}. Her injectes singleton instanser af de forskellige lags controller-klasser i hinanden, så det under runtime er muligt for lagene at sende data frem og tilbage. 
+
+\begin{lstlisting}[caption=Bootstrap,captionpos=b, label=bootstrap_1]
+public class Bootstrap {
+  public static void main(String [] args) {
+    IData data = DataFacade.getInstance();
+    IDomain domain = DomainFacade.getInstance();
+    domain.inject(data);
+    GUI.initialize(args, domain);
+  }
+}
+
+\end{lstlisting}
+
+Som det kan ses i ovenstående model, instantieres instanserne af de forskellige lag polymorfisk som instanser af de interfaces de implementerer, og sættes lig med singleton instanserne af lagene. Her injectes data-laget til domæne-laget, og domæne-laget tages som parameter i GUI-lagets initialize-metode, der starter programmet.
+
+\end{document}

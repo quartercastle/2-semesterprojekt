@@ -1,0 +1,71 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\tocless\subsubsection{Registrer Basis Oplysninger (udvider DB-0000 Sagsåbning) }
+
+\begin{table}[H]
+\centering
+\resizebox{0.9 \textwidth}{!}{%
+\begin{tabular}{| p{1\textwidth} |} \hline
+Brugsmønster: RegistrerBasisOplysninger (udvider DB-0000 Sagsåbning)   \\ \hline
+
+ID: DB-0004 \\ \hline
+
+\textbf{Kort beskrivelse:} \\
+Sagsbehandler skal  registrere basisoplysninger omkring borgeren. Dette kan fx være værgemål og partsrepræsentation, indhentelse af samtykke, indhentelse af oplysninger, betalingskommune og handlekommune mv.       \\ \hline
+
+\textbf{Primære aktører:} \\
+Sagsbehandler \\ \hline
+
+\textbf{Sekundære  aktører:} \\
+Ingen  \\ \hline
+
+\textbf{Prækondition:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Sagsbehandler skal have registreret borger
+    \item[-] Borgeren er blevet informeret om rettigheder og pligter
+    \end{itemize}
+  \end{minipage} \\ \hline
+
+\textbf{Hovedhændelsesforløb:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{enumerate}
+    \item Sagsbehandler spørger borger om borger har værgemål
+    \item Borgen bekræfter eller afkræfter om han/hun er blevet informeret.
+    \item Hvis borgeren ikke bekræfter.
+    \begin{enumerate}[label=\Alph*]
+    	\item Registreres værgemål \\
+    \end{enumerate} 
+    \item Sagsbehandler spørger borger om borger har en partsrepræsentation
+    \item Hvis borger har et partsrepræsentation
+    \begin{enumerate}[label=\Alph*]
+    	\item Registreres partsrepræsentation \\
+    \end{enumerate} 
+    \item Sagsbehandler indhenter borgers samtykke
+    \item Sagsbehandler indhenter oplysninger.
+    \item Sagsbehandler indtaster borgers betalingskommune og handlekommune. \\
+    \end{enumerate}
+  \end{minipage} \\ \hline
+
+\textbf{Postkondition:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Borgers basisoplysninger er indhentet og gemt. \\
+    \end{itemize}
+  \end{minipage} \\ \hline
+
+\textbf{Alternative hændelsesforløb:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Hvis borgeren afviser at give basisoplysninger noteres, hvorfor sagen ikke kan fuldføres. \\
+    \end{itemize}
+  \end{minipage} \\ \hline
+ 
+\end{tabular}}
+\caption{RegistrerBasisOplysninger}
+\label{db:004}
+\end{table}
+
+\end{document}

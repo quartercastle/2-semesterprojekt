@@ -1,0 +1,61 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\tocless\subsubsection{Registrer Videre forløb (udvider DB-0000 Sagsåbning)}
+
+\begin{table}[H]
+\centering
+\resizebox{0.9 \textwidth}{!}{%
+\begin{tabular}{| p{1\textwidth} |} \hline
+Brugsmønster: VidereForløb (udvider DB-0000 Sagsåbning)   \\ \hline
+
+ID: DB-0006 \\ \hline
+
+\textbf{Kort beskrivelse:} \\
+Sagsbehandler noterer hvilke aftaler der er indgået med borgeren om det videre forløb.       \\ \hline
+
+\textbf{Primære aktører:} \\
+Sagsbehandler \\ \hline
+
+\textbf{Sekundære  aktører:} \\
+Borger og Pårørende  \\ \hline
+
+\textbf{Prækondition:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Sagen er blevet registreret, samt basis oplysninger er blevet indhentet og evt, særlige forhold er blevet noteret. Når disse oplysninger er indtastet oprettes sagen endeligt og gemmes. \\
+    \end{itemize}
+  \end{minipage} \\ \hline
+
+\textbf{Hovedhændelsesforløb:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{enumerate}
+    \item Brugsmønsteret starter når sagsbehandler noterer hvilke aftaler der er indgået med borgeren om det videre forløb.
+    \item Sagsbehandleren trykker gem, og sagen gemmes i persistent. \\
+    \end{enumerate}
+  \end{minipage} \\ \hline
+
+\textbf{Postkondition:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-] Aftaler omkring det videre forløb er blevet noteret på sagen.
+    \item[-] Sagen er gemt permanent. \\
+    \end{itemize}
+  \end{minipage} \\ \hline
+
+\textbf{Alternative hændelsesforløb:} \\
+  \begin{minipage}[t]{\textwidth}
+    \begin{itemize}
+    \item[-]
+    \end{itemize}
+  \end{minipage} \\ \hline
+ 
+\end{tabular}}
+\caption{VidereForløb}
+\label{db:006}
+\end{table}
+
+\pagebreak{}
+
+\end{document}

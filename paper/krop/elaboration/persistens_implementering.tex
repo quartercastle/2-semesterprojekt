@@ -1,0 +1,68 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+\subsubsection{Persistens}
+Persistenslaget, i systemet implementeret som \code{data}, har ansvaret for at skrive til og læse fra databasen. Databasen og dennes implementering er beskrevet i detaljer i afsnittet \ref{database-design}, "Database Design". 
+
+Persistens-laget indeholder primært data-versionerne af domæne-lagets klasser. Disse ligger alle i pakken \code{data.model}. Disse klasser implementerer de samme interfaces, som deres modpart i \code{domain.elucidation}.
+
+Hver af data-klasserne, der repræsenterer en domæne-klasse, har metoderne \code{save()} og \code{find()} implementeret.\code{save()} står for enten at gemme en instans af klassen til databasen, eller opdatere en allerede gemt instans, og den statiske \code{find()}, der tager et \code{id} som parameter, finder et resultatsæt med et matchende ID i databasen. Herefter oprettes en instans af data-klassen ud fra det hentede resultatsæt, via setter metoder. Derefter returneres den instantierede data-klasse.
+\code{find()} er implementeret som en statisk metode, for at den kan benyttes uden instantiering. Dette skyldes at metoden skal kunne benyttes til instantiering, og derfor ikke er brugbar hvis den er bundet op på en klasseinstans. Enkelte steder er \code{find()} overloaded af \code{where()}, der i stedet for at søge efter et id, søger efter en bestemt kolonne i databasen.
+
+Nedenstående vil der blive vist eksempler på SQL-koden der benyttes til kommunikation med databasen, baseret på \code{save()} og \code{find()} fra \code{DataAddress}.
+
+\begin{lstlisting}[language=sql, caption=DataAddress.find() - SQL SELECT ,captionpos=b, label=DataAddress.find()]
+SELECT id, primary_line, secondary_line, zip_code, city, country 
+FROM addresses 
+WHERE id = 1
+     
+
+\end{lstlisting}
+Ovenstående SQL-query beder databasen vælge attributterne \code{primary\_line}, \code{secondary\_line}, \code{zip\_code}, \code{city} og \code{country} fra tabellen \code{addresses}. Disse data hentes fra rækken hvor id er \code{1}, og sættes på en instans af den relevante data-klasse.
+
+\begin{lstlisting}[language=sql, caption=DataAddress.save() - SQL UPDATE,captionpos=b, label=DataAddress.save().sqlupdate]
+INSERT INTO addresses (primaryLine, secondaryLine, zip, city, country) 
+VALUES("addresse", "", "500", "Odense", "DK") 
+RETURNING id
+\end{lstlisting}
+Ovenstående query benyttes til indsættelse af et nyt datasæt i \code{addresses}. Her vælges det først hvilke værdier der skal indsættes, og derefter hvad disse skal sætte stil, i parantesen der hører til \code{VALUES}. Værdierne bliver sat via data-klassens \code{save()} metode.
+
+\begin{lstlisting}[language=sql, caption=DataAddress.save() - SQL INSERT,captionpos=b, label=DataAddress.save().sqlinsert]
+UPDATE addresses 
+SET primary_line = "some value..."
+WHERE id = 1
+\end{lstlisting}
+Ovenstående query benyttes til at opdatere et allerede eksisterende datasæt. Det vælges her hvilken attribut der skal opdateres, og at det skal ske på datasættet hvor id = 1. Denne query hører også til \code{save()}.
+
+Udover \code{data.model}-klasserne, er der i data-laget også implementeret en controller klasse til databasen. Denne er ligesom systemets andre cotroller-klasser implementeret som en singleton, og står for kommunikation med PostgreSQL databasen. \code{Database} indeholder blandt andet metoderne \code{connect()} og \code{query()} til dette formål. Implementeringen af \code{query(String query, Handler handler)} kan ses nedenfor.
+Query metoden er implementeret for at simplificere implementeringen i data klasserne, som beskrevet tidligere. På denne måde sikres det, at data klassernes er fokuseret omkring deres SQL queries, og hvordan resultatsættet der bliver returneret fra postgres skal behandles. Parameteren \code{Handler} er et \code{FunctionalInterface}. Denne implementering er valgt, da man med Javas lambda funktionalitet, kan behandle hver række databasen sender til systemet. 
+	Query metoden primære formål er, at mindske den \code{boilerplate} kode der skal til for at kommunikere med databasen. Ved at gøre det på denne måde simplificeres implementeringen, og det bliver nemmere at vedligeholde, da der i tilfælde af ændringer i måden der sendes querys på, kun skal opdateres et enkelt sted. \\
+    
+\begin{lstlisting}[caption=Database.query(),captionpos=b, label=Database.query()]
+public void query(String query, Handler handler) {
+    ResultSet resultSet = null;
+    try (Statement statement = this.connection.createStatement()) {
+      if (query.toUpperCase().startsWith("UPDATE")) {
+        statement.execute(query);
+      } else {
+        resultSet = statement.executeQuery(query);
+        while (resultSet.next()) {
+          handler.execute(resultSet);
+        }
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      if (resultSet != null) {
+        try {
+          resultSet.close();
+        } catch (SQLException ex) {
+          Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      }
+    }
+  }
+
+\end{lstlisting}
+
+\end{document}
